@@ -2,7 +2,7 @@
 
 Biblioteca de animaciones en Angular basada en GSAP.
 
-Incluye una colección de animaciones reutilizables para mejorar la experiencia de usuario en aplicaciones Angular. Cada animación está organizada por categoría (texto, scroll, transformación, interacción, ...), con código fuente y documentación para facilitar su integración y personalización.
+Incluye una colección de animaciones reutilizables para aplicaciones Angular.
 
 ## Objetivo de la Aplicación
 
@@ -28,6 +28,7 @@ Bloques fundamentales que se pueden combinar entre sí:
 ```
 
 **Directivas disponibles:**
+
 - `fadeIn` / `fadeOut` - Opacidad (por defecto: 0 ↔ 1)
 - `scale` - Escala (por defecto: 2, personalizable: `scale="1.5"`)
 - `rotate` - Rotación (por defecto: 360°, personalizable: `rotate="90"`)
@@ -44,9 +45,7 @@ Controlan cuándo y cómo se ejecutan las animaciones:
 <div rotate trigger="click">Se anima al hacer click</div>
 
 <!-- Scroll avanzado -->
-<div fadeIn scale="1.2" trigger="scroll" scrub>
-  Sincronizado con scroll
-</div>
+<div fadeIn scale="1.2" trigger="scroll" scrub>Sincronizado con scroll</div>
 ```
 
 ### 🔤 **Directivas de Plugins Especializados**
@@ -55,9 +54,7 @@ Funcionalidades avanzadas de GSAP:
 
 ```html
 <!-- SplitText -->
-<h1 splitText fadeIn stagger="0.1" trigger="scroll">
-  Texto animado por palabras
-</h1>
+<h1 splitText fadeIn stagger="0.1" trigger="scroll">Texto animado por palabras</h1>
 
 <!-- Timeline -->
 <div timeline>
@@ -76,14 +73,10 @@ Funcionalidades avanzadas de GSAP:
 </section>
 
 <!-- Interacción avanzada -->
-<button scale="1.1" rotate="10" trigger="hover" ease="bounce.out">
-  Botón interactivo
-</button>
+<button scale="1.1" rotate="10" trigger="hover" ease="bounce.out">Botón interactivo</button>
 
 <!-- Texto con efectos -->
-<p splitText fadeIn translate [y]="20" stagger="0.05" trigger="scroll">
-  Párrafo que aparece palabra por palabra
-</p>
+<p splitText fadeIn translate [y]="20" stagger="0.05" trigger="scroll">Párrafo que aparece palabra por palabra</p>
 ```
 
 ---

@@ -1,1 +1,1 @@
-export * from './gsap-host.directive';
+export * from './fade-in.directive';
