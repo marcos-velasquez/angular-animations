@@ -1,101 +1,89 @@
-# AngularAnimations
+# Angular Animations con GSAP
 
-<a alt="Nx logo" href="https://nx.dev" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="45"></a>
+Biblioteca de animaciones en Angular basada en GSAP.
 
-✨ Your new, shiny [Nx workspace](https://nx.dev) is ready ✨.
+Incluye una colección de animaciones reutilizables para mejorar la experiencia de usuario en aplicaciones Angular. Cada animación está organizada por categoría (texto, scroll, transformación, interacción, ...), con código fuente y documentación para facilitar su integración y personalización.
 
-[Learn more about this workspace setup and its capabilities](https://nx.dev/getting-started/tutorials/angular-standalone-tutorial?utm_source=nx_project&amp;utm_medium=readme&amp;utm_campaign=nx_projects) or run `npx nx graph` to visually explore what was created. Now, let's get you up to speed!
+## Objetivo de la Aplicación
 
-## Run tasks
+Esta aplicación tiene como objetivo proporcionar una colección de animaciones reutilizables para proyectos en Angular, facilitando su integración y personalización en aplicaciones reales.
 
-To run the dev server for your app, use:
+## Arquitectura de Directivas
 
-```sh
-npx nx serve angular-animations
+Sistema de directivas Angular combinables que encapsulan animaciones GSAP con una API declarativa y intuitiva.
+
+### 🧩 **Directivas de Animaciones Atómicas**
+
+Bloques fundamentales que se pueden combinar entre sí:
+
+```html
+<!-- Directivas simples con valores por defecto -->
+<div fadeIn>Aparece con fade (opacidad 0 → 1)</div>
+<div scale>Escala al 200% por defecto</div>
+<div rotate>Rota 360° por defecto</div>
+
+<!-- Directivas personalizadas -->
+<div fadeIn scale="1.5" rotate="45">Combinación múltiple</div>
+<div scale="3" [duration]="2">Escala personalizada</div>
 ```
 
-To create a production bundle:
+**Directivas disponibles:**
+- `fadeIn` / `fadeOut` - Opacidad (por defecto: 0 ↔ 1)
+- `scale` - Escala (por defecto: 2, personalizable: `scale="1.5"`)
+- `rotate` - Rotación (por defecto: 360°, personalizable: `rotate="90"`)
+- `translate` - Movimiento (personalizable: `[x]="100" [y]="50"`)
 
-```sh
-npx nx build angular-animations
+### 🎯 **Directivas de Triggers**
+
+Controlan cuándo y cómo se ejecutan las animaciones:
+
+```html
+<!-- Triggers básicos -->
+<div fadeIn trigger="scroll">Se anima al hacer scroll</div>
+<div scale trigger="hover">Se anima al pasar cursor</div>
+<div rotate trigger="click">Se anima al hacer click</div>
+
+<!-- Scroll avanzado -->
+<div fadeIn scale="1.2" trigger="scroll" scrub>
+  Sincronizado con scroll
+</div>
 ```
 
-To see all available targets to run for a project, run:
+### 🔤 **Directivas de Plugins Especializados**
 
-```sh
-npx nx show project angular-animations
+Funcionalidades avanzadas de GSAP:
+
+```html
+<!-- SplitText -->
+<h1 splitText fadeIn stagger="0.1" trigger="scroll">
+  Texto animado por palabras
+</h1>
+
+<!-- Timeline -->
+<div timeline>
+  <div fadeIn [delay]="0">Primero</div>
+  <div scale [delay]="0.5">Segundo</div>
+  <div rotate [delay]="1">Tercero</div>
+</div>
 ```
 
-These targets are either [inferred automatically](https://nx.dev/concepts/inferred-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) or defined in the `project.json` or `package.json` files.
+### 🎨 **Ejemplos de Combinaciones**
 
-[More about running tasks in the docs &raquo;](https://nx.dev/features/run-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+```html
+<!-- Entrada compleja -->
+<section fadeIn scale="1.1" rotate="5" trigger="scroll" [duration]="1.5">
+  <h2>Título con animación múltiple</h2>
+</section>
 
-## Add new projects
+<!-- Interacción avanzada -->
+<button scale="1.1" rotate="10" trigger="hover" ease="bounce.out">
+  Botón interactivo
+</button>
 
-While you could add new projects to your workspace manually, you might want to leverage [Nx plugins](https://nx.dev/concepts/nx-plugins?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) and their [code generation](https://nx.dev/features/generate-code?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) feature.
-
-Use the plugin's generator to create new projects.
-
-To generate a new application, use:
-
-```sh
-npx nx g @nx/angular:app demo
+<!-- Texto con efectos -->
+<p splitText fadeIn translate [y]="20" stagger="0.05" trigger="scroll">
+  Párrafo que aparece palabra por palabra
+</p>
 ```
 
-To generate a new library, use:
-
-```sh
-npx nx g @nx/angular:lib mylib
-```
-
-You can use `npx nx list` to get a list of installed plugins. Then, run `npx nx list <plugin-name>` to learn about more specific capabilities of a particular plugin. Alternatively, [install Nx Console](https://nx.dev/getting-started/editor-setup?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) to browse plugins and generators in your IDE.
-
-[Learn more about Nx plugins &raquo;](https://nx.dev/concepts/nx-plugins?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) | [Browse the plugin registry &raquo;](https://nx.dev/plugin-registry?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-## Set up CI!
-
-### Step 1
-
-To connect to Nx Cloud, run the following command:
-
-```sh
-npx nx connect
-```
-
-Connecting to Nx Cloud ensures a [fast and scalable CI](https://nx.dev/ci/intro/why-nx-cloud?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) pipeline. It includes features such as:
-
-- [Remote caching](https://nx.dev/ci/features/remote-cache?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [Task distribution across multiple machines](https://nx.dev/ci/features/distribute-task-execution?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [Automated e2e test splitting](https://nx.dev/ci/features/split-e2e-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [Task flakiness detection and rerunning](https://nx.dev/ci/features/flaky-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-### Step 2
-
-Use the following command to configure a CI workflow for your workspace:
-
-```sh
-npx nx g ci-workflow
-```
-
-[Learn more about Nx on CI](https://nx.dev/ci/intro/ci-with-nx#ready-get-started-with-your-provider?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-## Install Nx Console
-
-Nx Console is an editor extension that enriches your developer experience. It lets you run tasks, generate code, and improves code autocompletion in your IDE. It is available for VSCode and IntelliJ.
-
-[Install Nx Console &raquo;](https://nx.dev/getting-started/editor-setup?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-## Useful links
-
-Learn more:
-
-- [Learn more about this workspace setup](https://nx.dev/getting-started/tutorials/angular-standalone-tutorial?utm_source=nx_project&amp;utm_medium=readme&amp;utm_campaign=nx_projects)
-- [Learn about Nx on CI](https://nx.dev/ci/intro/ci-with-nx?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [Releasing Packages with Nx release](https://nx.dev/features/manage-releases?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [What are Nx plugins?](https://nx.dev/concepts/nx-plugins?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-And join the Nx community:
-- [Discord](https://go.nx.dev/community)
-- [Follow us on X](https://twitter.com/nxdevtools) or [LinkedIn](https://www.linkedin.com/company/nrwl)
-- [Our Youtube channel](https://www.youtube.com/@nxdevtools)
-- [Our blog](https://nx.dev/blog?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+---

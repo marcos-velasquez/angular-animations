@@ -1,0 +1,28 @@
+# Archivos de desarrollo
+*.spec.ts
+*.test.ts
+**/*.spec.ts
+**/*.test.ts
+
+# Configuración
+.editorconfig
+.eslintrc.json
+tsconfig.spec.json
+jest.config.ts
+playwright.config.ts
+
+# Nx
+.nx/
+nx.json
+
+# IDE
+.vscode/
+.idea/
+
+# Tests
+e2e/
+coverage/
+
+# Documentación de desarrollo
+README.md
+CONTRIBUTING.md
