@@ -1,9 +1,9 @@
 import { GsapHostDirective } from '../_gsap-host.directive';
 
-export class HostTweenVarsBuilder {
+export class TweenVars {
   constructor(private readonly host: GsapHostDirective) {}
 
-  public build(): gsap.TweenVars {
+  public create(): gsap.TweenVars {
     return {
       duration: this.host.duration(),
       delay: this.host.delay(),
