@@ -3,7 +3,7 @@ import { RouterModule } from '@angular/router';
 import * as _ from './directives/_index';
 
 @Component({
-  imports: [RouterModule, _.FadeInDirective, _.RotateDirective],
+  imports: [RouterModule, _.FadeInDirective, _.RotateDirective, _.ScaleDirective],
   selector: 'animate-root',
   templateUrl: './app.html',
 })
