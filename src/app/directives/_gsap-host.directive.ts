@@ -1,23 +1,24 @@
-import { Directive, ElementRef, OnDestroy, OnInit, computed, effect, input, output, signal } from '@angular/core';
+import * as _ from '@angular/core';
 import { Trigger, TriggerRef, TriggerType, Timeline } from './models/_index';
 
-@Directive({ selector: '[gsap]' })
-export abstract class GsapHostDirective implements OnInit, OnDestroy {
-  public readonly duration = input<gsap.TweenValue>(2);
-  public readonly delay = input<gsap.TweenValue>(0);
-  public readonly stagger = input<gsap.NumberValue>(0);
-  public readonly ease = input<gsap.EaseString>('power1.out');
-  public readonly trigger = input<TriggerType>(Trigger.default);
+@_.Directive({ selector: '[gsap]' })
+export abstract class GsapHostDirective implements _.OnInit, _.OnDestroy {
+  public readonly duration = _.input<gsap.TweenValue>(2);
+  public readonly delay = _.input<gsap.TweenValue>(0);
+  public readonly stagger = _.input<gsap.NumberValue>(0);
+  public readonly ease = _.input<gsap.EaseString>('power1.out');
+  public readonly together = _.input(false, { transform: _.booleanAttribute });
+  public readonly trigger = _.input<TriggerType>(Trigger.default);
 
-  public readonly animateStart = output<GsapHostDirective>();
-  public readonly animateComplete = output<GsapHostDirective>();
+  public readonly animateStart = _.output<GsapHostDirective>();
+  public readonly animateComplete = _.output<GsapHostDirective>();
 
-  public readonly triggerRef = signal<TriggerRef>(Trigger.empty());
+  public readonly triggerRef = _.signal<TriggerRef>(Trigger.empty());
 
-  protected readonly timeline = computed(() => new Timeline(this).create());
+  protected readonly timeline = _.computed(() => new Timeline(this, { cache: !this.together() }).create());
 
-  constructor(public readonly el: ElementRef<HTMLElement>) {
-    effect(() => this.animate());
+  constructor(public readonly el: _.ElementRef<HTMLElement>) {
+    _.effect(() => this.animate());
     this.timeline().eventCallback('onStart', () => this.animateStart.emit(this));
     this.timeline().eventCallback('onComplete', () => this.animateComplete.emit(this));
   }

@@ -2,12 +2,12 @@ import { gsap } from 'gsap';
 import { GsapHostDirective } from '../_gsap-host.directive';
 import { TweenVars } from './tween-vars';
 
-const register = new Map<HTMLElement, gsap.core.Timeline>();
+const cache = new Map<HTMLElement, gsap.core.Timeline>();
 
 export class Timeline {
-  constructor(private readonly host: GsapHostDirective) {
-    if (!register.has(this.host.elementRef)) {
-      register.set(this.host.elementRef, this._create());
+  constructor(private readonly host: GsapHostDirective, private readonly options: { cache: boolean }) {
+    if (this.options.cache && !cache.has(this.host.elementRef)) {
+      cache.set(this.host.elementRef, this._create());
     }
   }
 
@@ -16,6 +16,6 @@ export class Timeline {
   }
 
   public create(): gsap.core.Timeline {
-    return register.get(this.host.elementRef);
+    return this.options.cache ? cache.get(this.host.elementRef) : this._create();
   }
 }
