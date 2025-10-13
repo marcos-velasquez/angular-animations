@@ -1,6 +1,6 @@
 import { Directive, ElementRef, OnDestroy, OnInit, effect, input, output, signal } from '@angular/core';
 import { gsap } from 'gsap';
-import { Trigger, TriggerRef, TriggerType } from './models/trigger';
+import { Trigger, TriggerRef, TriggerType, GsapHostTweenVarsBuilder } from './models/_index';
 
 @Directive({ selector: '[gsap]' })
 export abstract class GsapHostDirective implements OnInit, OnDestroy {
@@ -13,8 +13,8 @@ export abstract class GsapHostDirective implements OnInit, OnDestroy {
   public readonly animateStart = output<GsapHostDirective>();
   public readonly animateComplete = output<GsapHostDirective>();
 
-  protected readonly triggerRef = signal<TriggerRef>(Trigger.empty());
-  protected readonly timeline = gsap.timeline({ paused: true });
+  public readonly triggerRef = signal<TriggerRef>(Trigger.empty());
+  protected readonly timeline = gsap.timeline({ paused: true, defaults: new GsapHostTweenVarsBuilder(this).build() });
 
   constructor(protected readonly el: ElementRef<HTMLElement>) {
     effect(() => this.animate());

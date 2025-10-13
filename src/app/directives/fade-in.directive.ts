@@ -4,13 +4,6 @@ import { GsapHostDirective } from './_gsap-host.directive';
 @Directive({ selector: '[fadeIn]' })
 export class FadeInDirective extends GsapHostDirective {
   public animate() {
-    this.timeline.from(this.el.nativeElement, {
-      opacity: 0,
-      duration: this.duration(),
-      delay: this.delay(),
-      ease: this.ease(),
-      onStart: () => this.triggerRef().disconnect(),
-      onComplete: () => this.triggerRef().connect(),
-    });
+    this.timeline.from(this.el.nativeElement, { opacity: 0 });
   }
 }

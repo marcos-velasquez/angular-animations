@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import * as _ from './directives';
+import * as _ from './directives/_index';
 
 @Component({
   imports: [RouterModule, _.FadeInDirective, _.RotateDirective],
