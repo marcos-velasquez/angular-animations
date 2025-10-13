@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { FadeInDirective } from './directives';
 
@@ -9,4 +9,10 @@ import { FadeInDirective } from './directives';
 })
 export class App {
   protected title = 'angular-animations';
+
+  public readonly show = signal(false);
+
+  constructor() {
+    setTimeout(() => this.show.set(true), 3000);
+  }
 }
