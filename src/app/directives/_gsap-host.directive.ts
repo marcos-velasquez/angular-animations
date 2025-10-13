@@ -20,12 +20,12 @@ export abstract class GsapHostDirective implements _.OnInit, _.OnDestroy, _.Afte
     _.effect(() => {
       this.timeline().eventCallback('onStart', () => this.animateStart.emit(this));
       this.timeline().eventCallback('onComplete', () => this.animateComplete.emit(this));
-      this.animate();
     });
   }
 
   ngOnInit(): void {
     this.timeline.set(new Timeline(this, { cache: !this.together() }).create());
+    this.animate();
   }
 
   ngAfterViewInit(): void {
