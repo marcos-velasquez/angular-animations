@@ -1,2 +1,2 @@
-export * from './tween-vars.builder';
+export * from './tween-vars';
 export * from './trigger';
