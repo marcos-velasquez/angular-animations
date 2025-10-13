@@ -2,7 +2,7 @@ import * as _ from '@angular/core';
 import { Trigger, TriggerRef, TriggerType, Timeline } from './models/_index';
 
 @_.Directive({ selector: '[gsap]' })
-export abstract class GsapHostDirective implements _.OnInit, _.OnDestroy {
+export abstract class GsapHostDirective implements _.OnInit, _.OnDestroy, _.AfterViewInit {
   public readonly duration = _.input<gsap.TweenValue>(2);
   public readonly delay = _.input<gsap.TweenValue>(0);
   public readonly stagger = _.input<gsap.NumberValue>(0);
@@ -14,16 +14,21 @@ export abstract class GsapHostDirective implements _.OnInit, _.OnDestroy {
   public readonly animateComplete = _.output<GsapHostDirective>();
 
   public readonly triggerRef = _.signal<TriggerRef>(Trigger.empty());
-
-  protected readonly timeline = _.computed(() => new Timeline(this, { cache: !this.together() }).create());
+  protected readonly timeline = _.signal<gsap.core.Timeline>(Timeline.empty());
 
   constructor(public readonly el: _.ElementRef<HTMLElement>) {
-    _.effect(() => this.animate());
-    this.timeline().eventCallback('onStart', () => this.animateStart.emit(this));
-    this.timeline().eventCallback('onComplete', () => this.animateComplete.emit(this));
+    _.effect(() => {
+      this.timeline().eventCallback('onStart', () => this.animateStart.emit(this));
+      this.timeline().eventCallback('onComplete', () => this.animateComplete.emit(this));
+      this.animate();
+    });
   }
 
   ngOnInit(): void {
+    this.timeline.set(new Timeline(this, { cache: !this.together() }).create());
+  }
+
+  ngAfterViewInit(): void {
     this.triggerRef.set(new Trigger(this.elementRef).when(this.trigger()).then(this.play.bind(this)));
   }
 

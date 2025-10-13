@@ -18,4 +18,8 @@ export class Timeline {
   public create(): gsap.core.Timeline {
     return this.options.cache ? cache.get(this.host.elementRef) : this._create();
   }
+
+  public static empty() {
+    return gsap.timeline({ paused: true });
+  }
 }
