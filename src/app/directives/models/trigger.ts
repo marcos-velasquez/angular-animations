@@ -35,6 +35,23 @@ export class Trigger {
     return Trigger.empty();
   }
 
+  public when(triggerType: TriggerType): { then: (VoidFunction) => TriggerRef } {
+    return {
+      then: (callback: () => void) => {
+        switch (triggerType) {
+          case 'enter':
+            return this.onEnter(callback);
+          case 'leave':
+            return this.onLeave(callback);
+          case 'click':
+            return this.onClick(callback);
+          default:
+            return this.onLoad(callback);
+        }
+      },
+    };
+  }
+
   public static empty(): TriggerRef {
     return { connect: () => '/* no-op */', disconnect: () => '/* no-op */' };
   }

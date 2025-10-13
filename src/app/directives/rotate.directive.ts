@@ -1,11 +1,13 @@
-import { Directive } from '@angular/core';
+import { Directive, input } from '@angular/core';
 import { GsapHostDirective } from './_gsap-host.directive';
 
-@Directive({ selector: '[fadeIn]' })
-export class FadeInDirective extends GsapHostDirective {
+@Directive({ selector: '[rotate]' })
+export class RotateDirective extends GsapHostDirective {
+  public readonly rotate = input.required<number>();
+
   public animate() {
     this.timeline.from(this.el.nativeElement, {
-      opacity: 0,
+      rotate: this.rotate,
       duration: this.duration(),
       delay: this.delay(),
       ease: this.ease(),
