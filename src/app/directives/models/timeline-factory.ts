@@ -1,14 +1,13 @@
 import { No } from '../utils/_index';
 import { GsapHostDirective } from '../_gsap-host.directive';
 import { Timeline } from './timeline';
-import { TriggerType } from './trigger';
 import { TweenVars } from './tween-vars';
 
-const cache = new Map<HTMLElement, Timeline>();
+const cache = new Map<GsapHostDirective, Timeline>();
 
 export class TimelineFactory {
   constructor(private readonly host: GsapHostDirective) {
-    new No(cache.has(this.host.elementRef)).then(() => cache.set(this.host.elementRef, this._create()));
+    new No(cache.has(this.host)).then(() => cache.set(this.host, this._create()));
   }
 
   private _create(): Timeline {
@@ -16,7 +15,7 @@ export class TimelineFactory {
   }
 
   public create(): Timeline {
-    return cache.get(this.host.elementRef);
+    return cache.get(this.host);
   }
 
   public static empty(): Timeline {
