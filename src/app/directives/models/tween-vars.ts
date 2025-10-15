@@ -5,6 +5,7 @@ export class TweenVars {
 
   public create(): gsap.TweenVars {
     return {
+      immediateRender: false,
       duration: this.host.duration(),
       delay: this.host.delay(),
       ease: this.host.ease(),
