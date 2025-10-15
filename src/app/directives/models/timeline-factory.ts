@@ -12,11 +12,11 @@ export class TimelineFactory {
   }
 
   private _create(): Timeline {
-    return new Timeline(this.host.elementRef, new TweenVars(this.host).create());
+    return new Timeline(this.host.elementRef, new TweenVars(this.host).create()).with(this.host.trigger());
   }
 
-  public create(triggerType: TriggerType): Timeline {
-    return cache.get(this.host.elementRef).with(triggerType);
+  public create(): Timeline {
+    return cache.get(this.host.elementRef);
   }
 
   public static empty(): Timeline {
