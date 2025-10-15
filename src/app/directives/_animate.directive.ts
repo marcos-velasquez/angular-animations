@@ -3,11 +3,10 @@ import { GsapHostDirective } from './_gsap-host.directive';
 
 @Directive({ selector: '[animate]' })
 export class AnimateDirective extends GsapHostDirective {
-  public readonly sequence = input.required<string>({ alias: 'animate' });
+  public readonly animate = input.required<string>();
 
-  public animate() {
-    const animations = this.sequence().split(',');
-    console.log(animations);
+  public register() {
+    const animations = this.animate().split(',');
 
     animations.forEach((anim) => {
       const parts = anim.trim().split(':');
