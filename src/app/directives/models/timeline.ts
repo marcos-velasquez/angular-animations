@@ -18,13 +18,13 @@ export class Timeline {
     return this;
   }
 
-  public from(vars: gsap.TweenVars): Timeline {
-    this.gsapTimeline.from(this.element, vars);
+  public from(vars: gsap.TweenVars, position?: gsap.Position): Timeline {
+    this.gsapTimeline.from(this.element, vars, position);
     return this;
   }
 
-  public to(vars: gsap.TweenVars): Timeline {
-    this.gsapTimeline.to(this.element, vars);
+  public to(vars: gsap.TweenVars, position?: gsap.Position): Timeline {
+    this.gsapTimeline.to(this.element, vars, position);
     return this;
   }
 
