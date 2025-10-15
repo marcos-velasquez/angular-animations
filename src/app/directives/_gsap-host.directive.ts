@@ -53,12 +53,12 @@ export abstract class GsapHostDirective implements _.OnInit, _.OnDestroy {
     this.timeline().restart();
   }
 
-  protected from(vars: gsap.TweenVars): void {
-    this.timeline().from(vars, this.position());
+  protected from(vars: gsap.TweenVars, position: gsap.Position = this.position()): void {
+    this.timeline().from(vars, position);
   }
 
-  protected to(vars: gsap.TweenVars): void {
-    this.timeline().to(vars, this.position());
+  protected to(vars: gsap.TweenVars, position: gsap.Position = this.position()): void {
+    this.timeline().to(vars, position);
   }
 
   ngOnDestroy(): void {
