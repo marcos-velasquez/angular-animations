@@ -1,4 +1,4 @@
-export const PRESETS: Record<string, string> = {
+export const PRESETS = {
   fadeIn: 'opacity:0:>',
   fadeOut: 'to:opacity:0:',
   slideInLeft: 'x:-100%:>;opacity:0:<',
