@@ -1,5 +1,6 @@
 import { Directive, input } from '@angular/core';
 import { GsapHostDirective } from './_gsap-host.directive';
+import { PRESETS } from './_presets';
 
 @Directive({ selector: '[animate]' })
 export class AnimateDirective extends GsapHostDirective {
@@ -8,7 +9,13 @@ export class AnimateDirective extends GsapHostDirective {
   public readonly animate = input.required<string>();
 
   public register() {
-    const animations = this.animate().split(AnimateDirective.delimiters);
+    let sequence = this.animate();
+
+    if (PRESETS[sequence]) {
+      sequence = PRESETS[sequence];
+    }
+
+    const animations = sequence.split(AnimateDirective.delimiters);
 
     animations.forEach((anim) => {
       const parts = anim.trim().split(':');
