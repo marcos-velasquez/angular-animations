@@ -1,24 +1,65 @@
 import { gsap } from 'gsap';
-import { GsapHostDirective } from '../_gsap-host.directive';
-import { TweenVars } from './tween-vars';
-import { No } from '../utils/_index';
-
-const cache = new Map<HTMLElement, gsap.core.Timeline>();
+import { Trigger, TriggerRef, TriggerType } from './trigger';
 
 export class Timeline {
-  constructor(private readonly host: GsapHostDirective) {
-    new No(cache.has(this.host.elementRef)).then(() => cache.set(this.host.elementRef, this._create()));
+  private readonly gsapTimeline: gsap.core.Timeline;
+  private triggerRef: TriggerRef;
+
+  constructor(private readonly element: HTMLElement, defaults: gsap.TweenVars) {
+    this.gsapTimeline = gsap.timeline({ paused: true, defaults });
   }
 
-  private _create(): gsap.core.Timeline {
-    return gsap.timeline({ paused: true, defaults: new TweenVars(this.host).create() });
+  public get timeline(): gsap.core.Timeline {
+    return this.gsapTimeline;
   }
 
-  public create(): gsap.core.Timeline {
-    return cache.get(this.host.elementRef);
+  public with(triggerType: TriggerType): Timeline {
+    this.triggerRef = new Trigger(this.element).when(triggerType).then(() => this.play());
+    return this;
   }
 
-  public static empty() {
-    return gsap.timeline({ paused: true });
+  public from(vars: gsap.TweenVars): Timeline {
+    this.gsapTimeline.from(this.element, vars);
+    return this;
+  }
+
+  public to(vars: gsap.TweenVars): Timeline {
+    this.gsapTimeline.to(this.element, vars);
+    return this;
+  }
+
+  public play(): Timeline {
+    this.gsapTimeline.play(0);
+    return this;
+  }
+
+  public pause(): Timeline {
+    this.gsapTimeline.pause();
+    return this;
+  }
+
+  public reverse(): Timeline {
+    this.gsapTimeline.reverse();
+    return this;
+  }
+
+  public resume(): Timeline {
+    this.gsapTimeline.resume();
+    return this;
+  }
+
+  public restart(): Timeline {
+    this.gsapTimeline.restart();
+    return this;
+  }
+
+  public disconnect(): Timeline {
+    this.triggerRef.disconnect();
+    return this;
+  }
+
+  public connect(): Timeline {
+    this.triggerRef.connect();
+    return this;
   }
 }

@@ -9,8 +9,8 @@ export class TweenVars {
       delay: this.host.delay(),
       ease: this.host.ease(),
       stagger: this.host.stagger(),
-      onStart: () => this.host.triggerRef().disconnect(),
-      onComplete: () => this.host.triggerRef().connect(),
+      onStart: () => this.host.timeline().disconnect(),
+      onComplete: () => this.host.timeline().connect(),
     };
   }
 }

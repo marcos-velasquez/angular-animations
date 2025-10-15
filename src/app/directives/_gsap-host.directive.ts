@@ -1,35 +1,30 @@
 import * as _ from '@angular/core';
-import { Trigger, TriggerRef, TriggerType, Timeline } from './models/_index';
+import { TriggerType, Timeline, TimelineFactory } from './models/_index';
 
 @_.Directive({ selector: '[gsap]' })
-export abstract class GsapHostDirective implements _.OnInit, _.OnDestroy, _.AfterViewInit {
+export abstract class GsapHostDirective implements _.OnInit, _.OnDestroy {
   public readonly duration = _.input<gsap.TweenValue>(2);
   public readonly delay = _.input<gsap.TweenValue>(0);
   public readonly stagger = _.input<gsap.NumberValue>(0);
   public readonly ease = _.input<gsap.EaseString>('power1.out');
   public readonly position = _.input<'>' | '<'>('>');
-  public readonly trigger = _.input<TriggerType>(Trigger.default);
+  public readonly trigger = _.input<TriggerType>('load');
 
   public readonly animateStart = _.output<GsapHostDirective>();
   public readonly animateComplete = _.output<GsapHostDirective>();
 
-  public readonly triggerRef = _.signal<TriggerRef>(Trigger.empty());
-  protected readonly timeline = _.signal<gsap.core.Timeline>(Timeline.empty());
+  public readonly timeline = _.signal<Timeline>(TimelineFactory.empty());
 
   constructor(public readonly el: _.ElementRef<HTMLElement>) {
     _.effect(() => {
-      this.timeline().eventCallback('onStart', () => this.animateStart.emit(this));
-      this.timeline().eventCallback('onComplete', () => this.animateComplete.emit(this));
+      this.timeline().timeline.eventCallback('onStart', () => this.animateStart.emit(this));
+      this.timeline().timeline.eventCallback('onComplete', () => this.animateComplete.emit(this));
     });
   }
 
   ngOnInit(): void {
-    this.timeline.set(new Timeline(this).create());
+    this.timeline.set(new TimelineFactory(this).create(this.trigger()));
     this.animate();
-  }
-
-  ngAfterViewInit(): void {
-    this.triggerRef.set(new Trigger(this.elementRef).when(this.trigger()).then(this.play.bind(this)));
   }
 
   public abstract animate(): void;
@@ -39,8 +34,7 @@ export abstract class GsapHostDirective implements _.OnInit, _.OnDestroy, _.Afte
   }
 
   public play(): void {
-    console.log('play');
-    this.timeline().play(0);
+    this.timeline().play();
   }
 
   public pause(): void {
@@ -60,14 +54,14 @@ export abstract class GsapHostDirective implements _.OnInit, _.OnDestroy, _.Afte
   }
 
   protected from(vars: gsap.TweenVars): void {
-    this.timeline().from(this.elementRef, vars, this.position());
+    this.timeline().from(vars);
   }
 
   protected to(vars: gsap.TweenVars): void {
-    this.timeline().to(this.elementRef, vars, this.position());
+    this.timeline().to(vars);
   }
 
   ngOnDestroy(): void {
-    this.triggerRef().disconnect();
+    this.timeline().disconnect();
   }
 }
