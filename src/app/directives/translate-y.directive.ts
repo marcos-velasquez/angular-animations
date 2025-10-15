@@ -7,6 +7,6 @@ export class TranslateYDirective extends GsapHostDirective {
   public readonly translateY = input('', { transform: (value) => new That(value).or('100%') });
 
   public animate() {
-    this.timeline().from(this.el.nativeElement, { y: this.translateY() });
+    this.from({ y: this.translateY() });
   }
 }

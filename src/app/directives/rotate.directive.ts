@@ -7,6 +7,6 @@ export class RotateDirective extends GsapHostDirective {
   public readonly rotate = input(0, { transform: (_) => new That(_).or(360) });
 
   public animate() {
-    this.timeline().from(this.elementRef, { rotate: this.rotate() });
+    this.from({ rotate: this.rotate() });
   }
 }

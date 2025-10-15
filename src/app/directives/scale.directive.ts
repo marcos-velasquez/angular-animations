@@ -7,6 +7,6 @@ export class ScaleDirective extends GsapHostDirective {
   public readonly scale = input(0, { transform: (_) => new That(_).or(2) });
 
   public animate() {
-    this.timeline().from(this.elementRef, { scale: this.scale() });
+    this.from({ scale: this.scale() });
   }
 }

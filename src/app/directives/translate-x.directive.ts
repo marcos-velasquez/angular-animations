@@ -7,6 +7,6 @@ export class TranslateXDirective extends GsapHostDirective {
   public readonly translateX = input('', { transform: (value) => new That(value).or('100%') });
 
   public animate() {
-    this.timeline().from(this.elementRef, { x: this.translateX() });
+    this.from({ x: this.translateX() });
   }
 }

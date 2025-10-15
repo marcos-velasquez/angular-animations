@@ -7,7 +7,7 @@ export abstract class GsapHostDirective implements _.OnInit, _.OnDestroy, _.Afte
   public readonly delay = _.input<gsap.TweenValue>(0);
   public readonly stagger = _.input<gsap.NumberValue>(0);
   public readonly ease = _.input<gsap.EaseString>('power1.out');
-  public readonly together = _.input(false, { transform: _.booleanAttribute });
+  public readonly position = _.input<'>' | '<'>('>');
   public readonly trigger = _.input<TriggerType>(Trigger.default);
 
   public readonly animateStart = _.output<GsapHostDirective>();
@@ -24,7 +24,7 @@ export abstract class GsapHostDirective implements _.OnInit, _.OnDestroy, _.Afte
   }
 
   ngOnInit(): void {
-    this.timeline.set(new Timeline(this, { cache: !this.together() }).create());
+    this.timeline.set(new Timeline(this).create());
     this.animate();
   }
 
@@ -39,6 +39,7 @@ export abstract class GsapHostDirective implements _.OnInit, _.OnDestroy, _.Afte
   }
 
   public play(): void {
+    console.log('play');
     this.timeline().play(0);
   }
 
@@ -56,6 +57,14 @@ export abstract class GsapHostDirective implements _.OnInit, _.OnDestroy, _.Afte
 
   public restart(): void {
     this.timeline().restart();
+  }
+
+  protected from(vars: gsap.TweenVars): void {
+    this.timeline().from(this.elementRef, vars, this.position());
+  }
+
+  protected to(vars: gsap.TweenVars): void {
+    this.timeline().to(this.elementRef, vars, this.position());
   }
 
   ngOnDestroy(): void {

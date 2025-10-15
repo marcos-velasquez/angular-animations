@@ -4,7 +4,6 @@ export class TweenVars {
   constructor(private readonly host: GsapHostDirective) {}
 
   public create(): gsap.TweenVars {
-    console.log(this.host.ease());
     return {
       duration: this.host.duration(),
       delay: this.host.delay(),
