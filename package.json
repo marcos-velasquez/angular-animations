@@ -5,6 +5,8 @@
   "scripts": {
     "start": "nx serve",
     "build": "nx build",
+    "build:prod": "nx build --configuration=production --base-href=/angular-animations/",
+    "deploy": "npm run build:prod && npx angular-cli-ghpages --dir=dist/angular-animations/browser",
     "test": "nx test"
   },
   "private": true,
@@ -48,6 +50,7 @@
     "@types/jest": "^29.5.12",
     "@types/node": "18.16.9",
     "@typescript-eslint/utils": "^8.40.0",
+    "angular-cli-ghpages": "^2.0.3",
     "angular-eslint": "^20.3.0",
     "eslint": "^9.8.0",
     "eslint-config-prettier": "^10.0.0",
