@@ -1,384 +1,256 @@
-<div class="showcase">
-  <header class="header">
-    <h1>GSAP Animation Presets</h1>
-    <p>Click on any box to see the animation</p>
-  </header>
+<div class="min-h-screen bg-slate-950">
+  <div class="container mx-auto px-6 py-12 max-w-7xl">
+    <header class="text-center mb-20">
+      <h1 class="text-5xl md:text-6xl font-bold text-white mb-4">Web Animations Showcase</h1>
+      <p class="text-lg text-slate-400 max-w-2xl mx-auto">
+        Explore a variety of web animations, categorized for easy browsing and implementation. Discover animations for entrances, exits, and more.
+      </p>
+    </header>
 
-  <main class="grid">
-    <section class="animation-group">
-      <h2>fadeIn</h2>
-      <div class="examples">
-        <div animateClick="fadeIn" class="box">No params</div>
-        <div animateClick="fadeIn()" class="box">Empty ()</div>
-        <div animateClick="fadeIn({ opacity: 0.1 })" class="box">opacity: 0.1</div>
-      </div>
-    </section>
+    <main class="space-y-20">
+      <!-- Entrance Animations -->
+      <section>
+        <h2 class="text-3xl font-bold text-white mb-8">Entrance Animations</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <!-- fadeIn -->
+          <div class="group">
+            <div animateClick="fadeIn" class="bg-gradient-to-br from-orange-400 to-teal-600 aspect-square rounded-2xl cursor-pointer hover:scale-105 transition-transform duration-300 shadow-xl"></div>
+            <h3 class="text-white font-semibold mt-4 text-lg">Fade In</h3>
+            <p class="text-slate-400 text-sm">Gradually appear from transparent.</p>
+          </div>
 
-    <section class="animation-group">
-      <h2>fadeOut</h2>
-      <div class="examples">
-        <div animateClick="fadeOut" class="box">No params</div>
-        <div animateClick="fadeOut()" class="box">Empty ()</div>
-        <div animateClick="fadeOut({ opacity: 0.2 })" class="box">opacity: 0.2</div>
-      </div>
-    </section>
+          <!-- slideInLeft -->
+          <div class="group">
+            <div animateClick="slideInLeft()" class="bg-gradient-to-br from-amber-200 to-amber-400 aspect-square rounded-2xl cursor-pointer hover:scale-105 transition-transform duration-300 shadow-xl flex items-center justify-center">
+              <div class="w-16 h-24 bg-amber-600 rounded-lg transform -rotate-12"></div>
+            </div>
+            <h3 class="text-white font-semibold mt-4 text-lg">Slide In Left</h3>
+            <p class="text-slate-400 text-sm">Slide in from the left edge.</p>
+          </div>
 
-    <section class="animation-group">
-      <h2>zoomIn</h2>
-      <div class="examples">
-        <div animateClick="zoomIn" class="box">No params</div>
-        <div animateClick="zoomIn()" class="box">Empty ()</div>
-        <div animateClick="zoomIn({ scale: 0.3 })" class="box">scale: 0.3</div>
-      </div>
-    </section>
+          <!-- zoomIn -->
+          <div class="group">
+            <div animateClick="zoomIn()" class="bg-gradient-to-br from-slate-100 to-slate-300 aspect-square rounded-2xl cursor-pointer hover:scale-105 transition-transform duration-300 shadow-xl flex items-center justify-center">
+              <div class="w-32 h-32 rounded-full bg-gradient-to-r from-red-400 via-yellow-400 to-purple-400"></div>
+            </div>
+            <h3 class="text-white font-semibold mt-4 text-lg">Zoom In</h3>
+            <p class="text-slate-400 text-sm">Zoom in from a smaller size.</p>
+          </div>
 
-    <section class="animation-group">
-      <h2>zoomOut</h2>
-      <div class="examples">
-        <div animateClick="zoomOut" class="box">No params</div>
-        <div animateClick="zoomOut()" class="box">Empty ()</div>
-        <div animateClick="zoomOut({ scale: 0.5 })" class="box">scale: 0.5</div>
-      </div>
-    </section>
+          <!-- bounceIn -->
+          <div class="group">
+            <div animateClick="bounceIn()" class="bg-gradient-to-br from-slate-700 to-slate-900 aspect-square rounded-2xl cursor-pointer hover:scale-105 transition-transform duration-300 shadow-xl flex items-center justify-center">
+              <div class="w-24 h-32 bg-slate-200 rounded-lg transform rotate-12"></div>
+            </div>
+            <h3 class="text-white font-semibold mt-4 text-lg">Bounce In</h3>
+            <p class="text-slate-400 text-sm">Bounce in with a spring effect.</p>
+          </div>
 
-    <section class="animation-group">
-      <h2>slideInLeft</h2>
-      <div class="examples">
-        <div animateClick="slideInLeft" class="box">No params</div>
-        <div animateClick="slideInLeft()" class="box">Empty ()</div>
-        <div animateClick="slideInLeft({ distance: '-200%' })" class="box">distance: -200%</div>
-      </div>
-    </section>
+          <!-- slideInRight -->
+          <div class="group">
+            <div animateClick="slideInRight()" class="bg-gradient-to-br from-slate-100 to-slate-300 aspect-square rounded-2xl cursor-pointer hover:scale-105 transition-transform duration-300 shadow-xl flex items-center justify-center">
+              <div class="w-16 h-24 bg-slate-500 rounded-lg"></div>
+            </div>
+            <h3 class="text-white font-semibold mt-4 text-lg">Slide In Right</h3>
+            <p class="text-slate-400 text-sm">Slide in from the right edge.</p>
+          </div>
 
-    <section class="animation-group">
-      <h2>slideInRight</h2>
-      <div class="examples">
-        <div animateClick="slideInRight" class="box">No params</div>
-        <div animateClick="slideInRight()" class="box">Empty ()</div>
-        <div animateClick="slideInRight({ distance: '300%' })" class="box">distance: 300%</div>
-      </div>
-    </section>
+          <!-- slideInUp -->
+          <div class="group">
+            <div animateClick="slideInUp()" class="bg-gradient-to-br from-slate-200 to-slate-400 aspect-square rounded-2xl cursor-pointer hover:scale-105 transition-transform duration-300 shadow-xl"></div>
+            <h3 class="text-white font-semibold mt-4 text-lg">Slide In Up</h3>
+            <p class="text-slate-400 text-sm">Slide in from bottom.</p>
+          </div>
 
-    <section class="animation-group">
-      <h2>slideInUp</h2>
-      <div class="examples">
-        <div animateClick="slideInUp" class="box">No params</div>
-        <div animateClick="slideInUp()" class="box">Empty ()</div>
-        <div animateClick="slideInUp({ distance: '200%' })" class="box">distance: 200%</div>
-      </div>
-    </section>
+          <!-- slideInDown -->
+          <div class="group">
+            <div animateClick="slideInDown()" class="bg-gradient-to-br from-blue-200 to-blue-400 aspect-square rounded-2xl cursor-pointer hover:scale-105 transition-transform duration-300 shadow-xl"></div>
+            <h3 class="text-white font-semibold mt-4 text-lg">Slide In Down</h3>
+            <p class="text-slate-400 text-sm">Slide in from top.</p>
+          </div>
 
-    <section class="animation-group">
-      <h2>slideInDown</h2>
-      <div class="examples">
-        <div animateClick="slideInDown" class="box">No params</div>
-        <div animateClick="slideInDown()" class="box">Empty ()</div>
-        <div animateClick="slideInDown({ distance: '-150%' })" class="box">distance: -150%</div>
-      </div>
-    </section>
+          <!-- rotateIn -->
+          <div class="group">
+            <div animateClick="rotateIn()" class="bg-gradient-to-br from-purple-200 to-purple-400 aspect-square rounded-2xl cursor-pointer hover:scale-105 transition-transform duration-300 shadow-xl"></div>
+            <h3 class="text-white font-semibold mt-4 text-lg">Rotate In</h3>
+            <p class="text-slate-400 text-sm">Rotate while appearing.</p>
+          </div>
 
-    <section class="animation-group">
-      <h2>bounceIn</h2>
-      <div class="examples">
-        <div animateClick="bounceIn" class="box">No params</div>
-        <div animateClick="bounceIn()" class="box">Empty ()</div>
-        <div animateClick="bounceIn({ midScale: 1.5 })" class="box">midScale: 1.5</div>
-      </div>
-    </section>
+          <!-- flipIn -->
+          <div class="group">
+            <div animateClick="flipIn()" class="bg-gradient-to-br from-pink-200 to-pink-400 aspect-square rounded-2xl cursor-pointer hover:scale-105 transition-transform duration-300 shadow-xl"></div>
+            <h3 class="text-white font-semibold mt-4 text-lg">Flip In</h3>
+            <p class="text-slate-400 text-sm">Flip horizontally or vertically.</p>
+          </div>
 
-    <section class="animation-group">
-      <h2>rotateIn</h2>
-      <div class="examples">
-        <div animateClick="rotateIn" class="box">No params</div>
-        <div animateClick="rotateIn()" class="box">Empty ()</div>
-        <div animateClick="rotateIn({ degrees: 360 })" class="box">degrees: 360</div>
-      </div>
-    </section>
+          <!-- rollIn -->
+          <div class="group">
+            <div animateClick="rollIn()" class="bg-gradient-to-br from-green-200 to-green-400 aspect-square rounded-2xl cursor-pointer hover:scale-105 transition-transform duration-300 shadow-xl"></div>
+            <h3 class="text-white font-semibold mt-4 text-lg">Roll In</h3>
+            <p class="text-slate-400 text-sm">Roll in from the side.</p>
+          </div>
 
-    <section class="animation-group">
-      <h2>flipIn</h2>
-      <div class="examples">
-        <div animateClick="flipIn" class="box">No params</div>
-        <div animateClick="flipIn()" class="box">Empty ()</div>
-        <div animateClick="flipIn({ degrees: 270 })" class="box">degrees: 270</div>
-      </div>
-    </section>
+          <!-- lightSpeedIn -->
+          <div class="group">
+            <div animateClick="lightSpeedIn()" class="bg-gradient-to-br from-yellow-200 to-yellow-400 aspect-square rounded-2xl cursor-pointer hover:scale-105 transition-transform duration-300 shadow-xl"></div>
+            <h3 class="text-white font-semibold mt-4 text-lg">Light Speed In</h3>
+            <p class="text-slate-400 text-sm">Fast entrance with skew.</p>
+          </div>
 
-    <section class="animation-group">
-      <h2>flipOut</h2>
-      <div class="examples">
-        <div animateClick="flipOut" class="box">No params</div>
-        <div animateClick="flipOut()" class="box">Empty ()</div>
-        <div animateClick="flipOut({ degrees: 180 })" class="box">degrees: 180</div>
-      </div>
-    </section>
+          <!-- backIn -->
+          <div class="group">
+            <div animateClick="backIn()" class="bg-gradient-to-br from-indigo-200 to-indigo-400 aspect-square rounded-2xl cursor-pointer hover:scale-105 transition-transform duration-300 shadow-xl"></div>
+            <h3 class="text-white font-semibold mt-4 text-lg">Back In</h3>
+            <p class="text-slate-400 text-sm">Enter with back easing.</p>
+          </div>
+        </div>
+      </section>
 
-    <section class="animation-group">
-      <h2>rollIn</h2>
-      <div class="examples">
-        <div animateClick="rollIn" class="box">No params</div>
-        <div animateClick="rollIn()" class="box">Empty ()</div>
-        <div animateClick="rollIn({ degrees: -540 })" class="box">degrees: -540</div>
-      </div>
-    </section>
+      <!-- Exit Animations -->
+      <section>
+        <h2 class="text-3xl font-bold text-white mb-8">Exit Animations</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <!-- fadeOut -->
+          <div class="group">
+            <div animateClick="fadeOut()" class="bg-gradient-to-br from-slate-800 to-slate-950 aspect-square rounded-2xl cursor-pointer hover:scale-105 transition-transform duration-300 shadow-xl"></div>
+            <h3 class="text-white font-semibold mt-4 text-lg">Fade Out</h3>
+            <p class="text-slate-400 text-sm">Gradually disappear to transparent.</p>
+          </div>
 
-    <section class="animation-group">
-      <h2>rollOut</h2>
-      <div class="examples">
-        <div animateClick="rollOut" class="box">No params</div>
-        <div animateClick="rollOut()" class="box">Empty ()</div>
-        <div animateClick="rollOut({ degrees: 540 })" class="box">degrees: 540</div>
-      </div>
-    </section>
+          <!-- fadeOutUp -->
+          <div class="group">
+            <div animateClick="fadeOutUp()" class="bg-gradient-to-br from-slate-100 to-slate-300 aspect-square rounded-2xl cursor-pointer hover:scale-105 transition-transform duration-300 shadow-xl flex items-center justify-center">
+              <div class="w-24 h-4 bg-slate-400 rounded"></div>
+            </div>
+            <h3 class="text-white font-semibold mt-4 text-lg">Fade Out Up</h3>
+            <p class="text-slate-400 text-sm">Slide out to the top edge.</p>
+          </div>
 
-    <section class="animation-group">
-      <h2>lightSpeedIn</h2>
-      <div class="examples">
-        <div animateClick="lightSpeedIn" class="box">No params</div>
-        <div animateClick="lightSpeedIn()" class="box">Empty ()</div>
-        <div animateClick="lightSpeedIn({ skew: -45 })" class="box">skew: -45</div>
-      </div>
-    </section>
+          <!-- zoomOut -->
+          <div class="group">
+            <div animateClick="zoomOut()" class="bg-gradient-to-br from-orange-300 to-orange-500 aspect-square rounded-2xl cursor-pointer hover:scale-105 transition-transform duration-300 shadow-xl"></div>
+            <h3 class="text-white font-semibold mt-4 text-lg">Zoom Out</h3>
+            <p class="text-slate-400 text-sm">Zoom out to a smaller size.</p>
+          </div>
 
-    <section class="animation-group">
-      <h2>swingIn</h2>
-      <div class="examples">
-        <div animateClick="swingIn" class="box">No params</div>
-        <div animateClick="swingIn()" class="box">Empty ()</div>
-        <div animateClick="swingIn({ start: 20 })" class="box">start: 20</div>
-      </div>
-    </section>
+          <!-- fadeOutDown -->
+          <div class="group">
+            <div animateClick="fadeOutDown()" class="bg-gradient-to-br from-yellow-400 to-orange-500 aspect-square rounded-2xl cursor-pointer hover:scale-105 transition-transform duration-300 shadow-xl flex items-center justify-center">
+              <div class="w-20 h-20 bg-blue-400 rounded-lg transform rotate-45"></div>
+              <div class="w-16 h-16 bg-orange-500 rounded-lg absolute"></div>
+            </div>
+            <h3 class="text-white font-semibold mt-4 text-lg">Fade Out Down</h3>
+            <p class="text-slate-400 text-sm">Collapse vertically to disappear.</p>
+          </div>
 
-    <section class="animation-group">
-      <h2>rubberBandIn</h2>
-      <div class="examples">
-        <div animateClick="rubberBandIn" class="box">No params</div>
-        <div animateClick="rubberBandIn()" class="box">Empty ()</div>
-        <div animateClick="rubberBandIn({ scale1: 1.5 })" class="box">scale1: 1.5</div>
-      </div>
-    </section>
+          <!-- flipOut -->
+          <div class="group">
+            <div animateClick="flipOut()" class="bg-gradient-to-br from-cyan-200 to-cyan-400 aspect-square rounded-2xl cursor-pointer hover:scale-105 transition-transform duration-300 shadow-xl"></div>
+            <h3 class="text-white font-semibold mt-4 text-lg">Flip Out</h3>
+            <p class="text-slate-400 text-sm">Flip while disappearing.</p>
+          </div>
 
-    <section class="animation-group">
-      <h2>fadeOutUp</h2>
-      <div class="examples">
-        <div animateClick="fadeOutUp" class="box">No params</div>
-        <div animateClick="fadeOutUp()" class="box">Empty ()</div>
-        <div animateClick="fadeOutUp({ distance: '-200%' })" class="box">distance: -200%</div>
-      </div>
-    </section>
+          <!-- rollOut -->
+          <div class="group">
+            <div animateClick="rollOut()" class="bg-gradient-to-br from-red-200 to-red-400 aspect-square rounded-2xl cursor-pointer hover:scale-105 transition-transform duration-300 shadow-xl"></div>
+            <h3 class="text-white font-semibold mt-4 text-lg">Roll Out</h3>
+            <p class="text-slate-400 text-sm">Roll out to the side.</p>
+          </div>
 
-    <section class="animation-group">
-      <h2>fadeOutDown</h2>
-      <div class="examples">
-        <div animateClick="fadeOutDown" class="box">No params</div>
-        <div animateClick="fadeOutDown()" class="box">Empty ()</div>
-        <div animateClick="fadeOutDown({ distance: '200%' })" class="box">distance: 200%</div>
-      </div>
-    </section>
+          <!-- backOut -->
+          <div class="group">
+            <div animateClick="backOut()" class="bg-gradient-to-br from-teal-200 to-teal-400 aspect-square rounded-2xl cursor-pointer hover:scale-105 transition-transform duration-300 shadow-xl"></div>
+            <h3 class="text-white font-semibold mt-4 text-lg">Back Out</h3>
+            <p class="text-slate-400 text-sm">Exit with back easing.</p>
+          </div>
 
-    <section class="animation-group">
-      <h2>pulse</h2>
-      <div class="examples">
-        <div animateClick="pulse" class="box">No params</div>
-        <div animateClick="pulse()" class="box">Empty ()</div>
-        <div animateClick="pulse({ scale1: 1.2 })" class="box">scale1: 1.2</div>
-      </div>
-    </section>
+          <!-- hinge -->
+          <div class="group">
+            <div animateClick="hinge()" class="bg-gradient-to-br from-gray-200 to-gray-400 aspect-square rounded-2xl cursor-pointer hover:scale-105 transition-transform duration-300 shadow-xl"></div>
+            <h3 class="text-white font-semibold mt-4 text-lg">Hinge</h3>
+            <p class="text-slate-400 text-sm">Fall like a hinge.</p>
+          </div>
+        </div>
+      </section>
 
-    <section class="animation-group">
-      <h2>shake</h2>
-      <div class="examples">
-        <div animateClick="shake" class="box">No params</div>
-        <div animateClick="shake()" class="box">Empty ()</div>
-        <div animateClick="shake({ distance: 20 })" class="box">distance: 20</div>
-      </div>
-    </section>
+      <!-- Attention Animations -->
+      <section>
+        <h2 class="text-3xl font-bold text-white mb-8">Attention Animations</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <!-- pulse -->
+          <div class="group">
+            <div animateClick="pulse()" class="bg-gradient-to-br from-rose-200 to-rose-400 aspect-square rounded-2xl cursor-pointer hover:scale-105 transition-transform duration-300 shadow-xl flex items-center justify-center">
+              <div class="w-20 h-20 bg-rose-600 rounded-full"></div>
+            </div>
+            <h3 class="text-white font-semibold mt-4 text-lg">Pulse</h3>
+            <p class="text-slate-400 text-sm">Pulse with scale animation.</p>
+          </div>
 
-    <section class="animation-group">
-      <h2>wobble</h2>
-      <div class="examples">
-        <div animateClick="wobble" class="box">No params</div>
-        <div animateClick="wobble()" class="box">Empty ()</div>
-        <div animateClick="wobble({ rotate1: -10 })" class="box">rotate1: -10</div>
-      </div>
-    </section>
+          <!-- shake -->
+          <div class="group">
+            <div animateClick="shake()" class="bg-gradient-to-br from-amber-200 to-amber-400 aspect-square rounded-2xl cursor-pointer hover:scale-105 transition-transform duration-300 shadow-xl flex items-center justify-center">
+              <div class="w-16 h-16 bg-amber-600 rounded-lg"></div>
+            </div>
+            <h3 class="text-white font-semibold mt-4 text-lg">Shake</h3>
+            <p class="text-slate-400 text-sm">Shake horizontally.</p>
+          </div>
 
-    <section class="animation-group">
-      <h2>jello</h2>
-      <div class="examples">
-        <div animateClick="jello" class="box">No params</div>
-        <div animateClick="jello()" class="box">Empty ()</div>
-        <div animateClick="jello({ skew1: -20 })" class="box">skew1: -20</div>
-      </div>
-    </section>
+          <!-- wobble -->
+          <div class="group">
+            <div animateClick="wobble()" class="bg-gradient-to-br from-lime-200 to-lime-400 aspect-square rounded-2xl cursor-pointer hover:scale-105 transition-transform duration-300 shadow-xl flex items-center justify-center">
+              <div class="w-20 h-20 bg-lime-600 rounded-lg transform rotate-12"></div>
+            </div>
+            <h3 class="text-white font-semibold mt-4 text-lg">Wobble</h3>
+            <p class="text-slate-400 text-sm">Wobble back and forth.</p>
+          </div>
 
-    <section class="animation-group">
-      <h2>heartBeat</h2>
-      <div class="examples">
-        <div animateClick="heartBeat" class="box">No params</div>
-        <div animateClick="heartBeat()" class="box">Empty ()</div>
-        <div animateClick="heartBeat({ scale1: 1.5 })" class="box">scale1: 1.5</div>
-      </div>
-    </section>
+          <!-- jello -->
+          <div class="group">
+            <div animateClick="jello()" class="bg-gradient-to-br from-sky-200 to-sky-400 aspect-square rounded-2xl cursor-pointer hover:scale-105 transition-transform duration-300 shadow-xl flex items-center justify-center">
+              <div class="w-24 h-16 bg-sky-600 rounded-2xl"></div>
+            </div>
+            <h3 class="text-white font-semibold mt-4 text-lg">Jello</h3>
+            <p class="text-slate-400 text-sm">Jello-like skew effect.</p>
+          </div>
 
-    <section class="animation-group">
-      <h2>hinge</h2>
-      <div class="examples">
-        <div animateClick="hinge" class="box">No params</div>
-        <div animateClick="hinge()" class="box">Empty ()</div>
-        <div animateClick="hinge({ rotate1: 100 })" class="box">rotate1: 100</div>
-      </div>
-    </section>
+          <!-- heartBeat -->
+          <div class="group">
+            <div animateClick="heartBeat()" class="bg-gradient-to-br from-red-300 to-red-500 aspect-square rounded-2xl cursor-pointer hover:scale-105 transition-transform duration-300 shadow-xl flex items-center justify-center">
+              <div class="w-16 h-16 bg-red-700 rounded-full"></div>
+            </div>
+            <h3 class="text-white font-semibold mt-4 text-lg">Heart Beat</h3>
+            <p class="text-slate-400 text-sm">Heartbeat pulse effect.</p>
+          </div>
 
-    <section class="animation-group">
-      <h2>jackInTheBox</h2>
-      <div class="examples">
-        <div animateClick="jackInTheBox" class="box">No params</div>
-        <div animateClick="jackInTheBox()" class="box">Empty ()</div>
-        <div animateClick="jackInTheBox({ rotate1: 45 })" class="box">rotate1: 45</div>
-      </div>
-    </section>
+          <!-- flash -->
+          <div class="group">
+            <div animateClick="flash()" class="bg-gradient-to-br from-yellow-200 to-yellow-400 aspect-square rounded-2xl cursor-pointer hover:scale-105 transition-transform duration-300 shadow-xl"></div>
+            <h3 class="text-white font-semibold mt-4 text-lg">Flash</h3>
+            <p class="text-slate-400 text-sm">Flash opacity on/off.</p>
+          </div>
 
-    <section class="animation-group">
-      <h2>backIn</h2>
-      <div class="examples">
-        <div animateClick="backIn" class="box">No params</div>
-        <div animateClick="backIn()" class="box">Empty ()</div>
-        <div animateClick="backIn({ scale2: 1.3 })" class="box">scale2: 1.3</div>
-      </div>
-    </section>
+          <!-- swingIn -->
+          <div class="group">
+            <div animateClick="swingIn()" class="bg-gradient-to-br from-emerald-200 to-emerald-400 aspect-square rounded-2xl cursor-pointer hover:scale-105 transition-transform duration-300 shadow-xl"></div>
+            <h3 class="text-white font-semibold mt-4 text-lg">Swing In</h3>
+            <p class="text-slate-400 text-sm">Swing like a pendulum.</p>
+          </div>
 
-    <section class="animation-group">
-      <h2>backOut</h2>
-      <div class="examples">
-        <div animateClick="backOut" class="box">No params</div>
-        <div animateClick="backOut()" class="box">Empty ()</div>
-        <div animateClick="backOut({ scale1: 1.3 })" class="box">scale1: 1.3</div>
-      </div>
-    </section>
+          <!-- rubberBandIn -->
+          <div class="group">
+            <div animateClick="rubberBandIn()" class="bg-gradient-to-br from-violet-200 to-violet-400 aspect-square rounded-2xl cursor-pointer hover:scale-105 transition-transform duration-300 shadow-xl"></div>
+            <h3 class="text-white font-semibold mt-4 text-lg">Rubber Band In</h3>
+            <p class="text-slate-400 text-sm">Elastic rubber band effect.</p>
+          </div>
 
-    <section class="animation-group">
-      <h2>flash</h2>
-      <div class="examples">
-        <div animateClick="flash" class="box">No params</div>
-        <div animateClick="flash()" class="box">Empty ()</div>
-        <div animateClick="flash({ opacity1: 0.3 })" class="box">opacity1: 0.3</div>
-      </div>
-    </section>
-  </main>
+          <!-- jackInTheBox -->
+          <div class="group">
+            <div animateClick="jackInTheBox()" class="bg-gradient-to-br from-fuchsia-200 to-fuchsia-400 aspect-square rounded-2xl cursor-pointer hover:scale-105 transition-transform duration-300 shadow-xl"></div>
+            <h3 class="text-white font-semibold mt-4 text-lg">Jack In The Box</h3>
+            <p class="text-slate-400 text-sm">Pop out like a jack-in-the-box.</p>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
 </div>
-
-<style>
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-
-  body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    min-height: 100vh;
-    padding: 2rem;
-  }
-
-  .showcase {
-    max-width: 1400px;
-    margin: 0 auto;
-  }
-
-  .header {
-    text-align: center;
-    color: white;
-    margin-bottom: 3rem;
-    padding: 2rem;
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    border-radius: 20px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-  }
-
-  .header h1 {
-    font-size: 3rem;
-    font-weight: 700;
-    margin-bottom: 0.5rem;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-  }
-
-  .header p {
-    font-size: 1.2rem;
-    opacity: 0.9;
-  }
-
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 2rem;
-  }
-
-  .animation-group {
-    background: white;
-    border-radius: 16px;
-    padding: 1.5rem;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-
-  .animation-group:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
-  }
-
-  .animation-group h2 {
-    font-size: 1.5rem;
-    color: #667eea;
-    margin-bottom: 1rem;
-    padding-bottom: 0.5rem;
-    border-bottom: 2px solid #667eea;
-    font-weight: 600;
-  }
-
-  .examples {
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-  }
-
-  .box {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
-    padding: 1rem;
-    border-radius: 12px;
-    cursor: pointer;
-    text-align: center;
-    font-weight: 500;
-    font-size: 0.9rem;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
-    user-select: none;
-  }
-
-  .box:hover {
-    transform: scale(1.05);
-    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.5);
-  }
-
-  .box:active {
-    transform: scale(0.98);
-  }
-
-  @media (max-width: 768px) {
-    .header h1 {
-      font-size: 2rem;
-    }
-
-    .grid {
-      grid-template-columns: 1fr;
-      gap: 1.5rem;
-    }
-
-    body {
-      padding: 1rem;
-    }
-  }
-</style>
