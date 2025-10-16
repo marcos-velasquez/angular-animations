@@ -149,7 +149,7 @@ Triggers animation when page loads:
 <div animateClick="bounce({ y1: '-40px' })">Higher bounce</div>
 ```
 
-**Available:** `pulse`, `shake`, `shakeX`, `shakeY`, `wobble`, `jello`, `heartBeat`, `flash`, `bounce`, `tada`, `swing`, `swingIn`, `headShake`, `rubberBand`, `rubberBandIn`, `wiggle`, `jackInTheBox`, `jump`, `hang`, `float`, `blink`, `sway`, `tilt`, `tossing`, `pullUp`, `pullDown`, `dancing`, `verticalBounce`, `horizontalBounce`, `horizontalVibration`, `rotationalWave`, `impulseRotationRight`, `impulseRotationLeft`
+**Available:** `pulse`, `pulseGrow`, `pulseShrink`, `shake`, `shakeX`, `shakeY`, `wobble`, `wobbleSkew`, `jello`, `heartBeat`, `flash`, `bounce`, `tada`, `swing`, `swingIn`, `headShake`, `rubberBand`, `rubberBandIn`, `wiggle`, `jackInTheBox`, `jump`, `hang`, `float`, `blink`, `sway`, `tilt`, `tossing`, `pullUp`, `pullDown`, `bob`, `buzz`, `buzzOut`, `dancing`, `verticalBounce`, `horizontalBounce`, `horizontalVibration`, `rotationalWave`, `impulseRotationRight`, `impulseRotationLeft`
 
 #### Special Animations (4)
 
@@ -165,7 +165,7 @@ Triggers animation when page loads:
 <img animateLoad="kenBurns({ scale: 1.3 })" src="image.jpg" />
 ```
 
-**Available:** `flip`, `spin`, `glitch`, `blur`, `kenBurns`, `morphing`, `skew`, `skewRight`, `squeeze`, `stretchLeft`, `stretchRight`, `expandHorizontally`, `contractHorizontally`, `expandVertically`, `contractVertically`
+**Available:** `flip`, `spin`, `glitch`, `blur`, `kenBurns`, `morphing`, `skew`, `skewRight`, `squeeze`, `stretchLeft`, `stretchRight`, `expandHorizontally`, `contractHorizontally`, `expandVertically`, `contractVertically`, `glow`, `shadow`, `growShadow`, `floatShadow`
 
 ### Custom Animations
 

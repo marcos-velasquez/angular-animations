@@ -494,4 +494,49 @@ export class Presets {
   public static stretchRight({ scaleX = 1.3 } = {}): string {
     return `to:scaleX:${scaleX}:>;to:scaleX:1:>`;
   }
+
+  public static glow({ boxShadow = '0 0 20px rgba(255, 255, 255, 0.8)' } = {}): string {
+    return `to:boxShadow:${boxShadow}:>`;
+  }
+
+  public static shadow({ boxShadow = '0 10px 20px rgba(0, 0, 0, 0.3)' } = {}): string {
+    return `to:boxShadow:${boxShadow}:>`;
+  }
+
+  public static growShadow({ scale = 1.1, boxShadow = '0 10px 30px rgba(0, 0, 0, 0.4)' } = {}): string {
+    return `to:scale:${scale}:>;to:boxShadow:${boxShadow}:0`;
+  }
+
+  public static floatShadow({ y = '-10px', boxShadow = '0 15px 30px rgba(0, 0, 0, 0.3)' } = {}): string {
+    return `to:y:${y}:>;to:boxShadow:${boxShadow}:0`;
+  }
+
+  public static bob({ y1 = '-10px', y2 = '-5px' } = {}): string {
+    return `to:y:${y1}:>;to:y:${y2}:>;to:y:${y1}:>;to:y:${y2}:>;to:y:0:>`;
+  }
+
+  public static buzz({ x = '3px' } = {}): string {
+    return `to:x:-${x}:>;to:x:${x}:>;to:x:-${x}:>;to:x:${x}:>;to:x:-${x}:>;to:x:${x}:>;to:x:-${x}:>;to:x:${x}:>;to:x:0:>`;
+  }
+
+  public static buzzOut({ x = '3px' } = {}): string {
+    return `to:x:${x}:>;to:x:-${x}:>;to:x:${x}:>;to:x:-${x}:>;to:x:${x}:>;to:x:-${x}:>;to:x:${x}:>;to:x:-${x}:>;to:x:0:>`;
+  }
+
+  public static pulseGrow({ scale1 = 1, scale2 = 1.1 } = {}): string {
+    return `to:scale:${scale2}:>;to:scale:${scale1}:>;to:scale:${scale2}:>;to:scale:${scale1}:>`;
+  }
+
+  public static pulseShrink({ scale1 = 1, scale2 = 0.9 } = {}): string {
+    return `to:scale:${scale2}:>;to:scale:${scale1}:>;to:scale:${scale2}:>;to:scale:${scale1}:>`;
+  }
+
+  public static wobbleSkew({
+    skewX1 = -10,
+    skewX2 = 10,
+    x1 = '-5px',
+    x2 = '5px',
+  } = {}): string {
+    return `to:skewX:${skewX1}:>;to:x:${x1}:0;to:skewX:${skewX2}:>;to:x:${x2}:0;to:skewX:${skewX1}:>;to:x:${x1}:0;to:skewX:0:>;to:x:0:0`;
+  }
 }
