@@ -117,7 +117,7 @@ Triggers animation when page loads:
 <div animateLoad="bounceIn({ startScale: 0, midScale: 1.5, endScale: 1 })">Custom bounce effect</div>
 ```
 
-**Available:** `fadeIn`, `fadeInUp`, `fadeInDown`, `fadeInLeft`, `fadeInRight`, `blurredFadeIn`, `zoomIn`, `zoomInRotate`, `slideInLeft`, `slideInRight`, `slideInUp`, `slideInDown`, `slideInBounce`, `slideUpFade`, `slideRotateIn`, `bounceIn`, `bounceInDown`, `bounceInUp`, `bounceFadeIn`, `rotateIn`, `rotateInDownLeft`, `rotateInDownRight`, `flipIn`, `flipInX`, `rollIn`, `lightSpeedIn`, `backIn`, `pop`, `swingDropIn`, `pulseFadeIn`
+**Available:** `fadeIn`, `fadeInUp`, `fadeInDown`, `fadeInLeft`, `fadeInRight`, `fadeInUpBig`, `fadeInDownBig`, `fadeInLeftBig`, `fadeInRightBig`, `fadeInTopLeft`, `fadeInTopRight`, `fadeInBottomLeft`, `fadeInBottomRight`, `blurredFadeIn`, `zoomIn`, `zoomInDown`, `zoomInUp`, `zoomInRotate`, `slideInLeft`, `slideInRight`, `slideInUp`, `slideInDown`, `slideInBounce`, `slideUpFade`, `slideRotateIn`, `bounceIn`, `bounceInDown`, `bounceInUp`, `bounceInLeft`, `bounceInRight`, `bounceFadeIn`, `rotateIn`, `rotateInDownLeft`, `rotateInDownRight`, `rotateInUpLeft`, `flipIn`, `flipInX`, `flipInY`, `rollIn`, `lightSpeedIn`, `backIn`, `backInDown`, `backInUp`, `pop`, `swingDropIn`, `pulseFadeIn`
 
 #### Exit Animations (17)
 
@@ -131,7 +131,7 @@ Triggers animation when page loads:
 <div animateClick="slideOutRight({ distance: '150%' })">Custom distance</div>
 ```
 
-**Available:** `fadeOut`, `fadeOutUp`, `fadeOutDown`, `fadeOutLeft`, `fadeOutRight`, `zoomOut`, `slideOutLeft`, `slideOutRight`, `slideOutUp`, `slideOutDown`, `slideRotateOut`, `flipOut`, `rollOut`, `rotateOut`, `bounceOut`, `lightSpeedOut`, `backOut`, `hinge`, `sink`
+**Available:** `fadeOut`, `fadeOutUp`, `fadeOutDown`, `fadeOutLeft`, `fadeOutRight`, `zoomOut`, `slideOutLeft`, `slideOutRight`, `slideOutUp`, `slideOutDown`, `slideRotateOut`, `flipOut`, `flipOutY`, `rollOut`, `rotateOut`, `rotateOutDownRight`, `bounceOut`, `lightSpeedOut`, `backOut`, `hinge`, `sink`
 
 #### Attention Animations (16)
 
@@ -149,7 +149,7 @@ Triggers animation when page loads:
 <div animateClick="bounce({ y1: '-40px' })">Higher bounce</div>
 ```
 
-**Available:** `pulse`, `shake`, `shakeY`, `wobble`, `jello`, `heartBeat`, `flash`, `bounce`, `tada`, `swing`, `swingIn`, `headShake`, `rubberBand`, `rubberBandIn`, `wiggle`, `jackInTheBox`, `jump`, `hang`, `float`, `blink`, `sway`, `tilt`, `dancing`, `verticalBounce`, `horizontalBounce`, `horizontalVibration`, `rotationalWave`, `impulseRotationRight`, `impulseRotationLeft`
+**Available:** `pulse`, `shake`, `shakeX`, `shakeY`, `wobble`, `jello`, `heartBeat`, `flash`, `bounce`, `tada`, `swing`, `swingIn`, `headShake`, `rubberBand`, `rubberBandIn`, `wiggle`, `jackInTheBox`, `jump`, `hang`, `float`, `blink`, `sway`, `tilt`, `dancing`, `verticalBounce`, `horizontalBounce`, `horizontalVibration`, `rotationalWave`, `impulseRotationRight`, `impulseRotationLeft`
 
 #### Special Animations (4)
 

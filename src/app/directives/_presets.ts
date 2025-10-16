@@ -378,4 +378,80 @@ export class Presets {
   public static slideRotateOut({ x = '100%', rotate = 180, opacity = 0 } = {}): string {
     return `to:x:${x}:>;to:rotate:${rotate}:0;to:opacity:${opacity}:0`;
   }
+
+  public static fadeInDownBig({ distance = '-2000px', opacity = 0 } = {}): string {
+    return `y:${distance}:>;opacity:${opacity}:0`;
+  }
+
+  public static fadeInUpBig({ distance = '2000px', opacity = 0 } = {}): string {
+    return `y:${distance}:>;opacity:${opacity}:0`;
+  }
+
+  public static fadeInLeftBig({ distance = '-2000px', opacity = 0 } = {}): string {
+    return `x:${distance}:>;opacity:${opacity}:0`;
+  }
+
+  public static fadeInRightBig({ distance = '2000px', opacity = 0 } = {}): string {
+    return `x:${distance}:>;opacity:${opacity}:0`;
+  }
+
+  public static fadeInTopLeft({ x = '-100%', y = '-100%', opacity = 0 } = {}): string {
+    return `x:${x}:>;y:${y}:0;opacity:${opacity}:0`;
+  }
+
+  public static fadeInTopRight({ x = '100%', y = '-100%', opacity = 0 } = {}): string {
+    return `x:${x}:>;y:${y}:0;opacity:${opacity}:0`;
+  }
+
+  public static fadeInBottomLeft({ x = '-100%', y = '100%', opacity = 0 } = {}): string {
+    return `x:${x}:>;y:${y}:0;opacity:${opacity}:0`;
+  }
+
+  public static fadeInBottomRight({ x = '100%', y = '100%', opacity = 0 } = {}): string {
+    return `x:${x}:>;y:${y}:0;opacity:${opacity}:0`;
+  }
+
+  public static bounceInLeft({ x = '-100%', opacity = 0, midScale = 1.1 } = {}): string {
+    return `x:${x}:>;opacity:${opacity}:0;to:scale:${midScale}:>;to:scale:1:>`;
+  }
+
+  public static bounceInRight({ x = '100%', opacity = 0, midScale = 1.1 } = {}): string {
+    return `x:${x}:>;opacity:${opacity}:0;to:scale:${midScale}:>;to:scale:1:>`;
+  }
+
+  public static zoomInDown({ y = '-100%', scale = 0, opacity = 0 } = {}): string {
+    return `y:${y}:>;scale:${scale}:0;opacity:${opacity}:0`;
+  }
+
+  public static zoomInUp({ y = '100%', scale = 0, opacity = 0 } = {}): string {
+    return `y:${y}:>;scale:${scale}:0;opacity:${opacity}:0`;
+  }
+
+  public static backInDown({ y = '-100%', scale = 0.7, opacity = 0 } = {}): string {
+    return `y:${y}:>;scale:${scale}:0;opacity:${opacity}:0;to:scale:1:>`;
+  }
+
+  public static backInUp({ y = '100%', scale = 0.7, opacity = 0 } = {}): string {
+    return `y:${y}:>;scale:${scale}:0;opacity:${opacity}:0;to:scale:1:>`;
+  }
+
+  public static flipInY({ rotateY = 90, opacity = 0 } = {}): string {
+    return `rotateY:${rotateY}:>;opacity:${opacity}:0`;
+  }
+
+  public static flipOutY({ rotateY = 90, opacity = 0 } = {}): string {
+    return `to:rotateY:${rotateY}:>;to:opacity:${opacity}:0`;
+  }
+
+  public static rotateInUpLeft({ rotate = -45, x = '-100%', y = '100%', opacity = 0 } = {}): string {
+    return `rotate:${rotate}:>;x:${x}:0;y:${y}:0;opacity:${opacity}:0;to:rotate:0:>`;
+  }
+
+  public static rotateOutDownRight({ rotate = 45, x = '100%', y = '100%', opacity = 0 } = {}): string {
+    return `to:rotate:${rotate}:>;to:x:${x}:0;to:y:${y}:0;to:opacity:${opacity}:0`;
+  }
+
+  public static shakeX({ distance = 10 } = {}): string {
+    return `to:x:-${distance}:>;to:x:${distance}:>;to:x:-${distance}:>;to:x:${distance}:>;to:x:0:>`;
+  }
 }
