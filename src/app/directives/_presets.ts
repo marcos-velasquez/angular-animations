@@ -454,4 +454,44 @@ export class Presets {
   public static shakeX({ distance = 10 } = {}): string {
     return `to:x:-${distance}:>;to:x:${distance}:>;to:x:-${distance}:>;to:x:${distance}:>;to:x:0:>`;
   }
+
+  public static slideExpandUp({ y = '100%', scaleY = 0, opacity = 0 } = {}): string {
+    return `y:${y}:>;scaleY:${scaleY}:0;opacity:${opacity}:0;to:scaleY:1:>`;
+  }
+
+  public static expandUp({ scaleY = 0, opacity = 0 } = {}): string {
+    return `scaleY:${scaleY}:>;opacity:${opacity}:0`;
+  }
+
+  public static expandOpen({ scale = 0, opacity = 0 } = {}): string {
+    return `scale:${scale}:>;opacity:${opacity}:0`;
+  }
+
+  public static bigEntrance({ scale = 0, rotate = 720, opacity = 0 } = {}): string {
+    return `scale:${scale}:>;rotate:${rotate}:0;opacity:${opacity}:0`;
+  }
+
+  public static hatch({ scale = 0, rotate = -180, opacity = 0 } = {}): string {
+    return `scale:${scale}:>;rotate:${rotate}:0;opacity:${opacity}:0;to:rotate:0:>`;
+  }
+
+  public static tossing({ rotate1 = -10, rotate2 = 10, y1 = '-5px', y2 = '5px' } = {}): string {
+    return `to:rotate:${rotate1}:>;to:y:${y1}:0;to:rotate:${rotate2}:>;to:y:${y2}:0;to:rotate:${rotate1}:>;to:y:${y1}:0;to:rotate:0:>;to:y:0:0`;
+  }
+
+  public static pullUp({ y = '20px' } = {}): string {
+    return `to:y:-${y}:>;to:y:0:>`;
+  }
+
+  public static pullDown({ y = '20px' } = {}): string {
+    return `to:y:${y}:>;to:y:0:>`;
+  }
+
+  public static stretchLeft({ scaleX = 1.3 } = {}): string {
+    return `to:scaleX:${scaleX}:>;to:scaleX:1:>`;
+  }
+
+  public static stretchRight({ scaleX = 1.3 } = {}): string {
+    return `to:scaleX:${scaleX}:>;to:scaleX:1:>`;
+  }
 }
