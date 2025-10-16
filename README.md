@@ -101,7 +101,22 @@ Triggers animation when page loads:
 
 ### Animation Presets
 
-#### Entrance Animations (12)
+> **💡 Important:** Our animations are **highly flexible and parametrized**. Instead of having dozens of similar animations like `fadeInLeft`, `fadeInRight`, `fadeInUp`, `fadeInDown`, etc., we provide **one powerful animation** that you can customize with parameters. This gives you **infinite possibilities** while keeping the API clean and simple!
+
+**Example:** The `fadeIn` animation can replace all these:
+- `fadeIn` → Simple fade in
+- `fadeIn({ x: '-100%' })` → Replaces `fadeInLeft`
+- `fadeIn({ x: '100%' })` → Replaces `fadeInRight`
+- `fadeIn({ y: '100%' })` → Replaces `fadeInUp`
+- `fadeIn({ y: '-100%' })` → Replaces `fadeInDown`
+- `fadeIn({ x: '-100%', y: '-100%' })` → Replaces `fadeInTopLeft`
+- `fadeIn({ y: '2000px' })` → Replaces `fadeInUpBig`
+
+**This approach applies to:** `fadeIn`, `fadeOut`, `slideIn`, `slideOut`, `zoomIn`, `rotateIn`, `backIn`, `shake`, and more!
+
+---
+
+#### Entrance Animations (24)
 
 ```html
 <!-- Example: Fade In (simple) -->
