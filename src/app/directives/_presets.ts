@@ -8,11 +8,11 @@ export class Presets {
   }
 
   public static fadeOut({ opacity = 0 } = {}): string {
-    return `to:opacity:${opacity}:`;
+    return `to:opacity:${opacity}:>`;
   }
 
   public static zoomIn({ scale = 0, opacity = 0 } = {}): string {
-    return `scale:${scale}:>;opacity:${opacity}:<`;
+    return `scale:${scale}:>;opacity:${opacity}:0`;
   }
 
   public static slideInLeft({ distance = '-100%', opacity = 0 } = {}): string {
