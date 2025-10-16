@@ -1,4 +1,8 @@
 export class Presets {
+  public static eval(presetName: string, argsString: string): string {
+    return new Function('Presets', `return Presets.${presetName}(${argsString})`)(Presets);
+  }
+
   public static fadeIn({ opacity = 0 } = {}): string {
     return `opacity:${opacity}:>`;
   }

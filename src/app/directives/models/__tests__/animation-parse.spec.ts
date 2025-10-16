@@ -29,7 +29,7 @@ describe('AnimationParser', () => {
     });
 
     it('should resolve presets', () => {
-      const result = new AnimationParser('fadeIn').parse();
+      const result = new AnimationParser('fadeIn()').parse();
 
       expect(result.length).toBe(1);
       expect(result[0]).toEqual({ method: 'from', vars: { opacity: 0 }, position: '>' });
@@ -144,7 +144,14 @@ describe('AnimationParser', () => {
   });
 
   describe('Presets', () => {
-    it('should resolve fadeIn preset', () => {
+    it('should resolve fadeIn preset with parentheses', () => {
+      const result = new AnimationParser('fadeIn()').parse();
+
+      expect(result.length).toBe(1);
+      expect(result[0]).toEqual({ method: 'from', vars: { opacity: 0 }, position: '>' });
+    });
+
+    it('should resolve fadeIn preset without parentheses', () => {
       const result = new AnimationParser('fadeIn').parse();
 
       expect(result.length).toBe(1);
@@ -152,7 +159,7 @@ describe('AnimationParser', () => {
     });
 
     it('should resolve preset with multiple animations', () => {
-      const result = new AnimationParser('slideInLeft').parse();
+      const result = new AnimationParser('slideInLeft()').parse();
 
       expect(result.length).toBe(2);
       expect(result[0]).toEqual({ method: 'from', vars: { x: '-100%' }, position: '>' });
