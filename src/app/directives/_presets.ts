@@ -118,4 +118,143 @@ export class Presets {
   public static flash({ opacity1 = 0, opacity2 = 1 } = {}): string {
     return `to:opacity:${opacity1}:>;to:opacity:${opacity2}:>;to:opacity:${opacity1}:>;to:opacity:${opacity2}:>`;
   }
+
+  public static fadeInUp({ distance = '100%', opacity = 0 } = {}): string {
+    return `y:${distance}:>;opacity:${opacity}:0`;
+  }
+
+  public static fadeInDown({ distance = '-100%', opacity = 0 } = {}): string {
+    return `y:${distance}:>;opacity:${opacity}:0`;
+  }
+
+  public static fadeInLeft({ distance = '-100%', opacity = 0 } = {}): string {
+    return `x:${distance}:>;opacity:${opacity}:0`;
+  }
+
+  public static fadeInRight({ distance = '100%', opacity = 0 } = {}): string {
+    return `x:${distance}:>;opacity:${opacity}:0`;
+  }
+
+  public static rotateInDownLeft({ degrees = -45, opacity = 0 } = {}): string {
+    return `rotate:${degrees}:>;opacity:${opacity}:0`;
+  }
+
+  public static rotateInDownRight({ degrees = 45, opacity = 0 } = {}): string {
+    return `rotate:${degrees}:>;opacity:${opacity}:0`;
+  }
+
+  public static flipInX({ degrees = 90, opacity = 0 } = {}): string {
+    return `rotateX:${degrees}:>;opacity:${opacity}:0`;
+  }
+
+  public static bounceInDown({ distance = '-100%', opacity = 0, midScale = 1.1 } = {}): string {
+    return `y:${distance}:>;opacity:${opacity}:0;to:scale:${midScale}:>;to:scale:1:>`;
+  }
+
+  public static bounceInUp({ distance = '100%', opacity = 0, midScale = 1.1 } = {}): string {
+    return `y:${distance}:>;opacity:${opacity}:0;to:scale:${midScale}:>;to:scale:1:>`;
+  }
+
+  public static slideInBounce({ distance = '-100%', opacity = 0, bounce = '10px' } = {}): string {
+    return `x:${distance}:>;opacity:${opacity}:0;to:x:${bounce}:>;to:x:0:>`;
+  }
+
+  public static zoomInRotate({ scale = 0, opacity = 0, degrees = 180 } = {}): string {
+    return `scale:${scale}:>;opacity:${opacity}:0;rotate:${degrees}:0`;
+  }
+
+  public static fadeOutLeft({ distance = '-100%', opacity = 0 } = {}): string {
+    return `to:x:${distance}:>;to:opacity:${opacity}:0`;
+  }
+
+  public static fadeOutRight({ distance = '100%', opacity = 0 } = {}): string {
+    return `to:x:${distance}:>;to:opacity:${opacity}:0`;
+  }
+
+  public static slideOutLeft({ distance = '-100%' } = {}): string {
+    return `to:x:${distance}:>`;
+  }
+
+  public static slideOutRight({ distance = '100%' } = {}): string {
+    return `to:x:${distance}:>`;
+  }
+
+  public static slideOutUp({ distance = '-100%' } = {}): string {
+    return `to:y:${distance}:>`;
+  }
+
+  public static slideOutDown({ distance = '100%' } = {}): string {
+    return `to:y:${distance}:>`;
+  }
+
+  public static rotateOut({ degrees = 200, opacity = 0 } = {}): string {
+    return `to:rotate:${degrees}:>;to:opacity:${opacity}:0`;
+  }
+
+  public static bounceOut({ scale1 = 1.1, scale2 = 0, opacity = 0 } = {}): string {
+    return `to:scale:${scale1}:>;to:scale:${scale2}:>;to:opacity:${opacity}:0`;
+  }
+
+  public static lightSpeedOut({ distance = '100%', skew = 30, opacity = 0 } = {}): string {
+    return `to:x:${distance}:>;to:skewX:${skew}:0;to:opacity:${opacity}:0`;
+  }
+
+  public static bounce({ y1 = '-30px', y2 = '-15px', y3 = '-4px' } = {}): string {
+    return `to:y:${y1}:>;to:y:0:>;to:y:${y2}:>;to:y:0:>;to:y:${y3}:>;to:y:0:>`;
+  }
+
+  public static tada({ scale1 = 0.9, scale2 = 1.1, rotate1 = -3, rotate2 = 3 } = {}): string {
+    return `to:scale:${scale1}:>;to:rotate:${rotate1}:0;to:scale:${scale2}:>;to:rotate:${rotate2}:0;to:scale:${scale2}:>;to:rotate:${rotate2}:0;to:scale:${scale2}:>;to:rotate:${rotate2}:0;to:scale:1:>;to:rotate:0:0`;
+  }
+
+  public static swing({ rotate1 = 15, rotate2 = -10, rotate3 = 5 } = {}): string {
+    return `to:rotate:${rotate1}:>;to:rotate:${rotate2}:>;to:rotate:${rotate3}:>;to:rotate:${rotate2}:>;to:rotate:0:>`;
+  }
+
+  public static headShake({ x1 = '-10px', x2 = '10px', rotate1 = -5, rotate2 = 5 } = {}): string {
+    return `to:x:${x1}:>;to:rotate:${rotate1}:0;to:x:${x2}:>;to:rotate:${rotate2}:0;to:x:${x1}:>;to:rotate:${rotate1}:0;to:x:0:>;to:rotate:0:0`;
+  }
+
+  public static shakeY({ distance = 10 } = {}): string {
+    return `to:y:-${distance}:>;to:y:${distance}:>;to:y:-${distance}:>;to:y:${distance}:>;to:y:0:>`;
+  }
+
+  public static rubberBand({
+    scaleX1 = 1.25,
+    scaleY1 = 0.75,
+    scaleX2 = 0.75,
+    scaleY2 = 1.25,
+    scaleX3 = 1.15,
+    scaleY3 = 0.85,
+  } = {}): string {
+    return `to:scaleX:${scaleX1}:>;to:scaleY:${scaleY1}:0;to:scaleX:${scaleX2}:>;to:scaleY:${scaleY2}:0;to:scaleX:${scaleX3}:>;to:scaleY:${scaleY3}:0;to:scaleX:1:>;to:scaleY:1:0`;
+  }
+
+  public static wiggle({ x1 = '-10px', x2 = '10px', rotate1 = -3, rotate2 = 3 } = {}): string {
+    return `to:x:${x1}:>;to:rotate:${rotate1}:0;to:x:${x2}:>;to:rotate:${rotate2}:0;to:x:${x1}:>;to:rotate:${rotate1}:0;to:x:0:>;to:rotate:0:0`;
+  }
+
+  public static flip({ rotateY1 = 180, rotateY2 = 360 } = {}): string {
+    return `to:rotateY:${rotateY1}:>;to:rotateY:${rotateY2}:>`;
+  }
+
+  public static spin({ degrees = 360 } = {}): string {
+    return `to:rotate:${degrees}:>`;
+  }
+
+  public static glitch({ x1 = '-5px', x2 = '5px', skew1 = -10, skew2 = 10 } = {}): string {
+    return `to:x:${x1}:>;to:skewX:${skew1}:0;to:x:${x2}:>;to:skewX:${skew2}:0;to:x:${x1}:>;to:skewX:${skew1}:0;to:x:0:>;to:skewX:0:0`;
+  }
+
+  public static blur({ blur1 = '10px', blur2 = '0px', opacity = 0 } = {}): string {
+    return `filter:blur(${blur1}):>;opacity:${opacity}:0;to:filter:blur(${blur2}):>`;
+  }
+
+  public static kenBurns({ scale = 1.2, x = '10%', y = '10%' } = {}): string {
+    return `to:scale:${scale}:>;to:x:${x}:0;to:y:${y}:0`;
+  }
+
+  public static morphing({ scale1 = 1.2, rotate = 45, scale2 = 0.8 } = {}): string {
+    return `to:scale:${scale1}:>;to:rotate:${rotate}:0;to:scale:${scale2}:>;to:rotate:0:0;to:scale:1:>`;
+  }
 }
