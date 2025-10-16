@@ -17,7 +17,6 @@ import { AnimateClickDirective } from './directives/animate-click.directive';
 import { AnimateEnterDirective } from './directives/animate-enter.directive';
 
 @Component({
-  standalone: true,
   imports: [AnimateClickDirective, AnimateEnterDirective],
   template: `
     <div animateClick="fadeIn()">Click me!</div>
@@ -41,6 +40,7 @@ import { AnimateEnterDirective } from './directives/animate-enter.directive';
 ### Animation Triggers
 
 #### animateClick
+
 Triggers animation on click event:
 
 ```html
@@ -52,6 +52,7 @@ Triggers animation on click event:
 ```
 
 #### animateEnter
+
 Triggers animation when element enters the viewport or on page load:
 
 ```html
@@ -154,12 +155,10 @@ You can also use raw GSAP animation syntax:
 </div>
 
 <!-- Image reveal -->
-<img animateEnter="zoomIn({ scale: 0.8 })" src="hero.jpg">
+<img animateEnter="zoomIn({ scale: 0.8 })" src="hero.jpg" />
 
 <!-- Text entrance -->
-<p animateEnter="slideInLeft({ distance: '-100%' })">
-  Animated paragraph
-</p>
+<p animateEnter="slideInLeft({ distance: '-100%' })">Animated paragraph</p>
 ```
 
 ### Interactive Elements (animateClick)
@@ -170,15 +169,13 @@ You can also use raw GSAP animation syntax:
 <button animateClick="pulse({ scale1: 1.15 })">Custom pulse</button>
 
 <!-- Error feedback -->
-<input animateClick="shake({ distance: 15 })">
+<input animateClick="shake({ distance: 15 })" />
 
 <!-- Delete action -->
 <button animateClick="fadeOut">Delete</button>
 
 <!-- Expand/collapse -->
-<div animateClick="zoomIn({ scale: 0 })">
-  Expandable content
-</div>
+<div animateClick="zoomIn({ scale: 0 })">Expandable content</div>
 ```
 
 ### Common UI Patterns
@@ -192,9 +189,7 @@ You can also use raw GSAP animation syntax:
 </div>
 
 <!-- Notification toast -->
-<div animateEnter="slideInRight">
-  New message received
-</div>
+<div animateEnter="slideInRight">New message received</div>
 
 <!-- Success checkmark -->
 <svg animateEnter="bounceIn({ startScale: 0, midScale: 1.2, endScale: 1 })">
@@ -217,14 +212,10 @@ You can also use raw GSAP animation syntax:
 
 ```html
 <!-- Card that appears on load and pulses on click -->
-<div animateEnter="fadeIn" animateClick="pulse">
-  Interactive card
-</div>
+<div animateEnter="fadeIn" animateClick="pulse">Interactive card</div>
 
 <!-- Button that slides in and shakes on error -->
-<button animateEnter="slideInUp" animateClick="shake">
-  Submit
-</button>
+<button animateEnter="slideInUp" animateClick="shake">Submit</button>
 ```
 
 ## License
