@@ -1,82 +1,232 @@
-# Angular Animations con GSAP
+# Angular GSAP Animations
 
-Biblioteca de animaciones en Angular basada en GSAP.
+A lightweight Angular animation library powered by GSAP with a declarative, preset-based API.
 
-Incluye una colección de animaciones reutilizables para aplicaciones Angular.
+## Installation
 
-## Objetivo de la Aplicación
-
-Esta aplicación tiene como objetivo proporcionar una colección de animaciones reutilizables para proyectos en Angular, facilitando su integración y personalización en aplicaciones reales.
-
-## Arquitectura de Directivas
-
-Sistema de directivas Angular combinables que encapsulan animaciones GSAP con una API declarativa y intuitiva.
-
-### 🧩 **Directivas de Animaciones Atómicas**
-
-Bloques fundamentales que se pueden combinar entre sí:
-
-```html
-<!-- Directivas simples con valores por defecto -->
-<div fadeIn>Aparece con fade (opacidad 0 → 1)</div>
-<div scale>Escala al 200% por defecto</div>
-<div rotate>Rota 360° por defecto</div>
-
-<!-- Directivas personalizadas -->
-<div fadeIn scale="1.5" rotate="45">Combinación múltiple</div>
-<div scale="3" [duration]="2">Escala personalizada</div>
+```bash
+npm install gsap
 ```
 
-**Directivas disponibles:**
+## Quick Start
 
-- `fadeIn` / `fadeOut` - Opacidad (por defecto: 0 ↔ 1)
-- `scale` - Escala (por defecto: 2, personalizable: `scale="1.5"`)
-- `rotate` - Rotación (por defecto: 360°, personalizable: `rotate="90"`)
-- `translate` - Movimiento (personalizable: `[x]="100" [y]="50"`)
+Import the directives in your component:
 
-### 🎯 **Directivas de Triggers**
+```typescript
+import { AnimateClickDirective } from './directives/animate-click.directive';
+import { AnimateEnterDirective } from './directives/animate-enter.directive';
 
-Controlan cuándo y cómo se ejecutan las animaciones:
-
-```html
-<!-- Triggers básicos -->
-<div fadeIn trigger="scroll">Se anima al hacer scroll</div>
-<div scale trigger="hover">Se anima al pasar cursor</div>
-<div rotate trigger="click">Se anima al hacer click</div>
-
-<!-- Scroll avanzado -->
-<div fadeIn scale="1.2" trigger="scroll" scrub>Sincronizado con scroll</div>
+@Component({
+  standalone: true,
+  imports: [AnimateClickDirective, AnimateEnterDirective],
+  template: `
+    <div animateClick="fadeIn()">Click me!</div>
+    <div animateEnter="slideInLeft()">Animates on page load</div>
+  `
+})
 ```
 
-### 🔤 **Directivas de Plugins Especializados**
+## Usage
 
-Funcionalidades avanzadas de GSAP:
+### Basic Syntax
 
 ```html
-<!-- SplitText -->
-<h1 splitText fadeIn stagger="0.1" trigger="scroll">Texto animado por palabras</h1>
+<!-- Without parentheses (uses defaults) -->
+<div animateClick="fadeIn">Fade in on click</div>
 
-<!-- Timeline -->
-<div timeline>
-  <div fadeIn [delay]="0">Primero</div>
-  <div scale [delay]="0.5">Segundo</div>
-  <div rotate [delay]="1">Tercero</div>
+<!-- With custom parameters -->
+<div animateClick="fadeIn({ opacity: 0.1 })">Custom fade in</div>
+```
+
+### Animation Triggers
+
+#### animateClick
+Triggers animation on click event:
+
+```html
+<!-- Basic usage -->
+<button animateClick="pulse">Pulse on click</button>
+
+<!-- With parameters -->
+<button animateClick="shake({ distance: 20 })">Shake on click</button>
+```
+
+#### animateEnter
+Triggers animation when element enters the viewport or on page load:
+
+```html
+<!-- Animates on page load -->
+<div animateEnter="fadeIn">Appears on load</div>
+
+<!-- With custom parameters -->
+<div animateEnter="slideInLeft({ distance: '-200%' })">Slides from far left</div>
+```
+
+### Animation Presets
+
+#### Entrance Animations (12)
+
+```html
+<!-- Example: Fade In -->
+<div animateEnter="fadeIn">Uses default opacity: 0</div>
+<div animateEnter="fadeIn({ opacity: 0.2 })">Custom starting opacity</div>
+
+<!-- Example: Slide In Left -->
+<div animateEnter="slideInLeft">Uses default distance: -100%</div>
+<div animateEnter="slideInLeft({ distance: '-300%', opacity: 0 })">Custom distance and opacity</div>
+
+<!-- Example: Bounce In -->
+<div animateEnter="bounceIn">Uses default bounce values</div>
+<div animateEnter="bounceIn({ startScale: 0, midScale: 1.5, endScale: 1 })">Custom bounce effect</div>
+```
+
+**Available:** `fadeIn`, `zoomIn`, `slideInLeft`, `slideInRight`, `slideInUp`, `slideInDown`, `bounceIn`, `rotateIn`, `flipIn`, `rollIn`, `lightSpeedIn`, `backIn`
+
+#### Exit Animations (8)
+
+```html
+<!-- Example: Fade Out -->
+<div animateClick="fadeOut">Fades to transparent</div>
+<div animateClick="fadeOut({ opacity: 0.3 })">Fades to 30% opacity</div>
+
+<!-- Example: Zoom Out -->
+<div animateClick="zoomOut">Shrinks to nothing</div>
+<div animateClick="zoomOut({ scale: 0.5, opacity: 0.2 })">Custom scale and opacity</div>
+```
+
+**Available:** `fadeOut`, `zoomOut`, `fadeOutUp`, `fadeOutDown`, `flipOut`, `rollOut`, `backOut`, `hinge`
+
+#### Attention Animations (9)
+
+```html
+<!-- Example: Pulse -->
+<div animateClick="pulse">Default pulse effect</div>
+<div animateClick="pulse({ scale1: 1.2, scale2: 1 })">Custom pulse intensity</div>
+
+<!-- Example: Shake -->
+<div animateClick="shake">Default shake</div>
+<div animateClick="shake({ distance: 25 })">Stronger shake</div>
+```
+
+**Available:** `pulse`, `shake`, `wobble`, `jello`, `heartBeat`, `flash`, `swingIn`, `rubberBandIn`, `jackInTheBox`
+
+### Custom Animations
+
+You can also use raw GSAP animation syntax:
+
+```html
+<!-- Single property -->
+<div animateClick="opacity:0:>">Fade in (from opacity 0)</div>
+<div animateClick="to:opacity:0:>">Fade out (to opacity 0)</div>
+
+<!-- Multiple properties (separated by semicolon or comma) -->
+<div animateClick="opacity:0:>;scale:0.5:<">Fade and scale simultaneously</div>
+<div animateClick="x:-100%:>;opacity:0:0">Slide from left with fade</div>
+
+<!-- Sequential animations -->
+<div animateClick="scale:0:>;to:scale:1.2:>;to:scale:1:>">Bounce effect</div>
+```
+
+### Syntax Breakdown
+
+```
+[method]:[property]:[value]:[position]
+```
+
+- **method**: `from` (default) or `to`
+- **property**: Any GSAP animatable property (`opacity`, `scale`, `x`, `y`, `rotate`, etc.)
+- **value**: Target value
+- **position**: Timeline position (`>` = sequence, `<` = simultaneous, `0` = start, numeric = absolute time)
+
+## Real-World Examples
+
+### Page Load Animations (animateEnter)
+
+```html
+<!-- Hero section -->
+<section animateEnter="fadeIn({ opacity: 0 })">
+  <h1>Welcome to our site</h1>
+</section>
+
+<!-- Cards appearing -->
+<div animateEnter="slideInUp">
+  <div class="card">Card 1</div>
+</div>
+
+<!-- Image reveal -->
+<img animateEnter="zoomIn({ scale: 0.8 })" src="hero.jpg">
+
+<!-- Text entrance -->
+<p animateEnter="slideInLeft({ distance: '-100%' })">
+  Animated paragraph
+</p>
+```
+
+### Interactive Elements (animateClick)
+
+```html
+<!-- Button feedback -->
+<button animateClick="pulse">Click me!</button>
+<button animateClick="pulse({ scale1: 1.15 })">Custom pulse</button>
+
+<!-- Error feedback -->
+<input animateClick="shake({ distance: 15 })">
+
+<!-- Delete action -->
+<button animateClick="fadeOut">Delete</button>
+
+<!-- Expand/collapse -->
+<div animateClick="zoomIn({ scale: 0 })">
+  Expandable content
 </div>
 ```
 
-### 🎨 **Ejemplos de Combinaciones**
+### Common UI Patterns
 
 ```html
-<!-- Entrada compleja -->
-<section fadeIn scale="1.1" rotate="5" trigger="scroll" [duration]="1.5">
-  <h2>Título con animación múltiple</h2>
-</section>
+<!-- Modal entrance -->
+<div animateEnter="zoomIn({ scale: 0.8, opacity: 0 })">
+  <div class="modal">
+    <h2>Modal Title</h2>
+  </div>
+</div>
 
-<!-- Interacción avanzada -->
-<button scale="1.1" rotate="10" trigger="hover" ease="bounce.out">Botón interactivo</button>
+<!-- Notification toast -->
+<div animateEnter="slideInRight">
+  New message received
+</div>
 
-<!-- Texto con efectos -->
-<p splitText fadeIn translate [y]="20" stagger="0.05" trigger="scroll">Párrafo que aparece palabra por palabra</p>
+<!-- Success checkmark -->
+<svg animateEnter="bounceIn({ startScale: 0, midScale: 1.2, endScale: 1 })">
+  <!-- checkmark icon -->
+</svg>
+
+<!-- Loading indicator -->
+<div animateEnter="pulse">Loading...</div>
+
+<!-- Alert dismissal -->
+<button animateClick="fadeOutUp">
+  <span>Dismiss</span>
+</button>
+
+<!-- Menu item hover effect -->
+<a animateClick="wobble">Menu Item</a>
 ```
 
----
+### Combining Triggers
+
+```html
+<!-- Card that appears on load and pulses on click -->
+<div animateEnter="fadeIn" animateClick="pulse">
+  Interactive card
+</div>
+
+<!-- Button that slides in and shakes on error -->
+<button animateEnter="slideInUp" animateClick="shake">
+  Submit
+</button>
+```
+
+## License
+
+MIT
