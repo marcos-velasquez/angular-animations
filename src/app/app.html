@@ -17,15 +17,19 @@
             <div animateClick="fadeIn" class="bg-gradient-to-br from-orange-400 to-teal-600 aspect-square rounded-2xl cursor-pointer hover:scale-105 transition-transform duration-300 shadow-xl"></div>
             <h3 class="text-white font-semibold mt-4 text-lg">Fade In</h3>
             <p class="text-slate-400 text-sm">Gradually appear from transparent.</p>
+            <p class="text-purple-300 text-xs mt-2 font-mono">fadeIn</p>
+            <p class="text-purple-300 text-xs font-mono">fadeIn({{ '{' }} y: '100%' {{ '}' }})</p>
           </div>
 
-          <!-- slideInLeft -->
+          <!-- slideIn -->
           <div class="group">
-            <div animateClick="slideInLeft()" class="bg-gradient-to-br from-amber-200 to-amber-400 aspect-square rounded-2xl cursor-pointer hover:scale-105 transition-transform duration-300 shadow-xl flex items-center justify-center">
+            <div animateClick="slideIn({ x: '-100%' })" class="bg-gradient-to-br from-amber-200 to-amber-400 aspect-square rounded-2xl cursor-pointer hover:scale-105 transition-transform duration-300 shadow-xl flex items-center justify-center">
               <div class="w-16 h-24 bg-amber-600 rounded-lg transform -rotate-12"></div>
             </div>
-            <h3 class="text-white font-semibold mt-4 text-lg">Slide In Left</h3>
-            <p class="text-slate-400 text-sm">Slide in from the left edge.</p>
+            <h3 class="text-white font-semibold mt-4 text-lg">Slide In</h3>
+            <p class="text-slate-400 text-sm">Slide in from any direction.</p>
+            <p class="text-purple-300 text-xs mt-2 font-mono">slideIn({{ '{' }} x: '-100%' {{ '}' }})</p>
+            <p class="text-purple-300 text-xs font-mono">slideIn({{ '{' }} y: '100%' {{ '}' }})</p>
           </div>
 
           <!-- zoomIn -->
@@ -35,6 +39,8 @@
             </div>
             <h3 class="text-white font-semibold mt-4 text-lg">Zoom In</h3>
             <p class="text-slate-400 text-sm">Zoom in from a smaller size.</p>
+            <p class="text-purple-300 text-xs mt-2 font-mono">zoomIn()</p>
+            <p class="text-purple-300 text-xs font-mono">zoomIn({{ '{' }} y: '-100%', scale: 0 {{ '}' }})</p>
           </div>
 
           <!-- bounceIn -->
@@ -44,36 +50,18 @@
             </div>
             <h3 class="text-white font-semibold mt-4 text-lg">Bounce In</h3>
             <p class="text-slate-400 text-sm">Bounce in with a spring effect.</p>
+            <p class="text-purple-300 text-xs mt-2 font-mono">bounceIn()</p>
+            <p class="text-purple-300 text-xs font-mono">bounceIn({{ '{' }} midScale: 1.5 {{ '}' }})</p>
           </div>
 
-          <!-- slideInRight -->
-          <div class="group">
-            <div animateClick="slideInRight()" class="bg-gradient-to-br from-slate-100 to-slate-300 aspect-square rounded-2xl cursor-pointer hover:scale-105 transition-transform duration-300 shadow-xl flex items-center justify-center">
-              <div class="w-16 h-24 bg-slate-500 rounded-lg"></div>
-            </div>
-            <h3 class="text-white font-semibold mt-4 text-lg">Slide In Right</h3>
-            <p class="text-slate-400 text-sm">Slide in from the right edge.</p>
-          </div>
-
-          <!-- slideInUp -->
-          <div class="group">
-            <div animateClick="slideInUp()" class="bg-gradient-to-br from-slate-200 to-slate-400 aspect-square rounded-2xl cursor-pointer hover:scale-105 transition-transform duration-300 shadow-xl"></div>
-            <h3 class="text-white font-semibold mt-4 text-lg">Slide In Up</h3>
-            <p class="text-slate-400 text-sm">Slide in from bottom.</p>
-          </div>
-
-          <!-- slideInDown -->
-          <div class="group">
-            <div animateClick="slideInDown()" class="bg-gradient-to-br from-blue-200 to-blue-400 aspect-square rounded-2xl cursor-pointer hover:scale-105 transition-transform duration-300 shadow-xl"></div>
-            <h3 class="text-white font-semibold mt-4 text-lg">Slide In Down</h3>
-            <p class="text-slate-400 text-sm">Slide in from top.</p>
-          </div>
 
           <!-- rotateIn -->
           <div class="group">
             <div animateClick="rotateIn()" class="bg-gradient-to-br from-purple-200 to-purple-400 aspect-square rounded-2xl cursor-pointer hover:scale-105 transition-transform duration-300 shadow-xl"></div>
             <h3 class="text-white font-semibold mt-4 text-lg">Rotate In</h3>
             <p class="text-slate-400 text-sm">Rotate while appearing.</p>
+            <p class="text-purple-300 text-xs mt-2 font-mono">rotateIn()</p>
+            <p class="text-purple-300 text-xs font-mono">rotateIn({{ '{' }} y: '100%', rotate: -45 {{ '}' }})</p>
           </div>
 
           <!-- flipIn -->
@@ -81,6 +69,8 @@
             <div animateClick="flipIn()" class="bg-gradient-to-br from-pink-200 to-pink-400 aspect-square rounded-2xl cursor-pointer hover:scale-105 transition-transform duration-300 shadow-xl"></div>
             <h3 class="text-white font-semibold mt-4 text-lg">Flip In</h3>
             <p class="text-slate-400 text-sm">Flip horizontally or vertically.</p>
+            <p class="text-purple-300 text-xs mt-2 font-mono">flipIn()</p>
+            <p class="text-purple-300 text-xs font-mono">flipIn({{ '{' }} degrees: 90 {{ '}' }})</p>
           </div>
 
           <!-- rollIn -->
@@ -88,6 +78,8 @@
             <div animateClick="rollIn()" class="bg-gradient-to-br from-green-200 to-green-400 aspect-square rounded-2xl cursor-pointer hover:scale-105 transition-transform duration-300 shadow-xl"></div>
             <h3 class="text-white font-semibold mt-4 text-lg">Roll In</h3>
             <p class="text-slate-400 text-sm">Roll in from the side.</p>
+            <p class="text-purple-300 text-xs mt-2 font-mono">rollIn()</p>
+            <p class="text-purple-300 text-xs font-mono">rollIn({{ '{' }} degrees: -360 {{ '}' }})</p>
           </div>
 
           <!-- lightSpeedIn -->
@@ -95,6 +87,8 @@
             <div animateClick="lightSpeedIn()" class="bg-gradient-to-br from-yellow-200 to-yellow-400 aspect-square rounded-2xl cursor-pointer hover:scale-105 transition-transform duration-300 shadow-xl"></div>
             <h3 class="text-white font-semibold mt-4 text-lg">Light Speed In</h3>
             <p class="text-slate-400 text-sm">Fast entrance with skew.</p>
+            <p class="text-purple-300 text-xs mt-2 font-mono">lightSpeedIn()</p>
+            <p class="text-purple-300 text-xs font-mono">lightSpeedIn({{ '{' }} skew: -30 {{ '}' }})</p>
           </div>
 
           <!-- backIn -->
@@ -102,34 +96,8 @@
             <div animateClick="backIn()" class="bg-gradient-to-br from-indigo-200 to-indigo-400 aspect-square rounded-2xl cursor-pointer hover:scale-105 transition-transform duration-300 shadow-xl"></div>
             <h3 class="text-white font-semibold mt-4 text-lg">Back In</h3>
             <p class="text-slate-400 text-sm">Enter with back easing.</p>
-          </div>
-
-          <!-- fadeInUp -->
-          <div class="group">
-            <div animateClick="fadeInUp()" class="bg-gradient-to-br from-cyan-200 to-cyan-400 aspect-square rounded-2xl cursor-pointer hover:scale-105 transition-transform duration-300 shadow-xl"></div>
-            <h3 class="text-white font-semibold mt-4 text-lg">Fade In Up</h3>
-            <p class="text-slate-400 text-sm">Fade in from bottom.</p>
-          </div>
-
-          <!-- fadeInDown -->
-          <div class="group">
-            <div animateClick="fadeInDown()" class="bg-gradient-to-br from-rose-200 to-rose-400 aspect-square rounded-2xl cursor-pointer hover:scale-105 transition-transform duration-300 shadow-xl"></div>
-            <h3 class="text-white font-semibold mt-4 text-lg">Fade In Down</h3>
-            <p class="text-slate-400 text-sm">Fade in from top.</p>
-          </div>
-
-          <!-- bounceInDown -->
-          <div class="group">
-            <div animateClick="bounceInDown()" class="bg-gradient-to-br from-orange-200 to-orange-400 aspect-square rounded-2xl cursor-pointer hover:scale-105 transition-transform duration-300 shadow-xl"></div>
-            <h3 class="text-white font-semibold mt-4 text-lg">Bounce In Down</h3>
-            <p class="text-slate-400 text-sm">Bounce from top.</p>
-          </div>
-
-          <!-- zoomInRotate -->
-          <div class="group">
-            <div animateClick="zoomInRotate()" class="bg-gradient-to-br from-purple-300 to-purple-500 aspect-square rounded-2xl cursor-pointer hover:scale-105 transition-transform duration-300 shadow-xl"></div>
-            <h3 class="text-white font-semibold mt-4 text-lg">Zoom In Rotate</h3>
-            <p class="text-slate-400 text-sm">Zoom with rotation.</p>
+            <p class="text-purple-300 text-xs mt-2 font-mono">backIn()</p>
+            <p class="text-purple-300 text-xs font-mono">backIn({{ '{' }} y: '-100%' {{ '}' }})</p>
           </div>
 
           <!-- blurredFadeIn -->
@@ -137,6 +105,8 @@
             <div animateClick="blurredFadeIn()" class="bg-gradient-to-br from-blue-300 to-blue-500 aspect-square rounded-2xl cursor-pointer hover:scale-105 transition-transform duration-300 shadow-xl"></div>
             <h3 class="text-white font-semibold mt-4 text-lg">Blurred Fade In</h3>
             <p class="text-slate-400 text-sm">Fade in with blur effect.</p>
+            <p class="text-purple-300 text-xs mt-2 font-mono">blurredFadeIn()</p>
+            <p class="text-purple-300 text-xs font-mono">blurredFadeIn({{ '{' }} blur1: '20px' {{ '}' }})</p>
           </div>
 
           <!-- pop -->
@@ -146,6 +116,8 @@
             </div>
             <h3 class="text-white font-semibold mt-4 text-lg">Pop</h3>
             <p class="text-slate-400 text-sm">Pop appearance effect.</p>
+            <p class="text-purple-300 text-xs mt-2 font-mono">pop()</p>
+            <p class="text-purple-300 text-xs font-mono">pop({{ '{' }} scale2: 1.2 {{ '}' }})</p>
           </div>
 
           <!-- bounceFadeIn -->
@@ -153,6 +125,8 @@
             <div animateClick="bounceFadeIn()" class="bg-gradient-to-br from-emerald-300 to-emerald-500 aspect-square rounded-2xl cursor-pointer hover:scale-105 transition-transform duration-300 shadow-xl"></div>
             <h3 class="text-white font-semibold mt-4 text-lg">Bounce Fade In</h3>
             <p class="text-slate-400 text-sm">Bounce with fade.</p>
+            <p class="text-purple-300 text-xs mt-2 font-mono">bounceFadeIn()</p>
+            <p class="text-purple-300 text-xs font-mono">bounceFadeIn({{ '{' }} scale2: 1.2 {{ '}' }})</p>
           </div>
 
           <!-- slideUpFade -->
@@ -160,6 +134,8 @@
             <div animateClick="slideUpFade()" class="bg-gradient-to-br from-amber-300 to-amber-500 aspect-square rounded-2xl cursor-pointer hover:scale-105 transition-transform duration-300 shadow-xl"></div>
             <h3 class="text-white font-semibold mt-4 text-lg">Slide Up Fade</h3>
             <p class="text-slate-400 text-sm">Slide up with fade.</p>
+            <p class="text-purple-300 text-xs mt-2 font-mono">slideUpFade()</p>
+            <p class="text-purple-300 text-xs font-mono">slideUpFade({{ '{' }} y: '100%' {{ '}' }})</p>
           </div>
         </div>
       </section>
@@ -173,15 +149,19 @@
             <div animateClick="fadeOut()" class="bg-gradient-to-br from-slate-800 to-slate-950 aspect-square rounded-2xl cursor-pointer hover:scale-105 transition-transform duration-300 shadow-xl"></div>
             <h3 class="text-white font-semibold mt-4 text-lg">Fade Out</h3>
             <p class="text-slate-400 text-sm">Gradually disappear to transparent.</p>
+            <p class="text-purple-300 text-xs mt-2 font-mono">fadeOut()</p>
+            <p class="text-purple-300 text-xs font-mono">fadeOut({{ '{' }} y: '-100%' {{ '}' }})</p>
           </div>
 
-          <!-- fadeOutUp -->
+          <!-- slideOut -->
           <div class="group">
-            <div animateClick="fadeOutUp()" class="bg-gradient-to-br from-slate-100 to-slate-300 aspect-square rounded-2xl cursor-pointer hover:scale-105 transition-transform duration-300 shadow-xl flex items-center justify-center">
-              <div class="w-24 h-4 bg-slate-400 rounded"></div>
+            <div animateClick="slideOut({ x: '-100%' })" class="bg-gradient-to-br from-purple-300 to-purple-500 aspect-square rounded-2xl cursor-pointer hover:scale-105 transition-transform duration-300 shadow-xl flex items-center justify-center">
+              <div class="w-20 h-20 bg-purple-600 rounded-full"></div>
             </div>
-            <h3 class="text-white font-semibold mt-4 text-lg">Fade Out Up</h3>
-            <p class="text-slate-400 text-sm">Slide out to the top edge.</p>
+            <h3 class="text-white font-semibold mt-4 text-lg">Slide Out</h3>
+            <p class="text-slate-400 text-sm">Slide out to any direction.</p>
+            <p class="text-purple-300 text-xs mt-2 font-mono">slideOut({{ '{' }} x: '-100%' {{ '}' }})</p>
+            <p class="text-purple-300 text-xs font-mono">slideOut({{ '{' }} y: '100%' {{ '}' }})</p>
           </div>
 
           <!-- zoomOut -->
@@ -189,23 +169,18 @@
             <div animateClick="zoomOut()" class="bg-gradient-to-br from-orange-300 to-orange-500 aspect-square rounded-2xl cursor-pointer hover:scale-105 transition-transform duration-300 shadow-xl"></div>
             <h3 class="text-white font-semibold mt-4 text-lg">Zoom Out</h3>
             <p class="text-slate-400 text-sm">Zoom out to a smaller size.</p>
+            <p class="text-purple-300 text-xs mt-2 font-mono">zoomOut()</p>
+            <p class="text-purple-300 text-xs font-mono">zoomOut({{ '{' }} scale: 0 {{ '}' }})</p>
           </div>
 
-          <!-- fadeOutDown -->
-          <div class="group">
-            <div animateClick="fadeOutDown()" class="bg-gradient-to-br from-yellow-400 to-orange-500 aspect-square rounded-2xl cursor-pointer hover:scale-105 transition-transform duration-300 shadow-xl flex items-center justify-center">
-              <div class="w-20 h-20 bg-blue-400 rounded-lg transform rotate-45"></div>
-              <div class="w-16 h-16 bg-orange-500 rounded-lg absolute"></div>
-            </div>
-            <h3 class="text-white font-semibold mt-4 text-lg">Fade Out Down</h3>
-            <p class="text-slate-400 text-sm">Collapse vertically to disappear.</p>
-          </div>
 
           <!-- flipOut -->
           <div class="group">
             <div animateClick="flipOut()" class="bg-gradient-to-br from-cyan-200 to-cyan-400 aspect-square rounded-2xl cursor-pointer hover:scale-105 transition-transform duration-300 shadow-xl"></div>
             <h3 class="text-white font-semibold mt-4 text-lg">Flip Out</h3>
             <p class="text-slate-400 text-sm">Flip while disappearing.</p>
+            <p class="text-purple-300 text-xs mt-2 font-mono">flipOut()</p>
+            <p class="text-purple-300 text-xs font-mono">flipOut({{ '{' }} degrees: 90 {{ '}' }})</p>
           </div>
 
           <!-- rollOut -->
@@ -213,6 +188,8 @@
             <div animateClick="rollOut()" class="bg-gradient-to-br from-red-200 to-red-400 aspect-square rounded-2xl cursor-pointer hover:scale-105 transition-transform duration-300 shadow-xl"></div>
             <h3 class="text-white font-semibold mt-4 text-lg">Roll Out</h3>
             <p class="text-slate-400 text-sm">Roll out to the side.</p>
+            <p class="text-purple-300 text-xs mt-2 font-mono">rollOut()</p>
+            <p class="text-purple-300 text-xs font-mono">rollOut({{ '{' }} degrees: 360 {{ '}' }})</p>
           </div>
 
           <!-- backOut -->
@@ -220,6 +197,8 @@
             <div animateClick="backOut()" class="bg-gradient-to-br from-teal-200 to-teal-400 aspect-square rounded-2xl cursor-pointer hover:scale-105 transition-transform duration-300 shadow-xl"></div>
             <h3 class="text-white font-semibold mt-4 text-lg">Back Out</h3>
             <p class="text-slate-400 text-sm">Exit with back easing.</p>
+            <p class="text-purple-300 text-xs mt-2 font-mono">backOut()</p>
+            <p class="text-purple-300 text-xs font-mono">backOut({{ '{' }} scale1: 1.1 {{ '}' }})</p>
           </div>
 
           <!-- hinge -->
@@ -227,27 +206,18 @@
             <div animateClick="hinge()" class="bg-gradient-to-br from-gray-200 to-gray-400 aspect-square rounded-2xl cursor-pointer hover:scale-105 transition-transform duration-300 shadow-xl"></div>
             <h3 class="text-white font-semibold mt-4 text-lg">Hinge</h3>
             <p class="text-slate-400 text-sm">Fall like a hinge.</p>
+            <p class="text-purple-300 text-xs mt-2 font-mono">hinge()</p>
+            <p class="text-purple-300 text-xs font-mono">hinge({{ '{' }} rotate1: 80 {{ '}' }})</p>
           </div>
 
-          <!-- slideOutLeft -->
-          <div class="group">
-            <div animateClick="slideOutLeft()" class="bg-gradient-to-br from-blue-200 to-blue-400 aspect-square rounded-2xl cursor-pointer hover:scale-105 transition-transform duration-300 shadow-xl"></div>
-            <h3 class="text-white font-semibold mt-4 text-lg">Slide Out Left</h3>
-            <p class="text-slate-400 text-sm">Slide out to the left.</p>
-          </div>
-
-          <!-- slideOutRight -->
-          <div class="group">
-            <div animateClick="slideOutRight()" class="bg-gradient-to-br from-green-200 to-green-400 aspect-square rounded-2xl cursor-pointer hover:scale-105 transition-transform duration-300 shadow-xl"></div>
-            <h3 class="text-white font-semibold mt-4 text-lg">Slide Out Right</h3>
-            <p class="text-slate-400 text-sm">Slide out to the right.</p>
-          </div>
 
           <!-- bounceOut -->
           <div class="group">
             <div animateClick="bounceOut()" class="bg-gradient-to-br from-purple-200 to-purple-400 aspect-square rounded-2xl cursor-pointer hover:scale-105 transition-transform duration-300 shadow-xl"></div>
             <h3 class="text-white font-semibold mt-4 text-lg">Bounce Out</h3>
             <p class="text-slate-400 text-sm">Bounce while exiting.</p>
+            <p class="text-purple-300 text-xs mt-2 font-mono">bounceOut()</p>
+            <p class="text-purple-300 text-xs font-mono">bounceOut({{ '{' }} scale1: 1.1 {{ '}' }})</p>
           </div>
 
           <!-- rotateOut -->
@@ -255,6 +225,8 @@
             <div animateClick="rotateOut()" class="bg-gradient-to-br from-pink-200 to-pink-400 aspect-square rounded-2xl cursor-pointer hover:scale-105 transition-transform duration-300 shadow-xl"></div>
             <h3 class="text-white font-semibold mt-4 text-lg">Rotate Out</h3>
             <p class="text-slate-400 text-sm">Rotate while fading out.</p>
+            <p class="text-purple-300 text-xs mt-2 font-mono">rotateOut()</p>
+            <p class="text-purple-300 text-xs font-mono">rotateOut({{ '{' }} degrees: 200 {{ '}' }})</p>
           </div>
         </div>
       </section>
@@ -270,6 +242,8 @@
             </div>
             <h3 class="text-white font-semibold mt-4 text-lg">Pulse</h3>
             <p class="text-slate-400 text-sm">Pulse with scale animation.</p>
+            <p class="text-purple-300 text-xs mt-2 font-mono">pulse()</p>
+            <p class="text-purple-300 text-xs font-mono">pulse({{ '{' }} scale1: 1.2 {{ '}' }})</p>
           </div>
 
           <!-- shake -->
@@ -278,7 +252,9 @@
               <div class="w-16 h-16 bg-amber-600 rounded-lg"></div>
             </div>
             <h3 class="text-white font-semibold mt-4 text-lg">Shake</h3>
-            <p class="text-slate-400 text-sm">Shake horizontally.</p>
+            <p class="text-slate-400 text-sm">Shake in any direction.</p>
+            <p class="text-purple-300 text-xs mt-2 font-mono">shake()</p>
+            <p class="text-purple-300 text-xs font-mono">shake({{ '{' }} y: '10px' {{ '}' }})</p>
           </div>
 
           <!-- wobble -->
@@ -288,6 +264,8 @@
             </div>
             <h3 class="text-white font-semibold mt-4 text-lg">Wobble</h3>
             <p class="text-slate-400 text-sm">Wobble back and forth.</p>
+            <p class="text-purple-300 text-xs mt-2 font-mono">wobble()</p>
+            <p class="text-purple-300 text-xs font-mono">wobble({{ '{' }} rotate1: -10 {{ '}' }})</p>
           </div>
 
           <!-- jello -->
@@ -297,6 +275,8 @@
             </div>
             <h3 class="text-white font-semibold mt-4 text-lg">Jello</h3>
             <p class="text-slate-400 text-sm">Jello-like skew effect.</p>
+            <p class="text-purple-300 text-xs mt-2 font-mono">jello()</p>
+            <p class="text-purple-300 text-xs font-mono">jello({{ '{' }} skew1: -12.5 {{ '}' }})</p>
           </div>
 
           <!-- heartBeat -->
@@ -306,6 +286,8 @@
             </div>
             <h3 class="text-white font-semibold mt-4 text-lg">Heart Beat</h3>
             <p class="text-slate-400 text-sm">Heartbeat pulse effect.</p>
+            <p class="text-purple-300 text-xs mt-2 font-mono">heartBeat()</p>
+            <p class="text-purple-300 text-xs font-mono">heartBeat({{ '{' }} scale1: 1.3 {{ '}' }})</p>
           </div>
 
           <!-- flash -->
@@ -313,6 +295,8 @@
             <div animateClick="flash()" class="bg-gradient-to-br from-yellow-200 to-yellow-400 aspect-square rounded-2xl cursor-pointer hover:scale-105 transition-transform duration-300 shadow-xl"></div>
             <h3 class="text-white font-semibold mt-4 text-lg">Flash</h3>
             <p class="text-slate-400 text-sm">Flash opacity on/off.</p>
+            <p class="text-purple-300 text-xs mt-2 font-mono">flash()</p>
+            <p class="text-purple-300 text-xs font-mono">flash({{ '{' }} opacity1: 0 {{ '}' }})</p>
           </div>
 
           <!-- swingIn -->
@@ -320,6 +304,8 @@
             <div animateClick="swingIn()" class="bg-gradient-to-br from-emerald-200 to-emerald-400 aspect-square rounded-2xl cursor-pointer hover:scale-105 transition-transform duration-300 shadow-xl"></div>
             <h3 class="text-white font-semibold mt-4 text-lg">Swing In</h3>
             <p class="text-slate-400 text-sm">Swing like a pendulum.</p>
+            <p class="text-purple-300 text-xs mt-2 font-mono">swingIn()</p>
+            <p class="text-purple-300 text-xs font-mono">swingIn({{ '{' }} start: 15 {{ '}' }})</p>
           </div>
 
           <!-- rubberBandIn -->
@@ -327,6 +313,8 @@
             <div animateClick="rubberBandIn()" class="bg-gradient-to-br from-violet-200 to-violet-400 aspect-square rounded-2xl cursor-pointer hover:scale-105 transition-transform duration-300 shadow-xl"></div>
             <h3 class="text-white font-semibold mt-4 text-lg">Rubber Band In</h3>
             <p class="text-slate-400 text-sm">Elastic rubber band effect.</p>
+            <p class="text-purple-300 text-xs mt-2 font-mono">rubberBandIn()</p>
+            <p class="text-purple-300 text-xs font-mono">rubberBandIn({{ '{' }} scale1: 1.25 {{ '}' }})</p>
           </div>
 
           <!-- jackInTheBox -->
@@ -334,6 +322,8 @@
             <div animateClick="jackInTheBox()" class="bg-gradient-to-br from-fuchsia-200 to-fuchsia-400 aspect-square rounded-2xl cursor-pointer hover:scale-105 transition-transform duration-300 shadow-xl"></div>
             <h3 class="text-white font-semibold mt-4 text-lg">Jack In The Box</h3>
             <p class="text-slate-400 text-sm">Pop out like a jack-in-the-box.</p>
+            <p class="text-purple-300 text-xs mt-2 font-mono">jackInTheBox()</p>
+            <p class="text-purple-300 text-xs font-mono">jackInTheBox({{ '{' }} rotate1: 30 {{ '}' }})</p>
           </div>
 
           <!-- tada -->
@@ -343,6 +333,8 @@
             </div>
             <h3 class="text-white font-semibold mt-4 text-lg">Tada</h3>
             <p class="text-slate-400 text-sm">Celebration effect!</p>
+            <p class="text-purple-300 text-xs mt-2 font-mono">tada()</p>
+            <p class="text-purple-300 text-xs font-mono">tada({{ '{' }} scale2: 1.1 {{ '}' }})</p>
           </div>
 
           <!-- bounce -->
@@ -350,6 +342,8 @@
             <div animateClick="bounce()" class="bg-gradient-to-br from-green-300 to-green-500 aspect-square rounded-2xl cursor-pointer hover:scale-105 transition-transform duration-300 shadow-xl"></div>
             <h3 class="text-white font-semibold mt-4 text-lg">Bounce</h3>
             <p class="text-slate-400 text-sm">Bounces in place.</p>
+            <p class="text-purple-300 text-xs mt-2 font-mono">bounce()</p>
+            <p class="text-purple-300 text-xs font-mono">bounce({{ '{' }} y1: '-30px' {{ '}' }})</p>
           </div>
 
           <!-- swing -->
@@ -357,6 +351,8 @@
             <div animateClick="swing()" class="bg-gradient-to-br from-blue-300 to-blue-500 aspect-square rounded-2xl cursor-pointer hover:scale-105 transition-transform duration-300 shadow-xl"></div>
             <h3 class="text-white font-semibold mt-4 text-lg">Swing</h3>
             <p class="text-slate-400 text-sm">Swings like a pendulum.</p>
+            <p class="text-purple-300 text-xs mt-2 font-mono">swing()</p>
+            <p class="text-purple-300 text-xs font-mono">swing({{ '{' }} rotate1: 15 {{ '}' }})</p>
           </div>
 
           <!-- headShake -->
@@ -364,6 +360,8 @@
             <div animateClick="headShake()" class="bg-gradient-to-br from-red-300 to-red-500 aspect-square rounded-2xl cursor-pointer hover:scale-105 transition-transform duration-300 shadow-xl"></div>
             <h3 class="text-white font-semibold mt-4 text-lg">Head Shake</h3>
             <p class="text-slate-400 text-sm">Shake "no" effect.</p>
+            <p class="text-purple-300 text-xs mt-2 font-mono">headShake()</p>
+            <p class="text-purple-300 text-xs font-mono">headShake({{ '{' }} x1: '-10px' {{ '}' }})</p>
           </div>
 
           <!-- wiggle -->
@@ -371,6 +369,8 @@
             <div animateClick="wiggle()" class="bg-gradient-to-br from-indigo-300 to-indigo-500 aspect-square rounded-2xl cursor-pointer hover:scale-105 transition-transform duration-300 shadow-xl"></div>
             <h3 class="text-white font-semibold mt-4 text-lg">Wiggle</h3>
             <p class="text-slate-400 text-sm">Wiggles side to side.</p>
+            <p class="text-purple-300 text-xs mt-2 font-mono">wiggle()</p>
+            <p class="text-purple-300 text-xs font-mono">wiggle({{ '{' }} x1: '-10px' {{ '}' }})</p>
           </div>
 
           <!-- jump -->
@@ -378,6 +378,8 @@
             <div animateClick="jump()" class="bg-gradient-to-br from-orange-300 to-orange-500 aspect-square rounded-2xl cursor-pointer hover:scale-105 transition-transform duration-300 shadow-xl"></div>
             <h3 class="text-white font-semibold mt-4 text-lg">Jump</h3>
             <p class="text-slate-400 text-sm">Vertical jump effect.</p>
+            <p class="text-purple-300 text-xs mt-2 font-mono">jump()</p>
+            <p class="text-purple-300 text-xs font-mono">jump({{ '{' }} y1: '-30px' {{ '}' }})</p>
           </div>
 
           <!-- float -->
@@ -387,6 +389,8 @@
             </div>
             <h3 class="text-white font-semibold mt-4 text-lg">Float</h3>
             <p class="text-slate-400 text-sm">Floating effect.</p>
+            <p class="text-purple-300 text-xs mt-2 font-mono">float()</p>
+            <p class="text-purple-300 text-xs font-mono">float({{ '{' }} y1: '-20px' {{ '}' }})</p>
           </div>
 
           <!-- blink -->
@@ -396,6 +400,8 @@
             </div>
             <h3 class="text-white font-semibold mt-4 text-lg">Blink</h3>
             <p class="text-slate-400 text-sm">Blinking effect.</p>
+            <p class="text-purple-300 text-xs mt-2 font-mono">blink()</p>
+            <p class="text-purple-300 text-xs font-mono">blink({{ '{' }} opacity1: 0 {{ '}' }})</p>
           </div>
 
           <!-- sway -->
@@ -403,6 +409,8 @@
             <div animateClick="sway()" class="bg-gradient-to-br from-cyan-300 to-cyan-500 aspect-square rounded-2xl cursor-pointer hover:scale-105 transition-transform duration-300 shadow-xl"></div>
             <h3 class="text-white font-semibold mt-4 text-lg">Sway</h3>
             <p class="text-slate-400 text-sm">Gentle sway motion.</p>
+            <p class="text-purple-300 text-xs mt-2 font-mono">sway()</p>
+            <p class="text-purple-300 text-xs font-mono">sway({{ '{' }} rotate1: -10 {{ '}' }})</p>
           </div>
 
           <!-- tilt -->
@@ -410,6 +418,8 @@
             <div animateClick="tilt()" class="bg-gradient-to-br from-purple-300 to-purple-500 aspect-square rounded-2xl cursor-pointer hover:scale-105 transition-transform duration-300 shadow-xl"></div>
             <h3 class="text-white font-semibold mt-4 text-lg">Tilt</h3>
             <p class="text-slate-400 text-sm">Tilt back and forth.</p>
+            <p class="text-purple-300 text-xs mt-2 font-mono">tilt()</p>
+            <p class="text-purple-300 text-xs font-mono">tilt({{ '{' }} rotate1: -10 {{ '}' }})</p>
           </div>
 
           <!-- dancing -->
@@ -419,6 +429,8 @@
             </div>
             <h3 class="text-white font-semibold mt-4 text-lg">Dancing</h3>
             <p class="text-slate-400 text-sm">Dancing motion.</p>
+            <p class="text-purple-300 text-xs mt-2 font-mono">dancing()</p>
+            <p class="text-purple-300 text-xs font-mono">dancing({{ '{' }} rotate1: -15 {{ '}' }})</p>
           </div>
         </div>
       </section>
@@ -434,6 +446,8 @@
             </div>
             <h3 class="text-white font-semibold mt-4 text-lg">Spin</h3>
             <p class="text-slate-400 text-sm">360° rotation.</p>
+            <p class="text-purple-300 text-xs mt-2 font-mono">spin()</p>
+            <p class="text-purple-300 text-xs font-mono">spin({{ '{' }} degrees: 360 {{ '}' }})</p>
           </div>
 
           <!-- flip -->
@@ -441,6 +455,8 @@
             <div animateClick="flip()" class="bg-gradient-to-br from-cyan-400 to-blue-500 aspect-square rounded-2xl cursor-pointer hover:scale-105 transition-transform duration-300 shadow-xl"></div>
             <h3 class="text-white font-semibold mt-4 text-lg">Flip</h3>
             <p class="text-slate-400 text-sm">Complete flip animation.</p>
+            <p class="text-purple-300 text-xs mt-2 font-mono">flip()</p>
+            <p class="text-purple-300 text-xs font-mono">flip({{ '{' }} rotateY1: 180 {{ '}' }})</p>
           </div>
 
           <!-- glitch -->
@@ -448,6 +464,8 @@
             <div animateClick="glitch()" class="bg-gradient-to-br from-red-400 to-orange-500 aspect-square rounded-2xl cursor-pointer hover:scale-105 transition-transform duration-300 shadow-xl"></div>
             <h3 class="text-white font-semibold mt-4 text-lg">Glitch</h3>
             <p class="text-slate-400 text-sm">Glitch/distortion effect.</p>
+            <p class="text-purple-300 text-xs mt-2 font-mono">glitch()</p>
+            <p class="text-purple-300 text-xs font-mono">glitch({{ '{' }} x1: '-5px' {{ '}' }})</p>
           </div>
 
           <!-- morphing -->
@@ -455,6 +473,8 @@
             <div animateClick="morphing()" class="bg-gradient-to-br from-green-400 to-emerald-500 aspect-square rounded-2xl cursor-pointer hover:scale-105 transition-transform duration-300 shadow-xl"></div>
             <h3 class="text-white font-semibold mt-4 text-lg">Morphing</h3>
             <p class="text-slate-400 text-sm">Shape transformation.</p>
+            <p class="text-purple-300 text-xs mt-2 font-mono">morphing()</p>
+            <p class="text-purple-300 text-xs font-mono">morphing({{ '{' }} scale1: 1.2 {{ '}' }})</p>
           </div>
 
           <!-- squeeze -->
@@ -462,6 +482,8 @@
             <div animateClick="squeeze()" class="bg-gradient-to-br from-yellow-400 to-orange-500 aspect-square rounded-2xl cursor-pointer hover:scale-105 transition-transform duration-300 shadow-xl"></div>
             <h3 class="text-white font-semibold mt-4 text-lg">Squeeze</h3>
             <p class="text-slate-400 text-sm">Squeeze effect.</p>
+            <p class="text-purple-300 text-xs mt-2 font-mono">squeeze()</p>
+            <p class="text-purple-300 text-xs font-mono">squeeze({{ '{' }} scaleX1: 1.3 {{ '}' }})</p>
           </div>
 
           <!-- skew -->
@@ -469,13 +491,17 @@
             <div animateClick="skew()" class="bg-gradient-to-br from-lime-400 to-green-500 aspect-square rounded-2xl cursor-pointer hover:scale-105 transition-transform duration-300 shadow-xl"></div>
             <h3 class="text-white font-semibold mt-4 text-lg">Skew</h3>
             <p class="text-slate-400 text-sm">Skew transformation.</p>
+            <p class="text-purple-300 text-xs mt-2 font-mono">skew()</p>
+            <p class="text-purple-300 text-xs font-mono">skew({{ '{' }} skewX: -10 {{ '}' }})</p>
           </div>
 
-          <!-- expandHorizontally -->
+          <!-- expand -->
           <div class="group">
-            <div animateClick="expandHorizontally()" class="bg-gradient-to-br from-rose-400 to-red-500 aspect-square rounded-2xl cursor-pointer hover:scale-105 transition-transform duration-300 shadow-xl"></div>
-            <h3 class="text-white font-semibold mt-4 text-lg">Expand Horizontally</h3>
-            <p class="text-slate-400 text-sm">Horizontal expansion.</p>
+            <div animateClick="expand({ scaleX: 1.5 })" class="bg-gradient-to-br from-rose-400 to-red-500 aspect-square rounded-2xl cursor-pointer hover:scale-105 transition-transform duration-300 shadow-xl"></div>
+            <h3 class="text-white font-semibold mt-4 text-lg">Expand</h3>
+            <p class="text-slate-400 text-sm">Expand in any direction.</p>
+            <p class="text-purple-300 text-xs mt-2 font-mono">expand({{ '{' }} scaleX: 1.5 {{ '}' }})</p>
+            <p class="text-purple-300 text-xs font-mono">expand({{ '{' }} scaleY: 1.5 {{ '}' }})</p>
           </div>
         </div>
       </section>
