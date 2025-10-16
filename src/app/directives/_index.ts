@@ -1,4 +1,5 @@
 export * from './_animate.directive';
+export * from './_presets';
 export * from './animate-enter.directive';
 export * from './animate-leave.directive';
 export * from './animate-click.directive';

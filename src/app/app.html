@@ -1,7 +1,27 @@
 <section class="container">
   <div class="full-height"></div>
   <div class="full-height">
-    <div animateLoad="slideInLeft" class="square"></div>
+    <!-- Static preset (backward compatible) -->
+    <div animateClick="fadeIn()" class="square" style="top: 50px"></div>
+
+    <!-- Dynamic preset with custom opacity using object syntax -->
+    <div animateClick="fadeIn({ opacity: 0.1 })" class="square" style="top: 170px"></div>
+
+    <!-- Dynamic preset with default values -->
+    <div animateClick="slideInLeft()" class="square red" style="top: 290px"></div>
+
+    <!-- Dynamic preset with custom distance using object syntax -->
+    <div animateClick="slideInLeft({ distance: '-200%' })" class="square blue" style="top: 410px"></div>
+
+    <!-- Dynamic preset with custom distance and opacity using object syntax -->
+    <div animateClick="to:rotate:360:<;to:scale:2:<" class="square green" style="top: 530px"></div>
+
+    <!-- Dynamic preset with multiple parameters using object syntax -->
+    <div
+      animateClick="bounceIn({ startScale: 0.4, midScale: 1.5, endScale: 4 })"
+      class="square"
+      style="top: 650px; background: orange"
+    ></div>
   </div>
 </section>
 
@@ -20,5 +40,19 @@
     width: 100px;
     height: 100px;
     background: red;
+    position: absolute;
+    left: 50px;
+  }
+
+  .square.red {
+    background: #ff4444;
+  }
+
+  .square.blue {
+    background: #4444ff;
+  }
+
+  .square.green {
+    background: #44ff44;
   }
 </style>

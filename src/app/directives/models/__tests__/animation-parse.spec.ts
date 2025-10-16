@@ -8,7 +8,7 @@ describe('AnimationParser', () => {
       expect(result.length).toBe(1);
       expect(result[0]).toEqual({
         method: 'from',
-        vars: { opacity: AnimationParser.DEFAULT_METHOD },
+        vars: { opacity: 0 },
         position: AnimationParser.DEFAULT_POSITION,
       });
     });
@@ -164,6 +164,38 @@ describe('AnimationParser', () => {
 
       expect(result.length).toBe(1);
       expect(result[0].vars).toEqual({ customAnimation: 1 });
+    });
+
+    it('should resolve preset with object syntax and custom opacity', () => {
+      const result = new AnimationParser('fadeIn({ opacity: 0.1 })').parse();
+
+      expect(result.length).toBe(1);
+      expect(result[0]).toEqual({ method: 'from', vars: { opacity: 0.1 }, position: '>' });
+    });
+
+    it('should resolve preset with object syntax and custom distance', () => {
+      const result = new AnimationParser("slideInLeft({ distance: '-200%' })").parse();
+
+      expect(result.length).toBe(2);
+      expect(result[0]).toEqual({ method: 'from', vars: { x: '-200%' }, position: '>' });
+      expect(result[1]).toEqual({ method: 'from', vars: { opacity: 0 }, position: '<' });
+    });
+
+    it('should resolve preset with object syntax and multiple parameters', () => {
+      const result = new AnimationParser("slideInLeft({ distance: '-300%', opacity: 0.3 })").parse();
+
+      expect(result.length).toBe(2);
+      expect(result[0]).toEqual({ method: 'from', vars: { x: '-300%' }, position: '>' });
+      expect(result[1]).toEqual({ method: 'from', vars: { opacity: 0.3 }, position: '<' });
+    });
+
+    it('should resolve bounceIn with object syntax', () => {
+      const result = new AnimationParser('bounceIn({ startScale: 0.4, midScale: 1.5, endScale: 1 })').parse();
+
+      expect(result.length).toBe(3);
+      expect(result[0]).toEqual({ method: 'from', vars: { scale: 0.4 }, position: '>' });
+      expect(result[1]).toEqual({ method: 'to', vars: { scale: 1.5 }, position: '>' });
+      expect(result[2]).toEqual({ method: 'to', vars: { scale: 1 }, position: '>' });
     });
   });
 });
