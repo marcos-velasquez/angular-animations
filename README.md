@@ -114,6 +114,8 @@ Triggers animation when page loads:
 
 **This approach applies to:** `fadeIn`, `fadeOut`, `slideIn`, `slideOut`, `zoomIn`, `rotateIn`, `backIn`, `shake`, and more!
 
+> 📖 **Note:** To see all available parameters for each animation, check the live showcase at your deployed site or refer to the `src/app/directives/_presets.ts` file where each animation function is defined with its complete parameter list.
+
 ---
 
 #### Entrance Animations (24)
