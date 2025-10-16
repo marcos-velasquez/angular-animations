@@ -104,52 +104,77 @@ Triggers animation when page loads:
 #### Entrance Animations (12)
 
 ```html
-<!-- Example: Fade In -->
-<div animateLoad="fadeIn">Uses default opacity: 0</div>
-<div animateLoad="fadeIn({ opacity: 0.2 })">Custom starting opacity</div>
+<!-- Example: Fade In (simple) -->
+<div animateLoad="fadeIn">Simple fade in</div>
 
-<!-- Example: Slide In Left -->
-<div animateLoad="slideInLeft">Uses default distance: -100%</div>
-<div animateLoad="slideInLeft({ distance: '-300%', opacity: 0 })">Custom distance and opacity</div>
+<!-- Example: Fade In from directions -->
+<div animateLoad="fadeIn({ y: '100%' })">Fade in from bottom</div>
+<div animateLoad="fadeIn({ y: '-100%' })">Fade in from top</div>
+<div animateLoad="fadeIn({ x: '-100%' })">Fade in from left</div>
+<div animateLoad="fadeIn({ x: '100%' })">Fade in from right</div>
 
-<!-- Example: Bounce In -->
-<div animateLoad="bounceIn">Uses default bounce values</div>
-<div animateLoad="bounceIn({ startScale: 0, midScale: 1.5, endScale: 1 })">Custom bounce effect</div>
+<!-- Example: Fade In from corners -->
+<div animateLoad="fadeIn({ x: '-100%', y: '-100%' })">Fade in from top-left</div>
+<div animateLoad="fadeIn({ x: '100%', y: '100%' })">Fade in from bottom-right</div>
+
+<!-- Example: Fade In Big (large distances) -->
+<div animateLoad="fadeIn({ y: '2000px' })">Fade in from far bottom</div>
+
+<!-- Example: Slide In -->
+<div animateLoad="slideIn({ x: '-100%' })">Slide in from left</div>
+<div animateLoad="slideIn({ y: '100%' })">Slide in from bottom</div>
+
+<!-- Example: Zoom In with direction -->
+<div animateLoad="zoomIn({ y: '-100%', scale: 0 })">Zoom in from top</div>
+<div animateLoad="zoomIn({ x: '100%', scale: 0 })">Zoom in from right</div>
+
+<!-- Example: Rotate In with direction -->
+<div animateLoad="rotateIn({ y: '100%', rotate: -45 })">Rotate in from bottom</div>
+
+<!-- Example: Back In with direction -->
+<div animateLoad="backIn({ y: '-100%' })">Back in from top</div>
 ```
 
-**Available:** `fadeIn`, `fadeInUp`, `fadeInDown`, `fadeInLeft`, `fadeInRight`, `fadeInUpBig`, `fadeInDownBig`, `fadeInLeftBig`, `fadeInRightBig`, `fadeInTopLeft`, `fadeInTopRight`, `fadeInBottomLeft`, `fadeInBottomRight`, `blurredFadeIn`, `zoomIn`, `zoomInDown`, `zoomInUp`, `zoomInRotate`, `slideInLeft`, `slideInRight`, `slideInUp`, `slideInDown`, `slideInBounce`, `slideExpandUp`, `slideUpFade`, `slideRotateIn`, `bounceIn`, `bounceInDown`, `bounceInUp`, `bounceInLeft`, `bounceInRight`, `bounceFadeIn`, `rotateIn`, `rotateInDownLeft`, `rotateInDownRight`, `rotateInUpLeft`, `flipIn`, `flipInX`, `flipInY`, `rollIn`, `lightSpeedIn`, `backIn`, `backInDown`, `backInUp`, `pop`, `expandUp`, `expandOpen`, `bigEntrance`, `hatch`, `swingDropIn`, `pulseFadeIn`
+**Available:** `fadeIn`, `blurredFadeIn`, `zoomIn`, `zoomInRotate`, `slideIn`, `slideInBounce`, `slideExpandUp`, `slideUpFade`, `slideRotateIn`, `bounceIn`, `bounceFadeIn`, `rotateIn`, `flipIn`, `flipInX`, `flipInY`, `rollIn`, `lightSpeedIn`, `backIn`, `pop`, `expandUp`, `expandOpen`, `bigEntrance`, `hatch`, `swingDropIn`, `pulseFadeIn`
 
 #### Exit Animations (17)
 
 ```html
-<!-- Example: Fade Out -->
-<div animateClick="fadeOut">Fades to transparent</div>
-<div animateClick="fadeOut({ opacity: 0.3 })">Fades to 30% opacity</div>
+<!-- Example: Fade Out (simple) -->
+<div animateClick="fadeOut">Simple fade out</div>
+
+<!-- Example: Fade Out with directions -->
+<div animateClick="fadeOut({ y: '-100%' })">Fade out to top</div>
+<div animateClick="fadeOut({ x: '100%' })">Fade out to right</div>
+<div animateClick="fadeOut({ x: '-100%', y: '100%' })">Fade out to bottom-left</div>
 
 <!-- Example: Slide Out -->
-<div animateClick="slideOutLeft">Slides out to the left</div>
-<div animateClick="slideOutRight({ distance: '150%' })">Custom distance</div>
+<div animateClick="slideOut({ x: '-100%' })">Slide out to left</div>
+<div animateClick="slideOut({ y: '100%' })">Slide out to bottom</div>
 ```
 
-**Available:** `fadeOut`, `fadeOutUp`, `fadeOutDown`, `fadeOutLeft`, `fadeOutRight`, `zoomOut`, `slideOutLeft`, `slideOutRight`, `slideOutUp`, `slideOutDown`, `slideRotateOut`, `flipOut`, `flipOutY`, `rollOut`, `rotateOut`, `rotateOutDownRight`, `bounceOut`, `lightSpeedOut`, `backOut`, `hinge`, `sink`
+**Available:** `fadeOut`, `zoomOut`, `slideOut`, `slideRotateOut`, `flipOut`, `flipOutY`, `rollOut`, `rotateOut`, `bounceOut`, `lightSpeedOut`, `backOut`, `hinge`, `sink`
 
 #### Attention Animations (16)
 
 ```html
 <!-- Example: Pulse -->
 <div animateClick="pulse">Default pulse effect</div>
-<div animateClick="pulse({ scale1: 1.2, scale2: 1 })">Custom pulse intensity</div>
+<div animateClick="pulse({ scale1: 1.2, scale2: 1 })">Pulse grow</div>
+<div animateClick="pulse({ scale1: 0.9, scale2: 1 })">Pulse shrink</div>
 
-<!-- Example: Tada -->
-<div animateClick="tada">Celebration effect</div>
-<div animateClick="tada({ scale2: 1.2, rotate2: 5 })">Stronger tada</div>
+<!-- Example: Shake -->
+<div animateClick="shake">Horizontal shake</div>
+<div animateClick="shake({ x: '15px' })">Stronger horizontal shake</div>
+<div animateClick="shake({ y: '10px' })">Vertical shake</div>
+<div animateClick="shake({ x: '10px', y: '10px' })">Diagonal shake</div>
 
 <!-- Example: Bounce -->
 <div animateClick="bounce">Bounces in place</div>
 <div animateClick="bounce({ y1: '-40px' })">Higher bounce</div>
 ```
 
-**Available:** `pulse`, `pulseGrow`, `pulseShrink`, `shake`, `shakeX`, `shakeY`, `wobble`, `wobbleSkew`, `jello`, `heartBeat`, `flash`, `bounce`, `tada`, `swing`, `swingIn`, `headShake`, `rubberBand`, `rubberBandIn`, `wiggle`, `jackInTheBox`, `jump`, `hang`, `float`, `blink`, `sway`, `tilt`, `tossing`, `pullUp`, `pullDown`, `bob`, `buzz`, `buzzOut`, `dancing`, `verticalBounce`, `horizontalBounce`, `horizontalVibration`, `rotationalWave`, `impulseRotationRight`, `impulseRotationLeft`
+**Available:** `pulse`, `shake`, `wobble`, `wobbleSkew`, `jello`, `heartBeat`, `flash`, `bounce`, `tada`, `swing`, `swingIn`, `headShake`, `rubberBand`, `rubberBandIn`, `wiggle`, `jackInTheBox`, `jump`, `hang`, `float`, `blink`, `sway`, `tilt`, `tossing`, `pullUp`, `pullDown`, `bob`, `buzz`, `buzzOut`, `dancing`, `verticalBounce`, `horizontalBounce`, `rotationalWave`, `impulseRotationRight`, `impulseRotationLeft`
 
 #### Special Animations (4)
 
@@ -165,7 +190,7 @@ Triggers animation when page loads:
 <img animateLoad="kenBurns({ scale: 1.3 })" src="image.jpg" />
 ```
 
-**Available:** `flip`, `spin`, `glitch`, `blur`, `kenBurns`, `morphing`, `skew`, `skewRight`, `squeeze`, `stretchLeft`, `stretchRight`, `expandHorizontally`, `contractHorizontally`, `expandVertically`, `contractVertically`, `glow`, `shadow`, `growShadow`, `floatShadow`
+**Available:** `flip`, `spin`, `glitch`, `blur`, `kenBurns`, `morphing`, `skew`, `skewRight`, `squeeze`, `expand`, `glow`, `shadow`, `growShadow`, `floatShadow`
 
 ### Custom Animations
 
