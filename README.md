@@ -117,7 +117,7 @@ Triggers animation when page loads:
 <div animateLoad="bounceIn({ startScale: 0, midScale: 1.5, endScale: 1 })">Custom bounce effect</div>
 ```
 
-**Available:** `fadeIn`, `fadeInUp`, `fadeInDown`, `fadeInLeft`, `fadeInRight`, `zoomIn`, `zoomInRotate`, `slideInLeft`, `slideInRight`, `slideInUp`, `slideInDown`, `slideInBounce`, `bounceIn`, `bounceInDown`, `bounceInUp`, `rotateIn`, `rotateInDownLeft`, `rotateInDownRight`, `flipIn`, `flipInX`, `rollIn`, `lightSpeedIn`, `backIn`
+**Available:** `fadeIn`, `fadeInUp`, `fadeInDown`, `fadeInLeft`, `fadeInRight`, `blurredFadeIn`, `zoomIn`, `zoomInRotate`, `slideInLeft`, `slideInRight`, `slideInUp`, `slideInDown`, `slideInBounce`, `slideUpFade`, `slideRotateIn`, `bounceIn`, `bounceInDown`, `bounceInUp`, `bounceFadeIn`, `rotateIn`, `rotateInDownLeft`, `rotateInDownRight`, `flipIn`, `flipInX`, `rollIn`, `lightSpeedIn`, `backIn`, `pop`, `swingDropIn`, `pulseFadeIn`
 
 #### Exit Animations (17)
 
@@ -131,7 +131,7 @@ Triggers animation when page loads:
 <div animateClick="slideOutRight({ distance: '150%' })">Custom distance</div>
 ```
 
-**Available:** `fadeOut`, `fadeOutUp`, `fadeOutDown`, `fadeOutLeft`, `fadeOutRight`, `zoomOut`, `slideOutLeft`, `slideOutRight`, `slideOutUp`, `slideOutDown`, `flipOut`, `rollOut`, `rotateOut`, `bounceOut`, `lightSpeedOut`, `backOut`, `hinge`
+**Available:** `fadeOut`, `fadeOutUp`, `fadeOutDown`, `fadeOutLeft`, `fadeOutRight`, `zoomOut`, `slideOutLeft`, `slideOutRight`, `slideOutUp`, `slideOutDown`, `slideRotateOut`, `flipOut`, `rollOut`, `rotateOut`, `bounceOut`, `lightSpeedOut`, `backOut`, `hinge`, `sink`
 
 #### Attention Animations (16)
 
@@ -149,7 +149,7 @@ Triggers animation when page loads:
 <div animateClick="bounce({ y1: '-40px' })">Higher bounce</div>
 ```
 
-**Available:** `pulse`, `shake`, `shakeY`, `wobble`, `jello`, `heartBeat`, `flash`, `bounce`, `tada`, `swing`, `swingIn`, `headShake`, `rubberBand`, `rubberBandIn`, `wiggle`, `jackInTheBox`
+**Available:** `pulse`, `shake`, `shakeY`, `wobble`, `jello`, `heartBeat`, `flash`, `bounce`, `tada`, `swing`, `swingIn`, `headShake`, `rubberBand`, `rubberBandIn`, `wiggle`, `jackInTheBox`, `jump`, `hang`, `float`, `blink`, `sway`, `tilt`, `dancing`, `verticalBounce`, `horizontalBounce`, `horizontalVibration`, `rotationalWave`, `impulseRotationRight`, `impulseRotationLeft`
 
 #### Special Animations (4)
 
@@ -165,7 +165,7 @@ Triggers animation when page loads:
 <img animateLoad="kenBurns({ scale: 1.3 })" src="image.jpg" />
 ```
 
-**Available:** `flip`, `spin`, `glitch`, `blur`, `kenBurns`, `morphing`
+**Available:** `flip`, `spin`, `glitch`, `blur`, `kenBurns`, `morphing`, `skew`, `skewRight`, `squeeze`, `expandHorizontally`, `contractHorizontally`, `expandVertically`, `contractVertically`
 
 ### Custom Animations
 

@@ -257,4 +257,125 @@ export class Presets {
   public static morphing({ scale1 = 1.2, rotate = 45, scale2 = 0.8 } = {}): string {
     return `to:scale:${scale1}:>;to:rotate:${rotate}:0;to:scale:${scale2}:>;to:rotate:0:0;to:scale:1:>`;
   }
+
+  public static blurredFadeIn({ blur1 = '20px', blur2 = '0px', opacity = 0 } = {}): string {
+    return `filter:blur(${blur1}):>;opacity:${opacity}:0;to:filter:blur(${blur2}):>`;
+  }
+
+  public static jump({ y1 = '-30px', y2 = '-15px' } = {}): string {
+    return `to:y:${y1}:>;to:y:0:>;to:y:${y2}:>;to:y:0:>`;
+  }
+
+  public static hang({ y = '-20px' } = {}): string {
+    return `to:y:${y}:>;to:y:0:>`;
+  }
+
+  public static float({ y1 = '-20px', y2 = '-10px' } = {}): string {
+    return `to:y:${y1}:>;to:y:${y2}:>;to:y:${y1}:>;to:y:${y2}:>`;
+  }
+
+  public static sink({ y = '20px' } = {}): string {
+    return `to:y:${y}:>`;
+  }
+
+  public static pop({ scale1 = 0, scale2 = 1.1, scale3 = 1 } = {}): string {
+    return `scale:${scale1}:>;to:scale:${scale2}:>;to:scale:${scale3}:>`;
+  }
+
+  public static blink({ opacity1 = 0, opacity2 = 1 } = {}): string {
+    return `to:opacity:${opacity1}:>;to:opacity:${opacity2}:>;to:opacity:${opacity1}:>;to:opacity:${opacity2}:>;to:opacity:${opacity1}:>;to:opacity:${opacity2}:>`;
+  }
+
+  public static sway({ rotate1 = -10, rotate2 = 10 } = {}): string {
+    return `to:rotate:${rotate1}:>;to:rotate:${rotate2}:>;to:rotate:${rotate1}:>;to:rotate:${rotate2}:>;to:rotate:0:>`;
+  }
+
+  public static skew({ skewX = -10, skewY = -10 } = {}): string {
+    return `to:skewX:${skewX}:>;to:skewY:${skewY}:0;to:skewX:0:>;to:skewY:0:0`;
+  }
+
+  public static skewRight({ skewX = 10 } = {}): string {
+    return `to:skewX:${skewX}:>;to:skewX:0:>`;
+  }
+
+  public static tilt({ rotate1 = -10, rotate2 = 10 } = {}): string {
+    return `to:rotate:${rotate1}:>;to:rotate:0:>;to:rotate:${rotate2}:>;to:rotate:0:>`;
+  }
+
+  public static squeeze({ scaleX1 = 1.3, scaleY1 = 0.7, scaleX2 = 0.7, scaleY2 = 1.3 } = {}): string {
+    return `to:scaleX:${scaleX1}:>;to:scaleY:${scaleY1}:0;to:scaleX:${scaleX2}:>;to:scaleY:${scaleY2}:0;to:scaleX:1:>;to:scaleY:1:0`;
+  }
+
+  public static expandHorizontally({ scaleX = 1.5 } = {}): string {
+    return `to:scaleX:${scaleX}:>`;
+  }
+
+  public static contractHorizontally({ scaleX = 0.5 } = {}): string {
+    return `to:scaleX:${scaleX}:>`;
+  }
+
+  public static expandVertically({ scaleY = 1.5 } = {}): string {
+    return `to:scaleY:${scaleY}:>`;
+  }
+
+  public static contractVertically({ scaleY = 0.5 } = {}): string {
+    return `to:scaleY:${scaleY}:>`;
+  }
+
+  public static verticalBounce({ y1 = '-20px', y2 = '-10px', y3 = '-5px' } = {}): string {
+    return `to:y:${y1}:>;to:y:0:>;to:y:${y2}:>;to:y:0:>;to:y:${y3}:>;to:y:0:>`;
+  }
+
+  public static horizontalBounce({ x1 = '20px', x2 = '10px', x3 = '5px' } = {}): string {
+    return `to:x:${x1}:>;to:x:0:>;to:x:${x2}:>;to:x:0:>;to:x:${x3}:>;to:x:0:>`;
+  }
+
+  public static horizontalVibration({ x = '5px' } = {}): string {
+    return `to:x:-${x}:>;to:x:${x}:>;to:x:-${x}:>;to:x:${x}:>;to:x:-${x}:>;to:x:${x}:>;to:x:0:>`;
+  }
+
+  public static rotationalWave({ rotate1 = 15, rotate2 = -15 } = {}): string {
+    return `to:rotate:${rotate1}:>;to:rotate:${rotate2}:>;to:rotate:${rotate1}:>;to:rotate:${rotate2}:>;to:rotate:0:>`;
+  }
+
+  public static slideUpFade({ y = '100%', opacity = 0 } = {}): string {
+    return `y:${y}:>;opacity:${opacity}:0`;
+  }
+
+  public static bounceFadeIn({ scale1 = 0, scale2 = 1.1, scale3 = 1, opacity = 0 } = {}): string {
+    return `scale:${scale1}:>;opacity:${opacity}:0;to:scale:${scale2}:>;to:scale:${scale3}:>`;
+  }
+
+  public static swingDropIn({ rotate = -45, y = '-100%', opacity = 0 } = {}): string {
+    return `rotate:${rotate}:>;y:${y}:0;opacity:${opacity}:0;to:rotate:0:>`;
+  }
+
+  public static pulseFadeIn({ scale1 = 0.8, scale2 = 1, opacity = 0 } = {}): string {
+    return `scale:${scale1}:>;opacity:${opacity}:0;to:scale:${scale2}:>;to:scale:${scale1}:>;to:scale:${scale2}:>`;
+  }
+
+  public static impulseRotationRight({ rotate1 = 10, rotate2 = -5 } = {}): string {
+    return `to:rotate:${rotate1}:>;to:rotate:${rotate2}:>;to:rotate:0:>`;
+  }
+
+  public static impulseRotationLeft({ rotate1 = -10, rotate2 = 5 } = {}): string {
+    return `to:rotate:${rotate1}:>;to:rotate:${rotate2}:>;to:rotate:0:>`;
+  }
+
+  public static dancing({
+    rotate1 = -15,
+    rotate2 = 15,
+    y1 = '-10px',
+    y2 = '10px',
+  } = {}): string {
+    return `to:rotate:${rotate1}:>;to:y:${y1}:0;to:rotate:${rotate2}:>;to:y:${y2}:0;to:rotate:${rotate1}:>;to:y:${y1}:0;to:rotate:0:>;to:y:0:0`;
+  }
+
+  public static slideRotateIn({ x = '-100%', rotate = -180, opacity = 0 } = {}): string {
+    return `x:${x}:>;rotate:${rotate}:0;opacity:${opacity}:0;to:rotate:0:>`;
+  }
+
+  public static slideRotateOut({ x = '100%', rotate = 180, opacity = 0 } = {}): string {
+    return `to:x:${x}:>;to:rotate:${rotate}:0;to:opacity:${opacity}:0`;
+  }
 }
