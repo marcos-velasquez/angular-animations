@@ -54,7 +54,7 @@
         <h2 class="text-3xl font-bold text-white mb-8">
           Entrance Animations <span class="text-purple-400 text-2xl">(24)</span>
         </h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-6">
           <!-- fadeIn -->
           <div class="group">
             <div
@@ -64,7 +64,9 @@
             <h3 class="text-white font-semibold mt-4 text-lg">Fade In</h3>
             <p class="text-slate-400 text-sm">Gradually appear from transparent.</p>
             <p class="text-purple-300 text-xs mt-2 font-mono">fadeIn</p>
-            <p class="text-purple-300 text-xs font-mono">fadeIn({{ '{' }} x: '-100%', y: '100%', opacity: 0 {{ '}' }})</p>
+            <p class="text-purple-300 text-xs font-mono">
+              fadeIn({{ '{' }} x: '-100%', y: '100%', opacity: 0 {{ '}' }})
+            </p>
           </div>
 
           <!-- slideIn -->
@@ -92,7 +94,9 @@
             <h3 class="text-white font-semibold mt-4 text-lg">Zoom In</h3>
             <p class="text-slate-400 text-sm">Zoom in from a smaller size.</p>
             <p class="text-purple-300 text-xs mt-2 font-mono">zoomIn</p>
-            <p class="text-purple-300 text-xs font-mono">zoomIn({{ '{' }} x: '0', y: '-100%', scale: 0, opacity: 0 {{ '}' }})</p>
+            <p class="text-purple-300 text-xs font-mono">
+              zoomIn({{ '{' }} x: '0', y: '-100%', scale: 0, opacity: 0 {{ '}' }})
+            </p>
           </div>
 
           <!-- bounceIn -->
@@ -106,7 +110,9 @@
             <h3 class="text-white font-semibold mt-4 text-lg">Bounce In</h3>
             <p class="text-slate-400 text-sm">Bounce in with a spring effect.</p>
             <p class="text-purple-300 text-xs mt-2 font-mono">bounceIn</p>
-            <p class="text-purple-300 text-xs font-mono">bounceIn({{ '{' }} startScale: 0, midScale: 1.2, endScale: 1 {{ '}' }})</p>
+            <p class="text-purple-300 text-xs font-mono">
+              bounceIn({{ '{' }} startScale: 0, midScale: 1.2, endScale: 1 {{ '}' }})
+            </p>
           </div>
 
           <!-- rotateIn -->
@@ -118,7 +124,9 @@
             <h3 class="text-white font-semibold mt-4 text-lg">Rotate In</h3>
             <p class="text-slate-400 text-sm">Rotate while appearing.</p>
             <p class="text-purple-300 text-xs mt-2 font-mono">rotateIn</p>
-            <p class="text-purple-300 text-xs font-mono">rotateIn({{ '{' }} x: '0', y: '100%', rotate: -180, opacity: 0 {{ '}' }})</p>
+            <p class="text-purple-300 text-xs font-mono">
+              rotateIn({{ '{' }} x: '0', y: '100%', rotate: -180, opacity: 0 {{ '}' }})
+            </p>
           </div>
 
           <!-- flipIn -->
@@ -142,7 +150,9 @@
             <h3 class="text-white font-semibold mt-4 text-lg">Roll In</h3>
             <p class="text-slate-400 text-sm">Roll in from the side.</p>
             <p class="text-purple-300 text-xs mt-2 font-mono">rollIn</p>
-            <p class="text-purple-300 text-xs font-mono">rollIn({{ '{' }} degrees: -360, distance: '-100%', opacity: 0 {{ '}' }})</p>
+            <p class="text-purple-300 text-xs font-mono">
+              rollIn({{ '{' }} degrees: -360, distance: '-100%', opacity: 0 {{ '}' }})
+            </p>
           </div>
 
           <!-- lightSpeedIn -->
@@ -154,7 +164,9 @@
             <h3 class="text-white font-semibold mt-4 text-lg">Light Speed In</h3>
             <p class="text-slate-400 text-sm">Fast entrance with skew.</p>
             <p class="text-purple-300 text-xs mt-2 font-mono">lightSpeedIn</p>
-            <p class="text-purple-300 text-xs font-mono">lightSpeedIn({{ '{' }} distance: '100%', skew: -30, opacity: 0 {{ '}' }})</p>
+            <p class="text-purple-300 text-xs font-mono">
+              lightSpeedIn({{ '{' }} distance: '100%', skew: -30, opacity: 0 {{ '}' }})
+            </p>
           </div>
 
           <!-- backIn -->
@@ -166,7 +178,9 @@
             <h3 class="text-white font-semibold mt-4 text-lg">Back In</h3>
             <p class="text-slate-400 text-sm">Enter with back easing.</p>
             <p class="text-purple-300 text-xs mt-2 font-mono">backIn</p>
-            <p class="text-purple-300 text-xs font-mono">backIn({{ '{' }} x: '0', y: '-100%', scale1: 0.7, opacity: 0, scale2: 1.1, scale3: 1 {{ '}' }})</p>
+            <p class="text-purple-300 text-xs font-mono">
+              backIn({{ '{' }} x: '0', y: '-100%', scale1: 0.7, opacity: 0, scale2: 1.1, scale3: 1 {{ '}' }})
+            </p>
           </div>
 
           <!-- blurredFadeIn -->
@@ -178,7 +192,9 @@
             <h3 class="text-white font-semibold mt-4 text-lg">Blurred Fade In</h3>
             <p class="text-slate-400 text-sm">Fade in with blur effect.</p>
             <p class="text-purple-300 text-xs mt-2 font-mono">blurredFadeIn</p>
-            <p class="text-purple-300 text-xs font-mono">blurredFadeIn({{ '{' }} blur1: '20px', blur2: '0px', opacity: 0 {{ '}' }})</p>
+            <p class="text-purple-300 text-xs font-mono">
+              blurredFadeIn({{ '{' }} blur1: '20px', blur2: '0px', opacity: 0 {{ '}' }})
+            </p>
           </div>
 
           <!-- pop -->
@@ -204,7 +220,9 @@
             <h3 class="text-white font-semibold mt-4 text-lg">Bounce Fade In</h3>
             <p class="text-slate-400 text-sm">Bounce with fade.</p>
             <p class="text-purple-300 text-xs mt-2 font-mono">bounceFadeIn</p>
-            <p class="text-purple-300 text-xs font-mono">bounceFadeIn({{ '{' }} scale1: 0, scale2: 1.1, scale3: 1, opacity: 0 {{ '}' }})</p>
+            <p class="text-purple-300 text-xs font-mono">
+              bounceFadeIn({{ '{' }} scale1: 0, scale2: 1.1, scale3: 1, opacity: 0 {{ '}' }})
+            </p>
           </div>
 
           <!-- slideUpFade -->
@@ -286,7 +304,9 @@
             <h3 class="text-white font-semibold mt-4 text-lg">Roll Out</h3>
             <p class="text-slate-400 text-sm">Roll out to the side.</p>
             <p class="text-purple-300 text-xs mt-2 font-mono">rollOut</p>
-            <p class="text-purple-300 text-xs font-mono">rollOut({{ '{' }} degrees: 360, distance: '100%', opacity: 0 {{ '}' }})</p>
+            <p class="text-purple-300 text-xs font-mono">
+              rollOut({{ '{' }} degrees: 360, distance: '100%', opacity: 0 {{ '}' }})
+            </p>
           </div>
 
           <!-- backOut -->
@@ -298,7 +318,9 @@
             <h3 class="text-white font-semibold mt-4 text-lg">Back Out</h3>
             <p class="text-slate-400 text-sm">Exit with back easing.</p>
             <p class="text-purple-300 text-xs mt-2 font-mono">backOut</p>
-            <p class="text-purple-300 text-xs font-mono">backOut({{ '{' }} scale1: 1.1, scale2: 0.7, opacity: 0 {{ '}' }})</p>
+            <p class="text-purple-300 text-xs font-mono">
+              backOut({{ '{' }} scale1: 1.1, scale2: 0.7, opacity: 0 {{ '}' }})
+            </p>
           </div>
 
           <!-- hinge -->
@@ -310,7 +332,9 @@
             <h3 class="text-white font-semibold mt-4 text-lg">Hinge</h3>
             <p class="text-slate-400 text-sm">Fall like a hinge.</p>
             <p class="text-purple-300 text-xs mt-2 font-mono">hinge</p>
-            <p class="text-purple-300 text-xs font-mono">hinge({{ '{' }} rotate1: 80, rotate2: 60, distance: '100%', opacity: 0 {{ '}' }})</p>
+            <p class="text-purple-300 text-xs font-mono">
+              hinge({{ '{' }} rotate1: 80, rotate2: 60, distance: '100%', opacity: 0 {{ '}' }})
+            </p>
           </div>
 
           <!-- bounceOut -->
@@ -322,7 +346,9 @@
             <h3 class="text-white font-semibold mt-4 text-lg">Bounce Out</h3>
             <p class="text-slate-400 text-sm">Bounce while exiting.</p>
             <p class="text-purple-300 text-xs mt-2 font-mono">bounceOut</p>
-            <p class="text-purple-300 text-xs font-mono">bounceOut({{ '{' }} scale1: 1.1, scale2: 0, opacity: 0 {{ '}' }})</p>
+            <p class="text-purple-300 text-xs font-mono">
+              bounceOut({{ '{' }} scale1: 1.1, scale2: 0, opacity: 0 {{ '}' }})
+            </p>
           </div>
 
           <!-- rotateOut -->
@@ -384,7 +410,9 @@
             <h3 class="text-white font-semibold mt-4 text-lg">Wobble</h3>
             <p class="text-slate-400 text-sm">Wobble back and forth.</p>
             <p class="text-purple-300 text-xs mt-2 font-mono">wobble</p>
-            <p class="text-purple-300 text-xs font-mono">wobble({{ '{' }} rotate1: -5, x1: '-25%', rotate2: 3, x2: '20%' {{ '}' }})</p>
+            <p class="text-purple-300 text-xs font-mono">
+              wobble({{ '{' }} rotate1: -5, x1: '-25%', rotate2: 3, x2: '20%' {{ '}' }})
+            </p>
           </div>
 
           <!-- jello -->
@@ -436,7 +464,9 @@
             <h3 class="text-white font-semibold mt-4 text-lg">Swing In</h3>
             <p class="text-slate-400 text-sm">Swing like a pendulum.</p>
             <p class="text-purple-300 text-xs mt-2 font-mono">swingIn</p>
-            <p class="text-purple-300 text-xs font-mono">swingIn({{ '{' }} start: 15, mid1: -10, mid2: 5, end: 0 {{ '}' }})</p>
+            <p class="text-purple-300 text-xs font-mono">
+              swingIn({{ '{' }} start: 15, mid1: -10, mid2: 5, end: 0 {{ '}' }})
+            </p>
           </div>
 
           <!-- rubberBandIn -->
@@ -448,7 +478,9 @@
             <h3 class="text-white font-semibold mt-4 text-lg">Rubber Band In</h3>
             <p class="text-slate-400 text-sm">Elastic rubber band effect.</p>
             <p class="text-purple-300 text-xs mt-2 font-mono">rubberBandIn</p>
-            <p class="text-purple-300 text-xs font-mono">rubberBandIn({{ '{' }} scale1: 1.25, scale2: 0.75, scale3: 1.15, scale4: 1 {{ '}' }})</p>
+            <p class="text-purple-300 text-xs font-mono">
+              rubberBandIn({{ '{' }} scale1: 1.25, scale2: 0.75, scale3: 1.15, scale4: 1 {{ '}' }})
+            </p>
           </div>
 
           <!-- jackInTheBox -->
@@ -460,7 +492,9 @@
             <h3 class="text-white font-semibold mt-4 text-lg">Jack In The Box</h3>
             <p class="text-slate-400 text-sm">Pop out like a jack-in-the-box.</p>
             <p class="text-purple-300 text-xs mt-2 font-mono">jackInTheBox</p>
-            <p class="text-purple-300 text-xs font-mono">jackInTheBox({{ '{' }} rotate1: 30, scale: 0.1, opacity: 0, rotate2: -10, rotate3: 3 {{ '}' }})</p>
+            <p class="text-purple-300 text-xs font-mono">
+              jackInTheBox({{ '{' }} rotate1: 30, scale: 0.1, opacity: 0, rotate2: -10, rotate3: 3 {{ '}' }})
+            </p>
           </div>
 
           <!-- tada -->
@@ -474,7 +508,9 @@
             <h3 class="text-white font-semibold mt-4 text-lg">Tada</h3>
             <p class="text-slate-400 text-sm">Celebration effect!</p>
             <p class="text-purple-300 text-xs mt-2 font-mono">tada</p>
-            <p class="text-purple-300 text-xs font-mono">tada({{ '{' }} scale1: 0.9, scale2: 1.1, rotate1: -3, rotate2: 3 {{ '}' }})</p>
+            <p class="text-purple-300 text-xs font-mono">
+              tada({{ '{' }} scale1: 0.9, scale2: 1.1, rotate1: -3, rotate2: 3 {{ '}' }})
+            </p>
           </div>
 
           <!-- bounce -->
@@ -486,7 +522,9 @@
             <h3 class="text-white font-semibold mt-4 text-lg">Bounce</h3>
             <p class="text-slate-400 text-sm">Bounces in place.</p>
             <p class="text-purple-300 text-xs mt-2 font-mono">bounce</p>
-            <p class="text-purple-300 text-xs font-mono">bounce({{ '{' }} y1: '-30px', y2: '-15px', y3: '-4px' {{ '}' }})</p>
+            <p class="text-purple-300 text-xs font-mono">
+              bounce({{ '{' }} y1: '-30px', y2: '-15px', y3: '-4px' {{ '}' }})
+            </p>
           </div>
 
           <!-- swing -->
@@ -498,7 +536,9 @@
             <h3 class="text-white font-semibold mt-4 text-lg">Swing</h3>
             <p class="text-slate-400 text-sm">Swings like a pendulum.</p>
             <p class="text-purple-300 text-xs mt-2 font-mono">swing</p>
-            <p class="text-purple-300 text-xs font-mono">swing({{ '{' }} rotate1: 15, rotate2: -10, rotate3: 5 {{ '}' }})</p>
+            <p class="text-purple-300 text-xs font-mono">
+              swing({{ '{' }} rotate1: 15, rotate2: -10, rotate3: 5 {{ '}' }})
+            </p>
           </div>
 
           <!-- headShake -->
@@ -510,7 +550,9 @@
             <h3 class="text-white font-semibold mt-4 text-lg">Head Shake</h3>
             <p class="text-slate-400 text-sm">Shake "no" effect.</p>
             <p class="text-purple-300 text-xs mt-2 font-mono">headShake</p>
-            <p class="text-purple-300 text-xs font-mono">headShake({{ '{' }} x1: '-10px', x2: '10px', rotate1: -5, rotate2: 5 {{ '}' }})</p>
+            <p class="text-purple-300 text-xs font-mono">
+              headShake({{ '{' }} x1: '-10px', x2: '10px', rotate1: -5, rotate2: 5 {{ '}' }})
+            </p>
           </div>
 
           <!-- wiggle -->
@@ -522,7 +564,9 @@
             <h3 class="text-white font-semibold mt-4 text-lg">Wiggle</h3>
             <p class="text-slate-400 text-sm">Wiggles side to side.</p>
             <p class="text-purple-300 text-xs mt-2 font-mono">wiggle</p>
-            <p class="text-purple-300 text-xs font-mono">wiggle({{ '{' }} x1: '-10px', x2: '10px', rotate1: -3, rotate2: 3 {{ '}' }})</p>
+            <p class="text-purple-300 text-xs font-mono">
+              wiggle({{ '{' }} x1: '-10px', x2: '10px', rotate1: -3, rotate2: 3 {{ '}' }})
+            </p>
           </div>
 
           <!-- jump -->
@@ -600,7 +644,9 @@
             <h3 class="text-white font-semibold mt-4 text-lg">Dancing</h3>
             <p class="text-slate-400 text-sm">Dancing motion.</p>
             <p class="text-purple-300 text-xs mt-2 font-mono">dancing</p>
-            <p class="text-purple-300 text-xs font-mono">dancing({{ '{' }} rotate1: -15, rotate2: 15, y1: '-10px', y2: '10px' {{ '}' }})</p>
+            <p class="text-purple-300 text-xs font-mono">
+              dancing({{ '{' }} rotate1: -15, rotate2: 15, y1: '-10px', y2: '10px' {{ '}' }})
+            </p>
           </div>
         </div>
       </section>
@@ -646,7 +692,9 @@
             <h3 class="text-white font-semibold mt-4 text-lg">Glitch</h3>
             <p class="text-slate-400 text-sm">Glitch/distortion effect.</p>
             <p class="text-purple-300 text-xs mt-2 font-mono">glitch</p>
-            <p class="text-purple-300 text-xs font-mono">glitch({{ '{' }} x1: '-5px', x2: '5px', skew1: -10, skew2: 10 {{ '}' }})</p>
+            <p class="text-purple-300 text-xs font-mono">
+              glitch({{ '{' }} x1: '-5px', x2: '5px', skew1: -10, skew2: 10 {{ '}' }})
+            </p>
           </div>
 
           <!-- morphing -->
@@ -658,7 +706,9 @@
             <h3 class="text-white font-semibold mt-4 text-lg">Morphing</h3>
             <p class="text-slate-400 text-sm">Shape transformation.</p>
             <p class="text-purple-300 text-xs mt-2 font-mono">morphing</p>
-            <p class="text-purple-300 text-xs font-mono">morphing({{ '{' }} scale1: 1.2, rotate: 45, scale2: 0.8 {{ '}' }})</p>
+            <p class="text-purple-300 text-xs font-mono">
+              morphing({{ '{' }} scale1: 1.2, rotate: 45, scale2: 0.8 {{ '}' }})
+            </p>
           </div>
 
           <!-- squeeze -->
@@ -670,7 +720,9 @@
             <h3 class="text-white font-semibold mt-4 text-lg">Squeeze</h3>
             <p class="text-slate-400 text-sm">Squeeze effect.</p>
             <p class="text-purple-300 text-xs mt-2 font-mono">squeeze</p>
-            <p class="text-purple-300 text-xs font-mono">squeeze({{ '{' }} scaleX1: 1.3, scaleY1: 0.7, scaleX2: 0.7, scaleY2: 1.3 {{ '}' }})</p>
+            <p class="text-purple-300 text-xs font-mono">
+              squeeze({{ '{' }} scaleX1: 1.3, scaleY1: 0.7, scaleX2: 0.7, scaleY2: 1.3 {{ '}' }})
+            </p>
           </div>
 
           <!-- skew -->
