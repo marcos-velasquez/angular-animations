@@ -3,14 +3,14 @@
     <header class="text-center mb-20">
       <h1 class="text-5xl md:text-6xl font-bold text-white mb-4">Web Animations Showcase</h1>
       <p class="text-lg text-slate-400 max-w-2xl mx-auto">
-        Explore a variety of web animations, categorized for easy browsing and implementation. Discover animations for entrances, exits, and more.
+        Explore <span class="text-purple-400 font-semibold">60 web animations</span>, categorized for easy browsing and implementation. Discover animations for entrances, exits, attention seekers, and special effects.
       </p>
     </header>
 
     <main class="space-y-20">
       <!-- Entrance Animations -->
       <section>
-        <h2 class="text-3xl font-bold text-white mb-8">Entrance Animations</h2>
+        <h2 class="text-3xl font-bold text-white mb-8">Entrance Animations <span class="text-purple-400 text-2xl">(23)</span></h2>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           <!-- fadeIn -->
           <div class="group">
@@ -103,12 +103,40 @@
             <h3 class="text-white font-semibold mt-4 text-lg">Back In</h3>
             <p class="text-slate-400 text-sm">Enter with back easing.</p>
           </div>
+
+          <!-- fadeInUp -->
+          <div class="group">
+            <div animateClick="fadeInUp()" class="bg-gradient-to-br from-cyan-200 to-cyan-400 aspect-square rounded-2xl cursor-pointer hover:scale-105 transition-transform duration-300 shadow-xl"></div>
+            <h3 class="text-white font-semibold mt-4 text-lg">Fade In Up</h3>
+            <p class="text-slate-400 text-sm">Fade in from bottom.</p>
+          </div>
+
+          <!-- fadeInDown -->
+          <div class="group">
+            <div animateClick="fadeInDown()" class="bg-gradient-to-br from-rose-200 to-rose-400 aspect-square rounded-2xl cursor-pointer hover:scale-105 transition-transform duration-300 shadow-xl"></div>
+            <h3 class="text-white font-semibold mt-4 text-lg">Fade In Down</h3>
+            <p class="text-slate-400 text-sm">Fade in from top.</p>
+          </div>
+
+          <!-- bounceInDown -->
+          <div class="group">
+            <div animateClick="bounceInDown()" class="bg-gradient-to-br from-orange-200 to-orange-400 aspect-square rounded-2xl cursor-pointer hover:scale-105 transition-transform duration-300 shadow-xl"></div>
+            <h3 class="text-white font-semibold mt-4 text-lg">Bounce In Down</h3>
+            <p class="text-slate-400 text-sm">Bounce from top.</p>
+          </div>
+
+          <!-- zoomInRotate -->
+          <div class="group">
+            <div animateClick="zoomInRotate()" class="bg-gradient-to-br from-purple-300 to-purple-500 aspect-square rounded-2xl cursor-pointer hover:scale-105 transition-transform duration-300 shadow-xl"></div>
+            <h3 class="text-white font-semibold mt-4 text-lg">Zoom In Rotate</h3>
+            <p class="text-slate-400 text-sm">Zoom with rotation.</p>
+          </div>
         </div>
       </section>
 
       <!-- Exit Animations -->
       <section>
-        <h2 class="text-3xl font-bold text-white mb-8">Exit Animations</h2>
+        <h2 class="text-3xl font-bold text-white mb-8">Exit Animations <span class="text-purple-400 text-2xl">(17)</span></h2>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           <!-- fadeOut -->
           <div class="group">
@@ -170,12 +198,40 @@
             <h3 class="text-white font-semibold mt-4 text-lg">Hinge</h3>
             <p class="text-slate-400 text-sm">Fall like a hinge.</p>
           </div>
+
+          <!-- slideOutLeft -->
+          <div class="group">
+            <div animateClick="slideOutLeft()" class="bg-gradient-to-br from-blue-200 to-blue-400 aspect-square rounded-2xl cursor-pointer hover:scale-105 transition-transform duration-300 shadow-xl"></div>
+            <h3 class="text-white font-semibold mt-4 text-lg">Slide Out Left</h3>
+            <p class="text-slate-400 text-sm">Slide out to the left.</p>
+          </div>
+
+          <!-- slideOutRight -->
+          <div class="group">
+            <div animateClick="slideOutRight()" class="bg-gradient-to-br from-green-200 to-green-400 aspect-square rounded-2xl cursor-pointer hover:scale-105 transition-transform duration-300 shadow-xl"></div>
+            <h3 class="text-white font-semibold mt-4 text-lg">Slide Out Right</h3>
+            <p class="text-slate-400 text-sm">Slide out to the right.</p>
+          </div>
+
+          <!-- bounceOut -->
+          <div class="group">
+            <div animateClick="bounceOut()" class="bg-gradient-to-br from-purple-200 to-purple-400 aspect-square rounded-2xl cursor-pointer hover:scale-105 transition-transform duration-300 shadow-xl"></div>
+            <h3 class="text-white font-semibold mt-4 text-lg">Bounce Out</h3>
+            <p class="text-slate-400 text-sm">Bounce while exiting.</p>
+          </div>
+
+          <!-- rotateOut -->
+          <div class="group">
+            <div animateClick="rotateOut()" class="bg-gradient-to-br from-pink-200 to-pink-400 aspect-square rounded-2xl cursor-pointer hover:scale-105 transition-transform duration-300 shadow-xl"></div>
+            <h3 class="text-white font-semibold mt-4 text-lg">Rotate Out</h3>
+            <p class="text-slate-400 text-sm">Rotate while fading out.</p>
+          </div>
         </div>
       </section>
 
       <!-- Attention Animations -->
       <section>
-        <h2 class="text-3xl font-bold text-white mb-8">Attention Animations</h2>
+        <h2 class="text-3xl font-bold text-white mb-8">Attention Animations <span class="text-purple-400 text-2xl">(16)</span></h2>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           <!-- pulse -->
           <div class="group">
@@ -248,6 +304,79 @@
             <div animateClick="jackInTheBox()" class="bg-gradient-to-br from-fuchsia-200 to-fuchsia-400 aspect-square rounded-2xl cursor-pointer hover:scale-105 transition-transform duration-300 shadow-xl"></div>
             <h3 class="text-white font-semibold mt-4 text-lg">Jack In The Box</h3>
             <p class="text-slate-400 text-sm">Pop out like a jack-in-the-box.</p>
+          </div>
+
+          <!-- tada -->
+          <div class="group">
+            <div animateClick="tada()" class="bg-gradient-to-br from-yellow-300 to-yellow-500 aspect-square rounded-2xl cursor-pointer hover:scale-105 transition-transform duration-300 shadow-xl flex items-center justify-center">
+              <div class="text-6xl">🎉</div>
+            </div>
+            <h3 class="text-white font-semibold mt-4 text-lg">Tada</h3>
+            <p class="text-slate-400 text-sm">Celebration effect!</p>
+          </div>
+
+          <!-- bounce -->
+          <div class="group">
+            <div animateClick="bounce()" class="bg-gradient-to-br from-green-300 to-green-500 aspect-square rounded-2xl cursor-pointer hover:scale-105 transition-transform duration-300 shadow-xl"></div>
+            <h3 class="text-white font-semibold mt-4 text-lg">Bounce</h3>
+            <p class="text-slate-400 text-sm">Bounces in place.</p>
+          </div>
+
+          <!-- swing -->
+          <div class="group">
+            <div animateClick="swing()" class="bg-gradient-to-br from-blue-300 to-blue-500 aspect-square rounded-2xl cursor-pointer hover:scale-105 transition-transform duration-300 shadow-xl"></div>
+            <h3 class="text-white font-semibold mt-4 text-lg">Swing</h3>
+            <p class="text-slate-400 text-sm">Swings like a pendulum.</p>
+          </div>
+
+          <!-- headShake -->
+          <div class="group">
+            <div animateClick="headShake()" class="bg-gradient-to-br from-red-300 to-red-500 aspect-square rounded-2xl cursor-pointer hover:scale-105 transition-transform duration-300 shadow-xl"></div>
+            <h3 class="text-white font-semibold mt-4 text-lg">Head Shake</h3>
+            <p class="text-slate-400 text-sm">Shake "no" effect.</p>
+          </div>
+
+          <!-- wiggle -->
+          <div class="group">
+            <div animateClick="wiggle()" class="bg-gradient-to-br from-indigo-300 to-indigo-500 aspect-square rounded-2xl cursor-pointer hover:scale-105 transition-transform duration-300 shadow-xl"></div>
+            <h3 class="text-white font-semibold mt-4 text-lg">Wiggle</h3>
+            <p class="text-slate-400 text-sm">Wiggles side to side.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Special Animations -->
+      <section>
+        <h2 class="text-3xl font-bold text-white mb-8">Special Animations <span class="text-purple-400 text-2xl">(4)</span></h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <!-- spin -->
+          <div class="group">
+            <div animateClick="spin()" class="bg-gradient-to-br from-purple-400 to-pink-500 aspect-square rounded-2xl cursor-pointer hover:scale-105 transition-transform duration-300 shadow-xl flex items-center justify-center">
+              <div class="text-5xl">⭐</div>
+            </div>
+            <h3 class="text-white font-semibold mt-4 text-lg">Spin</h3>
+            <p class="text-slate-400 text-sm">360° rotation.</p>
+          </div>
+
+          <!-- flip -->
+          <div class="group">
+            <div animateClick="flip()" class="bg-gradient-to-br from-cyan-400 to-blue-500 aspect-square rounded-2xl cursor-pointer hover:scale-105 transition-transform duration-300 shadow-xl"></div>
+            <h3 class="text-white font-semibold mt-4 text-lg">Flip</h3>
+            <p class="text-slate-400 text-sm">Complete flip animation.</p>
+          </div>
+
+          <!-- glitch -->
+          <div class="group">
+            <div animateClick="glitch()" class="bg-gradient-to-br from-red-400 to-orange-500 aspect-square rounded-2xl cursor-pointer hover:scale-105 transition-transform duration-300 shadow-xl"></div>
+            <h3 class="text-white font-semibold mt-4 text-lg">Glitch</h3>
+            <p class="text-slate-400 text-sm">Glitch/distortion effect.</p>
+          </div>
+
+          <!-- morphing -->
+          <div class="group">
+            <div animateClick="morphing()" class="bg-gradient-to-br from-green-400 to-emerald-500 aspect-square rounded-2xl cursor-pointer hover:scale-105 transition-transform duration-300 shadow-xl"></div>
+            <h3 class="text-white font-semibold mt-4 text-lg">Morphing</h3>
+            <p class="text-slate-400 text-sm">Shape transformation.</p>
           </div>
         </div>
       </section>

@@ -117,35 +117,55 @@ Triggers animation when page loads:
 <div animateLoad="bounceIn({ startScale: 0, midScale: 1.5, endScale: 1 })">Custom bounce effect</div>
 ```
 
-**Available:** `fadeIn`, `zoomIn`, `slideInLeft`, `slideInRight`, `slideInUp`, `slideInDown`, `bounceIn`, `rotateIn`, `flipIn`, `rollIn`, `lightSpeedIn`, `backIn`
+**Available:** `fadeIn`, `fadeInUp`, `fadeInDown`, `fadeInLeft`, `fadeInRight`, `zoomIn`, `zoomInRotate`, `slideInLeft`, `slideInRight`, `slideInUp`, `slideInDown`, `slideInBounce`, `bounceIn`, `bounceInDown`, `bounceInUp`, `rotateIn`, `rotateInDownLeft`, `rotateInDownRight`, `flipIn`, `flipInX`, `rollIn`, `lightSpeedIn`, `backIn`
 
-#### Exit Animations (8)
+#### Exit Animations (17)
 
 ```html
 <!-- Example: Fade Out -->
 <div animateClick="fadeOut">Fades to transparent</div>
 <div animateClick="fadeOut({ opacity: 0.3 })">Fades to 30% opacity</div>
 
-<!-- Example: Zoom Out -->
-<div animateClick="zoomOut">Shrinks to nothing</div>
-<div animateClick="zoomOut({ scale: 0.5, opacity: 0.2 })">Custom scale and opacity</div>
+<!-- Example: Slide Out -->
+<div animateClick="slideOutLeft">Slides out to the left</div>
+<div animateClick="slideOutRight({ distance: '150%' })">Custom distance</div>
 ```
 
-**Available:** `fadeOut`, `zoomOut`, `fadeOutUp`, `fadeOutDown`, `flipOut`, `rollOut`, `backOut`, `hinge`
+**Available:** `fadeOut`, `fadeOutUp`, `fadeOutDown`, `fadeOutLeft`, `fadeOutRight`, `zoomOut`, `slideOutLeft`, `slideOutRight`, `slideOutUp`, `slideOutDown`, `flipOut`, `rollOut`, `rotateOut`, `bounceOut`, `lightSpeedOut`, `backOut`, `hinge`
 
-#### Attention Animations (9)
+#### Attention Animations (16)
 
 ```html
 <!-- Example: Pulse -->
 <div animateClick="pulse">Default pulse effect</div>
 <div animateClick="pulse({ scale1: 1.2, scale2: 1 })">Custom pulse intensity</div>
 
-<!-- Example: Shake -->
-<div animateClick="shake">Default shake</div>
-<div animateClick="shake({ distance: 25 })">Stronger shake</div>
+<!-- Example: Tada -->
+<div animateClick="tada">Celebration effect</div>
+<div animateClick="tada({ scale2: 1.2, rotate2: 5 })">Stronger tada</div>
+
+<!-- Example: Bounce -->
+<div animateClick="bounce">Bounces in place</div>
+<div animateClick="bounce({ y1: '-40px' })">Higher bounce</div>
 ```
 
-**Available:** `pulse`, `shake`, `wobble`, `jello`, `heartBeat`, `flash`, `swingIn`, `rubberBandIn`, `jackInTheBox`
+**Available:** `pulse`, `shake`, `shakeY`, `wobble`, `jello`, `heartBeat`, `flash`, `bounce`, `tada`, `swing`, `swingIn`, `headShake`, `rubberBand`, `rubberBandIn`, `wiggle`, `jackInTheBox`
+
+#### Special Animations (4)
+
+```html
+<!-- Example: Spin -->
+<div animateClick="spin">360° rotation</div>
+<div animateClick="spin({ degrees: 720 })">Double spin</div>
+
+<!-- Example: Glitch -->
+<div animateClick="glitch">Glitch effect</div>
+
+<!-- Example: Ken Burns -->
+<img animateLoad="kenBurns({ scale: 1.3 })" src="image.jpg" />
+```
+
+**Available:** `flip`, `spin`, `glitch`, `blur`, `kenBurns`, `morphing`
 
 ### Custom Animations
 
@@ -220,14 +240,17 @@ You can also use raw GSAP animation syntax:
 <!-- Card hover -->
 <div animateEnter="scale({ scale: 1.05 })" animateLeave="scale({ scale: 1 })">Hover card</div>
 
-<!-- Button hover -->
-<button animateEnter="pulse" animateLeave="fadeIn">Hover me</button>
+<!-- Button hover with tada -->
+<button animateEnter="tada">Hover me</button>
 
-<!-- Image zoom -->
-<img animateEnter="zoomIn({ scale: 1.1 })" animateLeave="zoomOut({ scale: 1 })" src="image.jpg" />
+<!-- Image zoom with Ken Burns effect -->
+<img animateEnter="kenBurns({ scale: 1.2 })" src="image.jpg" />
 
-<!-- Menu item -->
-<a animateEnter="slideInRight({ distance: '10px' })">Menu Item</a>
+<!-- Menu item wiggle -->
+<a animateEnter="wiggle">Menu Item</a>
+
+<!-- Glitch effect on hover -->
+<div animateEnter="glitch">Glitch on hover</div>
 ```
 
 ### Common UI Patterns
