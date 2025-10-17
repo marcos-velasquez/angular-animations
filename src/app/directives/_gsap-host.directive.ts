@@ -3,10 +3,6 @@ import { TriggerType, Timeline, TimelineFactory } from './models/_index';
 
 @_.Directive({ selector: '[gsap]' })
 export abstract class GsapHostDirective implements _.OnInit, _.OnDestroy {
-  public readonly duration = _.input<gsap.TweenValue>(2);
-  public readonly delay = _.input<gsap.TweenValue>(0);
-  public readonly stagger = _.input<gsap.NumberValue>(0);
-  public readonly ease = _.input<gsap.EaseString>('power1.out');
   public readonly trigger = _.input<TriggerType>('load');
 
   public readonly animateStart = _.output<GsapHostDirective>();
