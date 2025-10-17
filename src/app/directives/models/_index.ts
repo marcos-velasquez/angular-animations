@@ -3,3 +3,7 @@ export * from './timeline';
 export * from './timeline-factory';
 export * from './tween-vars';
 export * from './animation-parse';
+export * from './props-parser';
+export * from './preset-param-extractor';
+export * from './sequence-parser';
+export * from './preset-resolver';

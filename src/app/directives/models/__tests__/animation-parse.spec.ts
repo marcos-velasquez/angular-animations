@@ -9,7 +9,7 @@ describe('AnimationParser', () => {
       expect(result[0]).toEqual({
         method: 'from',
         vars: { opacity: 0 },
-        position: AnimationParser.DEFAULT_POSITION,
+        position: '>',
       });
     });
 
