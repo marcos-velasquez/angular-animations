@@ -104,6 +104,7 @@ Triggers animation when page loads:
 > **💡 Important:** Our animations are **highly flexible and parametrized**. Instead of having dozens of similar animations like `fadeInLeft`, `fadeInRight`, `fadeInUp`, `fadeInDown`, etc., we provide **one powerful animation** that you can customize with parameters. This gives you **infinite possibilities** while keeping the API clean and simple!
 
 **Example:** The `fadeIn` animation can replace all these:
+
 - `fadeIn` → Simple fade in
 - `fadeIn({ x: '-100%' })` → Replaces `fadeInLeft`
 - `fadeIn({ x: '100%' })` → Replaces `fadeInRight`
@@ -218,7 +219,7 @@ You can also use raw GSAP animation syntax:
 <div animateClick="opacity:0:>">Fade in (from opacity 0)</div>
 <div animateClick="to:opacity:0:>">Fade out (to opacity 0)</div>
 
-<!-- Multiple properties (separated by semicolon or comma) -->
+<!-- Multiple properties (separated by semicolon) -->
 <div animateClick="opacity:0:>;scale:0.5:<">Fade and scale simultaneously</div>
 <div animateClick="x:-100%:>;opacity:0:0">Slide from left with fade</div>
 
@@ -229,13 +230,53 @@ You can also use raw GSAP animation syntax:
 ### Syntax Breakdown
 
 ```
-[method]:[property]:[value]:[position]
+[method]:[property]:[value]:[position]@[props]
 ```
 
 - **method**: `from` (default) or `to`
 - **property**: Any GSAP animatable property (`opacity`, `scale`, `x`, `y`, `rotate`, etc.)
 - **value**: Target value
-- **position**: Timeline position (`>` = sequence, `<` = simultaneous, `0` = start, numeric = absolute time)
+- **position**: Timeline position (`>` = sequence, `<` = simultaneous, `0` = start, numeric = absolute time) - **Optional**
+- **props**: Custom GSAP properties like `duration`, `ease`, `yoyo`, etc. - **Optional**
+
+### Custom GSAP Properties
+
+You can add custom GSAP properties to **any animation** using the `@` syntax:
+
+#### With Presets
+
+```html
+<!-- Add duration to preset -->
+<div animateClick="fadeIn({ duration: 3 })">Slow fade in</div>
+
+<!-- Add yoyo effect -->
+<div animateClick="pulse({ duration: 1, yoyo: true, repeat: 2 })">Pulse 3 times</div>
+
+<!-- Custom easing -->
+<div animateClick="bounceIn({ ease: 'elastic.out', duration: 2 })">Elastic bounce</div>
+
+<!-- Multiple GSAP properties -->
+<div animateClick="shake({ duration: 0.5, delay: 0.2, ease: 'power2.inOut' })">Delayed shake</div>
+```
+
+#### With Raw Syntax
+
+```html
+<!-- Add duration without position -->
+<div animateClick="opacity:0@duration=2">Fade in over 2 seconds</div>
+
+<!-- Add multiple props -->
+<div animateClick="scale:0@duration=1.5,ease=bounce.out,yoyo=true">Bouncy scale</div>
+
+<!-- With explicit position and props -->
+<div animateClick="opacity:0:>@duration=3,delay=0.5">Fade with delay</div>
+
+<!-- Sequential animations with different props -->
+<div animateClick="scale:0@duration=1;to:scale:1.2:>@ease=elastic.out;to:scale:1:>">Complex bounce</div>
+
+<!-- Mix animations with and without props -->
+<div animateClick="opacity:0@duration=2;scale:1.5:>;rotate:360@ease=power2.inOut">Fade, scale, and rotate</div>
+```
 
 ## Real-World Examples
 
@@ -307,11 +348,6 @@ You can also use raw GSAP animation syntax:
 
 <!-- Notification toast -->
 <div animateLoad="slideInRight">New message received</div>
-
-<!-- Success checkmark -->
-<svg animateLoad="bounceIn({ startScale: 0, midScale: 1.2, endScale: 1 })">
-  <!-- checkmark icon -->
-</svg>
 
 <!-- Loading indicator -->
 <div animateLoad="pulse">Loading...</div>
