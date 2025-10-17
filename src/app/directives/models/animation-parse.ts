@@ -1,19 +1,23 @@
-import { PresetResolver, ResolvedPreset } from './preset-resolver';
-import { SequenceParser, ParsedAnimation } from './sequence-parser';
+import { SequenceResolver } from './_resolvers/sequence-resolver';
+import { VarsParser } from './_parsers/vars-parser';
+import { SequenceParser, ParsedAnimation } from './_parsers/sequence-parser';
+import { PropsParser } from './_parsers/props-parser';
 
 export class AnimationParser {
-  private static readonly DELIMITERS = /;/;
+  private readonly DELIMITERS = /;/;
   private readonly sequences: string[];
-  private customVars: gsap.TweenVars = {};
+  private readonly vars: gsap.TweenVars;
 
   constructor(sequence: string) {
-    const { expandedSequence, customVars }: ResolvedPreset = PresetResolver.resolve(sequence.trim());
-    this.customVars = customVars;
-    this.sequences = expandedSequence.split(AnimationParser.DELIMITERS);
+    sequence = sequence.trim();
+    this.sequences = new SequenceResolver(sequence).resolve().split(this.DELIMITERS);
+    this.vars = new VarsParser(sequence).parse();
   }
 
   public parse(): ParsedAnimation[] {
-    const animations = this.sequences.map((seq) => SequenceParser.parse(seq)).filter((anim) => anim);
-    return animations.map((anim) => ({ ...anim, vars: { ...anim.vars, ...this.customVars } }));
+    return this.sequences
+      .map((seq) => new SequenceParser(new PropsParser()).parse(seq))
+      .filter((anim) => anim)
+      .map((anim) => ({ ...anim, vars: { ...anim.vars, ...this.vars } }));
   }
 }
