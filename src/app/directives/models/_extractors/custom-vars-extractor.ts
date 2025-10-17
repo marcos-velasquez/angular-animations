@@ -1,7 +1,7 @@
 import { Presets } from '../../_presets';
-import { PresetParamExtractor } from '../_resolvers/preset-param-extractor';
+import { PresetParamExtractor } from './preset-param-extractor';
 
-export class VarsParser {
+export class CustomVarsExtractor {
   private readonly PRESET_FUNCTION_REGEX = /^(\w+)\s*\((.*)\)$/;
   private readonly paramExtractor: PresetParamExtractor;
 
@@ -9,7 +9,7 @@ export class VarsParser {
     this.paramExtractor = new PresetParamExtractor();
   }
 
-  public parse(): gsap.TweenVars {
+  public extract(): gsap.TweenVars {
     const match = this.sequence.match(this.PRESET_FUNCTION_REGEX);
 
     if (match && Presets[match[1]]) {

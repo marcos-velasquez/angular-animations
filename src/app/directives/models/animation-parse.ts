@@ -1,23 +1,24 @@
 import { SequenceResolver } from './_resolvers/sequence-resolver';
-import { VarsParser } from './_parsers/vars-parser';
+import { CustomVarsExtractor } from './_extractors/custom-vars-extractor';
 import { SequenceParser, ParsedAnimation } from './_parsers/sequence-parser';
 import { PropsParser } from './_parsers/props-parser';
 
 export class AnimationParser {
-  private readonly DELIMITERS = /;/;
+  private static readonly DELIMITERS = /;/;
   private readonly sequences: string[];
-  private readonly vars: gsap.TweenVars;
+  private readonly customVars: gsap.TweenVars;
 
   constructor(sequence: string) {
     sequence = sequence.trim();
-    this.sequences = new SequenceResolver(sequence).resolve().split(this.DELIMITERS);
-    this.vars = new VarsParser(sequence).parse();
+    this.sequences = new SequenceResolver(sequence).resolve().split(AnimationParser.DELIMITERS);
+    this.customVars = new CustomVarsExtractor(sequence).extract();
   }
 
   public parse(): ParsedAnimation[] {
+    const sequenceParser = new SequenceParser(new PropsParser());
     return this.sequences
-      .map((seq) => new SequenceParser(new PropsParser()).parse(seq))
+      .map((seq) => sequenceParser.parse(seq))
       .filter((anim) => anim)
-      .map((anim) => ({ ...anim, vars: { ...anim.vars, ...this.vars } }));
+      .map((anim) => ({ ...anim, vars: { ...anim.vars, ...this.customVars } }));
   }
 }

@@ -1,5 +1,5 @@
 import { Presets } from '../../_presets';
-import { PresetParamExtractor } from './preset-param-extractor';
+import { PresetParamExtractor } from '../_extractors/preset-param-extractor';
 
 export class SequenceResolver {
   private readonly PRESET_FUNCTION_REGEX = /^(\w+)\s*\((.*)\)$/;
