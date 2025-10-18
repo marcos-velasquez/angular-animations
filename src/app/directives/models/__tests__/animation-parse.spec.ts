@@ -1,4 +1,4 @@
-import { AnimationParser } from '../animation-parse';
+import { AnimationParser } from '../animation-parser';
 
 describe('AnimationParser', () => {
   describe('parse() method', () => {

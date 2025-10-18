@@ -6,6 +6,6 @@ export class ObjectNormalizer {
 
   public normalize(): string {
     const params = new ObjectParser(this.input).parse();
-    return new ObjectSerializer(params).toParamsString();
+    return new ObjectSerializer(params).serialize();
   }
 }

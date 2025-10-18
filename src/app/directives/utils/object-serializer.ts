@@ -1,7 +1,7 @@
 export class ObjectSerializer {
   constructor(private readonly params: Record<string, unknown>) {}
 
-  public toParamsString(): string {
+  public serialize(): string {
     if (Object.keys(this.params).length === 0) return '';
 
     const entries = Object.entries(this.params)
