@@ -1,28 +1,22 @@
-import { Presets } from '../../_presets';
+import { Preset } from '../../_presets';
 
 export type ExtractedParams = { presetParams: Record<string, unknown>; customVars: gsap.TweenVars };
 
 export class PresetParamExtractor {
-  public extract(presetName: string, params: Record<string, unknown>): ExtractedParams {
-    const presetFunc = Presets[presetName];
-    if (!presetFunc) return { presetParams: params, customVars: {} };
+  public extract(preset: Preset, params: Record<string, unknown>): ExtractedParams {
+    if (!preset) return { presetParams: params, customVars: {} };
 
-    const funcStr = presetFunc.toString();
-    const paramMatch = funcStr.match(/\{([^}]+)\}/);
+    const paramMatch = preset.toString().match(/\{([^}]+)\}/);
     if (!paramMatch) return { presetParams: params, customVars: {} };
 
     const presetParamNames = paramMatch[1].split(',').map((p) => p.trim().split('=')[0].trim());
-    const presetParams: Record<string, unknown> = {};
-    const customVars: gsap.TweenVars = {};
 
-    Object.keys(params).forEach((key) => {
-      if (presetParamNames.includes(key)) {
-        presetParams[key] = params[key];
-      } else {
-        customVars[key] = params[key];
-      }
-    });
-
-    return { presetParams, customVars };
+    return Object.keys(params).reduce(
+      (acc, key) => {
+        acc[presetParamNames.includes(key) ? 'presetParams' : 'customVars'][key] = params[key];
+        return acc;
+      },
+      { presetParams: {}, customVars: {} } as ExtractedParams
+    );
   }
 }

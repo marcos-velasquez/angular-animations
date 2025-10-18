@@ -1,32 +1,21 @@
-import { Presets } from '../../_presets';
 import { PresetParamExtractor } from './preset-param-extractor';
+import { PresetMatcher } from '../_matchers/preset-matcher';
 import { ObjectParser } from '../_parsers/object-parser';
 
 export class CustomVarsExtractor {
-  private static readonly PRESET_FUNCTION_REGEX = /^(\w+)\s*\((.*)\)$/;
-  private static readonly paramExtractor = new PresetParamExtractor();
-  private static readonly objectParser = new ObjectParser();
+  private readonly matcher: PresetMatcher;
 
-  constructor(private readonly sequence: string) {}
+  constructor(sequence: string) {
+    this.matcher = new PresetMatcher(sequence);
+  }
 
   public extract(): gsap.TweenVars {
-    const match = this.sequence.match(CustomVarsExtractor.PRESET_FUNCTION_REGEX);
+    if (!this.matcher.isPreset() || !this.matcher.isFunction()) return {};
 
-    if (match && Presets[match[1]]) {
-      const presetName = match[1];
-      const argsString = match[2].trim();
+    const { argsString, hasArgs } = this.matcher.toPresetMatch();
+    if (!hasArgs) return {};
 
-      if (argsString) {
-        try {
-          const params = CustomVarsExtractor.objectParser.parse(argsString);
-          const { customVars } = CustomVarsExtractor.paramExtractor.extract(presetName, params);
-          return customVars;
-        } catch {
-          return {};
-        }
-      }
-    }
-
-    return {};
+    const params = new ObjectParser().parse(argsString);
+    return new PresetParamExtractor().extract(this.matcher.preset, params).customVars;
   }
 }

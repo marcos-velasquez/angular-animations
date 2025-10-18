@@ -11,11 +11,7 @@ export class PresetResolver {
   }
 
   public isPreset(): boolean {
-    if (this.presetMatcher.isFunction()) {
-      return !!Presets[this.presetMatcher.presetName];
-    } else {
-      return !!Presets[this.sequence];
-    }
+    return this.presetMatcher.isPreset();
   }
 
   public resolve(): string {

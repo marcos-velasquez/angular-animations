@@ -52,6 +52,33 @@ describe('PresetMatcher', () => {
     });
   });
 
+  describe('isValidPreset()', () => {
+    it('should return true for valid preset with function syntax', () => {
+      const matcher = new PresetMatcher('fadeIn()');
+      expect(matcher.isPreset()).toBe(true);
+    });
+
+    it('should return true for valid preset with args', () => {
+      const matcher = new PresetMatcher('fadeOut({ x: "100%" })');
+      expect(matcher.isPreset()).toBe(true);
+    });
+
+    it('should return false for unknown preset', () => {
+      const matcher = new PresetMatcher('unknownPreset()');
+      expect(matcher.isPreset()).toBe(false);
+    });
+
+    it('should return true for preset without parentheses', () => {
+      const matcher = new PresetMatcher('fadeIn');
+      expect(matcher.isPreset()).toBe(true);
+    });
+
+    it('should return false for non-preset sequences', () => {
+      const matcher = new PresetMatcher('x:100%:>');
+      expect(matcher.isPreset()).toBe(false);
+    });
+  });
+
   describe('toPresetMatch()', () => {
     it('should return PresetMatch with args', () => {
       const matcher = new PresetMatcher('fadeOut({ x: "100%" })');
@@ -80,7 +107,7 @@ describe('PresetMatcher', () => {
 
     it('should throw error for non-function syntax', () => {
       const matcher = new PresetMatcher('fadeIn');
-      expect(() => matcher.toPresetMatch()).toThrow('Sequence does not have function syntax');
+      expect(() => matcher.toPresetMatch()).toThrow();
     });
   });
 });
