@@ -5,3 +5,6 @@ export * from './tween-vars';
 export * from './animation-parse';
 export * from './_parsers/_index';
 export * from './_resolvers/_index';
+export * from './_extractors/_index';
+export * from './_expanders/_index';
+export * from './_appenders/_index';

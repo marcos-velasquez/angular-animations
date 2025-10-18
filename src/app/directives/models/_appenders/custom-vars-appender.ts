@@ -6,6 +6,9 @@ export class CustomVarsAppender {
       .map(([key, value]) => `${key}=${typeof value === 'string' ? value : JSON.stringify(value)}`)
       .join(',');
 
-    return sequence.split(';').map((seq) => `${seq}@${customVarsString}`).join(';');
+    return sequence
+      .split(';')
+      .map((seq) => `${seq}@${customVarsString}`)
+      .join(';');
   }
 }

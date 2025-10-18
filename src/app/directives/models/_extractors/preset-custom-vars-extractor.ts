@@ -2,12 +2,8 @@ import { assert } from '../../utils/assert';
 import { PresetMatcher } from '../_matchers/preset-matcher';
 import { ObjectParser } from '../_parsers/object-parser';
 
-export class CustomVarsExtractor {
-  private readonly presetMatcher: PresetMatcher;
-
-  constructor(private readonly sequence: string) {
-    this.presetMatcher = new PresetMatcher(sequence);
-  }
+export class PresetCustomVarsExtractor {
+  constructor(private readonly presetMatcher: PresetMatcher) {}
 
   public extract(): gsap.TweenVars {
     if (!this.presetMatcher.isFunction()) return {};

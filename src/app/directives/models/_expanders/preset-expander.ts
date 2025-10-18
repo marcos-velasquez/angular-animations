@@ -3,16 +3,12 @@ import { PresetMatcher } from '../_matchers/preset-matcher';
 import { PresetArgumentsParser } from '../_parsers/preset-arguments-parser';
 
 export class PresetExpander {
-  private readonly presetMatcher: PresetMatcher;
-
-  constructor(private readonly sequence: string) {
-    this.presetMatcher = new PresetMatcher(sequence);
-  }
+  constructor(private readonly presetMatcher: PresetMatcher) {}
 
   public expand(): string {
-    if (!this.presetMatcher.isFunction()) return Presets[this.sequence]();
+    if (!this.presetMatcher.isFunction()) return Presets[this.presetMatcher.sequence]();
 
     const { presetName, argsString } = this.presetMatcher.toPresetMatch();
-    return Presets.eval(presetName, new PresetArgumentsParser(argsString).parse());
+    return Presets.eval(presetName, new PresetArgumentsParser().parse(argsString));
   }
 }

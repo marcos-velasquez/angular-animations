@@ -8,13 +8,12 @@ export class PresetMatcher {
 
   private readonly match: RegExpMatchArray | null;
 
-  constructor(private readonly sequence: string) {
-    this.sequence = sequence;
+  constructor(public readonly sequence: string) {
     this.match = sequence.match(PresetMatcher.PRESET_FUNCTION_REGEX);
   }
 
   public get presetName(): string {
-    return this.match[1];
+    return this.isFunction() ? this.match[1] : this.sequence;
   }
 
   public get argsString(): string {
@@ -30,11 +29,7 @@ export class PresetMatcher {
   }
 
   public isPreset(): boolean {
-    if (this.isFunction()) {
-      return !!Presets[this.presetName];
-    } else {
-      return !!Presets[this.sequence];
-    }
+    return !!Presets[this.presetName];
   }
 
   public toPresetMatch(): PresetMatch {
