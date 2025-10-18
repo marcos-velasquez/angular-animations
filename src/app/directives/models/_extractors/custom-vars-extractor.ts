@@ -16,6 +16,6 @@ export class CustomVarsExtractor {
     if (!hasArgs) return {};
 
     const params = new ObjectParser().parse(argsString);
-    return new PresetParamExtractor().extract(this.matcher.preset, params).customVars;
+    return new PresetParamExtractor(this.matcher.preset, params).extract().customVars;
   }
 }

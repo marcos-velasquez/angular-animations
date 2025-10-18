@@ -5,11 +5,10 @@ export type PresetMatch = { presetName: string; argsString: string; hasArgs: boo
 
 export class PresetMatcher {
   private static readonly PRESET_FUNCTION_REGEX = /^(\w+)\s*\((.*)\)$/;
-  private readonly match: RegExpMatchArray | null;
-  private readonly sequence: string;
 
-  constructor(sequence: string) {
-    this.sequence = sequence;
+  private readonly match: RegExpMatchArray | null;
+
+  constructor(private readonly sequence: string) {
     this.match = sequence.match(PresetMatcher.PRESET_FUNCTION_REGEX);
   }
 

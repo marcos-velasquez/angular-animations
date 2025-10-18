@@ -21,7 +21,7 @@ export class PresetResolver {
 
     const { presetName, argsString, hasArgs } = this.presetMatcher.toPresetMatch();
     if (hasArgs) {
-      return Presets.eval(presetName, new PresetArgumentsParser().parse(argsString));
+      return Presets.eval(presetName, new PresetArgumentsParser(argsString).parse());
     } else {
       return Presets.eval(presetName);
     }
