@@ -53,6 +53,7 @@ export class Trigger {
   }
 
   public static empty(): TriggerRef {
-    return { connect: () => '/* no-op */', disconnect: () => '/* no-op */' };
+    // eslint-disable-next-line @typescript-eslint/no-empty-function
+    return { connect: () => {}, disconnect: () => {} };
   }
 }

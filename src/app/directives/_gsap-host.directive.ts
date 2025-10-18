@@ -1,17 +1,17 @@
-import * as _ from '@angular/core';
+import * as ng from '@angular/core';
 import { TriggerType, Timeline, TimelineFactory } from './models/_index';
 
-@_.Directive({ selector: '[gsap]' })
-export abstract class GsapHostDirective implements _.OnInit, _.OnDestroy {
-  public readonly trigger = _.input<TriggerType>('load');
+@ng.Directive({ selector: '[gsap]' })
+export abstract class GsapHostDirective implements ng.OnInit, ng.OnDestroy {
+  public readonly trigger = ng.input<TriggerType>('load');
 
-  public readonly animateStart = _.output<GsapHostDirective>();
-  public readonly animateComplete = _.output<GsapHostDirective>();
+  public readonly animateStart = ng.output<GsapHostDirective>();
+  public readonly animateComplete = ng.output<GsapHostDirective>();
 
-  public readonly timeline = _.signal<Timeline>(TimelineFactory.empty());
+  public readonly timeline = ng.signal<Timeline>(TimelineFactory.empty());
 
-  constructor(public readonly el: _.ElementRef<HTMLElement>) {
-    _.effect(() => {
+  constructor(public readonly elementRef: ng.ElementRef<HTMLElement>) {
+    ng.effect(() => {
       this.timeline().timeline.eventCallback('onStart', () => this.animateStart.emit(this));
       this.timeline().timeline.eventCallback('onComplete', () => this.animateComplete.emit(this));
     });
@@ -24,8 +24,8 @@ export abstract class GsapHostDirective implements _.OnInit, _.OnDestroy {
 
   public abstract register(): void;
 
-  public get elementRef(): HTMLElement {
-    return this.el.nativeElement;
+  public get element(): HTMLElement {
+    return this.elementRef.nativeElement;
   }
 
   public play(): void {
