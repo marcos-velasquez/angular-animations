@@ -1,15 +1,14 @@
 import { PropsParser } from '../../utils/props-parser';
+import { RegexPatterns } from '../../utils/regex-patterns';
 
 export type Method = 'to' | 'from';
 export type ParsedAnimation = { method: Method; vars: gsap.TweenVars; position: gsap.Position };
 
 export class SequenceParser {
-  private readonly ANIMATION_REGEX = /^(?:(to|from):)?([^:]+):([^:@;]+)(?::([^@;]+))?(?:@([^;]+))?$/;
-
   constructor(private readonly sequence: string) {}
 
   public parse(): ParsedAnimation | null {
-    const match = this.sequence.trim().match(this.ANIMATION_REGEX);
+    const match = this.sequence.trim().match(RegexPatterns.ANIMATION_SEQUENCE);
     if (!match) return null;
 
     const [, method = 'from', prop, value, position = '>', propsString] = match;

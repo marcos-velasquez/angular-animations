@@ -5,3 +5,5 @@ export * from './object-parser';
 export * from './object-serializer';
 export * from './object-normalizer';
 export * from './props-parser';
+export * from './type-converter';
+export * from './regex-patterns';

@@ -1,3 +1,5 @@
+import { TypeConverter } from './type-converter';
+
 export class ObjectParser {
   constructor(private readonly input: string) {}
 
@@ -86,14 +88,8 @@ export class ObjectParser {
 
   private parseValue(value: string): unknown {
     const trimmed = value.trim();
-    if (trimmed === 'true') return true;
-    if (trimmed === 'false') return false;
-    if (trimmed === 'null') return null;
-    if (trimmed === 'undefined') return undefined;
-    if ((trimmed.startsWith('"') && trimmed.endsWith('"')) || (trimmed.startsWith("'") && trimmed.endsWith("'"))) {
-      return trimmed.slice(1, -1);
-    }
-    if (!isNaN(Number(trimmed)) && trimmed !== '') return Number(trimmed);
+
+    // Handle arrays
     if (trimmed.startsWith('[') && trimmed.endsWith(']')) {
       try {
         return JSON.parse(trimmed);
@@ -101,7 +97,18 @@ export class ObjectParser {
         return trimmed;
       }
     }
-    if (trimmed.startsWith('{') && trimmed.endsWith('}')) return new ObjectParser(trimmed).parse();
-    return trimmed;
+
+    // Handle nested objects
+    if (trimmed.startsWith('{') && trimmed.endsWith('}')) {
+      return new ObjectParser(trimmed).parse();
+    }
+
+    // Handle quoted strings
+    if ((trimmed.startsWith('"') && trimmed.endsWith('"')) || (trimmed.startsWith("'") && trimmed.endsWith("'"))) {
+      return trimmed.slice(1, -1);
+    }
+
+    // Use TypeConverter for basic types (boolean, null, undefined, number, string)
+    return TypeConverter.convert(trimmed);
   }
 }

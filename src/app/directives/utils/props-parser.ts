@@ -1,3 +1,5 @@
+import { TypeConverter } from './type-converter';
+
 export class PropsParser {
   constructor(private readonly propsString: string) {}
 
@@ -5,14 +7,7 @@ export class PropsParser {
     return this.propsString.split(',').reduce((props, pair) => {
       const [key, value] = pair.split('=').map((s) => s.trim());
       if (key && value !== undefined) {
-        props[key] =
-          value === 'true'
-            ? true
-            : value === 'false'
-            ? false
-            : !isNaN(Number(value))
-            ? Number(value)
-            : value.replace(/^['"]|['"]$/g, '');
+        props[key] = TypeConverter.convert(value);
       }
       return props;
     }, {} as Record<string, unknown>);

@@ -1,14 +1,13 @@
-import { assert } from '../utils/_index';
+import { assert, RegexPatterns } from '../utils/_index';
 import { SequenceParser, ParsedAnimation } from './_parsers/sequence-parser';
 import { PresetResolver } from './_index';
 
 export class AnimationParser {
-  private static readonly DELIMITERS = /;/;
   private readonly sequences: string[];
 
   constructor(sequence: string) {
     assert(!!sequence?.trim(), 'Sequence is required');
-    this.sequences = new PresetResolver(sequence.trim()).resolve().split(AnimationParser.DELIMITERS);
+    this.sequences = new PresetResolver(sequence.trim()).resolve().split(RegexPatterns.SEQUENCE_DELIMITER);
   }
 
   public parse(): ParsedAnimation[] {

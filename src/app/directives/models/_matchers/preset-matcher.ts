@@ -1,15 +1,13 @@
-import { assert } from '../../utils/_index';
+import { assert, RegexPatterns } from '../../utils/_index';
 import { Presets, Preset } from '../../_presets';
 
 export type PresetMatch = { presetName: string; argsString: string; hasArgs: boolean };
 
 export class PresetMatcher {
-  private static readonly PRESET_FUNCTION_REGEX = /^(\w+)\s*\((.*)\)$/;
-
   private readonly match: RegExpMatchArray | null;
 
   constructor(public readonly sequence: string) {
-    this.match = sequence.match(PresetMatcher.PRESET_FUNCTION_REGEX);
+    this.match = sequence.match(RegexPatterns.PRESET_FUNCTION);
   }
 
   public get presetName(): string {
@@ -36,5 +34,12 @@ export class PresetMatcher {
     assert(this.isFunction(), 'Sequence does not have function syntax');
 
     return { presetName: this.presetName, argsString: this.argsString, hasArgs: !!this.argsString.trim() };
+  }
+
+  public getParamNames(): string[] {
+    const paramMatch = this.preset.toString().match(RegexPatterns.DESTRUCTURED_PARAMS);
+    assert(!!paramMatch, 'Preset must have destructured parameters');
+
+    return paramMatch[1].split(',').map((p) => p.trim().split('=')[0].trim());
   }
 }
