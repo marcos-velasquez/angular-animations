@@ -1,7 +1,9 @@
 export class ObjectParser {
-  public parse(input: string): Record<string, unknown> {
+  constructor(private readonly input: string) {}
+
+  public parse(): Record<string, unknown> {
     try {
-      let content = input.trim();
+      let content = this.input.trim();
       if (content.startsWith('{') && content.endsWith('}')) {
         content = content.slice(1, -1).trim();
       }
@@ -99,7 +101,7 @@ export class ObjectParser {
         return trimmed;
       }
     }
-    if (trimmed.startsWith('{') && trimmed.endsWith('}')) return this.parse(trimmed);
+    if (trimmed.startsWith('{') && trimmed.endsWith('}')) return new ObjectParser(trimmed).parse();
     return trimmed;
   }
 }

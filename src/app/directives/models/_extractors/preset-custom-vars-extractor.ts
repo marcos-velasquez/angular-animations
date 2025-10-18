@@ -16,7 +16,7 @@ export class PresetCustomVarsExtractor {
 
     const presetParamNames = paramMatch[1].split(',').map((p) => p.trim().split('=')[0].trim());
 
-    const params = new ObjectParser().parse(argsString);
+    const params = new ObjectParser(argsString).parse();
     return Object.keys(params).reduce((acc, key) => {
       if (!presetParamNames.includes(key)) acc[key] = params[key];
       return acc;

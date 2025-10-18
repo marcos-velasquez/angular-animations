@@ -1,8 +1,10 @@
 export class ObjectSerializer {
-  public toParamsString(params: Record<string, unknown>): string {
-    if (Object.keys(params).length === 0) return '';
+  constructor(private readonly params: Record<string, unknown>) {}
 
-    const entries = Object.entries(params)
+  public toParamsString(): string {
+    if (Object.keys(this.params).length === 0) return '';
+
+    const entries = Object.entries(this.params)
       .map(([key, value]) => `${key}: ${JSON.stringify(value)}`)
       .join(', ');
 

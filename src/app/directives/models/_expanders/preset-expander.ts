@@ -10,7 +10,7 @@ export class PresetExpander {
     if (!this.presetMatcher.isFunction()) return Presets[this.presetMatcher.sequence]();
 
     const { presetName, argsString } = this.presetMatcher.toPresetMatch();
-    const params = new ObjectParser().parse(argsString);
-    return Presets.eval(presetName, new ObjectSerializer().toParamsString(params));
+    const params = new ObjectParser(argsString).parse();
+    return Presets.eval(presetName, new ObjectSerializer(params).toParamsString());
   }
 }
