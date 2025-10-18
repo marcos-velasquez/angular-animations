@@ -1,11 +1,15 @@
 import { PresetResolver } from './preset-resolver';
 
 export class SequenceResolver {
-  constructor(private readonly sequence: string) {}
+  private readonly resolver: PresetResolver;
+
+  constructor(private readonly sequence: string) {
+    this.resolver = new PresetResolver(this.sequence);
+  }
 
   public resolve(): string {
-    if (PresetResolver.isPreset(this.sequence)) {
-      return new PresetResolver(this.sequence).resolve();
+    if (this.resolver.isPreset()) {
+      return this.resolver.resolve();
     } else {
       return this.sequence;
     }

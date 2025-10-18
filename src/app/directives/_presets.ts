@@ -1,5 +1,5 @@
 export class Presets {
-  public static eval(presetName: string, argsString: string): string {
+  public static eval(presetName: string, argsString = ''): string {
     return new Function('Presets', `return Presets.${presetName}(${argsString})`)(Presets);
   }
 

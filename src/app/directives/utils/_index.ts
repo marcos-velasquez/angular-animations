@@ -3,3 +3,4 @@ export * from './yes';
 export * from './no';
 export * from './sleep';
 export * from './assert';
+export * from './object-serializer';

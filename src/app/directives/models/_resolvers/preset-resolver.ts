@@ -1,47 +1,32 @@
+import { assert } from '../../utils/_index';
 import { Presets } from '../../_presets';
-import { ObjectParser } from '../_parsers/object-parser';
+import { PresetMatcher, PresetArgumentsParser } from '../_matchers/_index';
 
 export class PresetResolver {
-  private static readonly PRESET_FUNCTION_REGEX = /^(\w+)\s*\((.*)\)$/;
-  private static readonly objectParser = new ObjectParser();
+  private readonly presetMatcher: PresetMatcher;
 
-  constructor(private readonly sequence: string) {}
+  constructor(private readonly sequence: string) {
+    this.presetMatcher = new PresetMatcher(sequence);
+  }
 
-  public static isPreset(sequence: string): boolean {
-    const match = sequence.match(PresetResolver.PRESET_FUNCTION_REGEX);
-    if (match && Presets[match[1]]) return true;
-    if (Presets[sequence]) return true;
-    return false;
+  public isPreset(): boolean {
+    if (this.presetMatcher.isFunction()) {
+      return !!Presets[this.presetMatcher.presetName];
+    } else {
+      return !!Presets[this.sequence];
+    }
   }
 
   public resolve(): string {
-    const match = this.sequence.match(PresetResolver.PRESET_FUNCTION_REGEX);
+    assert(this.isPreset(), 'Sequence is not a preset');
 
-    // Preset con función: fadeOut({ x: "100%" })
-    if (match && Presets[match[1]]) {
-      const [, presetName, argsString] = match;
-      if (!argsString.trim()) return Presets.eval(presetName, argsString);
+    if (!this.presetMatcher.isFunction()) return Presets[this.sequence]();
 
-      try {
-        const params = PresetResolver.objectParser.parse(argsString);
-        const paramsString =
-          Object.keys(params).length > 0
-            ? `{ ${Object.entries(params)
-                .map(([k, v]) => `${k}: ${JSON.stringify(v)}`)
-                .join(', ')} }`
-            : '';
-        return Presets.eval(presetName, paramsString);
-      } catch {
-        return Presets.eval(presetName, argsString);
-      }
+    const { presetName, argsString, hasArgs } = this.presetMatcher.toPresetMatch();
+    if (hasArgs) {
+      return Presets.eval(presetName, new PresetArgumentsParser().parse(argsString));
+    } else {
+      return Presets.eval(presetName);
     }
-
-    // Preset sin paréntesis: fadeOut
-    if (Presets[this.sequence]) {
-      return Presets[this.sequence]();
-    }
-
-    // Fallback (no debería llegar aquí si se usa isPreset correctamente)
-    return this.sequence;
   }
 }
