@@ -8,13 +8,11 @@ export class PresetResolver {
   private readonly presetMatcher: PresetMatcher;
   private readonly presetExpander: PresetExpander;
   private readonly presetCustomVarsExtractor: PresetCustomVarsExtractor;
-  private readonly customVarsAppender: CustomVarsAppender;
 
   constructor(sequence: string) {
     this.presetMatcher = new PresetMatcher(sequence);
     this.presetExpander = new PresetExpander(this.presetMatcher);
     this.presetCustomVarsExtractor = new PresetCustomVarsExtractor(this.presetMatcher);
-    this.customVarsAppender = new CustomVarsAppender();
   }
 
   public isPreset(): boolean {
@@ -26,6 +24,6 @@ export class PresetResolver {
 
     const sequence = this.presetExpander.expand();
     const customVars = this.presetCustomVarsExtractor.extract();
-    return this.customVarsAppender.append(sequence, customVars);
+    return new CustomVarsAppender(sequence).append(customVars);
   }
 }
