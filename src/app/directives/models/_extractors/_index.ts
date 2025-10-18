@@ -1,1 +1,1 @@
-export * from './preset-param-extractor';
+export * from './custom-vars-extractor';

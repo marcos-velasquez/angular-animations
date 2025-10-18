@@ -9,6 +9,7 @@ export class PresetMatcher {
   private readonly match: RegExpMatchArray | null;
 
   constructor(private readonly sequence: string) {
+    this.sequence = sequence;
     this.match = sequence.match(PresetMatcher.PRESET_FUNCTION_REGEX);
   }
 

@@ -8,10 +8,6 @@ export class SequenceResolver {
   }
 
   public resolve(): string {
-    if (this.presetResolver.isPreset()) {
-      return this.presetResolver.resolve();
-    } else {
-      return this.sequence;
-    }
+    return this.presetResolver.isPreset() ? this.presetResolver.resolve() : this.sequence;
   }
 }

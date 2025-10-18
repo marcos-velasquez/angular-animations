@@ -53,5 +53,72 @@ describe('PresetResolver', () => {
       expect(result).toContain('x:100%');
       expect(result).toContain('y:-50%');
     });
+
+    it('should append customVars with @ to each sequence', () => {
+      const resolver = new PresetResolver('fadeIn({ duration: 2 })');
+      const result = resolver.resolve();
+
+      expect(result).toContain('@duration=2');
+      expect(result.split(';').every((seq) => seq.includes('@duration=2'))).toBe(true);
+    });
+
+    it('should append multiple customVars with @', () => {
+      const resolver = new PresetResolver('fadeIn({ duration: 2, ease: "power2.out", yoyo: true })');
+      const result = resolver.resolve();
+
+      expect(result).toContain('@duration=2');
+      expect(result).toContain('ease=power2.out');
+      expect(result).toContain('yoyo=true');
+    });
+
+    it('should mix preset params and customVars correctly', () => {
+      const resolver = new PresetResolver('fadeOut({ x: "100%", duration: 2, ease: "bounce.out" })');
+      const result = resolver.resolve();
+
+      expect(result).toContain('x:100%');
+      expect(result).toContain('@duration=2');
+      expect(result).toContain('ease=bounce.out');
+    });
+
+    it('should not append @ if no customVars', () => {
+      const resolver = new PresetResolver('fadeIn({ x: "-100%" })');
+      const result = resolver.resolve();
+
+      expect(result).not.toContain('@');
+    });
+
+    it('should handle preset without args and no customVars', () => {
+      const resolver = new PresetResolver('fadeIn()');
+      const result = resolver.resolve();
+
+      expect(result).not.toContain('@');
+    });
+
+    it('should append customVars to all sequences in multi-sequence preset', () => {
+      const resolver = new PresetResolver('fadeIn({ duration: 3, delay: 0.5 });fadeOut({ duration: 2, delay: 0.5 })');
+      const result = resolver.resolve();
+      const sequences = result.split(';');
+
+      sequences.forEach((seq) => {
+        expect(seq).toContain('@duration=3');
+        expect(seq).toContain('delay=0.5');
+      });
+    });
+
+    it('should handle numeric customVars correctly', () => {
+      const resolver = new PresetResolver('fadeIn({ duration: 2.5, repeat: 3 })');
+      const result = resolver.resolve();
+
+      expect(result).toContain('duration=2.5');
+      expect(result).toContain('repeat=3');
+    });
+
+    it('should handle boolean customVars correctly', () => {
+      const resolver = new PresetResolver('fadeIn({ yoyo: true, paused: false })');
+      const result = resolver.resolve();
+
+      expect(result).toContain('yoyo=true');
+      expect(result).toContain('paused=false');
+    });
   });
 });

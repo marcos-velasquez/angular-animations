@@ -1,13 +1,20 @@
 import { assert } from '../../utils/_index';
-import { Presets } from '../../_presets';
 import { PresetMatcher } from '../_matchers/_index';
-import { PresetArgumentsParser } from '../_parsers/_index';
+import { PresetExpander } from '../_expanders/_index';
+import { CustomVarsExtractor } from '../_extractors/_index';
+import { CustomVarsAppender } from '../_appenders/_index';
 
 export class PresetResolver {
   private readonly presetMatcher: PresetMatcher;
+  private readonly presetExpander: PresetExpander;
+  private readonly customVarsExtractor: CustomVarsExtractor;
+  private readonly customVarsAppender: CustomVarsAppender;
 
-  constructor(private readonly sequence: string) {
+  constructor(sequence: string) {
     this.presetMatcher = new PresetMatcher(sequence);
+    this.presetExpander = new PresetExpander(sequence);
+    this.customVarsExtractor = new CustomVarsExtractor(sequence);
+    this.customVarsAppender = new CustomVarsAppender();
   }
 
   public isPreset(): boolean {
@@ -17,13 +24,8 @@ export class PresetResolver {
   public resolve(): string {
     assert(this.isPreset(), 'Sequence is not a preset');
 
-    if (!this.presetMatcher.isFunction()) return Presets[this.sequence]();
-
-    const { presetName, argsString, hasArgs } = this.presetMatcher.toPresetMatch();
-    if (hasArgs) {
-      return Presets.eval(presetName, new PresetArgumentsParser(argsString).parse());
-    } else {
-      return Presets.eval(presetName);
-    }
+    const sequence = this.presetExpander.expand();
+    const customVars = this.customVarsExtractor.extract();
+    return this.customVarsAppender.append(sequence, customVars);
   }
 }
