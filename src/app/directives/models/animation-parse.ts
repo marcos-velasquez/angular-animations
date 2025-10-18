@@ -1,6 +1,6 @@
 import { assert } from '../utils/_index';
 import { SequenceResolver } from './_resolvers/sequence-resolver';
-import { CustomVarsExtractor } from './_extractors/custom-vars-extractor';
+import { PresetParamExtractor } from './_extractors/preset-param-extractor';
 import { SequenceParser, ParsedAnimation } from './_parsers/sequence-parser';
 import { PropsParser } from './_parsers/props-parser';
 
@@ -14,7 +14,7 @@ export class AnimationParser {
 
     sequence = sequence.trim();
     this.sequences = new SequenceResolver(sequence).resolve().split(AnimationParser.DELIMITERS);
-    this.customVars = new CustomVarsExtractor(sequence).extract();
+    this.customVars = new PresetParamExtractor(sequence).extract().customVars;
   }
 
   public parse(): ParsedAnimation[] {

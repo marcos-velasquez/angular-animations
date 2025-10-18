@@ -1,24 +1,23 @@
 import { PresetParamExtractor } from '../preset-param-extractor';
-import { Presets } from '../../../_presets';
 
 describe('PresetParamExtractor', () => {
   describe('extract()', () => {
     it('should separate preset params from custom vars', () => {
-      const extractor = new PresetParamExtractor(Presets.fadeIn, { x: '100%', duration: 2 });
+      const extractor = new PresetParamExtractor('fadeIn({ x: "100%", duration: 2 })');
 
       expect(extractor.extract().presetParams).toEqual({ x: '100%' });
       expect(extractor.extract().customVars).toEqual({ duration: 2 });
     });
 
     it('should handle only preset params', () => {
-      const extractor = new PresetParamExtractor(Presets.fadeOut, { x: '100%', y: '-50%' });
+      const extractor = new PresetParamExtractor('fadeOut({ x: "100%", y: "-50%" })');
 
       expect(extractor.extract().presetParams).toEqual({ x: '100%', y: '-50%' });
       expect(extractor.extract().customVars).toEqual({});
     });
 
     it('should handle only custom vars', () => {
-      const extractor = new PresetParamExtractor(Presets.fadeIn, { duration: 2, yoyo: true });
+      const extractor = new PresetParamExtractor('fadeIn({ duration: 2, yoyo: true })');
       const result = extractor.extract();
 
       expect(result.presetParams).toEqual({});
@@ -26,44 +25,30 @@ describe('PresetParamExtractor', () => {
     });
 
     it('should handle multiple preset params and custom vars', () => {
-      const extractor = new PresetParamExtractor(Presets.fadeOut, {
-        x: '100%',
-        y: '-50%',
-        duration: 3,
-        yoyo: true,
-        repeat: 2,
-      });
+      const extractor = new PresetParamExtractor('fadeOut({ x: "100%", y: "-50%", duration: 3, yoyo: true, repeat: 2 })');
 
       expect(extractor.extract().presetParams).toEqual({ x: '100%', y: '-50%' });
       expect(extractor.extract().customVars).toEqual({ duration: 3, yoyo: true, repeat: 2 });
     });
 
-    it('should throw error for null preset', () => {
+    it('should throw error for empty sequence', () => {
       expect(() => {
-        new PresetParamExtractor(null as any, { x: '100%', duration: 2 });
-      }).toThrow('Preset is required');
+        new PresetParamExtractor('');
+      }).toThrow('Sequence is required');
     });
 
-    it('should throw error for null params', () => {
-      expect(() => {
-        new PresetParamExtractor(Presets.fadeIn, null as any);
-      }).toThrow('Params are required');
-    });
-
-    it('should handle empty params', () => {
-      const extractor = new PresetParamExtractor(Presets.fadeIn, {});
+    it('should return empty for non-preset sequence', () => {
+      const extractor = new PresetParamExtractor('x:100%:>');
 
       expect(extractor.extract().presetParams).toEqual({});
       expect(extractor.extract().customVars).toEqual({});
     });
 
-    it('should throw error for preset without destructured parameters', () => {
-      const presetWithoutDestructuring = (() => 'x:0:>') as any;
-      const extractor = new PresetParamExtractor(presetWithoutDestructuring, { duration: 2 });
+    it('should handle preset without args', () => {
+      const extractor = new PresetParamExtractor('fadeIn()');
 
-      expect(() => {
-        extractor.extract();
-      }).toThrow('Preset must have destructured parameters');
+      expect(extractor.extract().presetParams).toEqual({});
+      expect(extractor.extract().customVars).toEqual({});
     });
   });
 });
