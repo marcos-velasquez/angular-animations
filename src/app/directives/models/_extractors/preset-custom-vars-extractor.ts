@@ -11,13 +11,12 @@ export class PresetCustomVarsExtractor {
     const { argsString, hasArgs } = this.presetMatcher.toPresetMatch();
     if (!hasArgs) return {};
 
-    const params = new ObjectParser().parse(argsString);
-    const preset = this.presetMatcher.preset;
-    const paramMatch = preset.toString().match(/\{([^}]+)\}/);
+    const paramMatch = this.presetMatcher.preset.toString().match(/\{([^}]+)\}/);
     assert(!!paramMatch, 'Preset must have destructured parameters');
 
     const presetParamNames = paramMatch[1].split(',').map((p) => p.trim().split('=')[0].trim());
 
+    const params = new ObjectParser().parse(argsString);
     return Object.keys(params).reduce((acc, key) => {
       if (!presetParamNames.includes(key)) acc[key] = params[key];
       return acc;

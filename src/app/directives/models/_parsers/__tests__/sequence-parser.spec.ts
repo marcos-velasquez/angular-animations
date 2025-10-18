@@ -1,16 +1,9 @@
 import { SequenceParser } from '../sequence-parser';
-import { PropsParser } from '../props-parser';
 
 describe('SequenceParser', () => {
-  let parser: SequenceParser;
-
-  beforeEach(() => {
-    parser = new SequenceParser(new PropsParser());
-  });
-
   describe('parse()', () => {
     it('should parse basic animation', () => {
-      const result = parser.parse('x:100%:>');
+      const result = new SequenceParser('x:100%:>').parse();
 
       expect(result).toEqual({
         method: 'from',
@@ -20,7 +13,7 @@ describe('SequenceParser', () => {
     });
 
     it('should parse animation with numeric value', () => {
-      const result = parser.parse('opacity:0:<');
+      const result = new SequenceParser('opacity:0:<').parse();
 
       expect(result).toEqual({
         method: 'from',
@@ -30,7 +23,7 @@ describe('SequenceParser', () => {
     });
 
     it('should parse animation with to method', () => {
-      const result = parser.parse('to:x:100%:>');
+      const result = new SequenceParser('to:x:100%:>').parse();
 
       expect(result).toEqual({
         method: 'to',
@@ -40,7 +33,7 @@ describe('SequenceParser', () => {
     });
 
     it('should parse animation with from method', () => {
-      const result = parser.parse('from:y:-50%:0');
+      const result = new SequenceParser('from:y:-50%:0').parse();
 
       expect(result).toEqual({
         method: 'from',
@@ -50,7 +43,7 @@ describe('SequenceParser', () => {
     });
 
     it('should parse animation with props syntax', () => {
-      const result = parser.parse('x:100%:>@duration:2');
+      const result = new SequenceParser('x:100%:>@duration:2').parse();
 
       expect(result?.method).toBe('from');
       expect(result?.vars.x).toBe('100%');
@@ -58,25 +51,25 @@ describe('SequenceParser', () => {
     });
 
     it('should use default method when not specified', () => {
-      const result = parser.parse('x:100%:>');
+      const result = new SequenceParser('x:100%:>').parse();
 
       expect(result?.method).toBe('from');
     });
 
     it('should use default position when not specified', () => {
-      const result = parser.parse('x:100%');
+      const result = new SequenceParser('x:100%').parse();
 
       expect(result?.position).toBe('>');
     });
 
     it('should return null for invalid sequence', () => {
-      const result = parser.parse('invalid');
+      const result = new SequenceParser('invalid').parse();
 
       expect(result).toBeNull();
     });
 
     it('should handle whitespace', () => {
-      const result = parser.parse('  x:100%:>  ');
+      const result = new SequenceParser('  x:100%:>  ').parse();
 
       expect(result).toEqual({
         method: 'from',
@@ -86,7 +79,7 @@ describe('SequenceParser', () => {
     });
 
     it('should parse negative numbers', () => {
-      const result = parser.parse('y:-100:>');
+      const result = new SequenceParser('y:-100:>').parse();
 
       expect(result).toEqual({
         method: 'from',
