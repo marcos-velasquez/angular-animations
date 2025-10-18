@@ -1,4 +1,4 @@
-import { ObjectParser } from '../_parsers/object-parser';
+import { ObjectParser } from './object-parser';
 import { ObjectSerializer } from '../../utils/object-serializer';
 
 export class PresetArgumentsParser {

@@ -1,6 +1,7 @@
 import { assert } from '../../utils/_index';
 import { Presets } from '../../_presets';
-import { PresetMatcher, PresetArgumentsParser } from '../_matchers/_index';
+import { PresetMatcher } from '../_matchers/_index';
+import { PresetArgumentsParser } from '../_parsers/_index';
 
 export class PresetResolver {
   private readonly presetMatcher: PresetMatcher;
