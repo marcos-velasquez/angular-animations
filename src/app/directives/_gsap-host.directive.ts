@@ -19,10 +19,10 @@ export abstract class GsapHostDirective implements ng.OnInit, ng.OnDestroy {
 
   ngOnInit(): void {
     this.timeline.set(new TimelineFactory(this).create());
-    this.register();
+    this.registerAnimation();
   }
 
-  public abstract register(): void;
+  public abstract registerAnimation(): void;
 
   public get element(): HTMLElement {
     return this.elementRef.nativeElement;

@@ -4,10 +4,10 @@ import { AnimationParser } from './models/_index';
 
 @Directive({ selector: '[animate]' })
 export class AnimateDirective extends GsapHostDirective {
-  public readonly animate = input.required<string>();
+  public readonly animation = input.required<string>({ alias: 'animate' });
 
-  public register() {
-    new AnimationParser(this.animate()).parse().forEach((animation) => {
+  public registerAnimation() {
+    new AnimationParser(this.animation()).parse().forEach((animation) => {
       this[animation.method](animation.vars, animation.position);
     });
   }
