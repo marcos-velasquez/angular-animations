@@ -1,4 +1,3 @@
-import { assert } from '../../utils/_index';
 import { PresetMatcher } from '../_matchers/_index';
 import { PresetExpander } from '../_expanders/_index';
 import { PresetCustomVarsExtractor } from '../_extractors/_index';
@@ -9,7 +8,7 @@ export class PresetResolver {
   private readonly presetExpander: PresetExpander;
   private readonly presetCustomVarsExtractor: PresetCustomVarsExtractor;
 
-  constructor(sequence: string) {
+  constructor(private readonly sequence: string) {
     this.presetMatcher = new PresetMatcher(sequence);
     this.presetExpander = new PresetExpander(this.presetMatcher);
     this.presetCustomVarsExtractor = new PresetCustomVarsExtractor(this.presetMatcher);
@@ -20,7 +19,7 @@ export class PresetResolver {
   }
 
   public resolve(): string {
-    assert(this.isPreset(), 'Sequence is not a preset');
+    if (!this.isPreset()) return this.sequence;
 
     const sequence = this.presetExpander.expand();
     const customVars = this.presetCustomVarsExtractor.extract();
