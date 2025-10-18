@@ -1,6 +1,6 @@
 import { assert } from '../../utils/assert';
 import { PresetMatcher } from '../_matchers/preset-matcher';
-import { ObjectParser } from '../_parsers/object-parser';
+import { ObjectParser } from '../../utils/object-parser';
 
 export class PresetCustomVarsExtractor {
   constructor(private readonly presetMatcher: PresetMatcher) {}

@@ -1,6 +1,7 @@
 import { Presets } from '../../_presets';
 import { PresetMatcher } from '../_matchers/preset-matcher';
-import { PresetArgumentsParser } from '../_parsers/preset-arguments-parser';
+import { ObjectParser } from '../../utils/object-parser';
+import { ObjectSerializer } from '../../utils/object-serializer';
 
 export class PresetExpander {
   constructor(private readonly presetMatcher: PresetMatcher) {}
@@ -9,6 +10,7 @@ export class PresetExpander {
     if (!this.presetMatcher.isFunction()) return Presets[this.presetMatcher.sequence]();
 
     const { presetName, argsString } = this.presetMatcher.toPresetMatch();
-    return Presets.eval(presetName, new PresetArgumentsParser().parse(argsString));
+    const params = new ObjectParser().parse(argsString);
+    return Presets.eval(presetName, new ObjectSerializer().toParamsString(params));
   }
 }
