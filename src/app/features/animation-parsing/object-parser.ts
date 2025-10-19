@@ -89,7 +89,6 @@ export class ObjectParser {
   private parseValue(value: string): unknown {
     const trimmed = value.trim();
 
-    // Handle arrays
     if (trimmed.startsWith('[') && trimmed.endsWith(']')) {
       try {
         return JSON.parse(trimmed);
@@ -98,17 +97,14 @@ export class ObjectParser {
       }
     }
 
-    // Handle nested objects
     if (trimmed.startsWith('{') && trimmed.endsWith('}')) {
       return new ObjectParser(trimmed).parse();
     }
 
-    // Handle quoted strings
     if ((trimmed.startsWith('"') && trimmed.endsWith('"')) || (trimmed.startsWith("'") && trimmed.endsWith("'"))) {
       return trimmed.slice(1, -1);
     }
 
-    // Use TypeConverter for basic types (boolean, null, undefined, number, string)
     return TypeConverter.convert(trimmed);
   }
 }

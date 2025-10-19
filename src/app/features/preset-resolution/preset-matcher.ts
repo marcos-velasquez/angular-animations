@@ -22,6 +22,13 @@ export class PresetMatcher {
     return Presets[this.presetName];
   }
 
+  public paramNames(): string[] {
+    const paramMatch = this.preset.toString().match(RegexPatterns.DESTRUCTURED_PARAMS);
+    assert(!!paramMatch, 'Preset must have destructured parameters');
+
+    return paramMatch[1].split(',').map((p) => p.trim().split('=')[0].trim());
+  }
+
   public isFunction(): boolean {
     return !!this.match;
   }
@@ -34,12 +41,5 @@ export class PresetMatcher {
     assert(this.isFunction(), 'Sequence does not have function syntax');
 
     return { presetName: this.presetName, argsString: this.argsString, hasArgs: !!this.argsString.trim() };
-  }
-
-  public getParamNames(): string[] {
-    const paramMatch = this.preset.toString().match(RegexPatterns.DESTRUCTURED_PARAMS);
-    assert(!!paramMatch, 'Preset must have destructured parameters');
-
-    return paramMatch[1].split(',').map((p) => p.trim().split('=')[0].trim());
   }
 }

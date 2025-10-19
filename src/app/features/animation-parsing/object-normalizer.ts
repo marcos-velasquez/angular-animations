@@ -5,7 +5,6 @@ export class ObjectNormalizer {
   constructor(private readonly input: string) {}
 
   public normalize(): string {
-    const params = new ObjectParser(this.input).parse();
-    return new ObjectSerializer(params).serialize();
+    return new ObjectSerializer(new ObjectParser(this.input).parse()).serialize();
   }
 }

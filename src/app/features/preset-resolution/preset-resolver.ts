@@ -1,17 +1,17 @@
 import { PresetMatcher } from './preset-matcher';
 import { PresetExpander } from './preset-expander';
-import { PresetCustomVarsExtractor } from './preset-custom-vars-extractor';
+import { CustomVarsExtractor } from './custom-vars-extractor';
 import { CustomVarsAppender } from './custom-vars-appender';
 
 export class PresetResolver {
   private readonly presetMatcher: PresetMatcher;
   private readonly presetExpander: PresetExpander;
-  private readonly presetCustomVarsExtractor: PresetCustomVarsExtractor;
+  private readonly presetCustomVarsExtractor: CustomVarsExtractor;
 
   constructor(private readonly sequence: string) {
     this.presetMatcher = new PresetMatcher(sequence);
     this.presetExpander = new PresetExpander(this.presetMatcher);
-    this.presetCustomVarsExtractor = new PresetCustomVarsExtractor(this.presetMatcher);
+    this.presetCustomVarsExtractor = new CustomVarsExtractor(this.presetMatcher);
   }
 
   public isPreset(): boolean {

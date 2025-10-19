@@ -12,6 +12,7 @@ Resolve preset names and parameters into complete animation syntax.
 ## Public API
 
 ### `PresetResolver`
+
 Resolves preset strings into animation sequences.
 
 ```typescript
@@ -22,6 +23,7 @@ const sequence = resolver.resolve();
 ```
 
 ### `Presets`
+
 Collection of predefined animation presets.
 
 ```typescript
@@ -45,8 +47,7 @@ Presets.slideIn({ x: '-100%' });
 ```typescript
 // In presets.ts
 export const Presets = {
-  myCustom: ({ x = '0%', duration = 1 }) => 
-    `x:${x}@duration=${duration}`,
+  myCustom: ({ x = '0%', duration = 1 }) => `x:${x}@duration=${duration}`,
 };
 ```
 
