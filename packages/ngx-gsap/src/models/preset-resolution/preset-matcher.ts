@@ -11,22 +11,22 @@ export class PresetMatcher {
   }
 
   public get presetName(): string {
-    return this.isFunction() ? this.match[1] : this.sequence;
+    return this.isFunction() ? this.match![1] : this.sequence;
   }
 
   public get argsString(): string {
-    return this.match[2];
+    return this.match![2];
   }
 
   public get preset(): Preset {
-    return Presets[this.presetName];
+    return (Presets as any)[this.presetName];
   }
 
   public paramNames(): string[] {
     const paramMatch = this.preset.toString().match(RegexPatterns.DESTRUCTURED_PARAMS);
     assert(!!paramMatch, 'Preset must have destructured parameters');
 
-    return paramMatch[1].split(',').map((p) => p.trim().split('=')[0].trim());
+    return paramMatch![1].split(',').map((p) => p.trim().split('=')[0].trim());
   }
 
   public isFunction(): boolean {
@@ -34,7 +34,7 @@ export class PresetMatcher {
   }
 
   public isPreset(): boolean {
-    return !!Presets[this.presetName];
+    return !!(Presets as any)[this.presetName];
   }
 
   public toPresetMatch(): PresetMatch {

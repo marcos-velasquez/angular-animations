@@ -1,0 +1,30 @@
+{
+  "name": "ngx-gsap",
+  "version": "1.0.0",
+  "description": "Powerful GSAP animations for Angular with 69+ preset animations - highly customizable and easy to use",
+  "keywords": [
+    "angular",
+    "gsap",
+    "animations",
+    "ngx",
+    "directive",
+    "web-animations",
+    "presets"
+  ],
+  "author": "Marcos Velasquez",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-username/ngx-gsap"
+  },
+  "homepage": "https://github.com/your-username/ngx-gsap#readme",
+  "bugs": {
+    "url": "https://github.com/your-username/ngx-gsap/issues"
+  },
+  "peerDependencies": {
+    "@angular/common": "^18.0.0 || ^19.0.0 || ^20.0.0",
+    "@angular/core": "^18.0.0 || ^19.0.0 || ^20.0.0",
+    "gsap": "^3.12.0"
+  },
+  "sideEffects": false
+}

@@ -6,8 +6,12 @@ export class TweenVars {
   public create(): gsap.TweenVars {
     return {
       immediateRender: false,
-      onStart: () => this.host.timeline().disconnect(),
-      onComplete: () => this.host.timeline().connect(),
+      onStart: () => {
+        this.host.timeline().disconnect();
+      },
+      onComplete: () => {
+        this.host.timeline().connect();
+      },
     };
   }
 }

@@ -16,10 +16,10 @@ export class TimelineFactory {
   }
 
   public create(): Timeline {
-    return cache.get(this.host);
+    return cache.get(this.host)!;
   }
 
   public static empty(): Timeline {
-    return new Timeline(null, {});
+    return new Timeline(null as any, {});
   }
 }
