@@ -259,6 +259,22 @@ You can add custom GSAP properties to **any animation** using the `@` syntax:
 <div animateClick="shake({ duration: 0.5, delay: 0.2, ease: 'power2.inOut' })">Delayed shake</div>
 ```
 
+#### Dynamic Values with Component Variables
+
+You can bind component properties to animation parameters using Angular's interpolation:
+
+```typescript
+// Component
+export class MyComponent {
+  public duration = 20;
+}
+```
+
+```html
+<!-- Use component variable in animation -->
+<div animateClick="fadeIn({ duration: {{ duration }} })">Dynamic duration fade in</div>
+```
+
 #### With Raw Syntax
 
 ```html
