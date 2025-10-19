@@ -3,7 +3,7 @@ import { Trigger, TriggerRef, TriggerType } from '../trigger';
 
 export class Timeline {
   private readonly gsapTimeline: gsap.core.Timeline;
-  private triggerRef: TriggerRef;
+  private triggerRef!: TriggerRef;
 
   constructor(private readonly element: HTMLElement, defaults: gsap.TweenVars) {
     this.gsapTimeline = gsap.timeline({ paused: true, defaults });
