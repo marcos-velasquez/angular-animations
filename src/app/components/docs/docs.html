@@ -1,0 +1,218 @@
+<div class="max-w-4xl mx-auto">
+  <div class="bg-slate-900 rounded-2xl p-8 space-y-8">
+    <!-- Installation -->
+    <section>
+      <h2 class="text-3xl font-bold text-white mb-4">Installation</h2>
+      <div class="bg-slate-950 rounded-lg p-4 font-mono text-sm text-green-400">npm install ngx-gsap gsap</div>
+    </section>
+
+    <!-- Basic Usage -->
+    <section>
+      <h2 class="text-3xl font-bold text-white mb-4">Basic Usage</h2>
+      <p class="text-slate-300 mb-4">Import the directives in your component:</p>
+      <div class="bg-slate-950 rounded-lg p-4 font-mono text-sm space-y-2">
+        <div class="text-blue-400">import</div>
+        <div class="text-slate-300">
+          {{ '{' }} AnimateDirective, AnimateClickDirective {{ '}' }}
+          <span class="text-blue-400">from</span>
+          <span class="text-green-400">'ngx-gsap'</span>;
+        </div>
+        <div class="mt-4 text-slate-500">// In your component</div>
+        <div class="text-slate-300">
+          @Component({{ '{' }}<br />
+          &nbsp;&nbsp;imports: [AnimateDirective, AnimateClickDirective],<br />
+          &nbsp;&nbsp;...<br />
+          {{ '}' }})
+        </div>
+      </div>
+    </section>
+
+    <!-- Directives -->
+    <section>
+      <h2 class="text-3xl font-bold text-white mb-4">Available Directives</h2>
+      <div class="space-y-4">
+        <div class="bg-slate-950 rounded-lg p-4">
+          <h3 class="text-xl font-semibold text-purple-400 mb-2">animateLoad</h3>
+          <p class="text-slate-300 mb-2">Triggers animation when the element loads.</p>
+          <code class="text-green-400 text-sm">&lt;div animateLoad="fadeIn"&gt;&lt;/div&gt;</code>
+        </div>
+
+        <div class="bg-slate-950 rounded-lg p-4">
+          <h3 class="text-xl font-semibold text-purple-400 mb-2">animateClick</h3>
+          <p class="text-slate-300 mb-2">Triggers animation on click.</p>
+          <code class="text-green-400 text-sm">&lt;button animateClick="pulse"&gt;Click me&lt;/button&gt;</code>
+        </div>
+
+        <div class="bg-slate-950 rounded-lg p-4">
+          <h3 class="text-xl font-semibold text-purple-400 mb-2">animateEnter</h3>
+          <p class="text-slate-300 mb-2">Triggers animation on mouse enter.</p>
+          <code class="text-green-400 text-sm">&lt;div animateEnter="shake"&gt;Hover me&lt;/div&gt;</code>
+        </div>
+
+        <div class="bg-slate-950 rounded-lg p-4">
+          <h3 class="text-xl font-semibold text-purple-400 mb-2">animateLeave</h3>
+          <p class="text-slate-300 mb-2">Triggers animation on mouse leave.</p>
+          <code class="text-green-400 text-sm">&lt;div animateLeave="fadeOut"&gt;Hover me&lt;/div&gt;</code>
+        </div>
+      </div>
+    </section>
+
+    <!-- Animation Syntax -->
+    <section>
+      <h2 class="text-3xl font-bold text-white mb-4">Animation Syntax</h2>
+      <p class="text-slate-300 mb-4">Animations can be customized with parameters using object notation:</p>
+      <div class="bg-slate-950 rounded-lg p-4 font-mono text-sm space-y-3">
+        <div class="text-slate-500">// Simple animation</div>
+        <div class="text-green-400">&lt;div animateClick="fadeIn"&gt;&lt;/div&gt;</div>
+
+        <div class="text-slate-500 mt-4">// With parameters</div>
+        <div class="text-green-400">
+          &lt;div animateClick="fadeIn({{ '{' }} x: '-100%', opacity: 0 {{ '}' }})"&gt;&lt;/div&gt;
+        </div>
+
+        <div class="text-slate-500 mt-4">// Multiple animations (sequence)</div>
+        <div class="text-green-400">&lt;div animateClick="fadeIn | scale: 1.2 | rotate: 360"&gt;&lt;/div&gt;</div>
+      </div>
+    </section>
+
+    <!-- Common Parameters -->
+    <section>
+      <h2 class="text-3xl font-bold text-white mb-4">Common Parameters</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="bg-slate-950 rounded-lg p-4">
+          <h4 class="text-purple-400 font-semibold mb-2">Position</h4>
+          <ul class="text-slate-300 text-sm space-y-1">
+            <li><code class="text-green-400">x</code> - Horizontal position</li>
+            <li><code class="text-green-400">y</code> - Vertical position</li>
+          </ul>
+        </div>
+
+        <div class="bg-slate-950 rounded-lg p-4">
+          <h4 class="text-purple-400 font-semibold mb-2">Scale</h4>
+          <ul class="text-slate-300 text-sm space-y-1">
+            <li><code class="text-green-400">scale</code> - Uniform scale</li>
+            <li><code class="text-green-400">scaleX</code> - Horizontal scale</li>
+            <li><code class="text-green-400">scaleY</code> - Vertical scale</li>
+          </ul>
+        </div>
+
+        <div class="bg-slate-950 rounded-lg p-4">
+          <h4 class="text-purple-400 font-semibold mb-2">Rotation</h4>
+          <ul class="text-slate-300 text-sm space-y-1">
+            <li><code class="text-green-400">rotate</code> - 2D rotation</li>
+            <li><code class="text-green-400">rotateX</code> - 3D X-axis rotation</li>
+            <li><code class="text-green-400">rotateY</code> - 3D Y-axis rotation</li>
+          </ul>
+        </div>
+
+        <div class="bg-slate-950 rounded-lg p-4">
+          <h4 class="text-purple-400 font-semibold mb-2">Opacity</h4>
+          <ul class="text-slate-300 text-sm space-y-1">
+            <li><code class="text-green-400">opacity</code> - Transparency (0-1)</li>
+          </ul>
+        </div>
+
+        <div class="bg-slate-950 rounded-lg p-4">
+          <h4 class="text-purple-400 font-semibold mb-2">Timing</h4>
+          <ul class="text-slate-300 text-sm space-y-1">
+            <li><code class="text-green-400">duration</code> - Animation duration</li>
+            <li><code class="text-green-400">delay</code> - Start delay</li>
+            <li><code class="text-green-400">ease</code> - Easing function</li>
+          </ul>
+        </div>
+
+        <div class="bg-slate-950 rounded-lg p-4">
+          <h4 class="text-purple-400 font-semibold mb-2">Skew</h4>
+          <ul class="text-slate-300 text-sm space-y-1">
+            <li><code class="text-green-400">skewX</code> - Horizontal skew</li>
+            <li><code class="text-green-400">skewY</code> - Vertical skew</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Examples -->
+    <section>
+      <h2 class="text-3xl font-bold text-white mb-4">Examples</h2>
+      <div class="space-y-4">
+        <div class="bg-slate-950 rounded-lg p-4">
+          <h4 class="text-purple-400 font-semibold mb-2">Fade in from left</h4>
+          <code class="text-green-400 text-sm"
+            >&lt;div animateLoad="fadeIn({{ '{' }} x: '-100%' {{ '}' }})"&gt;Content&lt;/div&gt;</code
+          >
+        </div>
+
+        <div class="bg-slate-950 rounded-lg p-4">
+          <h4 class="text-purple-400 font-semibold mb-2">Bounce on click</h4>
+          <code class="text-green-400 text-sm">&lt;button animateClick="bounceIn"&gt;Click me&lt;/button&gt;</code>
+        </div>
+
+        <div class="bg-slate-950 rounded-lg p-4">
+          <h4 class="text-purple-400 font-semibold mb-2">Rotate and scale on hover</h4>
+          <code class="text-green-400 text-sm"
+            >&lt;div animateEnter="zoomInRotate({{ '{' }} scale: 1.2, degrees: 180 {{ '}' }})"&gt;Hover
+            me&lt;/div&gt;</code
+          >
+        </div>
+
+        <div class="bg-slate-950 rounded-lg p-4">
+          <h4 class="text-purple-400 font-semibold mb-2">Complex sequence</h4>
+          <code class="text-green-400 text-sm"
+            >&lt;div animateClick="fadeIn | scale: 1.2 | rotate: 360 | fadeOut"&gt;Complex&lt;/div&gt;</code
+          >
+        </div>
+      </div>
+    </section>
+
+    <!-- Tips -->
+    <section>
+      <h2 class="text-3xl font-bold text-white mb-4">Tips & Best Practices</h2>
+      <div class="space-y-3 text-slate-300">
+        <div class="flex items-start gap-3">
+          <div class="text-2xl">💡</div>
+          <div>
+            <strong class="text-purple-400">Combine parameters:</strong> Most animations accept multiple parameters for
+            maximum flexibility.
+          </div>
+        </div>
+        <div class="flex items-start gap-3">
+          <div class="text-2xl">⚡</div>
+          <div>
+            <strong class="text-purple-400">Performance:</strong> GSAP is highly optimized and uses GPU acceleration
+            when possible.
+          </div>
+        </div>
+        <div class="flex items-start gap-3">
+          <div class="text-2xl">🎨</div>
+          <div>
+            <strong class="text-purple-400">Experiment:</strong> Try different parameter combinations to create unique
+            effects.
+          </div>
+        </div>
+        <div class="flex items-start gap-3">
+          <div class="text-2xl">📱</div>
+          <div>
+            <strong class="text-purple-400">Responsive:</strong> Use percentage values for positions to maintain
+            responsiveness.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GitHub Link -->
+    <section class="text-center pt-8 border-t border-slate-800">
+      <a
+        href="https://github.com/marcos-velasquez/angular-animations"
+        target="_blank"
+        class="inline-flex items-center gap-2 px-6 py-3 bg-purple-600 hover:bg-purple-700 text-white font-semibold rounded-lg transition-colors"
+      >
+        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+          <path
+            d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"
+          />
+        </svg>
+        View on GitHub
+      </a>
+    </section>
+  </div>
+</div>

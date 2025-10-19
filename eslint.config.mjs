@@ -28,7 +28,7 @@ export default [
         'error',
         {
           type: 'element',
-          prefix: 'animate',
+          prefix: 'app',
           style: 'kebab-case',
         },
       ],
