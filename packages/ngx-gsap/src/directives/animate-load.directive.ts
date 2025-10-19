@@ -1,8 +1,9 @@
 import { Directive, input } from '@angular/core';
+import { TriggerType } from '../models/trigger';
 import { AnimateDirective } from './animate.directive';
 
 @Directive({ selector: '[animateLoad]' })
 export class AnimateLoadDirective extends AnimateDirective {
   public override readonly sequence = input.required<string>({ alias: 'animateLoad' });
-  public override readonly trigger = input<any>('load');
+  public override readonly trigger = input<TriggerType>('load' as const);
 }

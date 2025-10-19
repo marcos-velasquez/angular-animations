@@ -1,6 +1,6 @@
 import { Directive, input } from '@angular/core';
-import { GsapHostDirective } from './gsap-host.directive';
 import { AnimationParser } from '../models/animation-parsing/animation-parser';
+import { GsapHostDirective } from './gsap-host.directive';
 
 @Directive({ selector: '[animate]' })
 export class AnimateDirective extends GsapHostDirective {
