@@ -188,6 +188,69 @@ Use `selector` to animate children instead of the parent:
 </div>
 ```
 
+## Animation Events
+
+Listen to animation lifecycle events:
+
+```typescript
+export class MyComponent {
+  onStart() {
+    console.log('Animation started');
+  }
+
+  onComplete() {
+    console.log('Animation completed');
+  }
+
+  onUpdate() {
+    console.log('Animation updating');
+  }
+}
+```
+
+```html
+<div
+  animateClick="fadeIn"
+  (animateStart)="onStart()"
+  (animateComplete)="onComplete()"
+  (animateUpdate)="onUpdate()"
+  (animateRepeat)="onRepeat()"
+  (animateReverseComplete)="onReverseComplete()"
+>
+  Animated element
+</div>
+```
+
+**Available events:**
+
+- `animateStart` - Fires when animation starts
+- `animateComplete` - Fires when animation completes
+- `animateUpdate` - Fires on each animation frame
+- `animateRepeat` - Fires when animation repeats
+- `animateReverseComplete` - Fires when reverse animation completes
+
+## Programmatic Control
+
+Control animations programmatically using template references:
+
+```html
+<div #myAnimation animate="fadeIn">Content</div>
+
+<button (click)="myAnimation.play()">Play</button>
+<button (click)="myAnimation.pause()">Pause</button>
+<button (click)="myAnimation.reverse()">Reverse</button>
+<button (click)="myAnimation.resume()">Resume</button>
+<button (click)="myAnimation.restart()">Restart</button>
+```
+
+**Available methods:**
+
+- `play()` - Play the animation
+- `pause()` - Pause the animation
+- `reverse()` - Reverse the animation direction
+- `resume()` - Resume a paused animation
+- `restart()` - Restart the animation from the beginning
+
 ## License
 
 MIT
