@@ -15,5 +15,5 @@ import * as _ from './public-api';
   templateUrl: './app.html',
 })
 export class App {
-  protected title = 'angular-animations';
+  protected title = 'ngx-gsap';
 }

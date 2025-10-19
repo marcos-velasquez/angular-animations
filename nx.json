@@ -65,5 +65,5 @@
       "unitTestRunner": "jest"
     }
   },
-  "defaultProject": "angular-animations"
+  "defaultProject": "ngx-gsap"
 }

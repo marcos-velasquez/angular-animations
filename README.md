@@ -1,4 +1,4 @@
-# Angular GSAP Animations
+# ngx-gsap
 
 A lightweight Angular animation library powered by GSAP with a declarative, preset-based API.
 

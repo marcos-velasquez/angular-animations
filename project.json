@@ -1,5 +1,5 @@
 {
-  "name": "angular-animations",
+  "name": "ngx-gsap",
   "$schema": "node_modules/nx/schemas/project-schema.json",
   "includedScripts": [],
   "projectType": "application",
@@ -11,7 +11,7 @@
       "executor": "@angular/build:application",
       "outputs": ["{options.outputPath}"],
       "options": {
-        "outputPath": "dist/angular-animations",
+        "outputPath": "dist/ngx-gsap",
         "browser": "./src/main.ts",
         "polyfills": ["zone.js"],
         "tsConfig": "tsconfig.app.json",
@@ -52,10 +52,10 @@
       "executor": "@angular/build:dev-server",
       "configurations": {
         "production": {
-          "buildTarget": "angular-animations:build:production"
+          "buildTarget": "ngx-gsap:build:production"
         },
         "development": {
-          "buildTarget": "angular-animations:build:development"
+          "buildTarget": "ngx-gsap:build:development"
         }
       },
       "defaultConfiguration": "development"
@@ -63,7 +63,7 @@
     "extract-i18n": {
       "executor": "@angular/build:extract-i18n",
       "options": {
-        "buildTarget": "angular-animations:build"
+        "buildTarget": "ngx-gsap:build"
       }
     },
     "lint": {
@@ -84,9 +84,9 @@
       "continuous": true,
       "executor": "@nx/web:file-server",
       "options": {
-        "buildTarget": "angular-animations:build",
+        "buildTarget": "ngx-gsap:build",
         "port": 4200,
-        "staticFilePath": "dist/angular-animations/browser",
+        "staticFilePath": "dist/ngx-gsap/browser",
         "spa": true
       }
     }
