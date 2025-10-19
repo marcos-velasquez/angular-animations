@@ -1,1 +1,1 @@
-export * from './directives/_index';
+export * from './core';

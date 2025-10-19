@@ -1,5 +1,5 @@
 import { gsap } from 'gsap';
-import { Trigger, TriggerRef, TriggerType } from './trigger';
+import { Trigger, TriggerRef, TriggerType } from '../trigger';
 
 export class Timeline {
   private readonly gsapTimeline: gsap.core.Timeline;

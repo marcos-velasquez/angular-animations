@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import * as _ from './directives/_index';
+import * as _ from './public-api';
 
 @Component({
   imports: [
@@ -9,7 +9,6 @@ import * as _ from './directives/_index';
     _.AnimateEnterDirective,
     _.AnimateLeaveDirective,
     _.AnimateClickDirective,
-    _.AnimateScrollDirective,
     _.AnimateLoadDirective,
   ],
   selector: 'animate-root',
