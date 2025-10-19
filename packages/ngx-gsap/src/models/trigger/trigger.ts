@@ -1,8 +1,8 @@
-export type TriggerType = 'enter' | 'leave' | 'click' | 'scroll' | 'load';
+export type TriggerType = 'enter' | 'leave' | 'click' | 'scroll' | 'load' | 'none';
 export type TriggerRef = { connect: () => void; disconnect: () => void };
 
 export class Trigger {
-  public static readonly default = 'load';
+  public static readonly default = 'none';
 
   constructor(private readonly el: HTMLElement) {}
 
@@ -35,7 +35,7 @@ export class Trigger {
     return Trigger.empty();
   }
 
-  public when(triggerType: TriggerType): { then: (VoidFunction) => TriggerRef } {
+  public when(triggerType: TriggerType): { then: (callback: VoidFunction) => TriggerRef } {
     return {
       then: (callback: () => void) => {
         switch (triggerType) {
@@ -45,8 +45,10 @@ export class Trigger {
             return this.onLeave(callback);
           case 'click':
             return this.onClick(callback);
-          default:
+          case 'load':
             return this.onLoad(callback);
+          default:
+            return Trigger.empty();
         }
       },
     };

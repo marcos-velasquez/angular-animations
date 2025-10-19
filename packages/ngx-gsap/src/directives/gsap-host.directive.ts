@@ -4,7 +4,7 @@ import { TriggerType } from '../models/trigger';
 
 @ng.Directive({ selector: '[gsap]' })
 export abstract class GsapHostDirective implements ng.OnInit, ng.OnDestroy {
-  public readonly trigger = ng.input<TriggerType>('load');
+  public readonly trigger = ng.input<TriggerType>('none');
 
   public readonly animateStart = ng.output<GsapHostDirective>();
   public readonly animateComplete = ng.output<GsapHostDirective>();
