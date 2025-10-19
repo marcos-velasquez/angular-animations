@@ -67,13 +67,13 @@ export class Presets {
   /**
    * Bounce in animation with customizable scale values.
    * @param startScale - Initial scale (default: 0)
-   * @param midScale - Middle bounce scale (default: 1.2)
+   * @param midScale - Middle bounce scale (default: 1.3)
    * @param endScale - Final scale (default: 1)
    * @example bounceIn() // Standard bounce in
    * @example bounceIn({ startScale: 0.5, midScale: 1.3 }) // Custom bounce
    * @example bounceIn({ midScale: 1.5, ease: 'elastic.out' }) // Elastic bounce
    */
-  public static bounceIn({ startScale = 0, midScale = 1.2, endScale = 1 } = {}): string {
+  public static bounceIn({ startScale = 0, midScale = 1.3, endScale = 1 } = {}): string {
     return `scale:${startScale}:>;to:scale:${midScale}:>;to:scale:${endScale}:>`;
   }
 

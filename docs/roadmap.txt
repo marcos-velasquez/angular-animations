@@ -1,5 +1,3 @@
-
-css-animations/         ← CSS animations (nueva)
 svg-animations/         ← SVG animations (nueva)
 physics-animations/     ← Physics (nueva)
 scroll-triggered/       ← Scroll triggered animations (nueva)
