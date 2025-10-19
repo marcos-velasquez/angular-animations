@@ -275,30 +275,48 @@ export class MyComponent {
 <div animateClick="fadeIn({ duration: {{ duration }} })">Dynamic duration fade in</div>
 ```
 
-#### Nested Objects (Advanced GSAP Properties)
+#### Animating Child Elements with `selector`
 
-You can use nested objects for advanced GSAP features like `stagger`:
+Use `selector` to animate child elements instead of the element itself:
 
 ```html
-<!-- Stagger animations for child elements (with presets) -->
-<div animateLoad="fadeIn({ stagger: { amount: 1, from: 'center' }, selector: '.card' })">
+<!-- Animate child elements -->
+<div animateLoad="fadeIn({ selector: '.card' })">
   @for (item of items; track item.id) {
-  <div class="card">{{ item.name }}</div>
+    <div class="card">{{ item.name }}</div>
+  }
+</div>
+
+<!-- With stagger -->
+<div animateLoad="fadeIn({ selector: '.card', stagger: { amount: 1, from: 'center' } })">
+  @for (item of items; track item.id) {
+    <div class="card">{{ item.name }}</div>
   }
 </div>
 ```
 
-**With Raw Syntax:**
-
-````html
-<!-- Stagger in raw syntax -->
-<div animate="opacity:0@stagger={amount:1,from:center}">
+**Raw syntax:**
+```html
+<div animate="opacity:0@selector=.card,stagger={amount:1,from:center}">
   @for (item of items; track item.id) {
-  <div>{{ item }}</div>
+    <div class="card">{{ item }}</div>
   }
 </div>
+```
 
-#### With Raw Syntax ```html
+#### Nested Objects (Stagger, ScrollTrigger, etc.)
+
+```html
+<div animateLoad="fadeIn({ stagger: { amount: 1, from: 'center' } })">
+  @for (item of items; track item.id) {
+    <div>{{ item }}</div>
+  }
+</div>
+```
+
+#### With Raw Syntax
+
+```html
 <!-- Add duration without position -->
 <div animateClick="opacity:0@duration=2">Fade in over 2 seconds</div>
 

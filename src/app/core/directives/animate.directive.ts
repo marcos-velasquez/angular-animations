@@ -8,7 +8,7 @@ export class AnimateDirective extends GsapHostDirective {
 
   public registerAnimation() {
     new AnimationParser(this.sequence()).parse().forEach((animation) => {
-      this[animation.method](animation.vars, animation.position);
+      this[animation.method](animation.selector, animation.vars, animation.position);
     });
   }
 }

@@ -12,6 +12,8 @@ export abstract class GsapHostDirective implements ng.OnInit, ng.OnDestroy {
   public readonly animateRepeat = ng.output<GsapHostDirective>();
   public readonly animateReverseComplete = ng.output<GsapHostDirective>();
 
+  public readonly injector = ng.inject(ng.Injector);
+
   public readonly timeline = ng.signal<Timeline>(TimelineFactory.empty());
 
   constructor(public readonly elementRef: ng.ElementRef<HTMLElement>) {
@@ -25,8 +27,13 @@ export abstract class GsapHostDirective implements ng.OnInit, ng.OnDestroy {
   }
 
   ngOnInit(): void {
-    this.timeline.set(new TimelineFactory(this).create());
-    this.registerAnimation();
+    ng.afterNextRender(
+      () => {
+        this.timeline.set(new TimelineFactory(this).create());
+        this.registerAnimation();
+      },
+      { injector: this.injector }
+    );
   }
 
   public abstract registerAnimation(): void;
@@ -55,12 +62,12 @@ export abstract class GsapHostDirective implements ng.OnInit, ng.OnDestroy {
     this.timeline().restart();
   }
 
-  protected from(vars: gsap.TweenVars, position: gsap.Position): void {
-    this.timeline().from(vars, position);
+  protected from(selector: string | undefined, vars: gsap.TweenVars, position: gsap.Position): void {
+    this.timeline().from(selector, vars, position);
   }
 
-  protected to(vars: gsap.TweenVars, position: gsap.Position): void {
-    this.timeline().to(vars, position);
+  protected to(selector: string | undefined, vars: gsap.TweenVars, position: gsap.Position): void {
+    this.timeline().to(selector, vars, position);
   }
 
   ngOnDestroy(): void {

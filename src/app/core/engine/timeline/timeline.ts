@@ -18,14 +18,18 @@ export class Timeline {
     return this;
   }
 
-  public from(vars: gsap.TweenVars, position?: gsap.Position): Timeline {
-    this.gsapTimeline.from(this.element, vars, position);
+  public from(selector: string | undefined, vars: gsap.TweenVars, position?: gsap.Position): Timeline {
+    this.gsapTimeline.from(this.getTarget(selector), vars, position);
     return this;
   }
 
-  public to(vars: gsap.TweenVars, position?: gsap.Position): Timeline {
-    this.gsapTimeline.to(this.element, vars, position);
+  public to(selector: string | undefined, vars: gsap.TweenVars, position?: gsap.Position): Timeline {
+    this.gsapTimeline.to(this.getTarget(selector), vars, position);
     return this;
+  }
+
+  private getTarget(selector?: string): gsap.TweenTarget {
+    return selector ? this.element.querySelectorAll(selector) : this.element;
   }
 
   public play(): Timeline {

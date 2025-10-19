@@ -145,5 +145,46 @@ describe('PresetResolver', () => {
       expect(result).toContain('yoyo=true');
       expect(result).toContain('paused=false');
     });
+
+    it('should append selector as customVar', () => {
+      const resolver = new PresetResolver('fadeIn({ selector: ".card" })');
+      const result = resolver.resolve();
+
+      expect(result).toContain('@selector=.card');
+      expect(result.split(';').every((seq) => seq.includes('@selector=.card'))).toBe(true);
+    });
+
+    it('should handle selector with stagger', () => {
+      const resolver = new PresetResolver('fadeIn({ selector: ".item", stagger: { amount: 1, from: "center" } })');
+      const result = resolver.resolve();
+
+      expect(result).toContain('selector=.item');
+      expect(result).toContain('stagger={amount:1,from:"center"}');
+    });
+
+    it('should handle selector with multiple customVars', () => {
+      const resolver = new PresetResolver('fadeIn({ selector: ".card", duration: 2, ease: "power2.out" })');
+      const result = resolver.resolve();
+
+      expect(result).toContain('selector=.card');
+      expect(result).toContain('duration=2');
+      expect(result).toContain('ease=power2.out');
+    });
+
+    it('should handle selector with child combinator', () => {
+      const resolver = new PresetResolver('fadeIn({ selector: "> div" })');
+      const result = resolver.resolve();
+
+      expect(result).toContain('selector="> div"');
+    });
+
+    it('should handle selector with preset params and customVars', () => {
+      const resolver = new PresetResolver('slideIn({ selector: ".item", x: "-200%", duration: 2 })');
+      const result = resolver.resolve();
+
+      expect(result).toContain('x:-200%');
+      expect(result).toContain('selector=.item');
+      expect(result).toContain('duration=2');
+    });
   });
 });

@@ -2,7 +2,7 @@ import { PropsParser } from './props-parser';
 import { RegexPatterns } from '../../core/utils';
 
 export type Method = 'to' | 'from';
-export type ParsedAnimation = { method: Method; vars: gsap.TweenVars; position: gsap.Position };
+export type ParsedAnimation = { method: Method; selector?: string; vars: gsap.TweenVars; position: gsap.Position };
 
 export class SequenceParser {
   constructor(private readonly sequence: string) {}
@@ -15,6 +15,8 @@ export class SequenceParser {
     const vars: gsap.TweenVars = { [prop]: isNaN(Number(value)) ? value : Number(value) };
     if (propsString) Object.assign(vars, new PropsParser(propsString).parse());
 
-    return { method: method as Method, vars, position };
+    const { selector, ...tweenVars } = vars as gsap.TweenVars & { selector?: string };
+
+    return { method: method as Method, selector, vars: tweenVars, position };
   }
 }

@@ -8,6 +8,7 @@ describe('AnimationParser', () => {
       expect(result.length).toBe(1);
       expect(result[0]).toEqual({
         method: 'from',
+        selector: undefined,
         vars: { opacity: 0 },
         position: '>',
       });
@@ -17,8 +18,8 @@ describe('AnimationParser', () => {
       const result = new AnimationParser('opacity:0:>;to:scale:2:>').parse();
 
       expect(result.length).toBe(2);
-      expect(result[0]).toEqual({ method: 'from', vars: { opacity: 0 }, position: '>' });
-      expect(result[1]).toEqual({ method: 'to', vars: { scale: 2 }, position: '>' });
+      expect(result[0]).toEqual({ method: 'from', selector: undefined, vars: { opacity: 0 }, position: '>' });
+      expect(result[1]).toEqual({ method: 'to', selector: undefined, vars: { scale: 2 }, position: '>' });
     });
 
     it('should handle to method', () => {
@@ -32,9 +33,9 @@ describe('AnimationParser', () => {
       const result = new AnimationParser('fadeIn()').parse();
 
       expect(result.length).toBe(3);
-      expect(result[0]).toEqual({ method: 'from', vars: { x: 0 }, position: '>' });
-      expect(result[1]).toEqual({ method: 'from', vars: { y: 0 }, position: '0' });
-      expect(result[2]).toEqual({ method: 'from', vars: { opacity: 0 }, position: '0' });
+      expect(result[0]).toEqual({ method: 'from', selector: undefined, vars: { x: 0 }, position: '>' });
+      expect(result[1]).toEqual({ method: 'from', selector: undefined, vars: { y: 0 }, position: '0' });
+      expect(result[2]).toEqual({ method: 'from', selector: undefined, vars: { opacity: 0 }, position: '0' });
     });
 
     it('should filter out invalid animations', () => {
@@ -410,6 +411,42 @@ describe('AnimationParser', () => {
       expect(result[0].vars).toEqual({ opacity: 0, duration: 2 });
       expect(result[1].vars).toEqual({ scale: 1.5 });
       expect(result[2].vars).toEqual({ rotate: 360, ease: 'bounce.out' });
+    });
+  });
+
+  describe('Selector in presets', () => {
+    it('should extract selector from preset with object syntax', () => {
+      const result = new AnimationParser('fadeIn({ selector: ".card" })').parse();
+
+      expect(result.length).toBe(3);
+      result.forEach((anim) => {
+        expect(anim.selector).toBe('.card');
+        expect(anim.vars).not.toHaveProperty('selector');
+      });
+    });
+
+    it('should extract selector with custom preset params', () => {
+      const result = new AnimationParser('slideIn({ selector: "> div", x: "-200%" })').parse();
+
+      expect(result.length).toBe(3);
+      expect(result[0].selector).toBe('> div');
+      expect(result[0].vars.x).toBe('-200%');
+      expect(result[0].vars).not.toHaveProperty('selector');
+    });
+
+    it('should extract selector with multiple custom vars', () => {
+      const result = new AnimationParser(
+        'fadeIn({ selector: ".card", duration: 2, ease: "power2.out", stagger: 0.5 })'
+      ).parse();
+
+      expect(result.length).toBe(3);
+      result.forEach((anim) => {
+        expect(anim.selector).toBe('.card');
+        expect(anim.vars).toHaveProperty('duration', 2);
+        expect(anim.vars).toHaveProperty('ease', 'power2.out');
+        expect(anim.vars).toHaveProperty('stagger', 0.5);
+        expect(anim.vars).not.toHaveProperty('selector');
+      });
     });
   });
 });

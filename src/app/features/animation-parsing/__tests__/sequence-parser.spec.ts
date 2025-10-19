@@ -7,6 +7,7 @@ describe('SequenceParser', () => {
 
       expect(result).toEqual({
         method: 'from',
+        selector: undefined,
         vars: { x: '100%' },
         position: '>',
       });
@@ -17,6 +18,7 @@ describe('SequenceParser', () => {
 
       expect(result).toEqual({
         method: 'from',
+        selector: undefined,
         vars: { opacity: 0 },
         position: '<',
       });
@@ -27,6 +29,7 @@ describe('SequenceParser', () => {
 
       expect(result).toEqual({
         method: 'to',
+        selector: undefined,
         vars: { x: '100%' },
         position: '>',
       });
@@ -37,6 +40,7 @@ describe('SequenceParser', () => {
 
       expect(result).toEqual({
         method: 'from',
+        selector: undefined,
         vars: { y: '-50%' },
         position: '0',
       });
@@ -73,6 +77,7 @@ describe('SequenceParser', () => {
 
       expect(result).toEqual({
         method: 'from',
+        selector: undefined,
         vars: { x: '100%' },
         position: '>',
       });
@@ -83,9 +88,38 @@ describe('SequenceParser', () => {
 
       expect(result).toEqual({
         method: 'from',
+        selector: undefined,
         vars: { y: -100 },
         position: '>',
       });
+    });
+
+    it('should extract selector from vars', () => {
+      const result = new SequenceParser('opacity:0@selector=.card').parse();
+
+      expect(result).toEqual({
+        method: 'from',
+        selector: '.card',
+        vars: { opacity: 0 },
+        position: '>',
+      });
+    });
+
+    it('should extract selector with multiple props', () => {
+      const result = new SequenceParser('opacity:0@selector=.card,duration=2').parse();
+
+      expect(result?.method).toBe('from');
+      expect(result?.selector).toBe('.card');
+      expect(result?.vars.opacity).toBe(0);
+      expect(result?.vars.duration).toBe(2);
+      expect(result?.position).toBe('>');
+    });
+
+    it('should extract selector with child combinator', () => {
+      const result = new SequenceParser('x:100@selector=> div').parse();
+
+      expect(result?.selector).toBe('> div');
+      expect(result?.vars.x).toBe(100);
     });
   });
 });
