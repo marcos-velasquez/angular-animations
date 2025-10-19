@@ -51,6 +51,46 @@ All trigger directives extend `AnimateDirective` and accept the same animation s
 <div animateLoad="x:100%;opacity:0:0"></div>
 ```
 
+## Callbacks
+
+All trigger directives support animation lifecycle callbacks via Angular outputs:
+
+```html
+<div 
+  animateLoad="fadeIn()"
+  (animateStart)="onStart($event)"
+  (animateComplete)="onComplete($event)"
+  (animateUpdate)="onUpdate($event)"
+  (animateRepeat)="onRepeat($event)"
+  (animateReverseComplete)="onReverseComplete($event)"
+></div>
+```
+
+**Available callbacks:**
+- `(animateStart)` - Fires when animation starts
+- `(animateComplete)` - Fires when animation completes
+- `(animateUpdate)` - Fires on every frame during animation
+- `(animateRepeat)` - Fires each time animation repeats (requires `repeat` property)
+- `(animateReverseComplete)` - Fires when reversed animation completes
+
+**Example:**
+
+```typescript
+export class MyComponent {
+  onStart(directive: GsapHostDirective) {
+    console.log('Animation started!');
+  }
+
+  onComplete(directive: GsapHostDirective) {
+    console.log('Animation completed!');
+  }
+
+  onUpdate(directive: GsapHostDirective) {
+    console.log('Animation updating...');
+  }
+}
+```
+
 ## Custom Triggers
 
 To add a new trigger:

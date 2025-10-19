@@ -8,6 +8,9 @@ export abstract class GsapHostDirective implements ng.OnInit, ng.OnDestroy {
 
   public readonly animateStart = ng.output<GsapHostDirective>();
   public readonly animateComplete = ng.output<GsapHostDirective>();
+  public readonly animateUpdate = ng.output<GsapHostDirective>();
+  public readonly animateRepeat = ng.output<GsapHostDirective>();
+  public readonly animateReverseComplete = ng.output<GsapHostDirective>();
 
   public readonly timeline = ng.signal<Timeline>(TimelineFactory.empty());
 
@@ -15,6 +18,9 @@ export abstract class GsapHostDirective implements ng.OnInit, ng.OnDestroy {
     ng.effect(() => {
       this.timeline().timeline.eventCallback('onStart', () => this.animateStart.emit(this));
       this.timeline().timeline.eventCallback('onComplete', () => this.animateComplete.emit(this));
+      this.timeline().timeline.eventCallback('onUpdate', () => this.animateUpdate.emit(this));
+      this.timeline().timeline.eventCallback('onRepeat', () => this.animateRepeat.emit(this));
+      this.timeline().timeline.eventCallback('onReverseComplete', () => this.animateReverseComplete.emit(this));
     });
   }
 

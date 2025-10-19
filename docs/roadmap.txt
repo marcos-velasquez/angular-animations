@@ -7,7 +7,6 @@ features/
 
 
 
-Soporte para callbacks en sintaxis @
 
 
  Stagger automático para listas
