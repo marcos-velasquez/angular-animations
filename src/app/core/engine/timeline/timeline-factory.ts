@@ -1,6 +1,6 @@
 import { GsapHostDirective } from '../../directives/gsap-host.directive';
 import { Timeline } from './timeline';
-import { TweenVars } from '../trigger/tween-vars';
+import { TweenVars } from './tween-vars';
 
 const cache = new WeakMap<GsapHostDirective, Timeline>();
 
