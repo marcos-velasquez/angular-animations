@@ -1,3 +1,5 @@
+import { TypeSerializer } from '../../core/utils';
+
 export class ObjectSerializer {
   constructor(private readonly params: Record<string, unknown>) {}
 
@@ -5,7 +7,7 @@ export class ObjectSerializer {
     if (Object.keys(this.params).length === 0) return '';
 
     const entries = Object.entries(this.params)
-      .map(([key, value]) => `${key}: ${JSON.stringify(value)}`)
+      .map(([key, value]) => `${key}: ${new TypeSerializer(value).serialize()}`)
       .join(', ');
 
     return `{ ${entries} }`;

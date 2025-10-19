@@ -1,8 +1,10 @@
 import { RegexPatterns } from './regex-patterns';
 
 export class TypeConverter {
-  public static convert(value: string): unknown {
-    const trimmed = value.trim();
+  constructor(private readonly value: string) {}
+
+  public convert(): unknown {
+    const trimmed = this.value.trim();
 
     if (trimmed === 'true') return true;
     if (trimmed === 'false') return false;

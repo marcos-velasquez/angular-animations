@@ -46,6 +46,31 @@ describe('PresetResolver', () => {
       expect(result).toContain('opacity:0');
     });
 
+    it('should handle preset with nested object (stagger)', () => {
+      const resolver = new PresetResolver('fadeIn({ stagger: { amount: 1, from: "center" } })');
+      const result = resolver.resolve();
+
+      expect(result).toContain('x:0');
+      expect(result).toContain('opacity:0');
+      expect(result).toContain('stagger={amount:1,from:"center"}');
+    });
+
+    it('should handle preset with nested stagger and other params', () => {
+      const resolver = new PresetResolver('fadeIn({ x: "-100%", stagger: { amount: 0.5, from: "end" } })');
+      const result = resolver.resolve();
+
+      expect(result).toContain('x:-100%');
+      expect(result).toContain('opacity:0');
+      expect(result).toContain('stagger={amount:0.5,from:"end"}');
+    });
+
+    it('should handle complex nested stagger object', () => {
+      const resolver = new PresetResolver('slideIn({ stagger: { amount: 1, from: "center", grid: "auto", ease: "power2.inOut" } })');
+      const result = resolver.resolve();
+
+      expect(result).toContain('stagger={amount:1,from:"center",grid:"auto",ease:"power2.inOut"}');
+    });
+
     it('should handle preset with multiple parameters', () => {
       const resolver = new PresetResolver('fadeOut({ x: "100%", y: "-50%" })');
       const result = resolver.resolve();

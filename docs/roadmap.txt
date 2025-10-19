@@ -1,17 +1,8 @@
-features/
-├── animation-parsing/      ← GSAP animations
-├── preset-resolution/      ← GSAP presets
-├── css-animations/         ← CSS animations (nueva)
-├── svg-animations/         ← SVG animations (nueva)
-└── physics-animations/     ← Physics (nueva)
 
+css-animations/         ← CSS animations (nueva)
+svg-animations/         ← SVG animations (nueva)
+physics-animations/     ← Physics (nueva)
+scroll-triggered/       ← Scroll triggered animations (nueva)
+text-animations/        ← Text animations (nueva)
 
-
-
-
- Stagger automático para listas
-<div *ngFor="let item of items" animateLoad="fadeIn({ stagger: 0.1 })">
-
-
-LLEVARME EL CODIGO PARA PACKAGE FOLDER (ver ejemplos en GitHub) y hacer una navegación para las animaciones en la web de docs
 Publicar como npm package

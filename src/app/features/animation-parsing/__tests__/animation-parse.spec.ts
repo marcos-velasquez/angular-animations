@@ -318,6 +318,27 @@ describe('AnimationParser', () => {
       });
     });
 
+    it('should parse nested object with multiple props', () => {
+      const result = new AnimationParser('x:100@duration=2,stagger={amount:0.5,from:end}').parse();
+
+      expect(result.length).toBe(1);
+      expect(result[0].vars).toEqual({
+        x: 100,
+        duration: 2,
+        stagger: { amount: 0.5, from: 'end' },
+      });
+    });
+
+    it('should parse complex nested stagger object', () => {
+      const result = new AnimationParser('scale:0@stagger={amount:1,from:center,grid:auto,ease:power2.inOut}').parse();
+
+      expect(result.length).toBe(1);
+      expect(result[0].vars).toEqual({
+        scale: 0,
+        stagger: { amount: 1, from: 'center', grid: 'auto', ease: 'power2.inOut' },
+      });
+    });
+
     it('should work with to method', () => {
       const result = new AnimationParser('to:opacity:1@duration=2').parse();
 

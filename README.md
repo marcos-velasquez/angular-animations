@@ -275,9 +275,30 @@ export class MyComponent {
 <div animateClick="fadeIn({ duration: {{ duration }} })">Dynamic duration fade in</div>
 ```
 
-#### With Raw Syntax
+#### Nested Objects (Advanced GSAP Properties)
+
+You can use nested objects for advanced GSAP features like `stagger`:
 
 ```html
+<!-- Stagger animations for child elements (with presets) -->
+<div animateLoad="fadeIn({ stagger: { amount: 1, from: 'center' }, selector: '.card' })">
+  @for (item of items; track item.id) {
+  <div class="card">{{ item.name }}</div>
+  }
+</div>
+```
+
+**With Raw Syntax:**
+
+````html
+<!-- Stagger in raw syntax -->
+<div animate="opacity:0@stagger={amount:1,from:center}">
+  @for (item of items; track item.id) {
+  <div>{{ item }}</div>
+  }
+</div>
+
+#### With Raw Syntax ```html
 <!-- Add duration without position -->
 <div animateClick="opacity:0@duration=2">Fade in over 2 seconds</div>
 
@@ -292,7 +313,7 @@ export class MyComponent {
 
 <!-- Mix animations with and without props -->
 <div animateClick="opacity:0@duration=2;scale:1.5:>;rotate:360@ease=power2.inOut">Fade, scale, and rotate</div>
-```
+````
 
 ## Real-World Examples
 
