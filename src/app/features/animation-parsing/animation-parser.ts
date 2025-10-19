@@ -7,7 +7,11 @@ export class AnimationParser {
 
   constructor(sequence: string) {
     assert(!!sequence?.trim(), 'Sequence is required');
-    this.sequences = new PresetResolver(sequence.trim()).resolve().split(RegexPatterns.SEQUENCE_DELIMITER);
+
+    const parts = sequence.trim().split(RegexPatterns.SEQUENCE_DELIMITER);
+    this.sequences = parts.flatMap((part) =>
+      new PresetResolver(part.trim()).resolve().split(RegexPatterns.SEQUENCE_DELIMITER)
+    );
   }
 
   public parse(): ParsedAnimation[] {

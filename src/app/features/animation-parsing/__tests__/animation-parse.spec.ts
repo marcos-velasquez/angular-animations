@@ -414,6 +414,42 @@ describe('AnimationParser', () => {
     });
   });
 
+  describe('Multiple presets', () => {
+    it('should combine multiple presets with semicolon', () => {
+      const result = new AnimationParser('fadeIn;fadeOut').parse();
+
+      expect(result.length).toBe(6); // fadeIn (3) + fadeOut (3)
+    });
+
+    it('should combine presets with parentheses', () => {
+      const result = new AnimationParser('fadeIn();rotateIn()').parse();
+
+      expect(result.length).toBeGreaterThan(3);
+    });
+
+    it('should combine presets with parameters', () => {
+      const result = new AnimationParser('fadeIn({ x: "-100%" });fadeOut({ x: "100%" })').parse();
+
+      expect(result.length).toBe(6);
+      expect(result[0].vars.x).toBe('-100%');
+    });
+
+    it('should mix presets and raw syntax', () => {
+      const result = new AnimationParser('fadeIn;opacity:1:>').parse();
+
+      expect(result.length).toBe(4); // fadeIn (3) + raw (1)
+    });
+
+    it('should combine multiple presets with selector', () => {
+      const result = new AnimationParser('fadeIn({ selector: ".card" });rotateIn({ selector: ".card" })').parse();
+
+      expect(result.length).toBeGreaterThan(3);
+      result.forEach((anim) => {
+        expect(anim.selector).toBe('.card');
+      });
+    });
+  });
+
   describe('Selector in presets', () => {
     it('should extract selector from preset with object syntax', () => {
       const result = new AnimationParser('fadeIn({ selector: ".card" })').parse();

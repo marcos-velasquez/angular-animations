@@ -210,7 +210,27 @@ Triggers animation when page loads:
 
 **Available:** `flip`, `spin`, `glitch`, `blur`, `kenBurns`, `morphing`, `skew`, `skewRight`, `squeeze`, `expand`, `glow`, `shadow`, `growShadow`, `floatShadow`
 
-### Custom Animations
+### Combining Animations
+
+You can combine multiple presets or mix presets with raw syntax using semicolons:
+
+```html
+<!-- Combine multiple presets -->
+<div animateLoad="fadeIn;rotateIn">Fade and rotate together</div>
+<div animateClick="pulse;shake">Pulse then shake</div>
+
+<!-- Combine presets with parameters -->
+<div animateLoad="fadeIn({ x: '-100%' });bounceIn">Slide from left then bounce</div>
+
+<!-- Mix presets with raw syntax -->
+<div animateClick="fadeIn;to:scale:1.2:>">Fade in then scale up</div>
+<div animateLoad="slideIn({ x: '-100%' });rotate:360:>">Slide and rotate</div>
+
+<!-- Complex combinations -->
+<div animateClick="fadeIn;pulse;to:scale:1.5:>">Multiple effects</div>
+```
+
+### Custom Animations (Raw Syntax)
 
 You can also use raw GSAP animation syntax:
 
@@ -416,6 +436,26 @@ Use `selector` to animate child elements instead of the element itself:
 <div animateEnter="scale({ scale: 1.05 })" animateLeave="scale({ scale: 1 })">Hover card</div>
 ```
 
+### Combining Multiple Animations
+
+```html
+<!-- Combine presets for complex effects -->
+<div animateLoad="fadeIn;rotateIn">Fade and rotate on load</div>
+
+<!-- Mix presets with raw syntax -->
+<button animateClick="pulse;to:scale:1.5:>">Pulse then scale</button>
+
+<!-- Multiple presets with parameters -->
+<div animateLoad="slideIn({ x: '-100%' });bounceIn">Slide then bounce</div>
+
+<!-- Stagger children with combined animations -->
+<div animateLoad="fadeIn({ selector: '.item', stagger: 0.2 });rotateIn({ selector: '.item' })">
+  @for (item of items; track item.id) {
+    <div class="item">{{ item.name }}</div>
+  }
+</div>
+```
+
 ### Combining Triggers
 
 ```html
@@ -432,6 +472,15 @@ Use `selector` to animate child elements instead of the element itself:
   animateLeave="scale({ scale: 1 })"
   src="image.jpg"
 />
+
+<!-- Complex: Load with multiple effects, hover interaction -->
+<div 
+  animateLoad="fadeIn;rotateIn" 
+  animateEnter="pulse"
+  animateClick="shake;to:scale:1.2:>"
+>
+  Multi-effect card
+</div>
 ```
 
 ## License
