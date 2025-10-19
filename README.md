@@ -234,7 +234,7 @@ export class MyComponent {
 Control animations programmatically using template references:
 
 ```html
-<div #myAnimation animate="fadeIn">Content</div>
+<div #myAnimation="animate" animate="fadeIn">Content</div>
 
 <button (click)="myAnimation.play()">Play</button>
 <button (click)="myAnimation.pause()">Pause</button>
