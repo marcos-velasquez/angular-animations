@@ -1,6 +1,6 @@
 # ngx-gsap
 
-A lightweight Angular animation library powered by GSAP with a declarative, preset-based API.
+A lightweight Angular animation library powered by GSAP with 69+ preset animations. Highly customizable, declarative, and easy to use.
 
 ## Installation
 
@@ -10,56 +10,39 @@ npm install gsap ngx-gsap
 
 ## Quick Start
 
-Import the directives in your component:
+Import the directives you need:
 
 ```typescript
-
-import { AnimateDirective } from 'ngx-gsap';
-import { AnimateClickDirective } from 'ngx-gsap';
-import { AnimateEnterDirective } from 'ngx-gsap';
-import { AnimateLeaveDirective } from 'ngx-gsap';
-import { AnimateLoadDirective } from 'ngx-gsap';
+import { AnimateClickDirective, AnimateEnterDirective, AnimateLeaveDirective, AnimateLoadDirective } from 'ngx-gsap';
 
 @Component({
-  imports: [
-    AnimateDirective,
-    AnimateClickDirective,
-    AnimateEnterDirective,
-    AnimateLeaveDirective,
-    AnimateLoadDirective
-  ],
+  imports: [AnimateClickDirective, AnimateEnterDirective, AnimateLeaveDirective, AnimateLoadDirective],
   template: `
     <div animateClick="pulse">Click me!</div>
     <div animateEnter="fadeIn">Hover over me!</div>
     <div animateLeave="fadeOut">Mouse leave</div>
-    <div animateLoad="slideInLeft">Animates on page load</div>
-    <div animate="scale" trigger="enter|leave|click|load">Hover card</div>
+    <div animateLoad="slideIn">Animates on page load</div>
   `
 })
 ```
 
-## Usage
-
-### Basic Syntax
+## Basic Usage
 
 ```html
-<!-- Simple animation (uses defaults) -->
+<!-- Simple animation -->
 <div animateClick="fadeIn">Fade in on click</div>
 
-<!-- With custom parameters -->
-<div animateClick="fadeIn({ opacity: 0.1 })">Custom fade in</div>
-
-<!-- Using animate directive -->
-<div animate="fadeIn({ opacity: 0.1 })" trigger="click">Custom fade in</div>
+<!-- With parameters -->
+<div animateClick="fadeIn({ opacity: 0.1, duration: 2 })">Custom fade in</div>
 ```
 
-### Animation Triggers
+## Animation Triggers
 
 There are **two ways** to trigger animations:
 
-#### 1. Using Specific Directives
+### 1. Specific Directives (Recommended)
 
-Use dedicated directives for each trigger type:
+Each directive handles a specific event:
 
 ```html
 <!-- animateLoad - Triggers on page load -->
@@ -74,111 +57,116 @@ Use dedicated directives for each trigger type:
 <!-- animateLeave - Triggers on mouse leave -->
 <div animateLeave="fadeOut">Fades out on mouse leave</div>
 
-<!-- Multiple triggers -->
+<!-- Combine multiple directives -->
 <div animateClick="scale" animateEnter="fadeIn" animateLeave="fadeOut">Multiple triggers</div>
 ```
 
-#### 2. Using `animate` Directive
+### 2. Universal `animate` Directive
 
-Use the `animate` directive with the `trigger` input:
+Use with the `trigger` input for flexibility:
 
 ```html
-<!-- Single trigger -->
 <div animate="fadeIn" trigger="load">Appears on page load</div>
 <button animate="pulse" trigger="click">Pulse on click</button>
 <div animate="fadeIn" trigger="enter">Fades in on hover</div>
 <div animate="fadeOut" trigger="leave">Fades out on mouse leave</div>
 ```
 
-### Animation Presets
+## Animation Presets
 
-> **💡 Important:** Our animations are **highly flexible and parametrized**. Instead of having dozens of similar animations like `fadeInLeft`, `fadeInRight`, `fadeInUp`, `fadeInDown`, etc., we provide **one powerful animation** that you can customize with parameters. This gives you **infinite possibilities** while keeping the API clean and simple!
+**69+ preset animations** organized in 4 categories: Entrance, Exit, Attention, and Special effects.
 
-**Example:** The `fadeIn` animation can replace all these:
+### Flexible & Parametrized
 
-- `fadeIn` → Simple fade in
-- `fadeIn({ x: '-100%' })` → Replaces `fadeInLeft`
-- `fadeIn({ x: '100%' })` → Replaces `fadeInRight`
-- `fadeIn({ y: '100%' })` → Replaces `fadeInUp`
-- `fadeIn({ y: '-100%' })` → Replaces `fadeInDown`
-- `fadeIn({ x: '-100%', y: '-100%' })` → Replaces `fadeInTopLeft`
-- `fadeIn({ y: '2000px' })` → Replaces `fadeInUpBig`
+Instead of dozens of similar animations (`fadeInLeft`, `fadeInRight`, `fadeInUp`, etc.), we provide **one powerful animation** that you customize with parameters:
 
-> 📖 **Note:** You can add any valid GSAP property to customize your animations, including `duration`, `ease`, `delay`, `stagger`, `repeat`, `yoyo`, and more. See the [GSAP documentation](https://greensock.com/docs/) for all available properties.
+```html
+<!-- One animation, infinite possibilities -->
+<div animateLoad="fadeIn">Simple fade in</div>
+<div animateLoad="fadeIn({ x: '-100%' })">Fade in from left</div>
+<div animateLoad="fadeIn({ x: '100%' })">Fade in from right</div>
+<div animateLoad="fadeIn({ y: '100%' })">Fade in from bottom</div>
+<div animateLoad="fadeIn({ y: '-100%' })">Fade in from top</div>
+<div animateLoad="fadeIn({ x: '-100%', y: '-100%' })">Fade in from top-left</div>
+<div animateLoad="fadeIn({ y: '2000px' })">Fade in from far away</div>
+```
 
----
+### GSAP Properties
+
+You can use **any valid GSAP property** to customize animations:
+
+- **Timing**: `duration`, `delay`, `ease`
+- **Effects**: `stagger`, `repeat`, `yoyo`
+- **And more**: See [GSAP documentation](https://greensock.com/docs/)
+
+```html
+<div animateClick="pulse({ duration: 2, ease: 'elastic.out', repeat: 3 })">Custom pulse</div>
+```
+
+## Advanced Features
 
 ### Custom Animations (Raw Syntax)
 
-You can also use raw GSAP animation syntax:
+For complete control, use raw GSAP syntax:
 
 ```html
 <!-- Single property -->
-<div animateClick="opacity:0:>">Fade in (from opacity 0)</div>
-<div animateClick="to:opacity:0:>">Fade out (to opacity 0)</div>
+<div animateClick="opacity:0:>">Fade in</div>
+<div animateClick="to:opacity:0:>">Fade out</div>
 
-<!-- Multiple properties (separated by semicolon) -->
-<div animateClick="opacity:0:>;scale:0.5:<">Fade and scale simultaneously</div>
+<!-- Multiple properties -->
+<div animateClick="opacity:0:>;scale:0.5:<">Fade and scale</div>
 <div animateClick="x:-100%:>;opacity:0:0">Slide from left with fade</div>
 
 <!-- Sequential animations -->
 <div animateClick="scale:0:>;to:scale:1.2:>;to:scale:1:>">Bounce effect</div>
 ```
 
-#### Syntax Breakdown
-
-```
-[method]:[property]:[value]:[position]@[props]
-```
+**Syntax:** `[method]:[property]:[value]:[position]@[props]`
 
 - **method**: `from` (default) or `to`
-- **property**: Any GSAP animatable property (`opacity`, `scale`, `x`, `y`, `rotate`, etc.)
+- **property**: GSAP property (`opacity`, `scale`, `x`, `y`, `rotate`, etc.)
 - **value**: Target value
-- **position**: Timeline position (`>` = sequence, `<` = simultaneous, `0` = start, numeric = absolute time) - **Optional**
-- **props**: Custom GSAP properties like `duration`, `ease`, `yoyo`, etc. - **Optional**
+- **position**: `>` sequence, `<` simultaneous, `0` start, etc. _(optional)_
+- **props**: GSAP properties like `duration`, `ease` _(optional)_
 
 ### Combining Animations
 
-You can combine multiple presets or mix presets with raw syntax using semicolons:
+Combine multiple animations using semicolons:
 
 ```html
-<!-- Combine multiple presets -->
-<div animateLoad="fadeIn;rotateIn">Fade and rotate together</div>
+<!-- Multiple presets -->
+<div animateLoad="fadeIn;rotateIn">Fade and rotate</div>
 <div animateClick="pulse;shake">Pulse then shake</div>
 
-<!-- Combine presets with parameters -->
-<div animateLoad="fadeIn({ x: '-100%' });bounceIn">Slide from left then bounce</div>
+<!-- With parameters -->
+<div animateLoad="fadeIn({ x: '-100%' });bounceIn">Slide and bounce</div>
 
 <!-- Mix presets with raw syntax -->
-<div animateClick="fadeIn;to:scale:1.2:>">Fade in then scale up</div>
+<div animateClick="fadeIn;to:scale:1.2:>">Fade then scale</div>
 <div animateLoad="slideIn({ x: '-100%' });rotate:360:>">Slide and rotate</div>
-
-<!-- Complex combinations -->
-<div animateClick="fadeIn;pulse;to:scale:1.5:>">Multiple effects</div>
 ```
 
-### Dynamic Values with Component Variables
+### Dynamic Values
 
-You can bind component properties to animation parameters using Angular's interpolation:
+Bind component properties using Angular interpolation:
 
 ```typescript
-// Component
 export class MyComponent {
-  public duration = 20;
+  duration = 2;
 }
 ```
 
 ```html
-<!-- Use component variable in animation -->
-<div animateClick="fadeIn({ duration: {{ duration }} })">Dynamic duration fade in</div>
+<div animateClick="fadeIn({ duration: {{ duration }} })">Dynamic animation</div>
 ```
 
-### Animating Child Elements with `selector`
+### Animating Child Elements
 
-Use `selector` to animate child elements instead of the element itself:
+Use `selector` to animate children instead of the parent:
 
 ```html
-<!-- Animate child elements -->
+<!-- Basic -->
 <div animateLoad="fadeIn({ selector: '.card' })">
   @for (item of items; track item.id) {
   <div class="card">{{ item.name }}</div>
@@ -191,11 +179,8 @@ Use `selector` to animate child elements instead of the element itself:
   <div class="card">{{ item.name }}</div>
   }
 </div>
-```
 
-**Raw syntax:**
-
-```html
+<!-- Raw syntax -->
 <div animate="opacity:0@selector=.card,stagger={amount:1,from:center}">
   @for (item of items; track item.id) {
   <div class="card">{{ item }}</div>
