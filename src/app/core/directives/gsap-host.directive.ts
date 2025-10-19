@@ -1,6 +1,6 @@
 import * as ng from '@angular/core';
-import { Timeline, TimelineFactory } from './timeline';
-import { TriggerType } from './trigger';
+import { Timeline, TimelineFactory } from '../engine/timeline';
+import { TriggerType } from '../engine/trigger';
 
 @ng.Directive({ selector: '[gsap]' })
 export abstract class GsapHostDirective implements ng.OnInit, ng.OnDestroy {

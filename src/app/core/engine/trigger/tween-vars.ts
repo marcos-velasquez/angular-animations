@@ -1,4 +1,4 @@
-import { GsapHostDirective } from '../gsap-host.directive';
+import { GsapHostDirective } from '../../directives/gsap-host.directive';
 
 export class TweenVars {
   constructor(private readonly host: GsapHostDirective) {}

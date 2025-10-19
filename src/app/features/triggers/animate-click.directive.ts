@@ -1,0 +1,8 @@
+import { Directive, input } from '@angular/core';
+import { AnimateDirective } from '../../core/directives/animate.directive';
+
+@Directive({ selector: '[animateClick]' })
+export class AnimateClickDirective extends AnimateDirective {
+  public override readonly sequence = input.required<string>({ alias: 'animateClick' });
+  public override readonly trigger = input('click' as const);
+}

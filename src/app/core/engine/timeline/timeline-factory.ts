@@ -1,4 +1,4 @@
-import { GsapHostDirective } from '../gsap-host.directive';
+import { GsapHostDirective } from '../../directives/gsap-host.directive';
 import { Timeline } from './timeline';
 import { TweenVars } from '../trigger/tween-vars';
 
