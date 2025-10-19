@@ -1,4 +1,4 @@
-import { TypeSerializer } from '../../core/utils';
+import { TypeSerializer } from '../../utils';
 
 export class CustomVarsAppender {
   constructor(private readonly sequence: string) {}

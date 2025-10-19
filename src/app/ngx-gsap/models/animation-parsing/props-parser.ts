@@ -1,4 +1,4 @@
-import { TypeConverter } from '../../core/utils';
+import { TypeConverter } from '../../utils';
 import { ObjectParser } from './object-parser';
 
 export class PropsParser {

@@ -1,4 +1,4 @@
-import { TypeConverter } from '../../core/utils';
+import { TypeConverter } from '../../utils';
 
 export class ObjectParser {
   private content = '';

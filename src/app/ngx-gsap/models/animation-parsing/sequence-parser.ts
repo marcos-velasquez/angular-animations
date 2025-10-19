@@ -1,5 +1,5 @@
 import { PropsParser } from './props-parser';
-import { RegexPatterns } from '../../core/utils';
+import { RegexPatterns } from '../../utils';
 
 export type Method = 'to' | 'from';
 export type ParsedAnimation = { method: Method; selector?: string; vars: gsap.TweenVars; position: gsap.Position };

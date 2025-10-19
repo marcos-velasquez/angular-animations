@@ -1,5 +1,5 @@
 import { Directive, input } from '@angular/core';
-import { AnimateDirective } from '../../core/directives/animate.directive';
+import { AnimateDirective } from './animate.directive';
 
 @Directive({ selector: '[animateLeave]' })
 export class AnimateLeaveDirective extends AnimateDirective {

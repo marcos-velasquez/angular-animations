@@ -1,4 +1,4 @@
-import { TypeSerializer } from '../../core/utils';
+import { TypeSerializer } from '../../utils';
 
 export class ObjectSerializer {
   constructor(private readonly params: Record<string, unknown>) {}

@@ -1,6 +1,6 @@
-import { assert, RegexPatterns } from '../../core/utils';
+import { assert, RegexPatterns } from '../../utils';
 import { SequenceParser, ParsedAnimation } from './sequence-parser';
-import { PresetResolver } from '../preset-resolution';
+import { PresetResolver } from '../preset-resolution/preset-resolver';
 
 export class AnimationParser {
   private readonly sequences: string[];

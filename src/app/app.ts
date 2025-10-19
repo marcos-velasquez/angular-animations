@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import * as _ from './public-api';
+import * as _ from './ngx-gsap';
 
 @Component({
   imports: [
