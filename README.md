@@ -1,6 +1,6 @@
 # ngx-gsap
 
-A lightweight Angular animation library powered by GSAP with 69+ preset animations. Highly customizable, declarative, and easy to use.
+A lightweight Angular animation library powered by GSAP. Highly customizable, declarative, and easy to use.
 
 ## Installation
 
