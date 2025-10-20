@@ -37,44 +37,55 @@ export class Presets {
   }
 
   /**
-   * Zoom in animation with customizable direction, scale, and opacity.
+   * Zoom in animation with customizable direction, scale, rotation, and opacity.
    * @param x - Horizontal starting position (default: '0')
    * @param y - Vertical starting position (default: '0')
    * @param scale - Starting scale (default: 0)
    * @param opacity - Starting opacity (default: 0)
+   * @param rotate - Starting rotation in degrees (default: 0)
    * @example zoomIn() // Simple zoom in
    * @example zoomIn({ scale: 0.5 }) // Zoom from 50%
    * @example zoomIn({ y: '-100%', scale: 0 }) // Zoom in from top
    * @example zoomIn({ x: '100%', scale: 0.3 }) // Zoom in from right
+   * @example zoomIn({ rotate: 180 }) // Zoom with rotation
    */
-  public static zoomIn({ x = '0', y = '0', scale = 0, opacity = 0 } = {}): string {
-    return `x:${x}:>;y:${y}:0;scale:${scale}:0;opacity:${opacity}:0`;
+  public static zoomIn({ x = '0', y = '0', scale = 0, opacity = 0, rotate = 0 } = {}): string {
+    const rotateAnim = rotate !== 0 ? `;rotate:${rotate}:0` : '';
+    return `x:${x}:>;y:${y}:0;scale:${scale}:0;opacity:${opacity}:0${rotateAnim}`;
   }
 
   /**
-   * Slide in animation with customizable direction and opacity.
+   * Slide in animation with customizable direction, rotation, scale, and opacity.
    * @param x - Horizontal starting position (default: '0')
    * @param y - Vertical starting position (default: '0')
    * @param opacity - Starting opacity (default: 0)
+   * @param rotate - Starting rotation in degrees (default: 0)
+   * @param scaleY - Starting Y scale (default: 1)
    * @example slideIn({ x: '-100%' }) // Slide in from left
    * @example slideIn({ y: '100%' }) // Slide in from bottom
    * @example slideIn({ x: '100%', opacity: 0.5 }) // Slide from right with fade
+   * @example slideIn({ x: '-100%', rotate: -180 }) // Slide with rotation
+   * @example slideIn({ y: '100%', scaleY: 0 }) // Slide with vertical expansion
    */
-  public static slideIn({ x = '0', y = '0', opacity = 0 } = {}): string {
-    return `x:${x}:>;y:${y}:0;opacity:${opacity}:<`;
+  public static slideIn({ x = '0', y = '0', opacity = 0, rotate = 0, scaleY = 1 } = {}): string {
+    const rotateAnim = rotate !== 0 ? `;rotate:${rotate}:0;to:rotate:0:>` : '';
+    const scaleAnim = scaleY !== 1 ? `;scaleY:${scaleY}:0;to:scaleY:1:>` : '';
+    return `x:${x}:>;y:${y}:0;opacity:${opacity}:<${rotateAnim}${scaleAnim}`;
   }
 
   /**
-   * Bounce in animation with customizable scale values.
+   * Bounce in animation with customizable scale values and opacity.
    * @param startScale - Initial scale (default: 0)
    * @param midScale - Middle bounce scale (default: 1.3)
    * @param endScale - Final scale (default: 1)
+   * @param opacity - Starting opacity (default: 0)
    * @example bounceIn() // Standard bounce in
    * @example bounceIn({ startScale: 0.5, midScale: 1.3 }) // Custom bounce
    * @example bounceIn({ midScale: 1.5, ease: 'elastic.out' }) // Elastic bounce
+   * @example bounceIn({ opacity: 0 }) // Bounce with fade
    */
-  public static bounceIn({ startScale = 0, midScale = 1.3, endScale = 1 } = {}): string {
-    return `scale:${startScale}:>;to:scale:${midScale}:>;to:scale:${endScale}:>`;
+  public static bounceIn({ startScale = 0, midScale = 1.3, endScale = 1, opacity = 0 } = {}): string {
+    return `scale:${startScale}:>;opacity:${opacity}:0;to:scale:${midScale}:>;to:scale:${endScale}:>`;
   }
 
   /**
@@ -92,15 +103,18 @@ export class Presets {
   }
 
   /**
-   * Flip in animation with customizable rotation and opacity.
-   * @param degrees - Rotation degrees on Y-axis (default: 180)
+   * Flip in animation with customizable axis, rotation and opacity.
+   * @param axis - Rotation axis: 'x', 'y', or 'z' (default: 'y')
+   * @param degrees - Rotation degrees (default: 180)
    * @param opacity - Starting opacity (default: 0)
-   * @example flipIn() // Standard flip in
-   * @example flipIn({ degrees: 90 }) // Quarter flip
+   * @example flipIn() // Standard Y-axis flip in
+   * @example flipIn({ axis: 'x', degrees: 90 }) // X-axis flip
    * @example flipIn({ degrees: 360, duration: 2 }) // Full flip slowly
+   * @example flipIn({ axis: 'x' }) // Horizontal flip
    */
-  public static flipIn({ degrees = 180, opacity = 0 } = {}): string {
-    return `rotateY:${degrees}:>;opacity:${opacity}:<`;
+  public static flipIn({ axis = 'y', degrees = 180, opacity = 0 } = {}): string {
+    const rotateAxis = axis === 'x' ? 'rotateX' : axis === 'z' ? 'rotateZ' : 'rotateY';
+    return `${rotateAxis}:${degrees}:>;opacity:${opacity}:<`;
   }
 
   /**
@@ -168,15 +182,18 @@ export class Presets {
   }
 
   /**
-   * Flip out animation with customizable rotation and opacity.
-   * @param degrees - Rotation degrees on Y-axis (default: 90)
+   * Flip out animation with customizable axis, rotation and opacity.
+   * @param axis - Rotation axis: 'x', 'y', or 'z' (default: 'y')
+   * @param degrees - Rotation degrees (default: 90)
    * @param opacity - Ending opacity (default: 0)
-   * @example flipOut() // Standard flip out
+   * @example flipOut() // Standard Y-axis flip out
+   * @example flipOut({ axis: 'x', degrees: 90 }) // X-axis flip out
    * @example flipOut({ degrees: 180 }) // Half flip out
    * @example flipOut({ degrees: -90 }) // Flip out reverse
    */
-  public static flipOut({ degrees = 90, opacity = 0 } = {}): string {
-    return `to:rotateY:${degrees}:>;to:opacity:${opacity}:0`;
+  public static flipOut({ axis = 'y', degrees = 90, opacity = 0 } = {}): string {
+    const rotateAxis = axis === 'x' ? 'rotateX' : axis === 'z' ? 'rotateZ' : 'rotateY';
+    return `to:${rotateAxis}:${degrees}:>;to:opacity:${opacity}:0`;
   }
 
   /**
@@ -193,16 +210,19 @@ export class Presets {
   }
 
   /**
-   * Pulse animation that scales up and down.
+   * Pulse animation that scales up and down with optional fade.
    * @param scale1 - First scale value (default: 1.05)
    * @param scale2 - Second scale value (default: 1)
+   * @param opacity - Starting opacity for fade effect (default: 1, no fade)
    * @example pulse() // Subtle pulse
    * @example pulse({ scale1: 1.2 }) // Stronger pulse
-   * @example pulse({ scale1: 0.9, scale2: 1 }) // Shrink pulse
+   * @param scale1: 0.9, scale2: 1 }) // Shrink pulse
+   * @example pulse({ opacity: 0 }) // Pulse with fade in
    * @example pulse({ duration: 0.5, repeat: 3 }) // Pulse 4 times
    */
-  public static pulse({ scale1 = 1.05, scale2 = 1 } = {}): string {
-    return `to:scale:${scale1}:>;to:scale:${scale2}:>`;
+  public static pulse({ scale1 = 1.05, scale2 = 1, opacity = 1 } = {}): string {
+    const opacityAnim = opacity !== 1 ? `opacity:${opacity}:0;` : '';
+    return `${opacityAnim}to:scale:${scale1}:>;to:scale:${scale2}:>`;
   }
 
   /**
@@ -220,15 +240,22 @@ export class Presets {
   }
 
   /**
-   * Wobble animation with rotation and horizontal movement.
+   * Wobble animation with rotation, horizontal movement, and optional skew.
    * @param rotate1 - First rotation angle (default: -5)
    * @param x1 - First horizontal position (default: '-25%')
    * @param rotate2 - Second rotation angle (default: 3)
    * @param x2 - Second horizontal position (default: '20%')
+   * @param skewX1 - First skew angle (default: 0)
+   * @param skewX2 - Second skew angle (default: 0)
    * @example wobble() // Standard wobble
    * @example wobble({ rotate1: -10, rotate2: 8 }) // Stronger wobble
+   * @example wobble({ skewX1: -10, skewX2: 10 }) // Wobble with skew
    */
-  public static wobble({ rotate1 = -5, x1 = '-25%', rotate2 = 3, x2 = '20%' } = {}): string {
+  public static wobble({ rotate1 = -5, x1 = '-25%', rotate2 = 3, x2 = '20%', skewX1 = 0, skewX2 = 0 } = {}): string {
+    const hasSkew = skewX1 !== 0 || skewX2 !== 0;
+    if (hasSkew) {
+      return `to:rotate:${rotate1}:>;to:x:${x1}:0;to:skewX:${skewX1}:0;to:rotate:${rotate2}:>;to:x:${x2}:0;to:skewX:${skewX2}:0;to:rotate:0:>;to:x:0:0;to:skewX:0:0`;
+    }
     return `to:rotate:${rotate1}:>;to:x:${x1}:0;to:rotate:${rotate2}:>;to:x:${x2}:0;to:rotate:0:>;to:x:0:0`;
   }
 
@@ -324,54 +351,24 @@ export class Presets {
     return `to:opacity:${opacity1}:>;to:opacity:${opacity2}:>;to:opacity:${opacity1}:>;to:opacity:${opacity2}:>`;
   }
 
-  /**
-   * Flip in on X-axis animation.
-   * @param degrees - Rotation degrees on X-axis (default: 90)
-   * @param opacity - Starting opacity (default: 0)
-   * @example flipInX() // Standard X-axis flip
-   * @example flipInX({ degrees: 180 }) // Full flip
-   * @example flipInX({ degrees: 45, duration: 1 }) // Subtle slow flip
-   */
-  public static flipInX({ degrees = 90, opacity = 0 } = {}): string {
-    return `rotateX:${degrees}:>;opacity:${opacity}:0`;
-  }
+
+
 
   /**
-   * Slide in with bounce effect at the end.
-   * @param distance - Starting distance (default: '-100%')
-   * @param opacity - Starting opacity (default: 0)
-   * @param bounce - Bounce overshoot distance (default: '10px')
-   * @example slideInBounce() // Slide from left with bounce
-   * @example slideInBounce({ distance: '100%' }) // From right
-   * @example slideInBounce({ bounce: '20px' }) // Bigger bounce
-   */
-  public static slideInBounce({ distance = '-100%', opacity = 0, bounce = '10px' } = {}): string {
-    return `x:${distance}:>;opacity:${opacity}:0;to:x:${bounce}:>;to:x:0:>`;
-  }
-
-  /**
-   * Zoom in with rotation effect.
-   * @param scale - Starting scale (default: 0)
-   * @param opacity - Starting opacity (default: 0)
-   * @param degrees - Rotation degrees (default: 180)
-   * @example zoomInRotate() // Zoom and rotate
-   * @example zoomInRotate({ degrees: 360 }) // Full rotation
-   * @example zoomInRotate({ scale: 0.5, degrees: 90 }) // Partial zoom and rotate
-   */
-  public static zoomInRotate({ scale = 0, opacity = 0, degrees = 180 } = {}): string {
-    return `scale:${scale}:>;opacity:${opacity}:0;rotate:${degrees}:0`;
-  }
-
-  /**
-   * Slide out animation with customizable direction.
+   * Slide out animation with customizable direction, rotation, and opacity.
    * @param x - Horizontal ending position (default: '0')
    * @param y - Vertical ending position (default: '0')
+   * @param rotate - Ending rotation in degrees (default: 0)
+   * @param opacity - Ending opacity (default: 1)
    * @example slideOut({ x: '-100%' }) // Slide out to left
    * @example slideOut({ y: '100%' }) // Slide out to bottom
    * @example slideOut({ x: '100%', y: '-100%' }) // Slide out to top-right
+   * @example slideOut({ x: '100%', rotate: 180 }) // Slide with rotation
    */
-  public static slideOut({ x = '0', y = '0' } = {}): string {
-    return `to:x:${x}:>;to:y:${y}:0`;
+  public static slideOut({ x = '0', y = '0', rotate = 0, opacity = 1 } = {}): string {
+    const rotateAnim = rotate !== 0 ? `;to:rotate:${rotate}:0` : '';
+    const opacityAnim = opacity !== 1 ? `;to:opacity:${opacity}:0` : '';
+    return `to:x:${x}:>;to:y:${y}:0${rotateAnim}${opacityAnim}`;
   }
 
   /**
@@ -413,15 +410,23 @@ export class Presets {
   }
 
   /**
-   * Bounce animation with decreasing vertical movement.
-   * @param y1 - First bounce height (default: '-30px')
-   * @param y2 - Second bounce height (default: '-15px')
-   * @param y3 - Third bounce height (default: '-4px')
-   * @example bounce() // Standard bounce
+   * Bounce animation with decreasing movement (vertical or horizontal).
+   * @param x1 - First horizontal bounce distance (default: '0')
+   * @param y1 - First vertical bounce height (default: '-30px')
+   * @param x2 - Second horizontal bounce distance (default: '0')
+   * @param y2 - Second vertical bounce height (default: '-15px')
+   * @param x3 - Third horizontal bounce distance (default: '0')
+   * @param y3 - Third vertical bounce height (default: '-4px')
+   * @example bounce() // Standard vertical bounce
    * @example bounce({ y1: '-40px' }) // Higher bounce
-   * @example bounce({ y1: '-20px', y2: '-10px', y3: '-2px' }) // Subtle bounce
+   * @example bounce({ x1: '20px', y1: '0' }) // Horizontal bounce
+   * @example bounce({ x1: '20px', y1: '-20px' }) // Diagonal bounce
    */
-  public static bounce({ y1 = '-30px', y2 = '-15px', y3 = '-4px' } = {}): string {
+  public static bounce({ x1 = '0', y1 = '-30px', x2 = '0', y2 = '-15px', x3 = '0', y3 = '-4px' } = {}): string {
+    const hasX = x1 !== '0' || x2 !== '0' || x3 !== '0';
+    if (hasX) {
+      return `to:x:${x1}:>;to:y:${y1}:0;to:x:0:>;to:y:0:0;to:x:${x2}:>;to:y:${y2}:0;to:x:0:>;to:y:0:0;to:x:${x3}:>;to:y:${y3}:0;to:x:0:>;to:y:0:0`;
+    }
     return `to:y:${y1}:>;to:y:0:>;to:y:${y2}:>;to:y:0:>;to:y:${y3}:>;to:y:0:>`;
   }
 
@@ -503,15 +508,18 @@ export class Presets {
   }
 
   /**
-   * Flip animation with Y-axis rotation.
-   * @param rotateY1 - First rotation angle (default: 180)
-   * @param rotateY2 - Second rotation angle (default: 360)
-   * @example flip() // Standard flip
-   * @example flip({ rotateY1: 90, rotateY2: 180 }) // Half flip
-   * @example flip({ rotateY2: 720, duration: 2 }) // Double flip slowly
+   * Flip animation with customizable axis.
+   * @param axis - Rotation axis: 'x', 'y', or 'z' (default: 'y')
+   * @param rotate1 - First rotation angle (default: 180)
+   * @param rotate2 - Second rotation angle (default: 360)
+   * @example flip() // Standard Y-axis flip
+   * @example flip({ axis: 'x' }) // X-axis flip
+   * @example flip({ rotate1: 90, rotate2: 180 }) // Half flip
+   * @example flip({ rotate2: 720, duration: 2 }) // Double flip slowly
    */
-  public static flip({ rotateY1 = 180, rotateY2 = 360 } = {}): string {
-    return `to:rotateY:${rotateY1}:>;to:rotateY:${rotateY2}:>`;
+  public static flip({ axis = 'y', rotate1 = 180, rotate2 = 360 } = {}): string {
+    const rotateAxis = axis === 'x' ? 'rotateX' : axis === 'z' ? 'rotateZ' : 'rotateY';
+    return `to:${rotateAxis}:${rotate1}:>;to:${rotateAxis}:${rotate2}:>`;
   }
 
   /**
@@ -579,18 +587,6 @@ export class Presets {
     return `to:scale:${scale1}:>;to:rotate:${rotate}:0;to:scale:${scale2}:>;to:rotate:0:0;to:scale:1:>`;
   }
 
-  /**
-   * Blurred fade in animation - blur to focus with fade.
-   * @param blur1 - Starting blur amount (default: '20px')
-   * @param blur2 - Ending blur amount (default: '0px')
-   * @param opacity - Starting opacity (default: 0)
-   * @example blurredFadeIn() // Standard blurred entrance
-   * @example blurredFadeIn({ blur1: '30px' }) // More blur
-   * @example blurredFadeIn({ duration: 2 }) // Slow focus
-   */
-  public static blurredFadeIn({ blur1 = '20px', blur2 = '0px', opacity = 0 } = {}): string {
-    return `filter:blur(${blur1}):>;opacity:${opacity}:0;to:filter:blur(${blur2}):>`;
-  }
 
   /**
    * Jump animation with vertical bouncing.
@@ -687,16 +683,6 @@ export class Presets {
     return `to:skewX:${skewX}:>;to:skewY:${skewY}:0;to:skewX:0:>;to:skewY:0:0`;
   }
 
-  /**
-   * Skew right animation on X-axis.
-   * @param skewX - X-axis skew angle (default: 10)
-   * @example skewRight() // Standard right skew
-   * @example skewRight({ skewX: 20 }) // Stronger skew
-   * @example skewRight({ duration: 0.5 }) // Quick skew
-   */
-  public static skewRight({ skewX = 10 } = {}): string {
-    return `to:skewX:${skewX}:>;to:skewX:0:>`;
-  }
 
   /**
    * Tilt animation - rotation back and forth.
@@ -735,29 +721,6 @@ export class Presets {
     return `to:scaleX:${scaleX}:>;to:scaleY:${scaleY}:0`;
   }
 
-  /**
-   * Vertical bounce animation with decreasing heights.
-   * @param y1 - First bounce height (default: '-20px')
-   * @param y2 - Second bounce height (default: '-10px')
-   * @param y3 - Third bounce height (default: '-5px')
-   * @example verticalBounce() // Standard vertical bounce
-   * @example verticalBounce({ y1: '-30px' }) // Higher bounce
-   */
-  public static verticalBounce({ y1 = '-20px', y2 = '-10px', y3 = '-5px' } = {}): string {
-    return `to:y:${y1}:>;to:y:0:>;to:y:${y2}:>;to:y:0:>;to:y:${y3}:>;to:y:0:>`;
-  }
-
-  /**
-   * Horizontal bounce animation with decreasing distances.
-   * @param x1 - First bounce distance (default: '20px')
-   * @param x2 - Second bounce distance (default: '10px')
-   * @param x3 - Third bounce distance (default: '5px')
-   * @example horizontalBounce() // Standard horizontal bounce
-   * @example horizontalBounce({ x1: '30px' }) // Wider bounce
-   */
-  public static horizontalBounce({ x1 = '20px', x2 = '10px', x3 = '5px' } = {}): string {
-    return `to:x:${x1}:>;to:x:0:>;to:x:${x2}:>;to:x:0:>;to:x:${x3}:>;to:x:0:>`;
-  }
 
   /**
    * Rotational wave animation - continuous rotation back and forth.
@@ -771,74 +734,25 @@ export class Presets {
     return `to:rotate:${rotate1}:>;to:rotate:${rotate2}:>;to:rotate:${rotate1}:>;to:rotate:${rotate2}:>;to:rotate:0:>`;
   }
 
-  /**
-   * Slide up with fade in effect.
-   * @param y - Starting vertical position (default: '100%')
-   * @param opacity - Starting opacity (default: 0)
-   * @example slideUpFade() // Slide up from bottom
-   * @example slideUpFade({ y: '50%' }) // Shorter slide
-   */
-  public static slideUpFade({ y = '100%', opacity = 0 } = {}): string {
-    return `y:${y}:>;opacity:${opacity}:0`;
-  }
+
+
+
 
   /**
-   * Bounce in with fade effect.
-   * @param scale1 - Starting scale (default: 0)
-   * @param scale2 - Bounce scale (default: 1.1)
-   * @param scale3 - Final scale (default: 1)
-   * @param opacity - Starting opacity (default: 0)
-   * @example bounceFadeIn() // Standard bounce fade in
-   * @example bounceFadeIn({ scale2: 1.3 }) // Bigger bounce
+   * Impulse rotation animation.
+   * @param direction - Rotation direction: 'left' or 'right' (default: 'right')
+   * @param rotate1 - First rotation (default: auto based on direction)
+   * @param rotate2 - Second rotation (default: auto based on direction)
+   * @example impulseRotation() // Standard right impulse
+   * @example impulseRotation({ direction: 'left' }) // Left impulse
+   * @example impulseRotation({ rotate1: 15 }) // Stronger impulse
    */
-  public static bounceFadeIn({ scale1 = 0, scale2 = 1.1, scale3 = 1, opacity = 0 } = {}): string {
-    return `scale:${scale1}:>;opacity:${opacity}:0;to:scale:${scale2}:>;to:scale:${scale3}:>`;
-  }
-
-  /**
-   * Swing drop in animation - drops with rotation.
-   * @param rotate - Starting rotation (default: -45)
-   * @param y - Starting vertical position (default: '-100%')
-   * @param opacity - Starting opacity (default: 0)
-   * @example swingDropIn() // Standard swing drop
-   * @example swingDropIn({ rotate: -90 }) // More rotation
-   */
-  public static swingDropIn({ rotate = -45, y = '-100%', opacity = 0 } = {}): string {
-    return `rotate:${rotate}:>;y:${y}:0;opacity:${opacity}:0;to:rotate:0:>`;
-  }
-
-  /**
-   * Pulse fade in animation - pulsing entrance with fade.
-   * @param scale1 - First scale (default: 0.8)
-   * @param scale2 - Second scale (default: 1)
-   * @param opacity - Starting opacity (default: 0)
-   * @example pulseFadeIn() // Standard pulse fade
-   * @example pulseFadeIn({ scale1: 0.5 }) // More dramatic pulse
-   */
-  public static pulseFadeIn({ scale1 = 0.8, scale2 = 1, opacity = 0 } = {}): string {
-    return `scale:${scale1}:>;opacity:${opacity}:0;to:scale:${scale2}:>;to:scale:${scale1}:>;to:scale:${scale2}:>`;
-  }
-
-  /**
-   * Impulse rotation to the right.
-   * @param rotate1 - First rotation (default: 10)
-   * @param rotate2 - Second rotation (default: -5)
-   * @example impulseRotationRight() // Standard right impulse
-   * @example impulseRotationRight({ rotate1: 15 }) // Stronger impulse
-   */
-  public static impulseRotationRight({ rotate1 = 10, rotate2 = -5 } = {}): string {
-    return `to:rotate:${rotate1}:>;to:rotate:${rotate2}:>;to:rotate:0:>`;
-  }
-
-  /**
-   * Impulse rotation to the left.
-   * @param rotate1 - First rotation (default: -10)
-   * @param rotate2 - Second rotation (default: 5)
-   * @example impulseRotationLeft() // Standard left impulse
-   * @example impulseRotationLeft({ rotate1: -15 }) // Stronger impulse
-   */
-  public static impulseRotationLeft({ rotate1 = -10, rotate2 = 5 } = {}): string {
-    return `to:rotate:${rotate1}:>;to:rotate:${rotate2}:>;to:rotate:0:>`;
+  public static impulseRotation({ direction = 'right', rotate1, rotate2 } = {} as any): string {
+    const defaultRotate1 = direction === 'right' ? 10 : -10;
+    const defaultRotate2 = direction === 'right' ? -5 : 5;
+    const finalRotate1 = rotate1 !== undefined ? rotate1 : defaultRotate1;
+    const finalRotate2 = rotate2 !== undefined ? rotate2 : defaultRotate2;
+    return `to:rotate:${finalRotate1}:>;to:rotate:${finalRotate2}:>;to:rotate:0:>`;
   }
 
   /**
@@ -854,82 +768,8 @@ export class Presets {
     return `to:rotate:${rotate1}:>;to:y:${y1}:0;to:rotate:${rotate2}:>;to:y:${y2}:0;to:rotate:${rotate1}:>;to:y:${y1}:0;to:rotate:0:>;to:y:0:0`;
   }
 
-  /**
-   * Slide in with rotation effect.
-   * @param x - Starting horizontal position (default: '-100%')
-   * @param rotate - Starting rotation (default: -180)
-   * @param opacity - Starting opacity (default: 0)
-   * @example slideRotateIn() // Slide and rotate from left
-   * @example slideRotateIn({ x: '100%', rotate: 180 }) // From right
-   */
-  public static slideRotateIn({ x = '-100%', rotate = -180, opacity = 0 } = {}): string {
-    return `x:${x}:>;rotate:${rotate}:0;opacity:${opacity}:0;to:rotate:0:>`;
-  }
 
-  /**
-   * Slide out with rotation effect.
-   * @param x - Ending horizontal position (default: '100%')
-   * @param rotate - Ending rotation (default: 180)
-   * @param opacity - Ending opacity (default: 0)
-   * @example slideRotateOut() // Slide and rotate to right
-   * @example slideRotateOut({ x: '-100%', rotate: -180 }) // To left
-   */
-  public static slideRotateOut({ x = '100%', rotate = 180, opacity = 0 } = {}): string {
-    return `to:x:${x}:>;to:rotate:${rotate}:0;to:opacity:${opacity}:0`;
-  }
 
-  /**
-   * Flip in on Y-axis animation.
-   * @param rotateY - Y-axis rotation (default: 90)
-   * @param opacity - Starting opacity (default: 0)
-   * @example flipInY() // Standard Y flip in
-   * @example flipInY({ rotateY: 180 }) // Full flip
-   */
-  public static flipInY({ rotateY = 90, opacity = 0 } = {}): string {
-    return `rotateY:${rotateY}:>;opacity:${opacity}:0`;
-  }
-
-  /**
-   * Flip out on Y-axis animation.
-   * @param rotateY - Y-axis rotation (default: 90)
-   * @param opacity - Ending opacity (default: 0)
-   * @example flipOutY() // Standard Y flip out
-   * @example flipOutY({ rotateY: 180 }) // Full flip out
-   */
-  public static flipOutY({ rotateY = 90, opacity = 0 } = {}): string {
-    return `to:rotateY:${rotateY}:>;to:opacity:${opacity}:0`;
-  }
-
-  /**
-   * Slide up with vertical expansion.
-   * @param y - Starting vertical position (default: '100%')
-   * @param scaleY - Starting Y scale (default: 0)
-   * @param opacity - Starting opacity (default: 0)
-   * @example slideExpandUp() // Slide and expand from bottom
-   */
-  public static slideExpandUp({ y = '100%', scaleY = 0, opacity = 0 } = {}): string {
-    return `y:${y}:>;scaleY:${scaleY}:0;opacity:${opacity}:0;to:scaleY:1:>`;
-  }
-
-  /**
-   * Expand upward animation.
-   * @param scaleY - Starting Y scale (default: 0)
-   * @param opacity - Starting opacity (default: 0)
-   * @example expandUp() // Standard upward expansion
-   */
-  public static expandUp({ scaleY = 0, opacity = 0 } = {}): string {
-    return `scaleY:${scaleY}:>;opacity:${opacity}:0`;
-  }
-
-  /**
-   * Expand open animation - scale from center.
-   * @param scale - Starting scale (default: 0)
-   * @param opacity - Starting opacity (default: 0)
-   * @example expandOpen() // Standard center expansion
-   */
-  public static expandOpen({ scale = 0, opacity = 0 } = {}): string {
-    return `scale:${scale}:>;opacity:${opacity}:0`;
-  }
 
   /**
    * Big dramatic entrance with rotation.
@@ -1063,16 +903,5 @@ export class Presets {
     return `to:x:${x}:>;to:x:-${x}:>;to:x:${x}:>;to:x:-${x}:>;to:x:${x}:>;to:x:-${x}:>;to:x:${x}:>;to:x:-${x}:>;to:x:0:>`;
   }
 
-  /**
-   * Wobble with skew effect.
-   * @param skewX1 - First skew angle (default: -10)
-   * @param skewX2 - Second skew angle (default: 10)
-   * @param x1 - First horizontal position (default: '-5px')
-   * @param x2 - Second horizontal position (default: '5px')
-   * @example wobbleSkew() // Standard skew wobble
-   * @example wobbleSkew({ skewX1: -15, skewX2: 15 }) // Stronger skew
-   */
-  public static wobbleSkew({ skewX1 = -10, skewX2 = 10, x1 = '-5px', x2 = '5px' } = {}): string {
-    return `to:skewX:${skewX1}:>;to:x:${x1}:0;to:skewX:${skewX2}:>;to:x:${x2}:0;to:skewX:${skewX1}:>;to:x:${x1}:0;to:skewX:0:>;to:x:0:0`;
-  }
 }
+
