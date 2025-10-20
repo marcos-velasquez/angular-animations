@@ -76,16 +76,16 @@ export class Presets {
   /**
    * Bounce in animation with customizable scale values and opacity.
    * @param startScale - Initial scale (default: 0)
-   * @param midScale - Middle bounce scale (default: 1.3)
+   * @param midScale - Middle bounce scale (default: 1.1)
    * @param endScale - Final scale (default: 1)
    * @param opacity - Starting opacity (default: 0)
    * @example bounceIn() // Standard bounce in
-   * @example bounceIn({ startScale: 0.5, midScale: 1.3 }) // Custom bounce
-   * @example bounceIn({ midScale: 1.5, ease: 'elastic.out' }) // Elastic bounce
+   * @example bounceIn({ startScale: 0.3, midScale: 1.1 }) // Custom bounce
+   * @example bounceIn({ midScale: 1.2 }) // Stronger bounce
    * @example bounceIn({ opacity: 0 }) // Bounce with fade
    */
-  public static bounceIn({ startScale = 0, midScale = 1.3, endScale = 1, opacity = 0 } = {}): string {
-    return `scale:${startScale}:>;opacity:${opacity}:0;to:scale:${midScale}:>;to:scale:${endScale}:>`;
+  public static bounceIn({ startScale = 0, midScale = 1.1, endScale = 1, opacity = 0 } = {}): string {
+    return `scale:${startScale}:>;opacity:${opacity}:0;to:scale:${midScale}:>;to:scale:0.9:>;to:scale:${endScale}:>`;
   }
 
   /**
@@ -351,9 +351,6 @@ export class Presets {
     return `to:opacity:${opacity1}:>;to:opacity:${opacity2}:>;to:opacity:${opacity1}:>;to:opacity:${opacity2}:>`;
   }
 
-
-
-
   /**
    * Slide out animation with customizable direction, rotation, and opacity.
    * @param x - Horizontal ending position (default: '0')
@@ -587,7 +584,6 @@ export class Presets {
     return `to:scale:${scale1}:>;to:rotate:${rotate}:0;to:scale:${scale2}:>;to:rotate:0:0;to:scale:1:>`;
   }
 
-
   /**
    * Jump animation with vertical bouncing.
    * @param y1 - First jump height (default: '-30px')
@@ -683,7 +679,6 @@ export class Presets {
     return `to:skewX:${skewX}:>;to:skewY:${skewY}:0;to:skewX:0:>;to:skewY:0:0`;
   }
 
-
   /**
    * Tilt animation - rotation back and forth.
    * @param rotate1 - First rotation (default: -10)
@@ -721,7 +716,6 @@ export class Presets {
     return `to:scaleX:${scaleX}:>;to:scaleY:${scaleY}:0`;
   }
 
-
   /**
    * Rotational wave animation - continuous rotation back and forth.
    * @param rotate1 - First rotation (default: 15)
@@ -734,10 +728,6 @@ export class Presets {
     return `to:rotate:${rotate1}:>;to:rotate:${rotate2}:>;to:rotate:${rotate1}:>;to:rotate:${rotate2}:>;to:rotate:0:>`;
   }
 
-
-
-
-
   /**
    * Impulse rotation animation.
    * @param direction - Rotation direction: 'left' or 'right' (default: 'right')
@@ -747,7 +737,11 @@ export class Presets {
    * @example impulseRotation({ direction: 'left' }) // Left impulse
    * @example impulseRotation({ rotate1: 15 }) // Stronger impulse
    */
-  public static impulseRotation({ direction = 'right', rotate1, rotate2 }: { direction?: 'left' | 'right'; rotate1?: number; rotate2?: number } = {}): string {
+  public static impulseRotation({
+    direction = 'right',
+    rotate1,
+    rotate2,
+  }: { direction?: 'left' | 'right'; rotate1?: number; rotate2?: number } = {}): string {
     const defaultRotate1 = direction === 'right' ? 10 : -10;
     const defaultRotate2 = direction === 'right' ? -5 : 5;
     const finalRotate1 = rotate1 !== undefined ? rotate1 : defaultRotate1;
@@ -767,9 +761,6 @@ export class Presets {
   public static dancing({ rotate1 = -15, rotate2 = 15, y1 = '-10px', y2 = '10px' } = {}): string {
     return `to:rotate:${rotate1}:>;to:y:${y1}:0;to:rotate:${rotate2}:>;to:y:${y2}:0;to:rotate:${rotate1}:>;to:y:${y1}:0;to:rotate:0:>;to:y:0:0`;
   }
-
-
-
 
   /**
    * Big dramatic entrance with rotation.
@@ -902,6 +893,4 @@ export class Presets {
   public static buzzOut({ x = '3px' } = {}): string {
     return `to:x:${x}:>;to:x:-${x}:>;to:x:${x}:>;to:x:-${x}:>;to:x:${x}:>;to:x:-${x}:>;to:x:${x}:>;to:x:-${x}:>;to:x:0:>`;
   }
-
 }
-

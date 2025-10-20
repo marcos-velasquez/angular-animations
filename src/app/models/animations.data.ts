@@ -32,7 +32,7 @@ export const animations: Animation[] = [
     category: 'entrance',
     value: 'zoomIn()',
     description: 'Zoom in with optional rotation.',
-    examples: ['zoomIn', 'zoomIn({ scale: 0, rotate: 180 })', "zoomIn({ y: '-100%', scale: 0 })"],
+    examples: ['zoomIn', 'zoomIn({ x: 0, y: 0, scale: 0, opacity: 0, rotate: 0 })'],
     gradient: 'from-slate-100 to-slate-300',
     content: '<div class="w-32 h-32 rounded-full bg-gradient-to-r from-red-400 via-yellow-400 to-purple-400"></div>',
   },
@@ -461,7 +461,7 @@ export const animations: Animation[] = [
     category: 'special',
     value: 'glitch',
     description: 'Digital glitch effect.',
-    examples: ['glitch', 'glitch({ x1: \'-5px\', x2: \'5px\' })'],
+    examples: ['glitch', "glitch({ x1: '-5px', x2: '5px' })"],
     gradient: 'from-red-500 to-blue-500',
   },
   {
@@ -477,7 +477,7 @@ export const animations: Animation[] = [
     category: 'special',
     value: 'flip',
     description: 'Continuous flip animation.',
-    examples: ['flip', 'flip({ axis: \'x\' })', 'flip({ rotate1: 90, rotate2: 180 })'],
+    examples: ['flip', "flip({ axis: 'x' })", 'flip({ rotate1: 90, rotate2: 180 })'],
     gradient: 'from-indigo-500 to-purple-500',
   },
   {
@@ -485,7 +485,7 @@ export const animations: Animation[] = [
     category: 'special',
     value: 'blur',
     description: 'Blur to focus effect.',
-    examples: ['blur', 'blur({ blur1: \'20px\' })', 'blur({ blur2: \'5px\' })'],
+    examples: ['blur', "blur({ blur1: '20px' })", "blur({ blur2: '5px' })"],
     gradient: 'from-cyan-500 to-blue-500',
   },
   {
@@ -493,7 +493,7 @@ export const animations: Animation[] = [
     category: 'special',
     value: 'kenBurns',
     description: 'Cinematic zoom and pan effect.',
-    examples: ['kenBurns', 'kenBurns({ scale: 1.3, x: \'10%\', y: \'10%\' })'],
+    examples: ['kenBurns', "kenBurns({ scale: 1.3, x: '10%', y: '10%' })"],
     gradient: 'from-blue-500 to-indigo-500',
   },
   {
@@ -527,7 +527,7 @@ export const animations: Animation[] = [
     category: 'shadow',
     value: 'glow',
     description: 'Glowing light effect.',
-    examples: ['glow', 'glow({ boxShadow: \'0 0 30px rgba(0, 255, 255, 1)\' })'],
+    examples: ['glow', "glow({ boxShadow: '0 0 30px rgba(0, 255, 255, 1)' })"],
     gradient: 'from-yellow-400 to-amber-500',
   },
   {
@@ -535,7 +535,7 @@ export const animations: Animation[] = [
     category: 'shadow',
     value: 'shadow',
     description: 'Drop shadow effect.',
-    examples: ['shadow', 'shadow({ boxShadow: \'0 15px 30px rgba(0, 0, 0, 0.5)\' })'],
+    examples: ['shadow', "shadow({ boxShadow: '0 15px 30px rgba(0, 0, 0, 0.5)' })"],
     gradient: 'from-gray-600 to-gray-800',
   },
   {
@@ -551,7 +551,7 @@ export const animations: Animation[] = [
     category: 'shadow',
     value: 'floatShadow',
     description: 'Float with shadow effect.',
-    examples: ['floatShadow', 'floatShadow({ y: \'-20px\' })'],
+    examples: ['floatShadow', "floatShadow({ y: '-20px' })"],
     gradient: 'from-stone-500 to-neutral-700',
   },
 ];
