@@ -38,20 +38,21 @@ export class Presets {
 
   /**
    * Zoom in animation with customizable direction, scale, rotation, and opacity.
+   * Based on animate.css zoomIn: 0% scale(0.3) opacity(0), 50% opacity(1)
    * @param x - Horizontal starting position (default: '0')
    * @param y - Vertical starting position (default: '0')
-   * @param scale - Starting scale (default: 0)
+   * @param scale - Starting scale (default: 0.3)
    * @param opacity - Starting opacity (default: 0)
    * @param rotate - Starting rotation in degrees (default: 0)
    * @example zoomIn() // Simple zoom in
    * @example zoomIn({ scale: 0.5 }) // Zoom from 50%
-   * @example zoomIn({ y: '-100%', scale: 0 }) // Zoom in from top
+   * @example zoomIn({ y: '-100%', scale: 0.3 }) // Zoom in from top
    * @example zoomIn({ x: '100%', scale: 0.3 }) // Zoom in from right
    * @example zoomIn({ rotate: 180 }) // Zoom with rotation
    */
-  public static zoomIn({ x = '0', y = '0', scale = 0, opacity = 0, rotate = 0 } = {}): string {
-    const rotateAnim = rotate !== 0 ? `;rotate:${rotate}:0` : '';
-    return `x:${x}:>;y:${y}:0;scale:${scale}:0;opacity:${opacity}:0${rotateAnim}`;
+  public static zoomIn({ x = '0', y = '0', scale = 0.3, opacity = 0, rotate = 0 } = {}): string {
+    const rotateAnim = rotate !== 0 ? `;rotate:${rotate}:0;to:rotate:0:>` : '';
+    return `x:${x}:>;y:${y}:0;scale:${scale}:0;opacity:${opacity}:0;to:opacity:1:0${rotateAnim}`;
   }
 
   /**
@@ -75,72 +76,73 @@ export class Presets {
 
   /**
    * Bounce in animation with customizable scale values and opacity.
-   * @param startScale - Initial scale (default: 0)
-   * @param midScale - Middle bounce scale (default: 1.1)
-   * @param endScale - Final scale (default: 1)
+   * Based on animate.css bounceIn keyframes: 0% scale(0.3), 20% scale(1.1), 40% scale(0.9), 60% scale(1.03), 80% scale(0.97), 100% scale(1)
+   * @param startScale - Initial scale (default: 0.3)
    * @param opacity - Starting opacity (default: 0)
    * @example bounceIn() // Standard bounce in
-   * @example bounceIn({ startScale: 0.3, midScale: 1.1 }) // Custom bounce
-   * @example bounceIn({ midScale: 1.2 }) // Stronger bounce
+   * @example bounceIn({ startScale: 0.5 }) // Less dramatic start
    * @example bounceIn({ opacity: 0 }) // Bounce with fade
    */
-  public static bounceIn({ startScale = 0, midScale = 1.1, endScale = 1, opacity = 0 } = {}): string {
-    return `scale:${startScale}:>;opacity:${opacity}:0;to:scale:${midScale}:>;to:scale:0.9:>;to:scale:${endScale}:>`;
+  public static bounceIn({ startScale = 0.3, opacity = 0 } = {}): string {
+    return `scale:${startScale}:>;opacity:${opacity}:0;to:scale:1.1:>@ease=cubic-bezier(0.215,0.61,0.355,1);to:scale:0.9:>;to:scale:1.03:>;to:scale:0.97:>;to:scale:1:>`;
   }
 
   /**
    * Rotate in animation with customizable direction, rotation, and opacity.
+   * Based on animate.css rotateIn: from rotate(-200deg) to rotate(0)
    * @param x - Horizontal starting position (default: '0')
    * @param y - Vertical starting position (default: '0')
-   * @param rotate - Starting rotation in degrees (default: -180)
+   * @param rotate - Starting rotation in degrees (default: -200)
    * @param opacity - Starting opacity (default: 0)
-   * @example rotateIn() // Rotate in from -180°
+   * @example rotateIn() // Rotate in from -200°
    * @example rotateIn({ y: '100%', rotate: -45 }) // Rotate in from bottom
    * @example rotateIn({ rotate: -360 }) // Full rotation entrance
    */
-  public static rotateIn({ x = '0', y = '0', rotate = -180, opacity = 0 } = {}): string {
-    return `x:${x}:>;y:${y}:0;rotate:${rotate}:0;opacity:${opacity}:<;to:rotate:0:>`;
+  public static rotateIn({ x = '0', y = '0', rotate = -200, opacity = 0 } = {}): string {
+    return `x:${x}:>;y:${y}:0;rotate:${rotate}:0;opacity:${opacity}:0;to:rotate:0:>;to:opacity:1:0`;
   }
 
   /**
    * Flip in animation with customizable axis, rotation and opacity.
+   * Based on animate.css flipInX: 0% rotate(90deg), 40% rotate(-20deg), 60% rotate(10deg), 80% rotate(-5deg), 100% rotate(0)
    * @param axis - Rotation axis: 'x', 'y', or 'z' (default: 'y')
-   * @param degrees - Rotation degrees (default: 180)
    * @param opacity - Starting opacity (default: 0)
    * @example flipIn() // Standard Y-axis flip in
-   * @example flipIn({ axis: 'x', degrees: 90 }) // X-axis flip
-   * @example flipIn({ degrees: 360, duration: 2 }) // Full flip slowly
-   * @example flipIn({ axis: 'x' }) // Horizontal flip
+   * @example flipIn({ axis: 'x' }) // X-axis flip with bounce
+   * @example flipIn({ axis: 'z' }) // Z-axis flip
    */
-  public static flipIn({ axis = 'y', degrees = 180, opacity = 0 } = {}): string {
+  public static flipIn({ axis = 'y', opacity = 0 } = {}): string {
     const rotateAxis = axis === 'x' ? 'rotateX' : axis === 'z' ? 'rotateZ' : 'rotateY';
-    return `${rotateAxis}:${degrees}:>;opacity:${opacity}:<`;
+    return `${rotateAxis}:90:>@ease=ease-in;opacity:${opacity}:0;to:${rotateAxis}:-20:>@ease=ease-in;to:${rotateAxis}:10:>;to:opacity:1:0;to:${rotateAxis}:-5:>;to:${rotateAxis}:0:>`;
   }
 
   /**
    * Roll in animation with rotation and horizontal movement.
-   * @param degrees - Rotation degrees (default: -360)
+   * Based on animate.css rollIn: from translate(-100%) rotate(-120deg) opacity(0) to translate(0) rotate(0) opacity(1)
+   * @param degrees - Rotation degrees (default: -120)
    * @param distance - Horizontal starting distance (default: '-100%')
    * @param opacity - Starting opacity (default: 0)
    * @example rollIn() // Roll in from left
-   * @example rollIn({ distance: '100%', degrees: 360 }) // Roll in from right
-   * @example rollIn({ degrees: -720 }) // Double roll
+   * @example rollIn({ distance: '100%', degrees: 120 }) // Roll in from right
+   * @example rollIn({ degrees: -240 }) // Double roll
    */
-  public static rollIn({ degrees = -360, distance = '-100%', opacity = 0 } = {}): string {
-    return `rotate:${degrees}:>;x:${distance}:0;opacity:${opacity}:0`;
+  public static rollIn({ degrees = -120, distance = '-100%', opacity = 0 } = {}): string {
+    return `rotate:${degrees}:>;x:${distance}:0;opacity:${opacity}:0;to:rotate:0:>;to:x:0:0;to:opacity:1:0`;
   }
 
   /**
    * Light speed in animation with skew effect.
+   * Based on animate.css lightSpeedInRight: from translate(100%) skewX(-30deg) opacity(0), 60% skewX(20deg) opacity(1), 80% skewX(-5deg), to translate(0)
    * @param distance - Horizontal starting distance (default: '100%')
-   * @param skew - Skew angle on X-axis (default: -30)
+   * @param skew1 - Initial skew angle (default: -30)
+   * @param skew2 - Mid skew angle (default: 20)
+   * @param skew3 - Final skew angle (default: -5)
    * @param opacity - Starting opacity (default: 0)
    * @example lightSpeedIn() // Fast entrance from right
-   * @example lightSpeedIn({ distance: '-100%', skew: 30 }) // From left
-   * @example lightSpeedIn({ skew: -45, duration: 0.3 }) // Faster with more skew
+   * @example lightSpeedIn({ distance: '-100%', skew1: 30, skew2: -20, skew3: 5 }) // From left
    */
-  public static lightSpeedIn({ distance = '100%', skew = -30, opacity = 0 } = {}): string {
-    return `x:${distance}:>;skewX:${skew}:0;opacity:${opacity}:0`;
+  public static lightSpeedIn({ distance = '100%', skew1 = -30, skew2 = 20, skew3 = -5, opacity = 0 } = {}): string {
+    return `x:${distance}:>;skewX:${skew1}:0;opacity:${opacity}:0;to:skewX:${skew2}:>@ease=ease-out;to:opacity:1:0;to:skewX:${skew3}:>;to:x:0:>;to:skewX:0:0`;
   }
 
   /**
@@ -198,89 +200,90 @@ export class Presets {
 
   /**
    * Roll out animation with rotation and horizontal movement.
-   * @param degrees - Rotation degrees (default: 360)
+   * Based on animate.css rollOut: from opacity(1) to translate(100%) rotate(120deg) opacity(0)
+   * @param degrees - Rotation degrees (default: 120)
    * @param distance - Horizontal ending distance (default: '100%')
    * @param opacity - Ending opacity (default: 0)
    * @example rollOut() // Roll out to right
-   * @example rollOut({ distance: '-100%', degrees: -360 }) // Roll out to left
-   * @example rollOut({ degrees: 720 }) // Double roll out
+   * @example rollOut({ distance: '-100%', degrees: -120 }) // Roll out to left
+   * @example rollOut({ degrees: 240 }) // Double roll out
    */
-  public static rollOut({ degrees = 360, distance = '100%', opacity = 0 } = {}): string {
+  public static rollOut({ degrees = 120, distance = '100%', opacity = 0 } = {}): string {
     return `to:rotate:${degrees}:>;to:x:${distance}:0;to:opacity:${opacity}:0`;
   }
 
   /**
    * Pulse animation that scales up and down with optional fade.
-   * @param scale1 - First scale value (default: 1.05)
-   * @param scale2 - Second scale value (default: 1)
+   * Based on animate.css pulse: from scale(1), 50% scale(1.05), to scale(1)
+   * @param scale1 - Peak scale value (default: 1.05)
    * @param opacity - Starting opacity for fade effect (default: 1, no fade)
    * @example pulse() // Subtle pulse
-   * @example pulse({ scale1: 1.2 }) // Stronger pulse
-   * @param scale1: 0.9, scale2: 1 }) // Shrink pulse
+   * @example pulse({ scale1: 1.1 }) // Stronger pulse
    * @example pulse({ opacity: 0 }) // Pulse with fade in
    * @example pulse({ duration: 0.5, repeat: 3 }) // Pulse 4 times
    */
-  public static pulse({ scale1 = 1.05, scale2 = 1, opacity = 1 } = {}): string {
+  public static pulse({ scale1 = 1.05, opacity = 1 } = {}): string {
     const opacityAnim = opacity !== 1 ? `opacity:${opacity}:0;` : '';
-    return `${opacityAnim}to:scale:${scale1}:>;to:scale:${scale2}:>`;
+    return `${opacityAnim}to:scale:${scale1}:>@ease=ease-in-out;to:scale:1:>@ease=ease-in-out`;
   }
 
   /**
    * Shake animation with horizontal and/or vertical movement.
+   * Based on animate.css shake: 10%,30%,50%,70%,90% translate(-10px), 20%,40%,60%,80% translate(10px)
    * @param x - Horizontal shake distance (default: '10px')
    * @param y - Vertical shake distance (default: '0')
    * @example shake() // Horizontal shake
    * @example shake({ x: '15px' }) // Stronger horizontal shake
    * @example shake({ y: '10px' }) // Vertical shake
    * @example shake({ x: '10px', y: '10px' }) // Diagonal shake
-   * @example shake({ x: '5px', duration: 0.3 }) // Quick subtle shake
    */
   public static shake({ x = '10px', y = '0' } = {}): string {
-    return `to:x:-${x}:>;to:y:-${y}:0;to:x:${x}:>;to:y:${y}:0;to:x:-${x}:>;to:y:-${y}:0;to:x:${x}:>;to:y:${y}:0;to:x:0:>;to:y:0:0`;
+    return `to:x:-${x}:>;to:y:-${y}:0;to:x:${x}:>;to:y:${y}:0;to:x:-${x}:>;to:y:-${y}:0;to:x:${x}:>;to:y:${y}:0;to:x:-${x}:>;to:y:-${y}:0;to:x:0:>;to:y:0:0`;
   }
 
   /**
-   * Wobble animation with rotation, horizontal movement, and optional skew.
-   * @param rotate1 - First rotation angle (default: -5)
+   * Wobble animation with rotation and horizontal movement.
+   * Based on animate.css wobble: 15% translate(-25%) rotate(-5deg), 30% translate(20%) rotate(3deg), 45% translate(-15%) rotate(-3deg), 60% translate(10%) rotate(2deg), 75% translate(-5%) rotate(-1deg)
    * @param x1 - First horizontal position (default: '-25%')
-   * @param rotate2 - Second rotation angle (default: 3)
+   * @param rotate1 - First rotation angle (default: -5)
    * @param x2 - Second horizontal position (default: '20%')
-   * @param skewX1 - First skew angle (default: 0)
-   * @param skewX2 - Second skew angle (default: 0)
+   * @param rotate2 - Second rotation angle (default: 3)
+   * @param x3 - Third horizontal position (default: '-15%')
+   * @param rotate3 - Third rotation angle (default: -3)
+   * @param x4 - Fourth horizontal position (default: '10%')
+   * @param rotate4 - Fourth rotation angle (default: 2)
+   * @param x5 - Fifth horizontal position (default: '-5%')
+   * @param rotate5 - Fifth rotation angle (default: -1)
    * @example wobble() // Standard wobble
-   * @example wobble({ rotate1: -10, rotate2: 8 }) // Stronger wobble
-   * @example wobble({ skewX1: -10, skewX2: 10 }) // Wobble with skew
+   * @example wobble({ x1: '-30%', x2: '25%' }) // Wider wobble
    */
-  public static wobble({ rotate1 = -5, x1 = '-25%', rotate2 = 3, x2 = '20%', skewX1 = 0, skewX2 = 0 } = {}): string {
-    const hasSkew = skewX1 !== 0 || skewX2 !== 0;
-    if (hasSkew) {
-      return `to:rotate:${rotate1}:>;to:x:${x1}:0;to:skewX:${skewX1}:0;to:rotate:${rotate2}:>;to:x:${x2}:0;to:skewX:${skewX2}:0;to:rotate:0:>;to:x:0:0;to:skewX:0:0`;
-    }
-    return `to:rotate:${rotate1}:>;to:x:${x1}:0;to:rotate:${rotate2}:>;to:x:${x2}:0;to:rotate:0:>;to:x:0:0`;
+  public static wobble({ x1 = '-25%', rotate1 = -5, x2 = '20%', rotate2 = 3, x3 = '-15%', rotate3 = -3, x4 = '10%', rotate4 = 2, x5 = '-5%', rotate5 = -1 } = {}): string {
+    return `to:x:${x1}:>;to:rotate:${rotate1}:0;to:x:${x2}:>;to:rotate:${rotate2}:0;to:x:${x3}:>;to:rotate:${rotate3}:0;to:x:${x4}:>;to:rotate:${rotate4}:0;to:x:${x5}:>;to:rotate:${rotate5}:0;to:x:0:>;to:rotate:0:0`;
   }
 
   /**
    * Jello animation with skew wobble effect.
-   * @param skew1 - First skew angle (default: -12.5)
-   * @param skew2 - Second skew angle (default: 6.25)
+   * Based on animate.css jello: 22.2% skew(-12.5deg), 33.3% skew(6.25deg), 44.4% skew(-3.125deg), 55.5% skew(1.5625deg), 66.6% skew(-0.78125deg), 77.7% skew(0.390625deg), 88.8% skew(-0.1953125deg)
+   * @param skewX1 - First skew angle (default: -12.5)
+   * @param skewY1 - First Y skew angle (default: -12.5)
+   * @param skewX2 - Second skew angle (default: 6.25)
+   * @param skewY2 - Second Y skew angle (default: 6.25)
    * @example jello() // Standard jello wobble
-   * @example jello({ skew1: -20, skew2: 10 }) // More dramatic wobble
-   * @example jello({ duration: 0.5, repeat: 2 }) // Quick repeated jello
+   * @example jello({ skewX1: -20, skewY1: -20 }) // More dramatic wobble
    */
-  public static jello({ skew1 = -12.5, skew2 = 6.25 } = {}): string {
-    return `to:skewX:${skew1}:>;to:skewY:${skew1}:0;to:skewX:${skew2}:>;to:skewY:${skew2}:0;to:skewX:0:>;to:skewY:0:0`;
+  public static jello({ skewX1 = -12.5, skewY1 = -12.5, skewX2 = 6.25, skewY2 = 6.25 } = {}): string {
+    return `to:skewX:${skewX1}:>;to:skewY:${skewY1}:0;to:skewX:${skewX2}:>;to:skewY:${skewY2}:0;to:skewX:${-skewX2/2}:>;to:skewY:${-skewY2/2}:0;to:skewX:${skewX2/4}:>;to:skewY:${skewY2/4}:0;to:skewX:0:>;to:skewY:0:0`;
   }
 
   /**
    * Heart beat animation with pulsing scale.
+   * Based on animate.css heartBeat: 0% scale(1), 14% scale(1.3), 28% scale(1), 42% scale(1.3), 70% scale(1)
    * @param scale1 - Enlarged scale (default: 1.3)
-   * @param scale2 - Normal scale (default: 1)
    * @example heartBeat() // Standard heart beat
    * @example heartBeat({ scale1: 1.5 }) // Stronger beat
-   * @example heartBeat({ duration: 0.8, repeat: -1 }) // Continuous heartbeat
    */
-  public static heartBeat({ scale1 = 1.3, scale2 = 1 } = {}): string {
-    return `to:scale:${scale1}:>;to:scale:${scale2}:>;to:scale:${scale1}:>;to:scale:${scale2}:>`;
+  public static heartBeat({ scale1 = 1.3 } = {}): string {
+    return `to:scale:${scale1}:>@ease=ease-in-out;to:scale:1:>@ease=ease-in-out;to:scale:${scale1}:>@ease=ease-in-out;to:scale:1:>@ease=ease-in-out`;
   }
 
   /**
@@ -340,15 +343,13 @@ export class Presets {
   }
 
   /**
-   * Flash animation - rapid opacity changes.
-   * @param opacity1 - First opacity (default: 0)
-   * @param opacity2 - Second opacity (default: 1)
-   * @example flash() // Standard flash
-   * @example flash({ opacity1: 0.5 }) // Subtle flash
-   * @example flash({ duration: 0.3, repeat: 5 }) // Rapid flashing
+   * Flash animation with opacity pulsing.
+   * Based on animate.css flash: from,50%,to opacity(1), 25%,75% opacity(0)
+   * @example flash() // Standard flash (4 pulses)
+   * @example flash({ duration: 0.5, repeat: 2 }) // Rapid flashing
    */
-  public static flash({ opacity1 = 0, opacity2 = 1 } = {}): string {
-    return `to:opacity:${opacity1}:>;to:opacity:${opacity2}:>;to:opacity:${opacity1}:>;to:opacity:${opacity2}:>`;
+  public static flash(): string {
+    return `to:opacity:0:>;to:opacity:1:>;to:opacity:0:>;to:opacity:1:>`;
   }
 
   /**
@@ -429,53 +430,63 @@ export class Presets {
 
   /**
    * Tada animation with scale and rotation for celebration effect.
+   * Based on animate.css tada: 10%,20% scale(0.9) rotate(-3deg), 30%,50%,70%,90% scale(1.1) rotate(3deg), 40%,60%,80% scale(1.1) rotate(-3deg)
    * @param scale1 - First scale value (default: 0.9)
    * @param scale2 - Second scale value (default: 1.1)
    * @param rotate1 - First rotation angle (default: -3)
    * @param rotate2 - Second rotation angle (default: 3)
    * @example tada() // Standard celebration
    * @example tada({ scale2: 1.2, rotate2: 5 }) // More dramatic
-   * @example tada({ duration: 1 }) // Slower celebration
    */
   public static tada({ scale1 = 0.9, scale2 = 1.1, rotate1 = -3, rotate2 = 3 } = {}): string {
-    return `to:scale:${scale1}:>;to:rotate:${rotate1}:0;to:scale:${scale2}:>;to:rotate:${rotate2}:0;to:scale:${scale2}:>;to:rotate:${rotate2}:0;to:scale:${scale2}:>;to:rotate:${rotate2}:0;to:scale:1:>;to:rotate:0:0`;
+    return `to:scale:${scale1}:>;to:rotate:${rotate1}:0;to:scale:${scale1}:>;to:rotate:${rotate1}:0;to:scale:${scale2}:>;to:rotate:${rotate2}:0;to:scale:${scale2}:>;to:rotate:${rotate1}:0;to:scale:${scale2}:>;to:rotate:${rotate2}:0;to:scale:${scale2}:>;to:rotate:${rotate1}:0;to:scale:${scale2}:>;to:rotate:${rotate2}:0;to:scale:${scale2}:>;to:rotate:${rotate1}:0;to:scale:${scale2}:>;to:rotate:${rotate2}:0;to:scale:1:>;to:rotate:0:0`;
   }
 
   /**
-   * Swing animation with decreasing rotation.
+   * Swing animation - pendulum-like rotation.
+   * Based on animate.css swing: 20% rotate(15deg), 40% rotate(-10deg), 60% rotate(5deg), 80% rotate(-5deg), 100% rotate(0)
    * @param rotate1 - First rotation angle (default: 15)
    * @param rotate2 - Second rotation angle (default: -10)
    * @param rotate3 - Third rotation angle (default: 5)
-   * @example swing() // Standard swing
+   * @param rotate4 - Fourth rotation angle (default: -5)
+   * @example swing() // Standard pendulum swing
    * @example swing({ rotate1: 20, rotate2: -15 }) // Wider swing
-   * @example swing({ duration: 1, ease: 'elastic.out' }) // Elastic swing
    */
-  public static swing({ rotate1 = 15, rotate2 = -10, rotate3 = 5 } = {}): string {
-    return `to:rotate:${rotate1}:>;to:rotate:${rotate2}:>;to:rotate:${rotate3}:>;to:rotate:${rotate2}:>;to:rotate:0:>`;
+  public static swing({ rotate1 = 15, rotate2 = -10, rotate3 = 5, rotate4 = -5 } = {}): string {
+    return `to:rotate:${rotate1}:>;to:rotate:${rotate2}:>;to:rotate:${rotate3}:>;to:rotate:${rotate4}:>;to:rotate:0:>`;
   }
 
   /**
    * Head shake animation - horizontal shake with rotation.
-   * @param x1 - First horizontal position (default: '-10px')
-   * @param x2 - Second horizontal position (default: '10px')
-   * @param rotate1 - First rotation (default: -5)
-   * @param rotate2 - Second rotation (default: 5)
+   * Based on animate.css headShake: 6.5% translateX(-6px) rotateY(-9deg), 18.5% translateX(5px) rotateY(7deg), 31.5% translateX(-3px) rotateY(-5deg), 43.5% translateX(2px) rotateY(3deg)
+   * @param x1 - First horizontal position (default: '-6px')
+   * @param rotateY1 - First Y rotation (default: -9)
+   * @param x2 - Second horizontal position (default: '5px')
+   * @param rotateY2 - Second Y rotation (default: 7)
+   * @param x3 - Third horizontal position (default: '-3px')
+   * @param rotateY3 - Third Y rotation (default: -5)
+   * @param x4 - Fourth horizontal position (default: '2px')
+   * @param rotateY4 - Fourth Y rotation (default: 3)
    * @example headShake() // Standard head shake (no gesture)
-   * @example headShake({ x1: '-15px', x2: '15px' }) // Stronger shake
-   * @example headShake({ duration: 0.5, repeat: 2 }) // Quick repeated shake
+   * @example headShake({ x1: '-10px', rotateY1: -12 }) // Stronger shake
    */
-  public static headShake({ x1 = '-10px', x2 = '10px', rotate1 = -5, rotate2 = 5 } = {}): string {
-    return `to:x:${x1}:>;to:rotate:${rotate1}:0;to:x:${x2}:>;to:rotate:${rotate2}:0;to:x:${x1}:>;to:rotate:${rotate1}:0;to:x:0:>;to:rotate:0:0`;
+  public static headShake({ x1 = '-6px', rotateY1 = -9, x2 = '5px', rotateY2 = 7, x3 = '-3px', rotateY3 = -5, x4 = '2px', rotateY4 = 3 } = {}): string {
+    return `to:x:${x1}:>@ease=ease-in-out;to:rotateY:${rotateY1}:0;to:x:${x2}:>;to:rotateY:${rotateY2}:0;to:x:${x3}:>;to:rotateY:${rotateY3}:0;to:x:${x4}:>;to:rotateY:${rotateY4}:0;to:x:0:>;to:rotateY:0:0`;
   }
 
   /**
-   * Rubber band animation with elastic stretching.
+   * Rubber band animation with alternating X and Y scale.
+   * Based on animate.css rubberBand: 30% scale(1.25,0.75), 40% scale(0.75,1.25), 50% scale(1.15,0.85), 65% scale(0.95,1.05), 75% scale(1.05,0.95)
    * @param scaleX1 - First X scale (default: 1.25)
    * @param scaleY1 - First Y scale (default: 0.75)
    * @param scaleX2 - Second X scale (default: 0.75)
    * @param scaleY2 - Second Y scale (default: 1.25)
    * @param scaleX3 - Third X scale (default: 1.15)
    * @param scaleY3 - Third Y scale (default: 0.85)
+   * @param scaleX4 - Fourth X scale (default: 0.95)
+   * @param scaleY4 - Fourth Y scale (default: 1.05)
+   * @param scaleX5 - Fifth X scale (default: 1.05)
+   * @param scaleY5 - Fifth Y scale (default: 0.95)
    * @example rubberBand() // Standard rubber band
    * @example rubberBand({ scaleX1: 1.5, scaleY1: 0.5 }) // More elastic
    */
@@ -486,8 +497,12 @@ export class Presets {
     scaleY2 = 1.25,
     scaleX3 = 1.15,
     scaleY3 = 0.85,
+    scaleX4 = 0.95,
+    scaleY4 = 1.05,
+    scaleX5 = 1.05,
+    scaleY5 = 0.95,
   } = {}): string {
-    return `to:scaleX:${scaleX1}:>;to:scaleY:${scaleY1}:0;to:scaleX:${scaleX2}:>;to:scaleY:${scaleY2}:0;to:scaleX:${scaleX3}:>;to:scaleY:${scaleY3}:0;to:scaleX:1:>;to:scaleY:1:0`;
+    return `to:scaleX:${scaleX1}:>;to:scaleY:${scaleY1}:0;to:scaleX:${scaleX2}:>;to:scaleY:${scaleY2}:0;to:scaleX:${scaleX3}:>;to:scaleY:${scaleY3}:0;to:scaleX:${scaleX4}:>;to:scaleY:${scaleY4}:0;to:scaleX:${scaleX5}:>;to:scaleY:${scaleY5}:0;to:scaleX:1:>;to:scaleY:1:0`;
   }
 
   /**
