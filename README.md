@@ -74,7 +74,7 @@ Use with the `trigger` input for flexibility:
 
 ## Animation Presets
 
-**69+ preset animations** organized in 4 categories: Entrance, Exit, Attention, and Special effects.
+**60+ preset animations** organized in 5 categories: Entrance, Exit, Attention, Special Effects, and Shadow Effects.
 
 ### Flexible & Parametrized
 

@@ -747,7 +747,7 @@ export class Presets {
    * @example impulseRotation({ direction: 'left' }) // Left impulse
    * @example impulseRotation({ rotate1: 15 }) // Stronger impulse
    */
-  public static impulseRotation({ direction = 'right', rotate1, rotate2 } = {} as any): string {
+  public static impulseRotation({ direction = 'right', rotate1, rotate2 }: { direction?: 'left' | 'right'; rotate1?: number; rotate2?: number } = {}): string {
     const defaultRotate1 = direction === 'right' ? 10 : -10;
     const defaultRotate2 = direction === 'right' ? -5 : 5;
     const finalRotate1 = rotate1 !== undefined ? rotate1 : defaultRotate1;
