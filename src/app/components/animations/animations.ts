@@ -15,7 +15,7 @@ export class Animations {
   public readonly selectedCategory = signal<'all' | Animation['category']>('all');
 
   public readonly animations = computed(() => this.animationList.filter(this.selectedCategory(), this.searchQuery()));
-  public readonly categoryCounts = computed(() => this.animationList.getCategoryCounts());
+  public readonly categoryCounts = computed(() => this.animationList.categoryCounts);
 
   public setCategory(category: 'all' | Animation['category']) {
     this.selectedCategory.set(category);

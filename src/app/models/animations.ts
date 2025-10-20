@@ -9,7 +9,7 @@ export class AnimationList {
     return this.animations.length;
   }
 
-  public getCategoryCounts() {
+  public get categoryCounts() {
     return {
       all: this.animations.length,
       entrance: this.animations.filter((animation) => animation.category === 'entrance').length,
