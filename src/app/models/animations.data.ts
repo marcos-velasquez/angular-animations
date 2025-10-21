@@ -106,14 +106,6 @@ export const animations: Animation[] = [
     gradient: 'from-teal-400 to-cyan-600',
   },
   {
-    name: 'Rubber Band In',
-    category: 'entrance',
-    value: 'rubberBandIn',
-    description: 'Rubber band entrance with horizontal stretching.',
-    examples: ['rubberBandIn', 'rubberBandIn({ scale1: 1.25, scale2: 0.75, scale3: 1.15, scale4: 1 })'],
-    gradient: 'from-emerald-300 to-teal-500',
-  },
-  {
     name: 'Back In',
     category: 'entrance',
     value: 'backIn',
@@ -341,14 +333,6 @@ export const animations: Animation[] = [
     gradient: 'from-orange-400 to-amber-500',
   },
   {
-    name: 'Bob',
-    category: 'attention',
-    value: 'bob',
-    description: 'Bobbing up and down.',
-    examples: ['bob', "bob({ y1: '-10px', y2: '0px' })"],
-    gradient: 'from-emerald-400 to-teal-500',
-  },
-  {
     name: 'Hang',
     category: 'attention',
     value: 'hang',
@@ -397,30 +381,6 @@ export const animations: Animation[] = [
     gradient: 'from-violet-400 to-purple-500',
   },
   {
-    name: 'Sway',
-    category: 'attention',
-    value: 'sway',
-    description: 'Gentle rotation back and forth.',
-    examples: ['sway', 'sway({ rotate1: -15, rotate2: 15 })', 'sway({ duration: 2, repeat: -1 })'],
-    gradient: 'from-purple-400 to-fuchsia-500',
-  },
-  {
-    name: 'Tilt',
-    category: 'attention',
-    value: 'tilt',
-    description: 'Rotation back and forth.',
-    examples: ['tilt', 'tilt({ rotate1: -20, rotate2: 20 })', 'tilt({ duration: 0.5, repeat: 3 })'],
-    gradient: 'from-fuchsia-400 to-pink-500',
-  },
-  {
-    name: 'Wiggle',
-    category: 'attention',
-    value: 'wiggle',
-    description: 'Horizontal movement with rotation.',
-    examples: ['wiggle', "wiggle({ x1: '-15px', rotate1: -5 })", 'wiggle({ duration: 0.3, repeat: 3 })'],
-    gradient: 'from-pink-400 to-rose-500',
-  },
-  {
     name: 'Dancing',
     category: 'attention',
     value: 'dancing',
@@ -435,14 +395,6 @@ export const animations: Animation[] = [
     description: 'Rapid horizontal vibration.',
     examples: ['buzz', "buzz({ x: '5px' })", 'buzz({ duration: 0.3 })'],
     gradient: 'from-red-400 to-orange-500',
-  },
-  {
-    name: 'Buzz Out',
-    category: 'attention',
-    value: 'buzzOut',
-    description: 'Rapid horizontal vibration outward.',
-    examples: ['buzzOut', "buzzOut({ x: '5px' })"],
-    gradient: 'from-orange-400 to-amber-500',
   },
 
   // SPECIAL EFFECTS

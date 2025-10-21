@@ -159,19 +159,6 @@ export class Presets {
   }
 
   /**
-   * Rubber band in animation with horizontal stretching.
-   * @param scale1 - First scale (default: 1.25)
-   * @param scale2 - Second scale (default: 0.75)
-   * @param scale3 - Third scale (default: 1.15)
-   * @param scale4 - Final scale (default: 1)
-   * @example rubberBandIn() // Standard rubber band
-   * @example rubberBandIn({ scale1: 1.5, scale2: 0.5 }) // More elastic
-   */
-  public static rubberBandIn({ scale1 = 1.25, scale2 = 0.75, scale3 = 1.15, scale4 = 1 } = {}): string {
-    return `scaleX:${scale1}:>;to:scaleX:${scale2}:>;to:scaleX:${scale3}:>;to:scaleX:${scale4}:>`;
-  }
-
-  /**
    * Zoom out animation with customizable scale and opacity.
    * @param scale - Ending scale (default: 0)
    * @param opacity - Ending opacity (default: 0)
@@ -528,20 +515,6 @@ export class Presets {
   }
 
   /**
-   * Wiggle animation with horizontal movement and rotation.
-   * @param x1 - First horizontal position (default: '-10px')
-   * @param x2 - Second horizontal position (default: '10px')
-   * @param rotate1 - First rotation (default: -3)
-   * @param rotate2 - Second rotation (default: 3)
-   * @example wiggle() // Standard wiggle
-   * @example wiggle({ x1: '-15px', rotate1: -5 }) // Stronger wiggle
-   * @example wiggle({ duration: 0.3, repeat: 3 }) // Quick repeated wiggle
-   */
-  public static wiggle({ x1 = '-10px', x2 = '10px', rotate1 = -3, rotate2 = 3 } = {}): string {
-    return `to:x:${x1}:>;to:rotate:${rotate1}:0;to:x:${x2}:>;to:rotate:${rotate2}:0;to:x:${x1}:>;to:rotate:${rotate1}:0;to:x:0:>;to:rotate:0:0`;
-  }
-
-  /**
    * Flip animation with customizable axis.
    * @param axis - Rotation axis: 'x', 'y', or 'z' (default: 'y')
    * @param rotate1 - First rotation angle (default: 180)
@@ -679,18 +652,6 @@ export class Presets {
   }
 
   /**
-   * Sway animation - gentle rotation back and forth.
-   * @param rotate1 - First rotation (default: -10)
-   * @param rotate2 - Second rotation (default: 10)
-   * @example sway() // Standard sway
-   * @example sway({ rotate1: -15, rotate2: 15 }) // Wider sway
-   * @example sway({ duration: 2, repeat: -1 }) // Continuous swaying
-   */
-  public static sway({ rotate1 = -10, rotate2 = 10 } = {}): string {
-    return `to:rotate:${rotate1}:>;to:rotate:${rotate2}:>;to:rotate:${rotate1}:>;to:rotate:${rotate2}:>;to:rotate:0:>`;
-  }
-
-  /**
    * Skew animation on both axes.
    * @param skewX - X-axis skew angle (default: -10)
    * @param skewY - Y-axis skew angle (default: -10)
@@ -700,18 +661,6 @@ export class Presets {
    */
   public static skew({ skewX = -10, skewY = -10 } = {}): string {
     return `to:skewX:${skewX}:>;to:skewY:${skewY}:0;to:skewX:0:>;to:skewY:0:0`;
-  }
-
-  /**
-   * Tilt animation - rotation back and forth.
-   * @param rotate1 - First rotation (default: -10)
-   * @param rotate2 - Second rotation (default: 10)
-   * @example tilt() // Standard tilt
-   * @example tilt({ rotate1: -20, rotate2: 20 }) // Wider tilt
-   * @example tilt({ duration: 0.5, repeat: 3 }) // Quick repeated tilts
-   */
-  public static tilt({ rotate1 = -10, rotate2 = 10 } = {}): string {
-    return `to:rotate:${rotate1}:>;to:rotate:0:>;to:rotate:${rotate2}:>;to:rotate:0:>`;
   }
 
   /**
@@ -885,18 +834,6 @@ export class Presets {
   }
 
   /**
-   * Bob animation - gentle up and down bobbing.
-   * @param y1 - First bob position (default: '-10px')
-   * @param y2 - Second bob position (default: '-5px')
-   * @example bob() // Standard bob
-   * @example bob({ y1: '-15px', y2: '-8px' }) // Wider bob
-   * @example bob({ duration: 1, repeat: -1 }) // Continuous bobbing
-   */
-  public static bob({ y1 = '-10px', y2 = '-5px' } = {}): string {
-    return `to:y:${y1}:>;to:y:${y2}:>;to:y:${y1}:>;to:y:${y2}:>;to:y:0:>`;
-  }
-
-  /**
    * Buzz animation - rapid horizontal vibration.
    * @param x - Vibration distance (default: '3px')
    * @example buzz() // Standard buzz
@@ -907,13 +844,5 @@ export class Presets {
     return `to:x:-${x}:>;to:x:${x}:>;to:x:-${x}:>;to:x:${x}:>;to:x:-${x}:>;to:x:${x}:>;to:x:-${x}:>;to:x:${x}:>;to:x:0:>`;
   }
 
-  /**
-   * Buzz out animation - rapid horizontal vibration outward.
-   * @param x - Vibration distance (default: '3px')
-   * @example buzzOut() // Standard buzz out
-   * @example buzzOut({ x: '5px' }) // Stronger buzz
-   */
-  public static buzzOut({ x = '3px' } = {}): string {
-    return `to:x:${x}:>;to:x:-${x}:>;to:x:${x}:>;to:x:-${x}:>;to:x:${x}:>;to:x:-${x}:>;to:x:${x}:>;to:x:-${x}:>;to:x:0:>`;
-  }
 }
+
