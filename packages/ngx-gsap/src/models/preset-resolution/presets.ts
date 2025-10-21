@@ -18,7 +18,7 @@ export class Presets {
    * @example fadeIn({ duration: 2, ease: 'power2.out' }) // With custom GSAP props
    */
   public static fadeIn({ x = '0', y = '0', opacity = 0 } = {}): string {
-    return `x:${x}:>;y:${y}:0;opacity:${opacity}:0`;
+    return `x:${x}:>;y:${y}:>;opacity:${opacity}:0`;
   }
 
   /**
@@ -50,9 +50,17 @@ export class Presets {
    * @example zoomIn({ x: '100%', scale: 0.3 }) // Zoom in from right
    * @example zoomIn({ rotate: 180 }) // Zoom with rotation
    */
-  public static zoomIn({ x = '0', y = '0', scale = 0, opacity = 0, rotate = 0 } = {}): string {
+  public static zoomIn({
+    x = '0',
+    y = '0',
+    startScale = 0,
+    endScale = 1,
+    opacity = 0,
+    rotate = 0,
+    duration = 1.5,
+  } = {}): string {
     const rotateAnim = rotate !== 0 ? `;rotate:${rotate}:0;to:rotate:0:>` : '';
-    return `x:${x}:>;y:${y}:0;scale:${scale}:0@duration=1;opacity:${opacity}:0;to:opacity:1:0@duration=1${rotateAnim}`;
+    return `x:${x}:>;y:${y}:>;scale:${startScale}:0;opacity:${opacity}:0;to:opacity:1:0@duration=${duration};to:scale:${endScale}:0@duration=${duration},ease=none${rotateAnim}`;
   }
 
   /**
@@ -61,17 +69,14 @@ export class Presets {
    * @param y - Vertical starting position (default: '0')
    * @param opacity - Starting opacity (default: 0)
    * @param rotate - Starting rotation in degrees (default: 0)
-   * @param scaleY - Starting Y scale (default: 1)
    * @example slideIn({ x: '-100%' }) // Slide in from left
    * @example slideIn({ y: '100%' }) // Slide in from bottom
    * @example slideIn({ x: '100%', opacity: 0.5 }) // Slide from right with fade
-   * @example slideIn({ x: '-100%', rotate: -180 }) // Slide with rotation
-   * @example slideIn({ y: '100%', scaleY: 0 }) // Slide with vertical expansion
+   * @example slideIn({ x: '-100%', rotate: -180 }) // Slide with rotation and delay
    */
-  public static slideIn({ x = '0', y = '0', opacity = 0, rotate = 0, scaleY = 1 } = {}): string {
+  public static slideIn({ x = '0', y = '0', opacity = 0, rotate = 0 } = {}): string {
     const rotateAnim = rotate !== 0 ? `;rotate:${rotate}:0;to:rotate:0:>` : '';
-    const scaleAnim = scaleY !== 1 ? `;scaleY:${scaleY}:0;to:scaleY:1:>` : '';
-    return `x:${x}:>;y:${y}:0;opacity:${opacity}:<${rotateAnim}${scaleAnim}`;
+    return `x:${x}:>;y:${y}:0;opacity:${opacity}:0@duration=1.5;<${rotateAnim}`;
   }
 
   /**

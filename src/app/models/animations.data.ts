@@ -23,7 +23,7 @@ export const animations: Animation[] = [
     category: 'entrance',
     value: "slideIn({ x: '-100%' })",
     description: 'Slide in with optional rotation.',
-    examples: ["slideIn({ x: '-100%', opacity: 0, rotate: 0, scaleY: 0 })", "slideIn({ y: '100%', scaleY: 0 })"],
+    examples: ["slideIn({ x: '-100%', opacity: 0, rotate: 0 })", "slideIn({ y: '100%' })"],
     gradient: 'from-amber-200 to-amber-400',
     content: '<div class="w-16 h-24 bg-amber-600 rounded-lg transform -rotate-12"></div>',
   },
