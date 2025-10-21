@@ -97,39 +97,6 @@ export const animations: Animation[] = [
     gradient: 'from-purple-400 to-pink-600',
     content: '<div class="w-24 h-32 bg-purple-800 rounded-full"></div>',
   },
-  {
-    name: 'Bounce In Down',
-    category: 'entrance',
-    value: 'bounceInDown',
-    description: 'Bounce in from top.',
-    examples: ['bounceInDown', "bounceInDown({ y: '-100%', opacity: 0 })"],
-    gradient: 'from-blue-400 to-cyan-600',
-  },
-  {
-    name: 'Bounce In Up',
-    category: 'entrance',
-    value: 'bounceInUp',
-    description: 'Bounce in from bottom.',
-    examples: ['bounceInUp', "bounceInUp({ y: '100%', opacity: 0 })"],
-    gradient: 'from-green-400 to-teal-600',
-  },
-  {
-    name: 'Bounce In Left',
-    category: 'entrance',
-    value: 'bounceInLeft',
-    description: 'Bounce in from left.',
-    examples: ['bounceInLeft', "bounceInLeft({ x: '-100%', opacity: 0 })"],
-    gradient: 'from-yellow-400 to-orange-600',
-  },
-  {
-    name: 'Bounce In Right',
-    category: 'entrance',
-    value: 'bounceInRight',
-    description: 'Bounce in from right.',
-    examples: ['bounceInRight', "bounceInRight({ x: '100%', opacity: 0 })"],
-    gradient: 'from-pink-400 to-red-600',
-  },
-
   // EXIT ANIMATIONS
   {
     name: 'Fade Out',
@@ -195,71 +162,6 @@ export const animations: Animation[] = [
     examples: ['rollOut', "rollOut({ x: '100%', rotate: 360, opacity: 0 })"],
     gradient: 'from-yellow-300 to-yellow-500',
   },
-  {
-    name: 'Zoom Out Down',
-    category: 'exit',
-    value: 'zoomOutDown',
-    description: 'Zoom out downward.',
-    examples: ['zoomOutDown', "zoomOutDown({ y: '100%', scale: 0, opacity: 0 })"],
-    gradient: 'from-emerald-300 to-emerald-500',
-  },
-  {
-    name: 'Zoom Out Up',
-    category: 'exit',
-    value: 'zoomOutUp',
-    description: 'Zoom out upward.',
-    examples: ['zoomOutUp', "zoomOutUp({ y: '-100%', scale: 0, opacity: 0 })"],
-    gradient: 'from-teal-300 to-teal-500',
-  },
-  {
-    name: 'Zoom Out Left',
-    category: 'exit',
-    value: 'zoomOutLeft',
-    description: 'Zoom out to the left.',
-    examples: ['zoomOutLeft', "zoomOutLeft({ x: '-100%', scale: 0, opacity: 0 })"],
-    gradient: 'from-cyan-300 to-cyan-500',
-  },
-  {
-    name: 'Zoom Out Right',
-    category: 'exit',
-    value: 'zoomOutRight',
-    description: 'Zoom out to the right.',
-    examples: ['zoomOutRight', "zoomOutRight({ x: '100%', scale: 0, opacity: 0 })"],
-    gradient: 'from-sky-300 to-sky-500',
-  },
-  {
-    name: 'Bounce Out Down',
-    category: 'exit',
-    value: 'bounceOutDown',
-    description: 'Bounce out downward.',
-    examples: ['bounceOutDown', "bounceOutDown({ y: '100%', opacity: 0 })"],
-    gradient: 'from-blue-300 to-blue-500',
-  },
-  {
-    name: 'Bounce Out Up',
-    category: 'exit',
-    value: 'bounceOutUp',
-    description: 'Bounce out upward.',
-    examples: ['bounceOutUp', "bounceOutUp({ y: '-100%', opacity: 0 })"],
-    gradient: 'from-indigo-300 to-indigo-500',
-  },
-  {
-    name: 'Bounce Out Left',
-    category: 'exit',
-    value: 'bounceOutLeft',
-    description: 'Bounce out to the left.',
-    examples: ['bounceOutLeft', "bounceOutLeft({ x: '-100%', opacity: 0 })"],
-    gradient: 'from-violet-300 to-violet-500',
-  },
-  {
-    name: 'Bounce Out Right',
-    category: 'exit',
-    value: 'bounceOutRight',
-    description: 'Bounce out to the right.',
-    examples: ['bounceOutRight', "bounceOutRight({ x: '100%', opacity: 0 })"],
-    gradient: 'from-purple-300 to-purple-500',
-  },
-
   // ATTENTION SEEKERS
   {
     name: 'Pulse',
@@ -456,14 +358,6 @@ export const animations: Animation[] = [
   },
 
   // SPECIAL EFFECTS
-  {
-    name: 'Glitch',
-    category: 'special',
-    value: 'glitch',
-    description: 'Digital glitch effect.',
-    examples: ['glitch', "glitch({ x1: '-5px', x2: '5px' })"],
-    gradient: 'from-red-500 to-blue-500',
-  },
   {
     name: 'Spin',
     category: 'special',

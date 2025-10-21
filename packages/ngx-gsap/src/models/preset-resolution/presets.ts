@@ -257,7 +257,18 @@ export class Presets {
    * @example wobble() // Standard wobble
    * @example wobble({ x1: '-30%', x2: '25%' }) // Wider wobble
    */
-  public static wobble({ x1 = '-25%', rotate1 = -5, x2 = '20%', rotate2 = 3, x3 = '-15%', rotate3 = -3, x4 = '10%', rotate4 = 2, x5 = '-5%', rotate5 = -1 } = {}): string {
+  public static wobble({
+    x1 = '-25%',
+    rotate1 = -5,
+    x2 = '20%',
+    rotate2 = 3,
+    x3 = '-15%',
+    rotate3 = -3,
+    x4 = '10%',
+    rotate4 = 2,
+    x5 = '-5%',
+    rotate5 = -1,
+  } = {}): string {
     return `to:x:${x1}:>;to:rotate:${rotate1}:0;to:x:${x2}:>;to:rotate:${rotate2}:0;to:x:${x3}:>;to:rotate:${rotate3}:0;to:x:${x4}:>;to:rotate:${rotate4}:0;to:x:${x5}:>;to:rotate:${rotate5}:0;to:x:0:>;to:rotate:0:0`;
   }
 
@@ -272,7 +283,9 @@ export class Presets {
    * @example jello({ skewX1: -20, skewY1: -20 }) // More dramatic wobble
    */
   public static jello({ skewX1 = -12.5, skewY1 = -12.5, skewX2 = 6.25, skewY2 = 6.25 } = {}): string {
-    return `to:skewX:${skewX1}:>;to:skewY:${skewY1}:0;to:skewX:${skewX2}:>;to:skewY:${skewY2}:0;to:skewX:${-skewX2/2}:>;to:skewY:${-skewY2/2}:0;to:skewX:${skewX2/4}:>;to:skewY:${skewY2/4}:0;to:skewX:0:>;to:skewY:0:0`;
+    return `to:skewX:${skewX1}:>;to:skewY:${skewY1}:0;to:skewX:${skewX2}:>;to:skewY:${skewY2}:0;to:skewX:${
+      -skewX2 / 2
+    }:>;to:skewY:${-skewY2 / 2}:0;to:skewX:${skewX2 / 4}:>;to:skewY:${skewY2 / 4}:0;to:skewX:0:>;to:skewY:0:0`;
   }
 
   /**
@@ -470,7 +483,16 @@ export class Presets {
    * @example headShake() // Standard head shake (no gesture)
    * @example headShake({ x1: '-10px', rotateY1: -12 }) // Stronger shake
    */
-  public static headShake({ x1 = '-6px', rotateY1 = -9, x2 = '5px', rotateY2 = 7, x3 = '-3px', rotateY3 = -5, x4 = '2px', rotateY4 = 3 } = {}): string {
+  public static headShake({
+    x1 = '-6px',
+    rotateY1 = -9,
+    x2 = '5px',
+    rotateY2 = 7,
+    x3 = '-3px',
+    rotateY3 = -5,
+    x4 = '2px',
+    rotateY4 = 3,
+  } = {}): string {
     return `to:x:${x1}:>@ease=ease-in-out;to:rotateY:${rotateY1}:0;to:x:${x2}:>;to:rotateY:${rotateY2}:0;to:x:${x3}:>;to:rotateY:${rotateY3}:0;to:x:${x4}:>;to:rotateY:${rotateY4}:0;to:x:0:>;to:rotateY:0:0`;
   }
 
@@ -544,20 +566,6 @@ export class Presets {
    */
   public static spin({ degrees = 360 } = {}): string {
     return `to:rotate:${degrees}:>`;
-  }
-
-  /**
-   * Glitch effect with horizontal movement and skew.
-   * @param x1 - First horizontal position (default: '-5px')
-   * @param x2 - Second horizontal position (default: '5px')
-   * @param skew1 - First skew angle (default: -10)
-   * @param skew2 - Second skew angle (default: 10)
-   * @example glitch() // Standard glitch
-   * @example glitch({ x1: '-10px', x2: '10px' }) // Stronger glitch
-   * @example glitch({ duration: 0.2, repeat: 2 }) // Quick repeated glitch
-   */
-  public static glitch({ x1 = '-5px', x2 = '5px', skew1 = -10, skew2 = 10 } = {}): string {
-    return `to:x:${x1}:>;to:skewX:${skew1}:0;to:x:${x2}:>;to:skewX:${skew2}:0;to:x:${x1}:>;to:skewX:${skew1}:0;to:x:0:>;to:skewX:0:0`;
   }
 
   /**
