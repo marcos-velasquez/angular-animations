@@ -63,6 +63,14 @@
     >
       Special <span class="text-purple-300">({{ categoryCounts().special }})</span>
     </button>
+    <button
+      (click)="setCategory('shadow')"
+      [class.bg-purple-600]="selectedCategory() === 'shadow'"
+      [class.bg-slate-800]="selectedCategory() !== 'shadow'"
+      class="px-6 py-2 rounded-full font-medium text-white transition-all hover:scale-105"
+    >
+      Shadow <span class="text-purple-300">({{ categoryCounts().shadow }})</span>
+    </button>
   </div>
 
   <!-- Animations Grid -->
