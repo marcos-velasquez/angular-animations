@@ -33,6 +33,7 @@ export class Timeline {
   }
 
   public play(): Timeline {
+    console.log(this.timeline.getTweensOf(this.element).map((e) => e.vars));
     this.gsapTimeline.play(0);
     return this;
   }

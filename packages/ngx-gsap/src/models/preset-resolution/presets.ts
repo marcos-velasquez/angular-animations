@@ -89,7 +89,7 @@ export class Presets {
    * @example bounceIn({ opacity: 0 }) // Bounce with fade
    */
   public static bounceIn({ startScale = 0.3, opacity = 0 } = {}): string {
-    return `scale:${startScale}:>;opacity:${opacity}:0;to:scale:1.1:>@ease=cubic-bezier(0.215,0.61,0.355,1);to:scale:0.9:>;to:scale:1.03:>;to:scale:0.97:>;to:scale:1:>`;
+    return `scale:${startScale}:>;opacity:${opacity}:0;to:scale:1.1@ease=cubic-bezier(0.215,0.61,0.355,1);to:scale:0.8;to:scale:1.15;to:scale:0.9;to:scale:1`;
   }
 
   /**
