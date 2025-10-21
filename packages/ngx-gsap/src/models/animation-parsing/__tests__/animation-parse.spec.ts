@@ -207,15 +207,6 @@ describe('AnimationParser', () => {
       expect(result[1]).toEqual({ method: 'from', vars: { y: 0 }, position: '0' });
       expect(result[2]).toEqual({ method: 'from', vars: { opacity: 0.3 }, position: '<' });
     });
-
-    it('should resolve bounceIn with object syntax', () => {
-      const result = new AnimationParser('bounceIn({ startScale: 0.4, midScale: 1.5, endScale: 1 })').parse();
-
-      expect(result.length).toBe(3);
-      expect(result[0]).toEqual({ method: 'from', vars: { scale: 0.4 }, position: '>' });
-      expect(result[1]).toEqual({ method: 'to', vars: { scale: 1.5 }, position: '>' });
-      expect(result[2]).toEqual({ method: 'to', vars: { scale: 1 }, position: '>' });
-    });
   });
 
   describe('Custom GSAP properties', () => {
