@@ -136,25 +136,25 @@ export class Presets {
    * @param distance - Horizontal starting distance (default: '100%')
    * @param skew1 - Initial skew angle (default: -30)
    * @param skew2 - Mid skew angle (default: 20)
-   * @param skew3 - Final skew angle (default: -5)
+   * @param skew3 - Final skew angle (default: 0)
    * @param opacity - Starting opacity (default: 0)
    * @example lightSpeedIn() // Fast entrance from right
    * @example lightSpeedIn({ distance: '-100%', skew1: 30, skew2: -20, skew3: 5 }) // From left
    */
-  public static lightSpeedIn({ distance = '100%', skew1 = -30, skew2 = 20, skew3 = -5, opacity = 0 } = {}): string {
+  public static lightSpeedIn({ distance = '100%', skew1 = -30, skew2 = 20, skew3 = 0, opacity = 0 } = {}): string {
     return `x:${distance}:>;skewX:${skew1}:0;opacity:${opacity}:0;to:skewX:${skew2}:>@ease=ease-out;to:opacity:1:0;to:skewX:${skew3}:>;to:x:0:>;to:skewX:0:0`;
   }
 
   /**
    * Swing in animation with progressive rotation.
    * @param start - Starting rotation (default: 15)
-   * @param mid1 - First middle rotation (default: -10)
+   * @param mid1 - First middle rotation (default: -15)
    * @param mid2 - Second middle rotation (default: 5)
    * @param end - Ending rotation (default: 0)
    * @example swingIn() // Standard swing entrance
    * @example swingIn({ start: 20, mid1: -15 }) // Wider swing
    */
-  public static swingIn({ start = 15, mid1 = -10, mid2 = 5, end = 0 } = {}): string {
+  public static swingIn({ start = 15, mid1 = -15, mid2 = 5, end = 0 } = {}): string {
     return `rotate:${start}:>;to:rotate:${mid1}:>;to:rotate:${mid2}:>;to:rotate:${end}:>`;
   }
 
@@ -317,7 +317,7 @@ export class Presets {
    * Back in animation with overshoot effect.
    * @param x - Horizontal starting position (default: '0')
    * @param y - Vertical starting position (default: '0')
-   * @param scale1 - Starting scale (default: 0.7)
+   * @param scale1 - Starting scale (default: 0)
    * @param opacity - Starting opacity (default: 0)
    * @param scale2 - Overshoot scale (default: 1.1)
    * @param scale3 - Final scale (default: 1)
@@ -325,8 +325,8 @@ export class Presets {
    * @example backIn({ y: '-100%' }) // Back in from top
    * @example backIn({ scale2: 1.2 }) // More overshoot
    */
-  public static backIn({ x = '0', y = '0', scale1 = 0.7, opacity = 0, scale2 = 1.1, scale3 = 1 } = {}): string {
-    return `x:${x}:>;y:${y}:0;scale:${scale1}:0;opacity:${opacity}:0;to:scale:${scale2}:>;to:scale:${scale3}:>`;
+  public static backIn({ x = '0', y = '0', startScale = 0, midScale = 1.3, endScale = 1, opacity = 0 } = {}): string {
+    return `x:${x}:>;y:${y}:0;scale:${startScale}:0;opacity:${opacity}:0;to:scale:${midScale}:>;to:scale:${endScale}:>`;
   }
 
   /**
@@ -743,7 +743,7 @@ export class Presets {
    * @example bigEntrance({ rotate: 1080 }) // Triple spin
    */
   public static bigEntrance({ scale = 0, rotate = 720, opacity = 0 } = {}): string {
-    return `scale:${scale}:>;rotate:${rotate}:0;opacity:${opacity}:0`;
+    return `scale:${scale}:>;rotate:${rotate}:>;opacity:${opacity}:0`;
   }
 
   /**
@@ -843,6 +843,4 @@ export class Presets {
   public static buzz({ x = '3px' } = {}): string {
     return `to:x:-${x}:>;to:x:${x}:>;to:x:-${x}:>;to:x:${x}:>;to:x:-${x}:>;to:x:${x}:>;to:x:-${x}:>;to:x:${x}:>;to:x:0:>`;
   }
-
 }
-

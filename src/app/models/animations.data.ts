@@ -68,7 +68,7 @@ export const animations: Animation[] = [
     category: 'entrance',
     value: 'lightSpeedIn',
     description: 'Fast entrance with skew.',
-    examples: ['lightSpeedIn', "lightSpeedIn({ distance: '-100%', skew: -30, opacity: 0 })"],
+    examples: ['lightSpeedIn', "lightSpeedIn({ distance: '-100%', skew1: -30, skew2: 20, skew3: 0, opacity: 0 })"],
     gradient: 'from-purple-300 to-purple-600',
   },
   {
@@ -102,7 +102,7 @@ export const animations: Animation[] = [
     category: 'entrance',
     value: 'swingIn',
     description: 'Swing entrance with progressive rotation.',
-    examples: ['swingIn', 'swingIn({ start: 15, mid1: -10, mid2: 5, end: 0 })'],
+    examples: ['swingIn', 'swingIn({ start: 15, mid1: -15, mid2: 5, end: 0 })'],
     gradient: 'from-teal-400 to-cyan-600',
   },
   {
@@ -110,7 +110,7 @@ export const animations: Animation[] = [
     category: 'entrance',
     value: 'backIn',
     description: 'Back in with overshoot effect.',
-    examples: ['backIn', "backIn({ y: '-100%' })", 'backIn({ scale2: 1.2 })'],
+    examples: ['backIn', 'backIn({ x: 0, y: 0, startScale: 0, midScale: 1.3, endScale: 1, opacity: 0 })'],
     gradient: 'from-sky-400 to-blue-600',
   },
   {
@@ -345,7 +345,7 @@ export const animations: Animation[] = [
     category: 'attention',
     value: 'jump',
     description: 'Vertical bouncing jump.',
-    examples: ['jump', "jump({ y1: '-50px' })", "jump({ duration: 0.5, repeat: 2 })"],
+    examples: ['jump', "jump({ y1: '-50px' })", 'jump({ duration: 0.5, repeat: 2 })'],
     gradient: 'from-cyan-400 to-sky-500',
   },
   {
@@ -353,7 +353,7 @@ export const animations: Animation[] = [
     category: 'attention',
     value: 'float',
     description: 'Gentle up and down movement.',
-    examples: ['float', "float({ y1: '-30px', y2: '-15px' })", "float({ duration: 2, repeat: -1 })"],
+    examples: ['float', "float({ y1: '-30px', y2: '-15px' })", 'float({ duration: 2, repeat: -1 })'],
     gradient: 'from-sky-400 to-blue-500',
   },
   {
@@ -361,7 +361,7 @@ export const animations: Animation[] = [
     category: 'attention',
     value: 'sink',
     description: 'Element sinks down.',
-    examples: ['sink', "sink({ y: '50px' })", "sink({ duration: 1.5 })"],
+    examples: ['sink', "sink({ y: '50px' })", 'sink({ duration: 1.5 })'],
     gradient: 'from-blue-400 to-indigo-500',
   },
   {
@@ -443,7 +443,11 @@ export const animations: Animation[] = [
     category: 'special',
     value: 'expand',
     description: 'Scale up on both axes.',
-    examples: ['expand({ scaleX: 1.5, scaleY: 1.5 })', 'expand({ scaleX: 2, scaleY: 1 })', 'expand({ scaleX: 1.2, scaleY: 1.2, duration: 2 })'],
+    examples: [
+      'expand({ scaleX: 1.5, scaleY: 1.5 })',
+      'expand({ scaleX: 2, scaleY: 1 })',
+      'expand({ scaleX: 1.2, scaleY: 1.2, duration: 2 })',
+    ],
     gradient: 'from-red-500 to-orange-500',
   },
   {
