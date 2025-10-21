@@ -41,7 +41,7 @@ export class Presets {
    * Based on animate.css zoomIn: 0% scale(0.3) opacity(0), 50% opacity(1)
    * @param x - Horizontal starting position (default: '0')
    * @param y - Vertical starting position (default: '0')
-   * @param scale - Starting scale (default: 0.3)
+   * @param scale - Starting scale (default: 0)
    * @param opacity - Starting opacity (default: 0)
    * @param rotate - Starting rotation in degrees (default: 0)
    * @example zoomIn() // Simple zoom in
@@ -50,9 +50,9 @@ export class Presets {
    * @example zoomIn({ x: '100%', scale: 0.3 }) // Zoom in from right
    * @example zoomIn({ rotate: 180 }) // Zoom with rotation
    */
-  public static zoomIn({ x = '0', y = '0', scale = 0.3, opacity = 0, rotate = 0 } = {}): string {
+  public static zoomIn({ x = '0', y = '0', scale = 0, opacity = 0, rotate = 0 } = {}): string {
     const rotateAnim = rotate !== 0 ? `;rotate:${rotate}:0;to:rotate:0:>` : '';
-    return `x:${x}:>;y:${y}:0;scale:${scale}:0;opacity:${opacity}:0;to:opacity:1:0${rotateAnim}`;
+    return `x:${x}:>;y:${y}:0;scale:${scale}:0@duration=1;opacity:${opacity}:0;to:opacity:1:0@duration=1${rotateAnim}`;
   }
 
   /**
