@@ -124,11 +124,13 @@ For complete control, use raw GSAP syntax:
 
 **Syntax:** `[method]:[property]:[value]:[position]@[props]`
 
-- **method**: `from` (default) or `to`
+- **method**: `from` (default), `to`, or `set`
 - **property**: GSAP property (`opacity`, `scale`, `x`, `y`, `rotate`, etc.)
 - **value**: Target value
 - **position**: `>` sequence, `<` simultaneous, `0` start, etc. _(optional)_
 - **props**: GSAP properties like `duration`, `ease` _(optional)_
+
+**Note:** The `set` method instantly sets properties without animation, useful for establishing initial states.
 
 ### Combining Animations
 
