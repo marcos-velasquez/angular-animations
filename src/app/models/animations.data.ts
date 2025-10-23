@@ -127,7 +127,7 @@ export const animations: Animation[] = [
     category: 'exit',
     value: 'fadeOut',
     description: 'Gradually disappear to transparent.',
-    examples: ['fadeOut', "fadeOut({ x: '100%', y: '-100%', opacity: 0 })"],
+    examples: ['fadeOut', 'fadeOut({ opacity: 0.5 })'],
     gradient: 'from-slate-400 to-slate-600',
   },
   {

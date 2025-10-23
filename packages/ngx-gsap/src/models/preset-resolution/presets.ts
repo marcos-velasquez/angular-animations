@@ -18,18 +18,15 @@ export class Presets {
   }
 
   /**
-   * Fade out animation with customizable direction and opacity.
-   * @param x - Horizontal ending position (default: '0')
-   * @param y - Vertical ending position (default: '0')
+   * Fade out animation - element fades from opaque to transparent.
+   * Based on animate.css fadeOut: 0% opacity(1), 100% opacity(0)
    * @param opacity - Ending opacity (default: 0)
    * @example fadeOut() // Simple fade out
-   * @example fadeOut({ y: '-100%' }) // Fade out to top
-   * @example fadeOut({ x: '100%' }) // Fade out to right
-   * @example fadeOut({ x: '-100%', y: '100%' }) // Fade out to bottom-left
+   * @example fadeOut({ opacity: 0.5 }) // Fade out to 50% opacity
    * @example fadeOut({ duration: 1, yoyo: true, repeat: 1 }) // Fade out and back
    */
-  public static fadeOut({ x = '0', y = '0', opacity = 0 } = {}): string {
-    return `to:x:${x}:>;to:y:${y}:0;to:opacity:${opacity}:0`;
+  public static fadeOut({ opacity = 0 } = {}): string {
+    return `to:opacity:${opacity}:0`;
   }
 
   /**
