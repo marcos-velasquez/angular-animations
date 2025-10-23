@@ -6,19 +6,15 @@ export class Presets {
   }
 
   /**
-   * Fade in animation with customizable direction and opacity.
-   * @param x - Horizontal starting position (default: '0')
-   * @param y - Vertical starting position (default: '0')
+   * Fade in animation - element fades from transparent to opaque.
+   * Based on animate.css fadeIn: 0% opacity(0), 100% opacity(1)
    * @param opacity - Starting opacity (default: 0)
    * @example fadeIn() // Simple fade in
-   * @example fadeIn({ x: '-100%' }) // Fade in from left
-   * @example fadeIn({ y: '100%' }) // Fade in from bottom
-   * @example fadeIn({ x: '-100%', y: '-100%' }) // Fade in from top-left
-   * @example fadeIn({ y: '2000px' }) // Fade in from far bottom (big entrance)
+   * @example fadeIn({ opacity: 0.5 }) // Fade in from 50% opacity
    * @example fadeIn({ duration: 2, ease: 'power2.out' }) // With custom GSAP props
    */
-  public static fadeIn({ x = '0', y = '0', opacity = 0 } = {}): string {
-    return `x:${x}:>;y:${y}:>;opacity:${opacity}:0`;
+  public static fadeIn({ opacity = 0 } = {}): string {
+    return `opacity:${opacity}:0`;
   }
 
   /**

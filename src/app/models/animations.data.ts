@@ -15,7 +15,7 @@ export const animations: Animation[] = [
     category: 'entrance',
     value: 'fadeIn',
     description: 'Gradually appear from transparent.',
-    examples: ['fadeIn', "fadeIn({ x: '-100%', y: '100%', opacity: 0 })"],
+    examples: ['fadeIn', 'fadeIn({ opacity: 0.5 })'],
     gradient: 'from-orange-400 to-teal-600',
   },
   {
