@@ -2,7 +2,7 @@ import { gsap } from 'gsap';
 import { RegexPatterns } from '../../utils';
 import { PropsParser } from './props-parser';
 
-export type Method = 'to' | 'from';
+export type Method = 'to' | 'from' | 'set';
 export type ParsedAnimation = { method: Method; selector?: string; vars: gsap.TweenVars; position: gsap.Position };
 
 export class SequenceParser {

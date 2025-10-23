@@ -11,10 +11,10 @@ export class RegexPatterns {
 
   /**
    * Matches animation sequence syntax: [method:]prop:value[:position][@props]
-   * Example: "to:x:100%:>@duration=2"
+   * Example: "to:x:100%:>@duration=2" or "set:scale:0"
    * Groups: [1] = method, [2] = prop, [3] = value, [4] = position, [5] = props
    */
-  public static readonly ANIMATION_SEQUENCE = /^(?:(to|from):)?([^:]+):([^:@;]+)(?::([^@;]+))?(?:@([^;]+))?$/;
+  public static readonly ANIMATION_SEQUENCE = /^(?:(to|from|set):)?([^:]+):([^:@;]+)(?::([^@;]+))?(?:@([^;]+))?$/;
 
   /**
    * Matches destructured parameters in function string

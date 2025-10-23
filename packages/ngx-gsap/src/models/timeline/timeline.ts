@@ -28,12 +28,16 @@ export class Timeline {
     return this;
   }
 
+  public set(selector: string | undefined, vars: gsap.TweenVars): Timeline {
+    this.gsapTimeline.set(this.getTarget(selector), vars);
+    return this;
+  }
+
   private getTarget(selector?: string): gsap.TweenTarget {
     return selector ? this.element.querySelectorAll(selector) : this.element;
   }
 
   public play(): Timeline {
-    console.log(this.timeline.getTweensOf(this.element).map((e) => e.vars));
     this.gsapTimeline.play(0);
     return this;
   }
