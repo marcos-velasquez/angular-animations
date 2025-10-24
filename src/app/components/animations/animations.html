@@ -79,6 +79,7 @@
     @for (animation of animations(); track animation.name) {
     <div class="group">
       <div
+        [animateLoad]="animation.value"
         [animateClick]="animation.value"
         [class]="
                   'bg-gradient-to-br ' +

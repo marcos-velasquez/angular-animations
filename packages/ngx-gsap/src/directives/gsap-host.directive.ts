@@ -62,18 +62,6 @@ export abstract class GsapHostDirective implements ng.OnInit, ng.OnDestroy {
     this.timeline().restart();
   }
 
-  protected from(selector: string | undefined, vars: gsap.TweenVars, position: gsap.Position): void {
-    this.timeline().from(selector, vars, position);
-  }
-
-  protected to(selector: string | undefined, vars: gsap.TweenVars, position: gsap.Position): void {
-    this.timeline().to(selector, vars, position);
-  }
-
-  protected set(selector: string | undefined, vars: gsap.TweenVars): void {
-    this.timeline().set(selector, vars);
-  }
-
   ngOnDestroy(): void {
     this.timeline().disconnect();
   }
