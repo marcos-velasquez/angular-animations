@@ -16,8 +16,8 @@ export class SequenceParser {
     const vars: gsap.TweenVars = { [prop]: isNaN(Number(value)) ? value : Number(value) };
     if (propsString) Object.assign(vars, new PropsParser(propsString).parse());
 
-    const { selector, ...tweenVars } = vars as gsap.TweenVars & { selector?: string };
+    const { selector, ...restVars } = vars as gsap.TweenVars & { selector?: string };
 
-    return { method: method as Method, selector, vars: tweenVars, position };
+    return { method: method as Method, selector, vars: restVars, position };
   }
 }

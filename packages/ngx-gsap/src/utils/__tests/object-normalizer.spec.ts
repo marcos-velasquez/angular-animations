@@ -1,4 +1,4 @@
-import { ObjectNormalizer } from '../../../utils/object-normalizer';
+import { ObjectNormalizer } from '../object-normalizer';
 
 describe('ObjectNormalizer', () => {
   describe('normalize()', () => {
