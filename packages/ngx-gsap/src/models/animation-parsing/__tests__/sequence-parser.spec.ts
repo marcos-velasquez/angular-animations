@@ -121,5 +121,16 @@ describe('SequenceParser', () => {
       expect(result?.selector).toBe('> div');
       expect(result?.vars.x).toBe(100);
     });
+
+    it('should parse set method with basic property', () => {
+      const result = new SequenceParser('set:scale:0').parse();
+
+      expect(result).toEqual({
+        method: 'set',
+        selector: undefined,
+        vars: { scale: 0 },
+        position: '>',
+      });
+    });
   });
 });

@@ -121,7 +121,7 @@ describe('AnimationParser', () => {
     });
   });
 
-  describe('Methods (to/from)', () => {
+  describe('Methods (to/from/set)', () => {
     it('should mix from and to methods', () => {
       const result = new AnimationParser('opacity:0:>;to:scale:2:>').parse();
 
@@ -143,6 +143,29 @@ describe('AnimationParser', () => {
       expect(result.length).toBe(2);
       expect(result[0]).toEqual({ method: 'to', vars: { width: 500 }, position: '<' });
       expect(result[1]).toEqual({ method: 'to', vars: { opacity: 1 }, position: '>' });
+    });
+
+    it('should parse multiple set animations', () => {
+      const result = new AnimationParser('set:scale:0;set:opacity:0;set:x:100%').parse();
+
+      expect(result.length).toBe(3);
+      expect(result[0]).toEqual({ method: 'set', selector: undefined, vars: { scale: 0 }, position: '>' });
+      expect(result[1]).toEqual({ method: 'set', selector: undefined, vars: { opacity: 0 }, position: '>' });
+      expect(result[2]).toEqual({ method: 'set', selector: undefined, vars: { x: '100%' }, position: '>' });
+    });
+
+    it('should parse set followed by to animations', () => {
+      const result = new AnimationParser('set:scale:0;set:opacity:0;to:scale:1:>;to:opacity:1:>').parse();
+
+      expect(result.length).toBe(4);
+      expect(result[0].method).toBe('set');
+      expect(result[0].vars.scale).toBe(0);
+      expect(result[1].method).toBe('set');
+      expect(result[1].vars.opacity).toBe(0);
+      expect(result[2].method).toBe('to');
+      expect(result[2].vars.scale).toBe(1);
+      expect(result[3].method).toBe('to');
+      expect(result[3].vars.opacity).toBe(1);
     });
   });
 
