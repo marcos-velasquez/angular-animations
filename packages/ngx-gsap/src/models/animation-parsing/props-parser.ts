@@ -1,5 +1,4 @@
-import { TypeConverter } from '../../utils';
-import { ObjectParser } from './object-parser';
+import { TypeConverter, ObjectParser } from '../../utils';
 
 export class PropsParser {
   private index = 0;

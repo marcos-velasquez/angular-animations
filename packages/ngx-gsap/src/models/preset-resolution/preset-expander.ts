@@ -1,6 +1,6 @@
+import { ObjectNormalizer } from '../../utils';
 import { Presets } from './presets';
 import { PresetMatcher } from './preset-matcher';
-import { ObjectNormalizer } from '../animation-parsing/object-normalizer';
 
 export class PresetExpander {
   constructor(private readonly presetMatcher: PresetMatcher) {}

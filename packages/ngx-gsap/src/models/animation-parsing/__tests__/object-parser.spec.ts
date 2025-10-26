@@ -1,4 +1,4 @@
-import { ObjectParser } from '../object-parser';
+import { ObjectParser } from '../../../utils/object-parser';
 
 describe('ObjectParser', () => {
   describe('parse()', () => {

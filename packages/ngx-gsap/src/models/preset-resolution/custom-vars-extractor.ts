@@ -1,5 +1,5 @@
 import { gsap } from 'gsap';
-import { ObjectParser } from '../animation-parsing/object-parser';
+import { ObjectParser } from '../../utils';
 import { PresetMatcher } from './preset-matcher';
 
 export class CustomVarsExtractor {
