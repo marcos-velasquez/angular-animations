@@ -7,8 +7,6 @@ export class Presets {
 
   /**
    * Fade in animation - element fades from transparent to opaque.
-   * Based on animate.css fadeIn: 0% opacity(0), 100% opacity(1)
-   * @param opacity - Starting opacity (default: 0)
    * @example fadeIn() // Simple fade in
    * @example fadeIn({ opacity: 0.5 }) // Fade in from 50% opacity
    * @example fadeIn({ duration: 2, ease: 'power2.out' }) // With custom GSAP props
@@ -19,7 +17,6 @@ export class Presets {
 
   /**
    * Fade out animation - element fades from opaque to transparent.
-   * Based on animate.css fadeOut: 0% opacity(1), 100% opacity(0)
    * @param opacity - Ending opacity (default: 0)
    * @example fadeOut() // Simple fade out
    * @example fadeOut({ opacity: 0.5 }) // Fade out to 50% opacity
@@ -30,8 +27,7 @@ export class Presets {
   }
 
   /**
-   * Zoom in animation with customizable direction, scale, rotation, and opacity.
-   * Based on animate.css zoomIn: 0% scale(0.3) opacity(0), 50% opacity(1)
+   * Zoom in animation with customizable direction, scale, rotation, and opacity.ß
    * @param x - Horizontal starting position (default: '0')
    * @param y - Vertical starting position (default: '0')
    * @param scale - Starting scale (default: 0)
@@ -43,17 +39,8 @@ export class Presets {
    * @example zoomIn({ x: '100%', scale: 0.3 }) // Zoom in from right
    * @example zoomIn({ rotate: 180 }) // Zoom with rotation
    */
-  public static zoomIn({
-    x = '0',
-    y = '0',
-    startScale = 0,
-    endScale = 1,
-    opacity = 0,
-    rotate = 0,
-    duration = 1.5,
-  } = {}): string {
-    const rotateAnim = rotate !== 0 ? `;rotate:${rotate}:0;to:rotate:0:>` : '';
-    return `x:${x}:>;y:${y}:>;scale:${startScale}:0;opacity:${opacity}:0;to:opacity:1:0@duration=${duration};to:scale:${endScale}:0@duration=${duration},ease=none${rotateAnim}`;
+  public static zoomIn({ scale = 0.3 } = {}): string {
+    return `scale:${scale}:0`;
   }
 
   /**
@@ -74,7 +61,6 @@ export class Presets {
 
   /**
    * Bounce in animation with customizable scale values and opacity.
-   * Based on animate.css bounceIn keyframes: 0% scale(0.3), 20% scale(1.1), 40% scale(0.9), 60% scale(1.03), 80% scale(0.97), 100% scale(1)
    * @param startScale - Initial scale (default: 0.3)
    * @param opacity - Starting opacity (default: 0)
    * @example bounceIn() // Standard bounce in
@@ -87,7 +73,6 @@ export class Presets {
 
   /**
    * Rotate in animation with customizable direction, rotation, and opacity.
-   * Based on animate.css rotateIn: from rotate(-200deg) to rotate(0)
    * @param x - Horizontal starting position (default: '0')
    * @param y - Vertical starting position (default: '0')
    * @param rotate - Starting rotation in degrees (default: -200)
@@ -102,7 +87,6 @@ export class Presets {
 
   /**
    * Flip in animation with customizable axis, rotation and opacity.
-   * Based on animate.css flipInX: 0% rotate(90deg), 40% rotate(-20deg), 60% rotate(10deg), 80% rotate(-5deg), 100% rotate(0)
    * @param axis - Rotation axis: 'x', 'y', or 'z' (default: 'y')
    * @param opacity - Starting opacity (default: 0)
    * @example flipIn() // Standard Y-axis flip in
@@ -116,7 +100,6 @@ export class Presets {
 
   /**
    * Roll in animation with rotation and horizontal movement.
-   * Based on animate.css rollIn: from translate(-100%) rotate(-120deg) opacity(0) to translate(0) rotate(0) opacity(1)
    * @param degrees - Rotation degrees (default: -120)
    * @param distance - Horizontal starting distance (default: '-100%')
    * @param opacity - Starting opacity (default: 0)
@@ -130,7 +113,6 @@ export class Presets {
 
   /**
    * Light speed in animation with skew effect.
-   * Based on animate.css lightSpeedInRight: from translate(100%) skewX(-30deg) opacity(0), 60% skewX(20deg) opacity(1), 80% skewX(-5deg), to translate(0)
    * @param distance - Horizontal starting distance (default: '100%')
    * @param skew1 - Initial skew angle (default: -30)
    * @param skew2 - Mid skew angle (default: 20)
@@ -185,7 +167,6 @@ export class Presets {
 
   /**
    * Roll out animation with rotation and horizontal movement.
-   * Based on animate.css rollOut: from opacity(1) to translate(100%) rotate(120deg) opacity(0)
    * @param degrees - Rotation degrees (default: 120)
    * @param distance - Horizontal ending distance (default: '100%')
    * @param opacity - Ending opacity (default: 0)
@@ -199,7 +180,6 @@ export class Presets {
 
   /**
    * Pulse animation that scales up and down with optional fade.
-   * Based on animate.css pulse: from scale(1), 50% scale(1.05), to scale(1)
    * @param scale1 - Peak scale value (default: 1.05)
    * @param opacity - Starting opacity for fade effect (default: 1, no fade)
    * @example pulse() // Subtle pulse
@@ -214,7 +194,6 @@ export class Presets {
 
   /**
    * Shake animation with horizontal and/or vertical movement.
-   * Based on animate.css shake: 10%,30%,50%,70%,90% translate(-10px), 20%,40%,60%,80% translate(10px)
    * @param x - Horizontal shake distance (default: '10px')
    * @param y - Vertical shake distance (default: '0')
    * @example shake() // Horizontal shake
@@ -228,7 +207,6 @@ export class Presets {
 
   /**
    * Wobble animation with rotation and horizontal movement.
-   * Based on animate.css wobble: 15% translate(-25%) rotate(-5deg), 30% translate(20%) rotate(3deg), 45% translate(-15%) rotate(-3deg), 60% translate(10%) rotate(2deg), 75% translate(-5%) rotate(-1deg)
    * @param x1 - First horizontal position (default: '-25%')
    * @param rotate1 - First rotation angle (default: -5)
    * @param x2 - Second horizontal position (default: '20%')
@@ -259,7 +237,6 @@ export class Presets {
 
   /**
    * Jello animation with skew wobble effect.
-   * Based on animate.css jello: 22.2% skew(-12.5deg), 33.3% skew(6.25deg), 44.4% skew(-3.125deg), 55.5% skew(1.5625deg), 66.6% skew(-0.78125deg), 77.7% skew(0.390625deg), 88.8% skew(-0.1953125deg)
    * @param skewX1 - First skew angle (default: -12.5)
    * @param skewY1 - First Y skew angle (default: -12.5)
    * @param skewX2 - Second skew angle (default: 6.25)
@@ -275,7 +252,6 @@ export class Presets {
 
   /**
    * Heart beat animation with pulsing scale.
-   * Based on animate.css heartBeat: 0% scale(1), 14% scale(1.3), 28% scale(1), 42% scale(1.3), 70% scale(1)
    * @param scale1 - Enlarged scale (default: 1.3)
    * @example heartBeat() // Standard heart beat
    * @example heartBeat({ scale1: 1.5 }) // Stronger beat
@@ -342,7 +318,6 @@ export class Presets {
 
   /**
    * Flash animation with opacity pulsing.
-   * Based on animate.css flash: from,50%,to opacity(1), 25%,75% opacity(0)
    * @example flash() // Standard flash (4 pulses)
    * @example flash({ duration: 0.5, repeat: 2 }) // Rapid flashing
    */
@@ -428,7 +403,6 @@ export class Presets {
 
   /**
    * Tada animation with scale and rotation for celebration effect.
-   * Based on animate.css tada: 10%,20% scale(0.9) rotate(-3deg), 30%,50%,70%,90% scale(1.1) rotate(3deg), 40%,60%,80% scale(1.1) rotate(-3deg)
    * @param scale1 - First scale value (default: 0.9)
    * @param scale2 - Second scale value (default: 1.1)
    * @param rotate1 - First rotation angle (default: -3)
@@ -442,7 +416,6 @@ export class Presets {
 
   /**
    * Swing animation - pendulum-like rotation.
-   * Based on animate.css swing: 20% rotate(15deg), 40% rotate(-10deg), 60% rotate(5deg), 80% rotate(-5deg), 100% rotate(0)
    * @param rotate1 - First rotation angle (default: 15)
    * @param rotate2 - Second rotation angle (default: -10)
    * @param rotate3 - Third rotation angle (default: 5)
@@ -456,7 +429,6 @@ export class Presets {
 
   /**
    * Head shake animation - horizontal shake with rotation.
-   * Based on animate.css headShake: 6.5% translateX(-6px) rotateY(-9deg), 18.5% translateX(5px) rotateY(7deg), 31.5% translateX(-3px) rotateY(-5deg), 43.5% translateX(2px) rotateY(3deg)
    * @param x1 - First horizontal position (default: '-6px')
    * @param rotateY1 - First Y rotation (default: -9)
    * @param x2 - Second horizontal position (default: '5px')
@@ -483,7 +455,6 @@ export class Presets {
 
   /**
    * Rubber band animation with alternating X and Y scale.
-   * Based on animate.css rubberBand: 30% scale(1.25,0.75), 40% scale(0.75,1.25), 50% scale(1.15,0.85), 65% scale(0.95,1.05), 75% scale(1.05,0.95)
    * @param scaleX1 - First X scale (default: 1.25)
    * @param scaleY1 - First Y scale (default: 0.75)
    * @param scaleX2 - Second X scale (default: 0.75)
