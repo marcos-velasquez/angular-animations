@@ -79,12 +79,11 @@
     @for (animation of animations(); track animation.name) {
     <div class="group">
       <div
-        [animateLoad]="animation.value"
         [animateClick]="animation.value"
         [class]="
                   'bg-gradient-to-br ' +
                   animation.gradient +
-                  ' aspect-square rounded-2xl cursor-pointer hover:scale-105 transition-transform duration-300 shadow-xl flex items-center justify-center'
+                  ' aspect-square rounded-2xl cursor-pointer shadow-xl flex items-center justify-center'
                 "
         [innerHTML]="animation.content || ''"
       ></div>
