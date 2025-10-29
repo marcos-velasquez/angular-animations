@@ -7,40 +7,47 @@ export class Presets {
 
   /**
    * Fade in animation - element fades from transparent to opaque.
+   * @param x - Horizontal starting position (default: '0')
+   * @param y - Vertical starting position (default: '0')
+   * @param opacity - Starting opacity (default: 0)
    * @example fadeIn() // Simple fade in
    * @example fadeIn({ opacity: 0.5 }) // Fade in from 50% opacity
+   * @example fadeIn({ x: '0', y: '100%' }) // Fade in from bottom
+   * @example fadeIn({ x: '100%', y: '0' }) // Fade in from right
    * @example fadeIn({ duration: 2, ease: 'power2.out' }) // With custom GSAP props
    */
-  public static fadeIn({ opacity = 0 } = {}): string {
-    return `opacity:${opacity}:0`;
+  public static fadeIn({ x = '0', y = '0', opacity = 0 } = {}): string {
+    return `x:${x}:0;y:${y}:0;opacity:${opacity}:<`;
   }
 
   /**
    * Fade out animation - element fades from opaque to transparent.
+   * @param x - Horizontal ending position (default: '0')
+   * @param y - Vertical ending position (default: '0')
    * @param opacity - Ending opacity (default: 0)
    * @example fadeOut() // Simple fade out
    * @example fadeOut({ opacity: 0.5 }) // Fade out to 50% opacity
+   * @example fadeOut({ x: '100%', y: '0' }) // Fade out from right
+   * @example fadeOut({ x: '0', y: '100%' }) // Fade out from bottom
    * @example fadeOut({ duration: 1, yoyo: true, repeat: 1 }) // Fade out and back
    */
-  public static fadeOut({ opacity = 0 } = {}): string {
-    return `to:opacity:${opacity}:0`;
+  public static fadeOut({ x = '0', y = '0', opacity = 0 } = {}): string {
+    return `to:x:${x}:0;to:y:${y}:0;to:opacity:${opacity}:<`;
   }
 
   /**
-   * Zoom in animation with customizable direction, scale, rotation, and opacity.ß
+   * Zoom in animation with customizable direction, scale, and opacity.ß
    * @param x - Horizontal starting position (default: '0')
    * @param y - Vertical starting position (default: '0')
-   * @param scale - Starting scale (default: 0)
+   * @param scale - Starting scale (default: 0.3)
    * @param opacity - Starting opacity (default: 0)
-   * @param rotate - Starting rotation in degrees (default: 0)
    * @example zoomIn() // Simple zoom in
    * @example zoomIn({ scale: 0.5 }) // Zoom from 50%
    * @example zoomIn({ y: '-100%', scale: 0.3 }) // Zoom in from top
    * @example zoomIn({ x: '100%', scale: 0.3 }) // Zoom in from right
-   * @example zoomIn({ rotate: 180 }) // Zoom with rotation
    */
-  public static zoomIn({ scale = 0.3 } = {}): string {
-    return `scale:${scale}:0`;
+  public static zoomIn({ x = '0', y = '0', scale = 0.3 } = {}): string {
+    return `x:${x}:>;y:${y}:0;scale:${scale}:0`;
   }
 
   /**
