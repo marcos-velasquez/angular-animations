@@ -67,6 +67,11 @@ export class Timeline {
     return this;
   }
 
+  public revert(): Timeline {
+    this.gsapTimeline.revert({ delay: 1 });
+    return this;
+  }
+
   public clear(): Timeline {
     this.gsapTimeline.clear();
     return this;

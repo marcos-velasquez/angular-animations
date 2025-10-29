@@ -79,6 +79,8 @@
     @for (animation of animations(); track animation.name) {
     <div class="group">
       <div
+        #animateRef="animate"
+        (animateComplete)="delayedRevert(animateRef)"
         [animateClick]="animation.value"
         [class]="
                   'bg-gradient-to-br ' +

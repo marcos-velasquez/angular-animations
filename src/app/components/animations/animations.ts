@@ -20,4 +20,8 @@ export class Animations {
   public setCategory(category: 'all' | Animation['category']) {
     this.selectedCategory.set(category);
   }
+
+  public delayedRevert(animateRef: AnimateClickDirective) {
+    setTimeout(() => animateRef.revert(), 1000);
+  }
 }
