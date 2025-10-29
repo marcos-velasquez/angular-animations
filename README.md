@@ -190,36 +190,6 @@ Use `selector` to animate children instead of the parent:
 </div>
 ```
 
-## Important Notes
-
-### ⚠️ CSS Transitions Conflict
-
-**Do not use CSS `transition` properties on elements animated by GSAP.** CSS transitions and GSAP animations will conflict when controlling the same properties, causing unexpected behavior.
-
-```html
-<!-- ❌ BAD: CSS transition conflicts with GSAP -->
-<div 
-  animateClick="zoomIn" 
-  class="transition-transform duration-300 hover:scale-105"
->
-  Will not work correctly
-</div>
-
-<!-- ✅ GOOD: No CSS transitions on animated element -->
-<div animateClick="zoomIn">
-  Works perfectly
-</div>
-
-<!-- ✅ GOOD: Apply directive to parent, CSS transitions on child -->
-<div animateClick="zoomIn">
-  <div class="transition-transform duration-300 hover:scale-105">
-    Also works - child has transitions, parent is animated
-  </div>
-</div>
-```
-
-**Rule of thumb:** If GSAP animates an element's `transform`, `opacity`, or any other property, don't use CSS transitions/animations on those same properties for that element.
-
 ## Animation Events
 
 Listen to animation lifecycle events:
@@ -282,6 +252,29 @@ Control animations programmatically using template references:
 - `reverse()` - Reverse the animation direction
 - `resume()` - Resume a paused animation
 - `restart()` - Restart the animation from the beginning
+
+## Important Notes
+
+### ⚠️ CSS Transitions Conflict
+
+**Do not use CSS `transition` properties on elements animated by GSAP.** CSS transitions and GSAP animations will conflict when controlling the same properties, causing unexpected behavior.
+
+```html
+<!-- ❌ BAD: CSS transition conflicts with GSAP -->
+<div animateClick="zoomIn" class="transition-transform duration-300 hover:scale-105">Will not work correctly</div>
+
+<!-- ✅ GOOD: No CSS transitions on animated element -->
+<div animateClick="zoomIn">Works perfectly</div>
+
+<!-- ✅ GOOD: Apply directive to parent, CSS transitions on child -->
+<div animateClick="zoomIn">
+  <div class="transition-transform duration-300 hover:scale-105">
+    Also works - child has transitions, parent is animated
+  </div>
+</div>
+```
+
+**Rule of thumb:** If GSAP animates an element's `transform`, `opacity`, or any other property, don't use CSS transitions/animations on those same properties for that element.
 
 ## License
 
