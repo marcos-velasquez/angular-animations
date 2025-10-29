@@ -62,6 +62,16 @@ export class Timeline {
     return this;
   }
 
+  public seek(time: number): Timeline {
+    this.gsapTimeline.seek(time);
+    return this;
+  }
+
+  public clear(): Timeline {
+    this.gsapTimeline.clear();
+    return this;
+  }
+
   public disconnect(): Timeline {
     this.triggerRef.disconnect();
     return this;
