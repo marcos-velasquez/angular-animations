@@ -236,13 +236,13 @@ export class MyComponent {
 Control animations programmatically using template references:
 
 ```html
-<div #myAnimation="animate" animate="fadeIn">Content</div>
+<div #animation="animate" animate="fadeIn">Content</div>
 
-<button (click)="myAnimation.play()">Play</button>
-<button (click)="myAnimation.pause()">Pause</button>
-<button (click)="myAnimation.reverse()">Reverse</button>
-<button (click)="myAnimation.resume()">Resume</button>
-<button (click)="myAnimation.restart()">Restart</button>
+<button (click)="animation.play()">Play</button>
+<button (click)="animation.pause()">Pause</button>
+<button (click)="animation.reverse()">Reverse</button>
+<button (click)="animation.resume()">Resume</button>
+<button (click)="animation.restart()">Restart</button>
 ```
 
 **Available methods:**

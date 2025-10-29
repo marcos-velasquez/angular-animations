@@ -42,24 +42,39 @@ export abstract class GsapHostDirective implements ng.OnInit, ng.OnDestroy {
     return this.elementRef.nativeElement;
   }
 
-  public play(): void {
+  public play(): GsapHostDirective {
     this.timeline().play();
+    return this;
   }
 
-  public pause(): void {
+  public pause(): GsapHostDirective {
     this.timeline().pause();
+    return this;
   }
 
-  public reverse(): void {
+  public reverse(): GsapHostDirective {
     this.timeline().reverse();
+    return this;
   }
 
-  public resume(): void {
+  public resume(): GsapHostDirective {
     this.timeline().resume();
+    return this;
   }
 
-  public restart(): void {
+  public restart(): GsapHostDirective {
     this.timeline().restart();
+    return this;
+  }
+
+  public seek(time: number): GsapHostDirective {
+    this.timeline().seek(time);
+    return this;
+  }
+
+  public clear(): GsapHostDirective {
+    this.timeline().clear();
+    return this;
   }
 
   ngOnDestroy(): void {
