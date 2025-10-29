@@ -22,6 +22,6 @@ export class Animations {
   }
 
   public delayedRevert(animateRef: AnimateClickDirective) {
-    setTimeout(() => animateRef.revert(), 1000);
+    setTimeout(() => !animateRef.isActive() && animateRef.revert(), 1000);
   }
 }

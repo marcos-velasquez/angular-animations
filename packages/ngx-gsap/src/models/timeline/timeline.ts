@@ -13,6 +13,10 @@ export class Timeline {
     return this.gsapTimeline;
   }
 
+  public isActive(): boolean {
+    return this.gsapTimeline.isActive();
+  }
+
   public with(triggerType: TriggerType): Timeline {
     this.triggerRef = new Trigger(this.element).when(triggerType).then(() => this.play());
     return this;

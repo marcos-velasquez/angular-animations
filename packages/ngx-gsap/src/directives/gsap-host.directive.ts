@@ -42,6 +42,10 @@ export abstract class GsapHostDirective implements ng.OnInit, ng.OnDestroy {
     return this.elementRef.nativeElement;
   }
 
+  public isActive(): boolean {
+    return this.timeline().isActive();
+  }
+
   public play(): GsapHostDirective {
     this.timeline().play();
     return this;
